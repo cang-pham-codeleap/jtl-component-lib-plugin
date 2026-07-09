@@ -1,6 +1,6 @@
 {
   "name": "comp-lib-process",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "AI coding agent skills and configurations for the JTL project",
   "keywords": ["component-library", "shadcn", "react", "jtl"],
   "author": {
