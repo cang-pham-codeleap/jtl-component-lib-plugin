@@ -39,10 +39,10 @@ Be exact — paraphrasing makes it hard to diagnose.
 
 ## Environment (required)
 
-| Field | Value |
-|-------|-------|
-| Raised by (human / agent) | |
-| Harness (Claude Code, Cursor, etc.) | |
-| Harness version | |
-| Model + version | |
-| Plugins installed | |
+| Field                               | Value |
+| ----------------------------------- | ----- |
+| Raised by (human / agent)           |       |
+| Harness (Claude Code, Cursor, etc.) |       |
+| Harness version                     |       |
+| Model + version                     |       |
+| Plugins installed                   |       |

@@ -19,13 +19,13 @@ exists, add a comment or reaction to the existing one instead.
 
 <!-- Required. We weigh reports differently based on what produced them. -->
 
-| Field | Value |
-|-------|-------|
-| Raised by (human / agent) | |
-| Harness (Claude Code, Cursor, etc.) | |
-| Harness version | |
-| Model + version | |
-| Plugins installed | |
+| Field                               | Value |
+| ----------------------------------- | ----- |
+| Raised by (human / agent)           |       |
+| Harness (Claude Code, Cursor, etc.) |       |
+| Harness version                     |       |
+| Model + version                     |       |
+| Plugins installed                   |       |
 
 ## Is this a skill issue or a platform issue?
 

@@ -22,10 +22,10 @@ On first session start, the hook automatically installs required companion plugi
 
 ## Available Skills
 
-| Invoke | What it does |
-|---|---|
-| `/create-pr` | Full PR creation workflow for `jtl-platform-ui-react` — version bump, changelog, draft PR via `gh` CLI |
-| *(auto)* `shadcn` | shadcn/ui component management — add, search, fix, style, compose |
+| Invoke            | What it does                                                                                           |
+| ----------------- | ------------------------------------------------------------------------------------------------------ |
+| `/create-pr`      | Full PR creation workflow for `jtl-platform-ui-react` — version bump, changelog, draft PR via `gh` CLI |
+| _(auto)_ `shadcn` | shadcn/ui component management — add, search, fix, style, compose                                      |
 
 > `shadcn` is context-aware and triggers automatically when working with shadcn projects. `create-pr` is user-invocable.
 
@@ -49,14 +49,13 @@ plugins/
 
 Installed automatically by the `SessionStart` hook:
 
-| Plugin | Purpose |
-|---|---|
-| `caveman` | Token-efficient communication mode |
-| `ponytail` | Agent memory |
-| `context-mode` | Context management |
-| `superpowers` | Skill discovery and invocation |
+| Plugin         | Purpose                            |
+| -------------- | ---------------------------------- |
+| `caveman`      | Token-efficient communication mode |
+| `ponytail`     | Agent memory                       |
+| `context-mode` | Context management                 |
+| `superpowers`  | Skill discovery and invocation     |
 
 ## Contributing
 
 Target the `dev` branch. Fill in all PR template sections. Skills live in `skills/<name>/SKILL.md`.
-
