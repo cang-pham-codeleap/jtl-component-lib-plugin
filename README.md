@@ -7,8 +7,11 @@ AI coding agent plugin for the JTL component library project. Provides curated s
 ### Standalone (Claude Code)
 
 ```bash
-# Register this plugin
-/plugin install <path-or-url-to-this-repo>
+# 1. Register the marketplace (one-time per machine)
+/plugin marketplace add cang-pham-codeleap/jtl-component-lib-plugin
+
+# 2. Install the plugin
+/plugin install comp-lib-process@jtl-component-lib-plugin
 ```
 
 On first session start, the hook automatically installs required companion plugins: `caveman`, `ponytail`, `context-mode`, and `superpowers`.
@@ -58,4 +61,4 @@ Installed automatically by the `SessionStart` hook:
 
 ## Contributing
 
-Target the `dev` branch. Fill in all PR template sections. Skills live in `skills/<name>/SKILL.md`.
+Target the `dev` branch. Fill in all PR template sections. Skills live in `plugins/comp-lib-process/skills/<name>/SKILL.md`.
