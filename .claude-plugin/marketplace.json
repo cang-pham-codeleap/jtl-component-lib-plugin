@@ -6,14 +6,20 @@
   },
   "metadata": {
     "description": "JTL Component Library plugin marketplace. Domain skills for component library development workflows.",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "visibility": "private"
   },
+  "allowCrossMarketplaceDependenciesOn": [
+    "caveman",
+    "ponytail",
+    "context-mode",
+    "claude-plugins-official"
+  ],
   "plugins": [
     {
       "name": "comp-lib-process",
       "description": "Component library process skills: create PRs, manage shadcn components.",
-      "version": "1.0.1",
+      "version": "1.0.3",
       "source": "./plugins/comp-lib-process"
     }
   ]

@@ -1,8 +1,0 @@
-{
-  "required": [
-    { "id": "caveman@caveman", "label": "caveman" },
-    { "id": "ponytail@ponytail", "label": "ponytail" },
-    { "id": "context-mode@context-mode", "label": "context-mode" },
-    { "id": "superpowers@claude-plugins-official", "label": "superpowers" }
-  ]
-}
