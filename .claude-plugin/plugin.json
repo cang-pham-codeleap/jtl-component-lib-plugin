@@ -1,0 +1,23 @@
+{
+  "name": "jtl-component-lib-plugin",
+  "version": "1.0.0",
+  "description": "AI coding agent skills and configurations for the JTL project",
+  "keywords": ["component-library", "shadcn", "react", "jtl"],
+  "author": {
+    "name": "JTL Team"
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/ensure-deps.js\"",
+            "timeout": 30,
+            "statusMessage": "Checking required plugins..."
+          }
+        ]
+      }
+    ]
+  }
+}
