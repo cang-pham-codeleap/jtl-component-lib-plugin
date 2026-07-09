@@ -8,7 +8,7 @@ const path = require("path");
 const os = require("os");
 const { execSync } = require("child_process");
 
-// deps.json lives in plugins/comp-lib-process/ — one level above hooks/
+// deps.json lives in the plugin root — one level above scripts/
 const depsPath = path.join(__dirname, "../deps.json");
 const claudeDir =
   process.env.CLAUDE_CONFIG_DIR || path.join(os.homedir(), ".claude");

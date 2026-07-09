@@ -6,19 +6,5 @@
   "author": {
     "name": "Cang Pham",
     "email": "cang.pham@codeleap.de"
-  },
-  "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/ensure-deps.js\"",
-            "timeout": 30,
-            "statusMessage": "Checking required plugins..."
-          }
-        ]
-      }
-    ]
   }
 }
