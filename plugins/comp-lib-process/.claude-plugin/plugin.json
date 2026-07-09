@@ -1,12 +1,13 @@
 {
   "name": "comp-lib-process",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "AI coding agent skills and configurations for the JTL project",
-  "keywords": ["component-library", "shadcn", "react", "jtl"],
+  "keywords": ["component-library", "shadcn", "react", "jtl", "codegraph"],
   "author": {
     "name": "Cang Pham",
     "email": "cang.pham@codeleap.de"
   },
+  "mcpServers": "./.mcp.json",
   "dependencies": [
     { "name": "caveman", "marketplace": "caveman" },
     { "name": "ponytail", "marketplace": "ponytail" },
