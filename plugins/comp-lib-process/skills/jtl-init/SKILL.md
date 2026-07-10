@@ -1,19 +1,22 @@
 ---
 name: jtl-init
-description: Sets up the working environment for a JTL consumer project by wiring up two tools — CodeGraph (installs the CLI and builds the local knowledge graph index so the bundled `codegraph` MCP server can answer structural / flow / blast-radius queries) and OpenWolf (installs the CLI and runs its native `openwolf init` to create the `.wolf/` hooks and OPENWOLF.md instructions in the consumer project). Invoke when the user says "jtl init", "set up the JTL project", "set up my environment", "initialize codegraph", "install openwolf", "index this repo", "create the hooks", or opens a fresh JTL workspace that has no `.codegraph/` or `.wolf/` yet.
+description: Sets up the working environment for a JTL Component Library project by wiring up three things — CodeGraph (installs the CLI and builds the local knowledge graph index so the bundled `codegraph` MCP server can answer structural / flow / blast-radius queries), OpenWolf (installs the CLI and runs its native `openwolf init` to create the `.wolf/` hooks and OPENWOLF.md instructions), and the JTL agent docs (scaffolds `AGENTS.md`, `CLAUDE.md`, and the `docs/agents/` conventions folder in the repo). Invoke when the user says "jtl init", "set up the JTL project", "set up my environment", "initialize codegraph", "install openwolf", "index this repo", "create the hooks", "scaffold agent docs", "create AGENTS.md", or opens a fresh JTL workspace that has no `.codegraph/`, `.wolf/`, or `AGENTS.md` yet.
 user-invocable: true
-allowed-tools: Bash(command -v *), Bash(codegraph *), Bash(openwolf *), Bash(npm *), Bash(curl *), Bash(irm *)
+allowed-tools: Bash(command -v *), Bash(codegraph *), Bash(openwolf *), Bash(npm *), Bash(curl *), Bash(irm *), Bash(bash *), Bash(ls *)
 ---
 
 # jtl-init
 
-Prepares the current workspace for JTL development by setting up two tools in the
-consumer project:
+Prepares the current workspace for JTL development by setting up three things in
+the project:
 
 1. **CodeGraph** — a local code knowledge graph. The bundled `codegraph` MCP
    server answers structural / flow / blast-radius queries with `codegraph_explore`.
 2. **OpenWolf** — its native CLI writes Claude Code lifecycle hooks and an
-   `OPENWOLF.md` instruction file into the consumer project.
+   `OPENWOLF.md` instruction file into the project.
+3. **Agent docs** — scaffolds `AGENTS.md`, `CLAUDE.md`, and the `docs/agents/`
+   conventions folder so agents know this is a shadcn-based component library that
+   ships Components, Blocks, and Recipes through a shadcn registry.
 
 Run every step in order from the workspace root. Stop and report if any step fails.
 
@@ -104,7 +107,38 @@ Report the health / stats so the user can confirm the hooks registered and the
 
 ---
 
-## Step C — Remind the user
+## Part C — Agent docs
+
+Scaffold the JTL agent documentation into the project by running the bundled
+`scaffold-agent-docs.sh` script. The script lives next to this `SKILL.md`; resolve
+`<skill_dir>` to that skill directory.
+
+The script creates:
+
+- `AGENTS.md` — the entry point at the repo root.
+- `CLAUDE.md` — a thin file that references `AGENTS.md`.
+- `docs/agents/` — the conventions folder (philosophy, architecture,
+  decision-matrix, api-conventions, authoring, registry, mcp, contributing,
+  hardening, maintenance, decisions, examples).
+
+Run it from the workspace root:
+
+```bash
+bash "<skill_dir>/scaffold-agent-docs.sh"
+```
+
+The script is **idempotent** and never overwrites existing content: it only
+creates missing files and appends a missing `docs/agents/` reference to an
+existing `AGENTS.md` or a missing `AGENTS.md` reference to an existing `CLAUDE.md`.
+It prints one line per file plus a final `created=.. updated=.. skipped=..`
+summary — report that summary to the user.
+
+To scaffold into a directory other than the current one, pass it as an argument:
+`bash "<skill_dir>/scaffold-agent-docs.sh" /path/to/repo`.
+
+---
+
+## Step D — Remind the user
 
 Tell the user to reload the VS Code window (or restart the agent) so:
 
@@ -112,4 +146,6 @@ Tell the user to reload the VS Code window (or restart the agent) so:
 - the OpenWolf hooks and `OPENWOLF.md` instructions take effect.
 
 CodeGraph auto-sync then keeps the graph current on every file change, and
-OpenWolf's hooks fire on every Claude action — no need to re-run this skill.
+OpenWolf's hooks fire on every Claude action — no need to re-run this skill. The
+agent docs in `AGENTS.md` and `docs/agents/` are now in place; re-running this
+skill will not overwrite them, only fill in anything missing.
