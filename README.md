@@ -149,12 +149,12 @@ plugins/
 
 Installed automatically by the `SessionStart` hook:
 
-| Plugin         | Purpose                            |
-| -------------- | ---------------------------------- |
-| `caveman`      | Token-efficient communication mode |
-| `ponytail`     | Agent memory                       |
-| `context-mode` | Context management                 |
-| `superpowers`  | Skill discovery and invocation     |
+| Plugin         | Purpose                                                             |
+| -------------- | ------------------------------------------------------------------- |
+| `caveman`      | Token-efficient communication mode                                  |
+| `ponytail`     | Enforces a "lazy senior dev" philosophy—cuts over-engineering/bloat |
+| `context-mode` | Context management                                                  |
+| `superpowers`  | Skill discovery and invocation                                      |
 
 ## Contributing
 
