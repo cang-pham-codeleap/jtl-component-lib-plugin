@@ -16,13 +16,6 @@ AI coding agent plugin for the JTL component library project. Provides curated s
 
 On first session start, the hook automatically installs required companion plugins: `caveman`, `ponytail`, `context-mode`, and `superpowers`.
 
-### Via CL-AI-Toolbox
-
-```bash
-/plugin marketplace add CODE-LEAP-AG/CL-AI-Toolbox
-/plugin install jtl-component-lib@cl-ai-toolbox
-```
-
 ## First-time Setup — Run `jtl-init`
 
 > **Before starting any task, run the `jtl-init` skill** to wire up two required tools in your project:
@@ -78,11 +71,11 @@ After completing any feature, fix, or refactor, run:
 
 This triggers the `tech-debt-reviewer` subagent to analyze only the git diff of changed files across 9 dimensions (architecture, code quality, test debt, types, error handling, security, performance, dependency health, documentation). It outputs a structured report, appends Critical/High items to `_tech-debt.md`, and issues a merge verdict:
 
-| Verdict               | Meaning                              |
-| --------------------- | ------------------------------------ |
-| ✅ CLEAN              | Safe to merge                        |
-| ⚠️ NEEDS ATTENTION    | Merge with known debt logged         |
-| 🚫 BLOCK              | Critical issues must be fixed first  |
+| Verdict            | Meaning                             |
+| ------------------ | ----------------------------------- |
+| ✅ CLEAN           | Safe to merge                       |
+| ⚠️ NEEDS ATTENTION | Merge with known debt logged        |
+| 🚫 BLOCK           | Critical issues must be fixed first |
 
 Options: `--scope staged`, `--scope last-commit`, `--focus security`
 
