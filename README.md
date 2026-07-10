@@ -18,7 +18,8 @@ On first session start, the hook automatically installs required companion plugi
 
 ## First-time Setup — Run `jtl-init`
 
-> **Before starting any task, run the `jtl-init` skill** to wire up two required tools in your project:
+> **Before starting any task, run the `jtl-init` skill** to wire up the tools and
+> agent docs your project needs:
 
 ```
 /jtl-init
@@ -43,6 +44,32 @@ This installs and configures:
 [OpenWolf](https://www.npmjs.com/package/openwolf) (`npm install -g openwolf`) registers Claude Code lifecycle hooks and writes an `OPENWOLF.md` instruction file into your project. Running `openwolf init` creates the `.wolf/` directory with hooks that fire on every agent action — enforcing project-specific rules and keeping the agent on-rails throughout the session.
 
 `jtl-init` installs the CLI and runs `openwolf init` in your project root.
+
+### Agent docs (`AGENTS.md` + `docs/agents/`)
+
+`jtl-init` scaffolds a set of agent instructions into the project so any AI agent
+knows this is a shadcn-based component library that ships Components, Blocks, and
+Recipes through a shadcn registry:
+
+- **`AGENTS.md`** — the repo-root entry point: what the repo is, the prime
+  directive (consume shadcn first, prefer Recipe/composition, tokens everywhere),
+  golden paths, and hard rules.
+- **`CLAUDE.md`** — a thin file that references `AGENTS.md` so Claude Code picks it
+  up automatically.
+- **`docs/agents/`** — the conventions folder: philosophy, architecture
+  (Atom/Component/Block/Recipe), decision matrix, API conventions, authoring
+  guides (component, block, recipe, tokens), registry, MCP, contributing,
+  hardening, maintenance, decision records, and examples.
+
+A bundled `scaffold-agent-docs.sh` script does the work in one run. It is
+**idempotent** and never overwrites your content: it only creates missing files
+and appends a `docs/agents/` reference to an existing `AGENTS.md`, or an
+`AGENTS.md` reference to an existing `CLAUDE.md`. Re-running `jtl-init` is safe —
+it fills in anything missing and leaves everything else untouched.
+
+The shadcn coding rules (styling, forms, composition, icons) are **not** copied
+into your repo; the agent docs reference the `shadcn` skill and the shadcn MCP so
+they stay in sync.
 
 ---
 
@@ -85,7 +112,7 @@ Options: `--scope staged`, `--scope last-commit`, `--focus security`
 
 | Invoke            | What it does                                                                                           |
 | ----------------- | ------------------------------------------------------------------------------------------------------ |
-| `/jtl-init`       | First-time setup: installs CodeGraph + OpenWolf into the consumer project                              |
+| `/jtl-init`       | First-time setup: installs CodeGraph + OpenWolf and scaffolds the `AGENTS.md` + `docs/agents/` docs    |
 | `/create-pr`      | Full PR creation workflow for `jtl-platform-ui-react` — version bump, changelog, draft PR via `gh` CLI |
 | `/debt-review`    | Post-task technical debt review on changed files — structured report + merge verdict                   |
 | _(auto)_ `shadcn` | shadcn/ui component management — add, search, fix, style, compose                                      |
@@ -111,7 +138,9 @@ plugins/
     commands/
       debt-review.md    ← /debt-review slash command
     skills/
-      jtl-init/     ← CodeGraph + OpenWolf setup skill
+      jtl-init/     ← CodeGraph + OpenWolf setup + agent-docs scaffold
+        scaffold-agent-docs.sh ← idempotent AGENTS.md + docs/agents/ generator
+        templates/             ← AGENTS.md, CLAUDE.md, docs/agents/* sources
       create-pr/    ← PR automation skill
       shadcn/       ← shadcn/ui skill + rules + context
 ```
