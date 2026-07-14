@@ -4,6 +4,56 @@ AI coding agent plugin for the JTL component library project. Provides curated s
 
 ## Installation
 
+### Prerequisite — Register the required marketplaces
+
+`comp-lib-process` depends on plugins hosted in other marketplaces. Claude Code
+only auto-installs those dependencies from marketplaces it already knows about —
+a plugin cannot add a marketplace on its own. **Before installing the plugin,
+register all required marketplaces once.**
+
+Add the following to your project's `.claude/settings.json` (create the file if it
+doesn't exist). When you trust the folder, Claude Code registers these
+marketplaces automatically, then resolves and installs `comp-lib-process` and its
+dependencies:
+
+```jsonc
+{
+  "extraKnownMarketplaces": {
+    "caveman": {
+      "source": { "source": "github", "repo": "juliusbrussee/caveman" },
+    },
+    "ponytail": {
+      "source": { "source": "github", "repo": "DietrichGebert/ponytail" },
+    },
+    "context-mode": {
+      "source": { "source": "github", "repo": "mksglu/context-mode" },
+    },
+    "claude-plugins-official": {
+      "source": { "source": "github", "repo": "anthropics/claude-code" },
+    },
+    "jtl-component-lib-plugin": {
+      "source": {
+        "source": "github",
+        "repo": "cang-pham-codeleap/jtl-component-lib-plugin",
+      },
+    },
+  },
+  "enabledPlugins": {
+    "comp-lib-process@jtl-component-lib-plugin": true,
+  },
+}
+```
+
+> Replace each `OWNER/…-repo` with the real git source for that marketplace.
+
+Alternatively, register them from the CLI (one-time per machine):
+
+```bash
+claude plugin marketplace add juliusbrussee/caveman
+claude plugin marketplace add DietrichGebert/ponytail
+claude plugin marketplace add mksglu/context-mode
+```
+
 ### Standalone (Claude Code)
 
 ```bash
@@ -14,7 +64,9 @@ AI coding agent plugin for the JTL component library project. Provides curated s
 /plugin install comp-lib-process@jtl-component-lib-plugin
 ```
 
-On first session start, the hook automatically installs required companion plugins: `caveman`, `ponytail`, `context-mode`, and `superpowers`.
+Once the required marketplaces above are registered, Claude Code automatically
+installs the companion plugins declared as dependencies: `caveman`, `ponytail`,
+`context-mode`, and `superpowers`.
 
 ## First-time Setup — Run `jtl-init`
 
