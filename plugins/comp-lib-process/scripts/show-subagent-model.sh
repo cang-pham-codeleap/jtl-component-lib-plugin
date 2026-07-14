@@ -20,14 +20,23 @@ case "$tool_name" in Agent|Task) ;; *) exit 0 ;; esac
 subagent=$(printf '%s' "$payload" | jq -r '.tool_input.subagent_type // ""')
 [[ -n "$subagent" ]] || exit 0
 
-agent_file="${CLAUDE_PROJECT_DIR:-.}/.claude/agents/${subagent}.md"
+# When installed as a plugin, Claude Code namespaces the subagent_type as
+# "<plugin>:<agent>" (e.g. "comp-lib-process:deep-explore"). Strip the prefix so
+# the frontmatter lookup below resolves the file name.
+subagent_base="${subagent##*:}"
 
+# Resolve the agent definition. Plugin install: $CLAUDE_PLUGIN_ROOT/agents/.
+# Standalone/project install: $CLAUDE_PROJECT_DIR/.claude/agents/.
 model=""
-if [[ -f "$agent_file" ]]; then
+for agent_file in \
+  "${CLAUDE_PLUGIN_ROOT:-}/agents/${subagent_base}.md" \
+  "${CLAUDE_PROJECT_DIR:-.}/.claude/agents/${subagent_base}.md"; do
+  [[ -n "$agent_file" && -f "$agent_file" ]] || continue
   # First `model:` line in the YAML frontmatter; strip quotes and trailing space.
   model=$(grep -m1 '^model:' "$agent_file" 2>/dev/null \
     | sed -E "s/^model:[[:space:]]*//; s/^[\"']//; s/[\"']$//; s/[[:space:]]+$//" || true)
-fi
+  [[ -n "$model" ]] && break
+done
 [[ -n "$model" ]] || model="inherit (main session model)"
 
 jq -nc --arg s "$subagent" --arg m "$model" \

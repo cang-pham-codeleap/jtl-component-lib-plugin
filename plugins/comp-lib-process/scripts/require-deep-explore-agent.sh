@@ -35,17 +35,23 @@ subagent=$(printf '%s' "$payload" | jq -r '.tool_input.subagent_type // ""')
 description=$(printf '%s' "$payload" | jq -r '.tool_input.description // ""')
 prompt=$(printf '%s' "$payload" | jq -r '.tool_input.prompt // ""')
 
+# When these agents are installed as a plugin, Claude Code namespaces the
+# subagent_type as "<plugin>:<agent>" (e.g. "comp-lib-process:deep-explore").
+# Strip the plugin prefix so every check below works whether the agents run
+# standalone (project .claude/agents) or namespaced inside a plugin.
+subagent_base="${subagent##*:}"
+
 # deep-explore itself → allow (it IS the target).
-[[ "$subagent" == "deep-explore" ]] && exit 0
+[[ "$subagent_base" == "deep-explore" ]] && exit 0
 
 # Built-in `Explore` subagent runs on the MAIN model — always reroute to deep-explore.
-if [[ "$subagent" == "Explore" ]]; then
+if [[ "$subagent_base" == "Explore" ]]; then
   cat >&2 <<'MSG'
 Blocked: the built-in `Explore` subagent runs on the MAIN session model (Sonnet/Opus) and
 floods context with raw reads — it does NOT use deep-explore (Haiku).
 
 Re-dispatch with:
-  Agent(subagent_type="deep-explore", description="...", prompt="<all exploration questions, batched>")
+  Agent(subagent_type="comp-lib-process:deep-explore", description="...", prompt="<all exploration questions, batched>")
 
 deep-explore returns compressed findings on Haiku — small context, low cost.
 MSG
@@ -54,7 +60,7 @@ fi
 
 # Named specialist / implementation / review agents do real work (edit, plan,
 # review) — they are chosen deliberately and must NOT be rerouted. Allow them.
-case "$subagent" in
+case "$subagent_base" in
   engine-specialist|ui-ux-stylist|code-quality-reviewer|architect-orchestrator|protocol|tech-debt-reviewer)
     exit 0
     ;;
@@ -70,7 +76,7 @@ Blocked: exploration/discovery Tasks must run on the `deep-explore` agent (Haiku
 `general-purpose` (which inherits the main Sonnet/Opus model and floods context).
 
 Re-dispatch with:
-  Agent(subagent_type="deep-explore", description="...", prompt="<all exploration questions, batched>")
+  Agent(subagent_type="comp-lib-process:deep-explore", description="...", prompt="<all exploration questions, batched>")
 
 deep-explore returns compressed findings on Haiku — small context, low cost.
 Batch every exploration question into ONE deep-explore dispatch (it parallelizes internally).

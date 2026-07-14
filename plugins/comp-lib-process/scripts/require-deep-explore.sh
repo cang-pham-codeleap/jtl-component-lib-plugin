@@ -166,7 +166,7 @@ keeps the main context lean: those bytes are absorbed once instead of re-sent as
 a cache-read every later turn, which delays compaction and preserves cache hits.
 
 Use:
-  Agent(subagent_type="deep-explore", description="...", prompt="...")
+  Agent(subagent_type="comp-lib-process:deep-explore", description="...", prompt="...")
 
 Still allowed WITHOUT deep-explore (cheap, cache-local):
   - Small reads under the threshold (edit-prep or light exploration).
