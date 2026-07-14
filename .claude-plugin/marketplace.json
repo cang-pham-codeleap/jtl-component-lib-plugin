@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "JTL Component Library plugin marketplace. Domain skills for component library development workflows.",
-    "version": "1.3.2",
+    "version": "1.3.3",
     "visibility": "private"
   },
   "allowCrossMarketplaceDependenciesOn": [
@@ -19,7 +19,7 @@
     {
       "name": "comp-lib-process",
       "description": "Component library process skills: create PRs, manage shadcn components, deep exploration with Haiku, tech debt review, plus the CodeGraph MCP server and a jtl-init environment-setup skill that wires up CodeGraph and OpenWolf in consumer projects.",
-      "version": "1.3.2",
+      "version": "1.3.3",
       "source": "./plugins/comp-lib-process"
     }
   ]
