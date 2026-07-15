@@ -70,8 +70,8 @@ untouched.
 | 0.6 Verify | invoke `verify-ticket` skill | NEW; blocks pipeline on fail |
 | 0.9 Branch | `git switch -c <ticket-id>/<slug>` | unchanged (was 0.5) |
 | 1 Clarify | 3-solutions-first (see below) | replaces always-interactive brainstorming |
-| 2 Spec | speckit CLI → `specs.md`; 🛑 Checkpoint 1 | unchanged |
-| 3 Plan | `superpowers:writing-plans` → `plan.md`; 🛑 Checkpoint 2 | unchanged |
+| 2 Spec | superpowers design-doc contract → `.claude/workflow/<id>/specs.md` only; 🛑 Checkpoint 1 | was Speckit; no `docs/superpowers/` dual-write |
+| 3 Plan | `superpowers:writing-plans` → `.claude/workflow/<id>/plan.md` only + **Spec:** link; 🛑 Checkpoint 2 | path override of writing-plans default |
 | 4 Implement | domain-routed agents (engine-specialist / ui-ux-stylist) | unchanged |
 | 5 Review | code-quality-reviewer + teach-back; 🛑 Checkpoint 3 | unchanged |
 | 6 Ship | tests → 🛑 Checkpoint 4 → invoke `create-pr` skill | delegated; replaces inline `gh pr create` |

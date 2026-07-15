@@ -10,6 +10,7 @@ Evidence index for PR readiness. Logs live in this directory.
 | 4 | create-pr diff major | [04-create-pr-baseline.md](./04-create-pr-baseline.md) | [04-create-pr-with-skill.md](./04-create-pr-with-skill.md) | feat removes prop → diff-verified breaking change |
 | 5 | reflect draft-first | [05-reflect-baseline.md](./05-reflect-baseline.md) | [05-reflect-with-skill.md](./05-reflect-with-skill.md) | no silent post; draft then approve |
 | 6 | hub clarify menu | [06-hub-clarify-baseline.md](./06-hub-clarify-baseline.md) | [06-hub-clarify-with-skill.md](./06-hub-clarify-with-skill.md) | ≥3 solutions first |
+| 7 | hub Stage 2 spec | [07-hub-stage2-baseline.md](./07-hub-stage2-baseline.md) | [07-hub-stage2-with-skill.md](./07-hub-stage2-with-skill.md) | Speckit removed; superpowers design → workflow `specs.md` only |
 
 ## Deliverable tree (Task 8 confirm)
 

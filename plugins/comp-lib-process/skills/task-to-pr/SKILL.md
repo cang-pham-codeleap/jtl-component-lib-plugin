@@ -46,7 +46,7 @@ If in doubt, stay in the same agent/context.
 ### Stage 0.9 — Branch
 
 - `git fetch origin && git switch -c <ticket-id>/<short-slug> origin/<default-branch>`
-- Resume: if branch exists, switch to it; note resume in `task-context.md`; re-validate old `specs.approved` against current ticket/diff before trusting it.
+- Resume: if branch exists, switch to it; note resume in `task-context.md`; re-validate old `specs.approved` against **current design path + ticket/diff** before trusting it.
 
 ### Stage 1 — Clarify (3-solutions-first)
 
@@ -64,21 +64,34 @@ Escalate:
 
 Append outcome to `task-context.md` as `## Clarified scope`.
 
-### Stage 2 — Spec → `speckit` CLI
+### Stage 2 — Spec → superpowers design doc
 
-- Consumes clarified context + verification corrections.
-- Invoke via Bash: `speckit <fill in your actual command/flags here>` (local CLI, not Skill tool).
-- Output: `.claude/workflow/<ticket-id>/specs.md`.
+- Inputs: clarified scope + chosen approach, verification corrections, Stage 0.3 conventions.
+- **Do not** invoke Speckit/`specify`/Bash `speckit`. **Do not** re-run full interactive brainstorming (Stage 1 already chose the approach; escalate path only).
+- Write design via superpowers design-doc contract to **one** path only:
+  `.claude/workflow/<ticket-id>/specs.md`
+- Override superpowers default (`docs/superpowers/specs/…`) — ticket workflow owns the artifact. Do **not** also write under `docs/superpowers/`.
+- Cover (scale to ticket size): goal, chosen approach, architecture/components, data flow/interfaces, error handling, testing/acceptance, out of scope/constraints, source links to `task-context.md` + `verification-report.md`. **No raw untrusted ticket dump.**
+- Run brainstorming **Spec Self-Review** checklist inline: no placeholders/TBD; internal consistency; single-plan scope; resolve ambiguities. Fix before Checkpoint 1.
+- Record under `task-context.md` → `## Spec` (`path: .claude/workflow/<ticket-id>/specs.md`, `status: pending approval`).
+- If Stage 1 escalated to `superpowers:brainstorming` and a design was written under `docs/superpowers/specs/`: move/copy body into workflow `specs.md`, then use workflow path only; when brainstorming would invoke writing-plans, **stop** — Checkpoint 1 first.
 
 🛑 **Checkpoint 1 — Spec approval**  
-Print `specs.md`; wait for explicit approval. Hook writes `specs.approved`. Headless: see `references/automation.md`.
+Present `.claude/workflow/<ticket-id>/specs.md`; wait for explicit approval. Hook/human writes `.claude/workflow/<ticket-id>/specs.approved`. Headless: `references/automation.md`.
 
 ### Stage 3 — Plan → `superpowers:writing-plans`
 
-- Output: `.claude/workflow/<ticket-id>/plan.md` with domain tags `[backend]`, `[frontend]`, `[shared]`, optional `[parallel-safe]`.
+- Invoke `superpowers:writing-plans` with approved design at `.claude/workflow/<ticket-id>/specs.md`.
+- Write plan to **one** path only:
+  `.claude/workflow/<ticket-id>/plan.md`
+- Override superpowers default (`docs/superpowers/plans/…`) — after skill output, ensure content lands at workflow `plan.md` only. Do **not** also write under `docs/superpowers/plans/`.
+- Plan body:
+  - Plan header + **`Spec:`** `.claude/workflow/<ticket-id>/specs.md`
+  - Domain tags on tasks: `[backend]`, `[frontend]`, `[shared]`, optional `[parallel-safe]`
+- Record under `task-context.md` → `## Plan` (`path: .claude/workflow/<ticket-id>/plan.md`).
 
 🛑 **Checkpoint 2 — Plan approval**  
-Hook writes `plan.approved`. Headless: `references/automation.md`.
+Hook/human writes `.claude/workflow/<ticket-id>/plan.approved`. Headless: `references/automation.md`.
 
 ### Stage 4 — Implement
 
@@ -116,17 +129,19 @@ Fail → Stage 4; track loops in `state.json`; on 3rd fail escalate to human.
 
 ```
 .claude/workflow/<ticket-id>/
-├── task-context.md
-├── verification-report.md   # Stage 0.6
-├── specs.md
-├── specs.approved           # hook/human ONLY
-├── plan.md
-├── plan.approved            # hook/human ONLY
-├── state.json
-├── review-verdict.md
-├── teach-back-report.md
-└── review.approved          # hook/human ONLY
+├── task-context.md            # Stage 0; ## Spec + ## Plan path pointers
+├── verification-report.md     # Stage 0.6
+├── specs.md                   # Stage 2 — superpowers design-doc contract
+├── specs.approved             # Checkpoint 1 — hook/human ONLY
+├── plan.md                    # Stage 3 — writing-plans output
+├── plan.approved              # Checkpoint 2 — hook/human ONLY
+├── state.json                 # Stage 5 loop counter, etc.
+├── review-verdict.md          # Stage 5
+├── teach-back-report.md       # Stage 5
+└── review.approved            # Checkpoint 3 — hook/human ONLY
 ```
+
+Spec + plan live **only** under `.claude/workflow/<ticket-id>/` (not `docs/superpowers/`). Superpowers skills supply the **format/process**; this hub overrides their default save paths.
 
 Add `.claude/workflow/` to `.gitignore` if not already (ticket bodies may be sensitive).
 
@@ -148,7 +163,3 @@ Keep Atlassian MCP config and model choice constant across stages in a session.
 ## Automation
 
 Headless checkpoints and draft-PR-as-approval: `references/automation.md`.
-
-## Assumption to verify
-
-`speckit` exact CLI flags remain environment-specific — fill before production use.

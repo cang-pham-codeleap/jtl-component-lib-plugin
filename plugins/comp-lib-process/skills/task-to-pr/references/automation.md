@@ -19,8 +19,8 @@ Headless mode treats checkpoints as **async gates**:
 
 | Checkpoint | Interactive | Headless |
 |------------|-------------|----------|
-| 1 Spec | Wait for chat approval → hook writes `specs.approved` | Persist `specs.md`; wait until `specs.approved` appears (human/out-of-band) before Stage 3 |
-| 2 Plan | Wait for chat approval → `plan.approved` | Same pattern with `plan.approved` |
+| 1 Spec | Wait for chat approval → hook writes `specs.approved` | Persist `.claude/workflow/<ticket-id>/specs.md`; wait until `specs.approved` appears (human/out-of-band) before Stage 3 |
+| 2 Plan | Wait for chat approval → `plan.approved` | Persist `.claude/workflow/<ticket-id>/plan.md`; wait until `plan.approved` appears |
 | 3 Review | Wait for chat approval → `review.approved` | Same pattern with `review.approved` |
 | 4 PR | Print draft; wait before invoking `create-pr` | Invoke `create-pr` skill (always draft — sole PR path). Human marking "Ready for review" is the approval act |
 
