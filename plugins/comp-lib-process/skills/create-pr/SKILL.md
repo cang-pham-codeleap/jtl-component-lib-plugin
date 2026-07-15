@@ -43,16 +43,42 @@ fi
 
 ## Step 3 — Detect Bump Type
 
+### 3a — Commit-subject signal
+
 Scan all commit subjects collected in Step 2. The **highest-priority match across all commits** wins.
 
-| Priority | Rule | Bump |
-|----------|------|------|
+| Priority | Rule | Tentative bump |
+|----------|------|----------------|
 | 1 | Any commit subject contains `!` (e.g., `feat!:`, `fix!:`) | **major** |
 | 2 | Any commit subject starts with `feat` | **minor** |
 | 3 | Any commit subject starts with `fix` | **patch** |
 | — | Only `chore`, `docs`, `refactor`, `test`, etc. | **none — stop** |
 
-**If bump type is none:** tell the user no version-bumpable commits were found and stop. Do not proceed to Step 4.
+**If tentative bump is none:** tell the user no version-bumpable commits were found and stop. Do not proceed to Step 4.
+
+### 3b — Diff-verification pass (required)
+
+After 3a, review the **public-surface diff** since the last tag:
+
+```bash
+git diff <LAST_TAG>..HEAD -- <paths to exported components/props/types, registry items, peer deps>
+```
+
+Inspect for breaking changes such as:
+- Removed or renamed exported components, props, types, or registry item names
+- New required props / required peer dependencies without defaults
+- Behavior changes that break documented public API contracts
+
+**Reconcile tentative bump vs diff:**
+
+| Commit signal | Diff finding | Action |
+|---------------|--------------|--------|
+| no `!` | breaking change present | Set bump to **major**; tell user which commit(s) understated it |
+| `!` present | no breaking change found | Flag mismatch; **ask user** to confirm major vs downgrade |
+| both agree | — | Proceed with that bump |
+| minor/patch | non-breaking only | Proceed |
+
+Commit subjects are **inputs**, never the sole source of truth for major.
 
 ### Compute next version
 
@@ -93,7 +119,7 @@ Scan all commit subjects for pattern `[A-Z]+-[0-9]+` (e.g., `CP-4216`).
 **Bullets (2–4 items):**
 - Format: `- **Bold label:** one sentence explaining the change`
 - Focus on what changes for consumers of the library, not internal implementation details
-- If bump is **major** (any `!` commit), first bullet must be:
+- If bump is **major** (after Step 3 reconciliation), first bullet must be written from the **verified public-surface diff** (not only `!` commit text):
   ```
   - **BREAKING:** <what breaks> — migrate by <migration path>
   ```
@@ -153,9 +179,9 @@ Read `.github/PULL_REQUEST_TEMPLATE.md` from the repo root. Fill in every sectio
 |---------|-------|
 | `## PR Type` | `feat`/`feat!` → check "New component" or "Modify component — BREAKING CHANGE"; `fix` → check "Modify component — non-breaking" |
 | `## What changed` | Paste bullets from Step 5, without the bold labels |
-| `## Breaking changes — What breaks` | From `!` commits. If none → `None.` |
-| `## Breaking changes — Who is affected` | Describe consumer impact. If none → `None.` |
-| `## Breaking changes — Migration path` | From `!` commit body or BREAKING bullet. If none → `None.` |
+| `## Breaking changes — What breaks` | From **verified public-surface diff**: name removed/changed API with file refs. Commit bodies may inform wording but are never the sole source. If none → `None.` |
+| `## Breaking changes — Who is affected` | Derive from real usage surface (exported API consumers, registry names). If none → `None.` |
+| `## Breaking changes — Migration path` | Written against the **new** API shown in the diff. If none → `None.` |
 | `## Breaking changes — Semver bump required` | Delete the inapplicable option; keep `major`, `minor`, or `N/A — not breaking` |
 | `## Linked references — Closes` | Ticket ID (e.g., `CP-4216`). If none, remove the line |
 | `## Linked references — Figma` | `N/A` unless a Figma link is found in commit messages or spec |
@@ -208,7 +234,7 @@ gh pr edit 616 \
 ```
 [ ] 1. Current version resolved (git tag or CHANGELOG.md)
 [ ] 2. Commits since last tag collected
-[ ] 3. Bump type determined — stop here if none
+[ ] 3. Bump type determined from commits + public-surface diff reconciliation — stop here if none
 [ ] 4. Ticket ID extracted from commits
 [ ] 5. Summary title + bullets generated
 [ ] 6. CHANGELOG.md and 3-changelog.mdx updated with PR_PLACEHOLDER
