@@ -31,7 +31,9 @@ If in doubt, stay in the same agent/context.
 - If user message has **no** GitHub issue ref and **no** Jira key: **STOP**. Tell human to run skill `create-ticket` (fills `docs/TICKET_TEMPLATE.md`, creates GH issue). Do not freeform implement. Do not invent a synthetic ticket-id.
 - If GH and/or Jira present: invoke `ticket-intake`.
 - Produces `.claude/workflow/<ticket-id>/task-context.md` with **Source of truth** set (see `ticket-intake`).
+- When the ticket has Figma URLs, `ticket-intake` invokes `figma-fetching` (via `mcp-fetcher` Figma MCP read tools) and may produce `.claude/workflow/<ticket-id>/design-context.md`.
 - On injection flag/stop from intake: halt pipeline.
+- On design **abort** from intake/`figma-fetching`: halt pipeline.
 - On **vague** stop from intake: halt until human answers; then continue (re-check gate).
 
 ### Stage 0.3 — Docs review (inline)
@@ -148,6 +150,7 @@ Fail → Stage 4; track loops in `state.json`; on 3rd fail escalate to human.
 ```
 .claude/workflow/<ticket-id>/
 ├── task-context.md            # Stage 0; ## Spec + ## Plan path pointers
+├── design-context.md          # Stage 0 optional — Figma text summary if URLs found
 ├── verification-report.md     # Stage 0.6
 ├── specs.md                   # Stage 2 — superpowers design-doc contract
 ├── specs.approved             # Checkpoint 1 — hook/human ONLY

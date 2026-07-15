@@ -12,6 +12,7 @@ Evidence index for PR readiness. Logs live in this directory.
 | 6 | hub clarify menu | [06-hub-clarify-baseline.md](./06-hub-clarify-baseline.md) | [06-hub-clarify-with-skill.md](./06-hub-clarify-with-skill.md) | ≥3 solutions first |
 | 7 | hub Stage 2 spec | [07-hub-stage2-baseline.md](./07-hub-stage2-baseline.md) | [07-hub-stage2-with-skill.md](./07-hub-stage2-with-skill.md) | Speckit removed; superpowers design → workflow `specs.md` only |
 | 8 | intake SoT / vague / no-ref / clarify skip | [08-intake-clarify-policy.md](./08-intake-clarify-policy.md) | same (contracts) | dual SoT, vague gate, create-ticket handoff, Stage 1 fast-path |
+| 9 | figma-fetching under pressure | [09-figma-fetching-baseline.md](./09-figma-fetching-baseline.md) | [09-figma-fetching-with-skill.md](./09-figma-fetching-with-skill.md) | Figma URLs → mcp-fetcher design-context; no invent-from-AC |
 
 ## Deliverable tree (Task 8 confirm)
 
@@ -20,6 +21,7 @@ All paths present:
 ```
 plugins/comp-lib-process/agents/mcp-fetcher.md
 plugins/comp-lib-process/skills/ticket-intake/SKILL.md
+plugins/comp-lib-process/skills/figma-fetching/SKILL.md
 plugins/comp-lib-process/skills/create-ticket/SKILL.md
 plugins/comp-lib-process/skills/verify-ticket/SKILL.md
 plugins/comp-lib-process/skills/reflect/SKILL.md
