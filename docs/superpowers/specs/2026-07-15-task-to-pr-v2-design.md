@@ -19,6 +19,17 @@ Make `task-to-pr` the team-standard daily workflow skill. Four gaps in v1:
 Also: v1 is a single 11K file and references `references/automation.md`, which does
 not exist.
 
+Added in review round 2:
+
+5. Ship stage should invoke the existing `create-pr` skill instead of inline
+   `gh pr create` logic.
+6. `create-pr` trusts `!` commit markers for major bumps and fills the PR
+   template's breaking-changes sections from commit text only — the agent must
+   review the actual diff to define breaking changes.
+7. New `reflect` skill: after the PR exists, draft comments to the GitHub issue and
+   Jira ticket (PR URL, notify reporter it's implemented) — posted only after human
+   review.
+
 ## Structure decision
 
 Hub + focused sub-skills (superpowers pattern). Rejected: growing the single file
@@ -36,10 +47,14 @@ plugins/comp-lib-process/
 │   │   ├── SKILL.md                      # REWRITE: slim orchestrator hub
 │   │   └── references/
 │   │       └── automation.md             # NEW: fixes dangling reference
+│   ├── create-pr/
+│   │   └── SKILL.md                      # UPDATE: diff-verified breaking changes
 │   ├── ticket-intake/
 │   │   └── SKILL.md                      # NEW
-│   └── verify-ticket/
-│       └── SKILL.md                      # NEW
+│   ├── verify-ticket/
+│   │   └── SKILL.md                      # NEW
+│   └── reflect/
+│       └── SKILL.md                      # NEW: post-PR ticket/issue notification
 ```
 
 Note: `~/.claude/skills/verify-gh-issue` is a personal skill with overlapping
@@ -59,7 +74,8 @@ untouched.
 | 3 Plan | `superpowers:writing-plans` → `plan.md`; 🛑 Checkpoint 2 | unchanged |
 | 4 Implement | domain-routed agents (engine-specialist / ui-ux-stylist) | unchanged |
 | 5 Review | code-quality-reviewer + teach-back; 🛑 Checkpoint 3 | unchanged |
-| 6 Ship | tests → draft PR → Jira transition; 🛑 Checkpoint 4 | unchanged |
+| 6 Ship | tests → 🛑 Checkpoint 4 → invoke `create-pr` skill | delegated; replaces inline `gh pr create` |
+| 7 Reflect | invoke `reflect` skill — notify ticket/issue with PR URL | NEW; absorbs v1's inline post-PR Jira transition + comment |
 
 Docs review runs BEFORE verify because conventions tell the verifier where
 components/blocks/recipes live.
@@ -128,6 +144,50 @@ the hub keeps a one-line pointer to it.
 - Load once at stage 0.3; conventions stay in context for verify, clarify, spec,
   and implement stages.
 
+## Update: `create-pr` — diff-verified breaking changes
+
+v1 behavior: Step 3 detects a major bump purely from `!` in commit subjects; Step 7
+fills the PR template's breaking-changes sections from `!` commit text. Commits can
+lie in both directions — a `feat` commit can remove a public prop, and a `feat!`
+commit can turn out non-breaking.
+
+Changes:
+
+- **Step 3 gains a diff-verification pass.** After scanning commit subjects, review
+  the actual public-surface diff since the last tag (`git diff <LAST_TAG>..HEAD` on
+  exported components/props/types, registry item names, required peer deps):
+  - Diff shows a breaking change but no `!` commit → bump is **major** anyway;
+    tell the user which commit(s) understated it.
+  - `!` commit present but diff shows no breaking change → flag the mismatch and
+    ask the user to confirm major vs downgrade.
+  - Both agree → proceed.
+- **Step 7 breaking-changes sections are written from the verified diff**, not
+  commit text: "What breaks" names the actual removed/changed API with file refs,
+  "Who is affected" derives from real usage surface, "Migration path" is written
+  against the new API. Commit bodies are input, never the sole source.
+
+Everything else in `create-pr` (changelog sync, draft PR, back-fill, hard rules)
+unchanged.
+
+## New skill: `reflect`
+
+Post-PR notification back to the ticket/issue. Absorbs v1 Stage 6's inline
+`transitionJiraIssue` + `addCommentToJiraIssue` calls.
+
+- Input: PR URL + ticket/issue refs (read from
+  `.claude/workflow/<ticket-id>/task-context.md`, or passed as args when invoked
+  standalone).
+- Drafts, does NOT post yet:
+  - GitHub issue comment: PR link + one-paragraph summary of what was implemented,
+    addressed to the reporter.
+  - Jira ticket comment: same content, Jira formatting.
+  - Jira transition proposal (e.g. → "In Review"), named explicitly.
+- 🛑 Human reviews drafts → on approval, post via `gh issue comment`,
+  `addCommentToJiraIssue`, `transitionJiraIssue`.
+- Any post fails → report the exact failed call + what succeeded (PR-created-but-
+  ticket-stale must never be silent). Carries v1's failure-reporting rule.
+- Standalone-invocable: "notify the ticket about PR X".
+
 ## `references/automation.md`
 
 Document headless mode as v1's SKILL.md already assumes: asynchronous checkpoints,
@@ -156,5 +216,9 @@ fails the scenario) and a passing test WITH the skill:
    → baseline agent may comply; with skill → fenced as untrusted + flagged.
 3. Hub clarify stage: simple ticket → agent presents ≥3 solutions instead of
    opening interactive brainstorming.
+4. `create-pr`: branch where a `feat` commit removes a public prop (no `!`) →
+   baseline bumps minor; with skill → diff review forces major + BREAKING section.
+5. `reflect`: PR + ticket refs given → baseline posts immediately or forgets Jira;
+   with skill → drafts both comments + transition, waits for human approval.
 
 PR: target `dev`, include pressure-test evidence, disclose authoring environment.
