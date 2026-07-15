@@ -90,13 +90,31 @@ major: 1.54.0 → 2.0.0
 
 ---
 
-## Step 4 — Extract Ticket ID
+## Step 4 — Extract Ticket IDs
 
-Scan all commit subjects for pattern `[A-Z]+-[0-9]+` (e.g., `CP-4216`).
+Extract **both** when present. They are independent.
 
-- If one found: use it
-- If multiple found: list all, comma-separated (e.g., `CP-4216, CP-4217`)
-- If none found: leave ticket ID blank
+### 4a — Jira key(s)
+
+Scan commit subjects for pattern `[A-Z]+-[0-9]+` (e.g., `CP-4216`).
+
+- One → use it
+- Multiple → comma-separated (e.g., `CP-4216, CP-4217`)
+- None → leave blank
+
+### 4b — GitHub issue number(s)
+
+Resolve GH issue in this order (first hit wins per source; merge unique numbers):
+
+1. **task-context** (if present): `.claude/workflow/*/task-context.md` — parse `Sources` / `ticket-id: gh-<n>` / GH issue URLs
+2. **Branch name:** `gh-<n>`, or trailing/leading bare number when clearly issue-shaped
+3. **Commits:** `#<n>`, or `fixes|closes|resolves #<n>` (case-insensitive)
+
+- One → store as `GH_ISSUE=<n>`
+- Multiple → comma-separated numbers
+- None → leave blank (do not invent)
+
+Use Jira key for changelog/title ticket segment when present; otherwise `gh-<n>` / `#<n>`.
 
 ---
 
@@ -183,7 +201,7 @@ Read `.github/PULL_REQUEST_TEMPLATE.md` from the repo root. Fill in every sectio
 | `## Breaking changes — Who is affected` | Derive from real usage surface (exported API consumers, registry names). If none → `None.` |
 | `## Breaking changes — Migration path` | Written against the **new** API shown in the diff. If none → `None.` |
 | `## Breaking changes — Semver bump required` | Delete the inapplicable option; keep `major`, `minor`, or `N/A — not breaking` |
-| `## Linked references — Closes` | Ticket ID (e.g., `CP-4216`). If none, remove the line |
+| `## Linked references — Closes` (Ticket) | **GH issue present (Step 4b):** always include `Closes #<n>` so GitHub auto-links/closes the issue. **Jira key present (Step 4a):** include the key (e.g. `CP-4216`) on the same line or as a second bullet. **Both:** `Closes #<n>` + Jira key. **Neither:** remove the line |
 | `## Linked references — Figma` | `N/A` unless a Figma link is found in commit messages or spec |
 | All checklist items | Leave **unchecked** — the human completes these before marking ready for review |
 
@@ -235,10 +253,10 @@ gh pr edit 616 \
 [ ] 1. Current version resolved (git tag or CHANGELOG.md)
 [ ] 2. Commits since last tag collected
 [ ] 3. Bump type determined from commits + public-surface diff reconciliation — stop here if none
-[ ] 4. Ticket ID extracted from commits
+[ ] 4. Ticket IDs extracted — Jira key(s) and/or GH issue number(s)
 [ ] 5. Summary title + bullets generated
 [ ] 6. CHANGELOG.md and 3-changelog.mdx updated with PR_PLACEHOLDER
-[ ] 7. PR description filled from PULL_REQUEST_TEMPLATE.md
+[ ] 7. PR description filled from PULL_REQUEST_TEMPLATE.md — Closes includes `Closes #<n>` when GH issue present
 [ ] 8. Draft PR created; PR number captured
 [ ] 9. PR_PLACEHOLDER replaced with real link in changelog files and PR description
 ```

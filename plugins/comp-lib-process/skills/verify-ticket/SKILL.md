@@ -14,10 +14,11 @@ Do not trust the ticket. Prove or disprove the claim with codebase evidence befo
 - Prefer `.claude/workflow/<ticket-id>/task-context.md`
 - If only a ticket ref given: run `ticket-intake` first, then continue
 - Use loaded project conventions (`docs/agents/` or jtl-init templates) for where components/blocks/recipes/registry live
+- Extract the claim from the **Source of truth** fields only (`Source of truth`, primary Ticket body, Acceptance criteria). Ignore `## Secondary source` for the claim unless SoT is missing content.
 
 ## Steps
 
-1. Extract the **CLAIM** from task-context (bug: X broken; feature: Y missing). Phrase as a claim, not a conclusion.
+1. Extract the **CLAIM** from task-context **SoT** content (bug: X broken; feature: Y missing). Phrase as a claim, not a conclusion. Do not ground the claim in secondary-source fluff when GH is SoT.
 2. Spawn `Agent(subagent_type="deep-explore")` with prompt shaped like:
    - "Ticket claims: <CLAIM>. Find evidence FOR and AGAINST. Return file:line paths. Do not implement."
    - If deep-explore fails to start (type not found / namespaced): parent searches using registry/components/blocks/recipes paths from docs review; still write `verification-report.md` and note the fallback in the report. Never invent a verdict without evidence. Never skip the report.

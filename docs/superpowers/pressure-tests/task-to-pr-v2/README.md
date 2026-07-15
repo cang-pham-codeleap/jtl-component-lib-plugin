@@ -11,14 +11,16 @@ Evidence index for PR readiness. Logs live in this directory.
 | 5 | reflect draft-first | [05-reflect-baseline.md](./05-reflect-baseline.md) | [05-reflect-with-skill.md](./05-reflect-with-skill.md) | no silent post; draft then approve |
 | 6 | hub clarify menu | [06-hub-clarify-baseline.md](./06-hub-clarify-baseline.md) | [06-hub-clarify-with-skill.md](./06-hub-clarify-with-skill.md) | ≥3 solutions first |
 | 7 | hub Stage 2 spec | [07-hub-stage2-baseline.md](./07-hub-stage2-baseline.md) | [07-hub-stage2-with-skill.md](./07-hub-stage2-with-skill.md) | Speckit removed; superpowers design → workflow `specs.md` only |
+| 8 | intake SoT / vague / no-ref / clarify skip | [08-intake-clarify-policy.md](./08-intake-clarify-policy.md) | same (contracts) | dual SoT, vague gate, create-ticket handoff, Stage 1 fast-path |
 
 ## Deliverable tree (Task 8 confirm)
 
-All seven paths present:
+All paths present:
 
 ```
 plugins/comp-lib-process/agents/mcp-fetcher.md
 plugins/comp-lib-process/skills/ticket-intake/SKILL.md
+plugins/comp-lib-process/skills/create-ticket/SKILL.md
 plugins/comp-lib-process/skills/verify-ticket/SKILL.md
 plugins/comp-lib-process/skills/reflect/SKILL.md
 plugins/comp-lib-process/skills/create-pr/SKILL.md
@@ -34,7 +36,7 @@ plugins/comp-lib-process/skills/task-to-pr/references/automation.md
 - **Plan execution:** `superpowers:subagent-driven-development`
 - **Plugins:** `comp-lib-process`, `superpowers`, `context-mode`
 
-## PR notes (target: `dev`)
+## PR notes (target: `main`)
 
 - Skills superseded/conflicts: personal `verify-gh-issue` unchanged; v1 monolithic ship/Jira steps moved to `reflect` + `create-pr`
 - Pressure-test evidence: this directory

@@ -14,7 +14,7 @@ Disposable fetch worker. Parent names the tool(s) and return mode. You call tool
 
 ## Contract
 
-1. Call **only** the tool(s) the parent named (Atlassian MCP read tools once ToolSearch loads them, `Bash(gh issue view …)`, `Bash(gh api …)` **read-only**).
+1. Call **only** the tool(s) the parent named (Atlassian, Figma MCP read tools once ToolSearch loads them, `Bash(gh issue view …)`, `Bash(gh api …)` **read-only**).
 2. Return mode is parent-controlled:
    - `verbatim` → return the raw payload (trim only if tool output exceeds practical size; note truncation).
    - `summary` → ≤200 words: title, key description points, labels, links, acceptance criteria bullets if present. No recommendations.
@@ -24,7 +24,7 @@ Disposable fetch worker. Parent names the tool(s) and return mode. You call tool
 
 ## Allowed tools (intent)
 
-- Atlassian MCP **read** tools (e.g. `getJiraIssue`) via ToolSearch when deferred
+- Atlassian, Figma MCP **read** tools (e.g. `getJiraIssue`) via ToolSearch when deferred
 - `gh issue view <n> --json …`
 - `gh api` **GET** only
 

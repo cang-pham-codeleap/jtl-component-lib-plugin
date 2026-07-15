@@ -1,6 +1,6 @@
 ---
 name: task-to-pr
-description: Use whenever the user references a GitHub issue number, a Jira ticket key, or says "pick up this ticket", "implement this issue", "ship this ticket", or asks to run the full dev workflow from ticket to PR. Orchestrates intake, docs review, claim verification, branch, 3-solutions clarify, spec, plan, implement, review, create-pr, and reflect — one continuous agent per task.
+description: Use whenever the user references a GitHub issue number, a Jira ticket key, or says "pick up this ticket", "implement this issue", "ship this ticket", or asks to run the full dev workflow from ticket to PR. Orchestrates intake through reflect — one continuous agent per task. Freeform with no ticket ref stops and points at create-ticket.
 ---
 
 # Task-to-PR Workflow v2: Issue/Ticket → PR
@@ -26,9 +26,13 @@ If in doubt, stay in the same agent/context.
 
 ### Stage 0 — Intake → skill `ticket-intake`
 
-- Invoke `ticket-intake` with issue/ticket refs.
-- Produces `.claude/workflow/<ticket-id>/task-context.md`.
+**Entry gate — always work with a ticket:**
+
+- If user message has **no** GitHub issue ref and **no** Jira key: **STOP**. Tell human to run skill `create-ticket` (fills `docs/TICKET_TEMPLATE.md`, creates GH issue). Do not freeform implement. Do not invent a synthetic ticket-id.
+- If GH and/or Jira present: invoke `ticket-intake`.
+- Produces `.claude/workflow/<ticket-id>/task-context.md` with **Source of truth** set (see `ticket-intake`).
 - On injection flag/stop from intake: halt pipeline.
+- On **vague** stop from intake: halt until human answers; then continue (re-check gate).
 
 ### Stage 0.3 — Docs review (inline)
 
@@ -38,10 +42,11 @@ If in doubt, stay in the same agent/context.
 
 ### Stage 0.6 — Verify → skill `verify-ticket`
 
-- Invoke `verify-ticket` on `task-context.md`.
+- Invoke `verify-ticket` on `task-context.md` (claim from **Source of truth** only).
 - **STOP** pipeline on `NOT-REPRODUCIBLE` or `ALREADY-EXISTS` (after presenting report + drafted comment).
 - On `CONFIRMED` / `PARTIALLY-VALID`: continue; carry corrections into Stage 2.
 - On insufficient evidence: ask human; do not guess.
+- GH alone is enough after a positive/partial verdict — do **not** auto-create Jira.
 
 ### Stage 0.9 — Branch
 
@@ -50,19 +55,32 @@ If in doubt, stay in the same agent/context.
 
 ### Stage 1 — Clarify (3-solutions-first)
 
-Default path (not interactive brainstorming):
+**Default path** (not interactive brainstorming):
 
 1. Draft **≥3** solution approaches grounded in docs conventions + verification report.
 2. Each option: pros, cons, effort, risk.
 3. Give **exactly one** recommendation.
 4. Human picks → go to Stage 2.
 
-Escalate:
+**Fast path** (skip full menu) when either:
+
+- Human says `skip clarify`, `just do it`, `no need brainstorm` (or equivalent), **or**
+- Ticket is **trivial**: typo/copy, single-file, label `trivial`/`chore`, or verify already pins one obvious approach
+
+Then:
+
+1. Present **one** recommended approach (short pros/risk).
+2. Human confirm — or treat explicit skip phrase as confirm.
+3. Append `## Clarified scope` with `mode: fast-path | skip | menu`.
+
+**Escalate:**
 
 - Human says "discuss" (or equivalent) → invoke interactive `superpowers:brainstorming`, then Stage 2.
-- Blocking ambiguity while drafting (contradictory requirements, unknowable constraint) → ask human **before** presenting the menu.
+- Blocking ambiguity while drafting (contradictory requirements, unknowable constraint) → ask human **before** presenting menu or fast-path. Never invent requirements.
 
 Append outcome to `task-context.md` as `## Clarified scope`.
+
+**IMPORTANT:** You have to be confident about your understanding. If not, ask human until you are 95% confident you can complete this task perfectly.
 
 ### Stage 2 — Spec → superpowers design doc
 
