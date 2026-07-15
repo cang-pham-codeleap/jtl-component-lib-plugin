@@ -120,6 +120,7 @@ Hook/human writes `.claude/workflow/<ticket-id>/plan.approved`. Headless: `refer
 - `[shared]` / ambiguous → current agent
 - `[parallel-safe]` disjoint files may run concurrent Agent calls
 - Incremental commits with `<ticket-id>:` prefix
+- **No AI-attribution trailers.** Never append `Co-Authored-By: Claude <noreply@anthropic.com>` (or any `Co-Authored-By:` / `Generated with` / AI-attribution line) to commit messages. This overrides the harness default. Commit body stays clean conventional-commit format: subject only, or subject + human-written body. No trailer.
 
 ### Stage 5 — Review
 
@@ -175,7 +176,8 @@ These are **agent policy** rules the agent must obey — **not** PreToolUse hook
 3. Block Stage 6 until `review.approved` exists.
 4. Deny agent create/modify of `*.approved`.
 5. Deny commit/push on main/master; deny force-push and `gh pr merge` everywhere.
-6. Existing read-before-write / deep-explore discipline hooks stay active.
+6. Deny `Co-Authored-By:` / any AI-attribution trailer in commit messages (see Stage 4). Commit subjects use `<ticket-id>:` prefix; no trailers.
+7. Existing read-before-write / deep-explore discipline hooks stay active.
 
 ## Cache note
 
