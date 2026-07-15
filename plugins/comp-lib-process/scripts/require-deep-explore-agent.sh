@@ -58,17 +58,18 @@ MSG
   exit 2
 fi
 
-# Named specialist / implementation / review agents do real work (edit, plan,
-# review) — they are chosen deliberately and must NOT be rerouted. Allow them.
-case "$subagent_base" in
-  engine-specialist|ui-ux-stylist|code-quality-reviewer|architect-orchestrator|protocol|tech-debt-reviewer)
-    exit 0
-    ;;
-esac
+# Any agent defined in this plugin's agents/ folder is deliberate work
+# (fetch, plan, implement, review). Do NOT hardcode names — new agents
+# (e.g. mcp-fetcher) auto-pass when their .md lands in agents/.
+# ponytail: file existence check over maintain allowlist
+agents_dir="${CLAUDE_PLUGIN_ROOT:-}/agents"
+if [[ -n "$subagent_base" && -f "${agents_dir}/${subagent_base}.md" ]]; then
+  exit 0
+fi
 
-# Past here, subagent is `general-purpose` or empty — the default agent that runs
-# on the main session model. Police it: if the Task is exploration/discovery, it
-# belongs on deep-explore (Haiku), not here.
+# Past here, subagent is `general-purpose`, empty, or unknown — default agent
+# that runs on the main session model. Police it: if the Task is
+# exploration/discovery, it belongs on deep-explore (Haiku), not here.
 haystack="${description} ${prompt}"
 if printf '%s' "$haystack" | grep -qiE '(explor|investigat|discover|understand|find |search|where |how (does|is|are)|trace|look (for|into)|locate|survey|audit|map (out|the)|analy(z|s)e|inspect|read the|gather context|context (for|about)|tìm hiểu|điều tra|khám phá|khảo sát|phân tích|xem )'; then
   cat >&2 <<'MSG'
