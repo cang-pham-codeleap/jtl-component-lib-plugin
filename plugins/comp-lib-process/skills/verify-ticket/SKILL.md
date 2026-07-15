@@ -20,6 +20,7 @@ Do not trust the ticket. Prove or disprove the claim with codebase evidence befo
 1. Extract the **CLAIM** from task-context (bug: X broken; feature: Y missing). Phrase as a claim, not a conclusion.
 2. Spawn `Agent(subagent_type="deep-explore")` with prompt shaped like:
    - "Ticket claims: <CLAIM>. Find evidence FOR and AGAINST. Return file:line paths. Do not implement."
+   - If deep-explore fails to start (type not found / namespaced): parent searches using registry/components/blocks/recipes paths from docs review; still write `verification-report.md` and note the fallback in the report. Never invent a verdict without evidence. Never skip the report.
 3. Bug tickets:
    - Locate suspect path
    - When cheap, attempt minimal repro (failing test or short script). If repro is expensive, document why skipped.

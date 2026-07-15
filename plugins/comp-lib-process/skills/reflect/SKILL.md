@@ -51,4 +51,5 @@ Same content, Jira-friendly formatting (no GH-only markdown that breaks Jira; us
 
 - Never post before explicit human approval
 - Never transition Jira without naming the target status in the draft
+- Notify the GitHub **issue** via `gh issue comment`; never treat `gh pr comment` as the ticket/issue notify
 - Standalone: "notify the ticket about PR X" works without full hub

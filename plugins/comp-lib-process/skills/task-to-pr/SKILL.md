@@ -130,7 +130,9 @@ Fail → Stage 4; track loops in `state.json`; on 3rd fail escalate to human.
 
 Add `.claude/workflow/` to `.gitignore` if not already (ticket bodies may be sensitive).
 
-## Gate enforcement (PreToolUse hooks)
+## Gate policy (agent must obey)
+
+These are **agent policy** rules the agent must obey — **not** PreToolUse hooks shipped in this package (except existing deep-explore discipline). Plugin `hooks/hooks.json` currently only enforces deep-explore discipline; approval-flag PreToolUse is not shipped here. Never write `*.approved` yourself regardless.
 
 1. Block Stage 3 until `specs.approved` exists.
 2. Block Stage 4 until `plan.approved` exists.

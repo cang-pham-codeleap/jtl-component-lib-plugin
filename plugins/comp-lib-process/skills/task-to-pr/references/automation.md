@@ -22,9 +22,9 @@ Headless mode treats checkpoints as **async gates**:
 | 1 Spec | Wait for chat approval → hook writes `specs.approved` | Persist `specs.md`; wait until `specs.approved` appears (human/out-of-band) before Stage 3 |
 | 2 Plan | Wait for chat approval → `plan.approved` | Same pattern with `plan.approved` |
 | 3 Review | Wait for chat approval → `review.approved` | Same pattern with `review.approved` |
-| 4 PR | Print draft; wait before `gh pr create` | Create PR as **draft** (`gh pr create --draft`). Human marking "Ready for review" is the approval act |
+| 4 PR | Print draft; wait before invoking `create-pr` | Invoke `create-pr` skill (always draft — sole PR path). Human marking "Ready for review" is the approval act |
 
-The agent still **must never** write `*.approved` itself. Gate hooks deny agent-created approval flags.
+The agent still **must never** write `*.approved` itself. Gate policy denies agent-created approval flags.
 
 ## Draft-PR-as-approval
 
