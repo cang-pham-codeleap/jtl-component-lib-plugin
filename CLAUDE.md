@@ -33,7 +33,7 @@ This repo contains **AI coding agent skills and configurations** for the JTL pro
 
 ## Pull Request Requirements
 
-- **Target the `dev` branch**, not `main`. PRs against `main` will be asked to retarget.
+- **Target the `main` branch.**
 - **Fill in every section of the PR template.** No placeholders. No "N/A" unless genuinely not applicable.
 - **Include evidence of pressure testing.** Link or attach the subagent test results that confirm the skill changes agent behavior.
 - **List any skills this change supersedes or conflicts with.** Reviewers need to know what existing behavior your skill may override.
@@ -43,7 +43,6 @@ This repo contains **AI coding agent skills and configurations** for the JTL pro
 
 ## What Gets Closed Without Review
 
-- PRs that target `main`
 - PRs with blank or placeholder template sections
 - New skills that duplicate an existing skill without justification
 - Skills without a `name` and `description` in frontmatter

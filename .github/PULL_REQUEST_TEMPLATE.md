@@ -7,9 +7,8 @@ Also read CLAUDE.md before submitting. It defines what belongs in this
 repo and what gets closed without review.
 -->
 
-> **This PR MUST target the `dev` branch, not `main`.** `main` is the
-> release branch. PRs opened against `main` will be asked to retarget
-> `dev` before review.
+> **This PR MUST target the `main` branch.** `main` is the integration
+> branch for this repository.
 
 ## PR Type
 
@@ -95,7 +94,7 @@ Hiding agent authorship is grounds for closing.
 
 <!-- All PRs. Do not submit until every box is checked. -->
 
-- [ ] PR targets `dev`, not `main`
+- [ ] PR targets `main`
 - [ ] I have self-reviewed the complete diff
 - [ ] My human partner has reviewed and approved the diff
 - [ ] This PR contains exactly one skill concern — not bundled changes
@@ -103,7 +102,6 @@ Hiding agent authorship is grounds for closing.
 
 <!--
 PRs will be closed without review if they:
-- Target `main`
 - Leave required sections blank or write placeholder text
 - Add a skill that duplicates an existing one without justification
 - Have no pressure test evidence (for behavior changes)
