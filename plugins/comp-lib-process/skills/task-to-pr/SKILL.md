@@ -10,10 +10,10 @@ description: Use whenever the user references a GitHub issue number, a Jira tick
 Related work on the same ticket stays in **one continuous session/context**, moving through stages by invoking sub-skills inline. Stage 4 routes plan steps to domain agents (`engine-specialist` / `ui-ux-stylist`). Fork a subagent only when:
 
 1. Domain implementation step (Stage 4 tags)
-2. Unbiased review pass (Stage 5 `code-quality-reviewer`)
+2. **Acceptance gate (Stage 5)** — the review/debt/test verdict runs in **one clean-context** `code-quality-reviewer` that never inherits this session's history (see `references/subagent-dispatch.md`). An orchestrator judging its own work self-accepts; a fresh reviewer does not.
 3. Context-bloat exploration (`deep-explore`) or cheap fetch (`mcp-fetcher` via sub-skills)
 
-If in doubt, stay in the same agent/context.
+**Never use `general-purpose` for a gate** — always a role-defined agent from `agents/`. If in doubt on anything else, stay in the same agent/context.
 
 ## Security rules (every stage)
 
@@ -122,18 +122,25 @@ Hook/human writes `.claude/workflow/<ticket-id>/plan.approved`. Headless: `refer
 - Incremental commits with `<ticket-id>:` prefix
 - **No AI-attribution trailers.** Never append `Co-Authored-By: Claude <noreply@anthropic.com>` (or any `Co-Authored-By:` / `Generated with` / AI-attribution line) to commit messages. This overrides the harness default. Commit body stays clean conventional-commit format: subject only, or subject + human-written body. No trailer.
 
-### Stage 5 — Review
+### Stage 5 — Review & QA (clean-context gate)
 
-1. `Agent(subagent_type="code-quality-reviewer")` on **diff only** → `review-verdict.md` (spec compliance, debt checklist, design match, code quality).
-2. `teach-back-verification` → `teach-back-report.md`.
+**One reviewer subagent, fresh context, does all four dimensions in one pass.**
 
-Fail → Stage 4; track loops in `state.json`; on 3rd fail escalate to human.
+1. Generate the diff package (BASE = commit recorded before Stage 4, not `HEAD~1`). Dispatch **`Agent(subagent_type="comp-lib-process:code-quality-reviewer")`** using the template in `references/reviewer-prompt.md`. Hand it **files only** — `specs.md`, the diff package, `task-context.md` — **never this session's history** (see `references/subagent-dispatch.md`). The reviewer:
+   - reviews **spec compliance** + **code quality** + runs the **technical-debt** checklist,
+   - **runs the full test suite** (Bash) and verifies each acceptance criterion against observable behavior,
+   - stays **review-only** — does not modify code,
+   - writes `review-verdict.md` with an explicit four-part verdict: **spec ✅ + quality ✅ + debt ✅ + tests ✅**. Missing any = FAIL.
+   - **Do not pre-judge** in the dispatch: never tell the reviewer what not to flag or pre-rate a severity.
+2. `teach-back-verification` → `teach-back-report.md`. Comprehension check only — it does **not** replace the reviewer gate.
 
-🛑 **Checkpoint 3 — Review approval** → `review.approved`
+Any FAIL → Stage 4; track loops in `state.json`; on 3rd fail escalate to human.
+
+🛑 **Checkpoint 3 — Review approval** → `review.approved` (gates on reviewer verdict + teach-back)
 
 ### Stage 6 — Ship → skill `create-pr`
 
-- Run full test suite; on fail treat as Stage 5 failure (counts toward loop cap).
+- Tests already ran in the Stage 5 reviewer; **do not re-run the suite inline here.**
 - 🛑 **Checkpoint 4 — PR approval**  
   Interactive: show title/body/diff summary; wait.  
   Automation: draft PR via `create-pr` (see `references/automation.md`).
@@ -158,7 +165,7 @@ Fail → Stage 4; track loops in `state.json`; on 3rd fail escalate to human.
 ├── plan.md                    # Stage 3 — writing-plans output
 ├── plan.approved              # Checkpoint 2 — hook/human ONLY
 ├── state.json                 # Stage 5 loop counter, etc.
-├── review-verdict.md          # Stage 5
+├── review-verdict.md          # Stage 5 — clean-context reviewer: spec + quality + debt + tests
 ├── teach-back-report.md       # Stage 5
 └── review.approved            # Checkpoint 3 — hook/human ONLY
 ```
