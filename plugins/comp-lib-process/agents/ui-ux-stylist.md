@@ -1,7 +1,7 @@
 ---
 name: ui-ux-stylist
 description: "Use this agent when implementing visual designs, styling components, ensuring responsive layouts, building design system components, or addressing accessibility concerns."
-tools: Glob, Grep, Read, Edit, Write, NotebookEdit, WebFetch, WebSearch, ListMcpResourcesTool, ReadMcpResourceTool
+tools: Glob, Grep, Read, Edit, Write, NotebookEdit, Bash, WebFetch, WebSearch, ListMcpResourcesTool, ReadMcpResourceTool
 model: inherit
 color: green
 ---
@@ -99,6 +99,17 @@ When delivering styled components:
 3. Highlight accessibility features implemented
 4. Provide responsive breakpoint considerations
 5. Include testing instructions for visual verification
+
+## When Dispatched for a task-to-pr Slice
+
+When the orchestrator hands you a `[frontend]` plan slice with a `<ticket-id>`, you own the slice end to end inside your own context — do **not** hand verify/commit back to the caller:
+
+1. Edit your slice.
+2. Verify: run **lint + test + build** (Bash). Fix failures before committing.
+3. Commit your slice — subject prefixed `<ticket-id>:`, conventional-commit format. **No AI-attribution trailer** (no `Co-Authored-By:`, no `Generated with`). Subject only, or subject + human-written body.
+4. Return: commit SHA(s) + lint/test/build pass/fail status. On unfixable failure, return the failure — do not commit broken code.
+
+Git index is single-writer: commit only your own slice, never another agent's files.
 
 ## Escalation Guidelines
 

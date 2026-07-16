@@ -32,7 +32,11 @@ spec, and reaches an independent verdict. Adapted from superpowers
    would be a false positive, let the reviewer raise it and adjudicate it in the
    review loop.
 3. **Role agents only.** The gate agent is a role-defined agent from `agents/`
-   (`code-quality-reviewer`). **Never `general-purpose` for a gate.**
+   (`code-quality-reviewer`). **Never `general-purpose` for a gate.** The
+   teach-back comprehension gate is the same — dispatch
+   `comp-lib-process:quiz-taker` (a role agent with no tools), never
+   `general-purpose` and never the skill name `teach-back-verification` (that
+   is a skill, not an agent; the deep-explore dispatch hook blocks it).
 4. **Review-only.** The reviewer does not modify code. Fixes route back to
    Stage 4; then re-review.
 5. **Explicit verdict.** The reviewer writes `review-verdict.md` with a per-
@@ -47,4 +51,6 @@ spec, and reaches an independent verdict. Adapted from superpowers
 
 Reviewer FAIL → orchestrator reads findings → dispatches fixes to Stage 4 → new
 diff package → re-dispatch reviewer. Track loop count in `state.json`; 3rd fail
-escalates to human. Never mark `review.approved` yourself — hook/human only.
+escalates to human. Record approval by appending an `## Approval` block to
+`review-verdict.md` (`Approved-by` = `git config user.name`) **only after** the
+human approves — never self-approve, never ahead of the human.

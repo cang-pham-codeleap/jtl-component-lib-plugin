@@ -179,6 +179,7 @@
   <div class="chips" id="chips">
     <button class="chip on" data-flow="all">All</button>
     <button class="chip" data-flow="happy">Happy path</button>
+    <button class="chip" data-flow="simple">SIMPLE tier</button>
     <button class="chip" data-flow="design">Figma fetch</button>
     <button class="chip" data-flow="verify-fail">Verify stop</button>
     <button class="chip" data-flow="inject">Injection halt</button>
@@ -244,7 +245,7 @@
     <g class="zone">
       <rect x="24" y="700" width="1520" height="380"/>
       <text class="ztitle" x="44" y="728">Artifacts · .claude/workflow/&lt;ticket-id&gt;/</text>
-      <text class="zsub" x="44" y="746">agent never writes *.approved · gitignore this tree</text>
+      <text class="zsub" x="44" y="746">## Approval blocks live inside artifacts · gitignore this tree</text>
     </g>
     <g class="zone">
       <rect x="1564" y="700" width="292" height="380"/>
@@ -263,6 +264,9 @@
     <path class="edge" id="e-spec-cp1" d="M1350,160 H1390 V200"/>
     <path class="edge" id="e-cp1-plan" d="M1390,280 V310 H1280 V320"/>
     <path class="edge" id="e-plan-cp2" d="M1200,355 V390"/>
+
+    <!-- SIMPLE tier bypass: clarify → impl (skip spec/CP1/plan/CP2) -->
+    <path class="edge dash" id="e-clarify-impl-simple" d="M990,205 H940 V440 H860 V470"/>
 
     <!-- main edges: row 2 build→ship -->
     <path class="edge" id="e-cp2-impl" d="M1200,470 H980 V520 H860"/>
@@ -308,6 +312,7 @@
     <text class="elbl" data-e="e-art-ctx" x="355" y="520">task-context</text>
     <text class="elbl" data-e="e-art-design" x="150" y="752" text-anchor="middle">design-context</text>
     <text class="elbl" data-e="e-branch-clarify" x="930" y="240" text-anchor="middle">feature branch</text>
+    <text class="elbl" data-e="e-clarify-impl-simple" x="912" y="318" text-anchor="end">SIMPLE tier · skip 2+3</text>
 
     <!-- INPUTS -->
     <g class="node ext" data-k="github">
@@ -357,29 +362,29 @@
       <rect x="990" y="115" width="160" height="90"/>
       <text class="k" x="1006" y="138">stage 1</text>
       <text class="t" x="1006" y="160">Clarify</text>
-      <text class="m" x="1006" y="180">≥3 options + pick</text>
+      <text class="m" x="1006" y="180">≥3 options · tier</text>
     </g>
     <g class="node" data-k="spec">
       <rect x="1190" y="115" width="160" height="90"/>
-      <text class="k" x="1206" y="138">stage 2</text>
+      <text class="k" x="1206" y="138">stage 2 · FULL</text>
       <text class="t" x="1206" y="160">Spec</text>
       <text class="m" x="1206" y="180">specs.md only</text>
     </g>
     <g class="node gate" data-k="cp1">
       <polygon points="1390,200 1450,240 1390,280 1330,240"/>
       <text class="k" x="1362" y="232">CP1</text>
-      <text class="m" x="1354" y="250">specs.ok</text>
+      <text class="m" x="1356" y="250">## Approval</text>
     </g>
     <g class="node" data-k="plan">
       <rect x="1040" y="320" width="160" height="70"/>
-      <text class="k" x="1056" y="343">stage 3</text>
+      <text class="k" x="1056" y="343">stage 3 · FULL</text>
       <text class="t" x="1056" y="365">Plan</text>
       <text class="m" x="1056" y="380">domain tags</text>
     </g>
     <g class="node gate" data-k="cp2">
       <polygon points="1200,390 1260,430 1200,470 1140,430"/>
       <text class="k" x="1172" y="422">CP2</text>
-      <text class="m" x="1164" y="440">plan.ok</text>
+      <text class="m" x="1164" y="440">## Approval</text>
     </g>
 
     <!-- BUILD -->
@@ -387,19 +392,19 @@
       <rect x="660" y="470" width="200" height="100"/>
       <text class="k" x="676" y="495">stage 4</text>
       <text class="t" x="676" y="518">Implement</text>
-      <text class="m" x="676" y="538">route by tags</text>
-      <text class="m" x="676" y="554">commit &lt;id&gt;:</text>
+      <text class="m" x="676" y="538">agent owns slice</text>
+      <text class="m" x="676" y="554">edit→test→commit</text>
     </g>
     <g class="node" data-k="review">
       <rect x="400" y="470" width="180" height="90"/>
       <text class="k" x="416" y="495">stage 5</text>
       <text class="t" x="416" y="518">Review</text>
-      <text class="m" x="416" y="538">verdict + teach-back</text>
+      <text class="m" x="416" y="538">verdict (teach-back: FULL)</text>
     </g>
     <g class="node gate" data-k="cp3">
       <polygon points="400,580 460,620 400,660 340,620"/>
       <text class="k" x="372" y="612">CP3</text>
-      <text class="m" x="360" y="630">review.ok</text>
+      <text class="m" x="360" y="630">## Approval</text>
     </g>
     <g class="node stop" data-k="escalate">
       <rect x="320" y="680" width="160" height="40"/>
@@ -472,32 +477,27 @@
     <g class="node store" data-k="specs">
       <rect x="494" y="780" width="170" height="70"/>
       <text class="t" x="510" y="808">specs.md</text>
-      <text class="m" x="510" y="828">design-doc contract</text>
-    </g>
-    <g class="node store" data-k="specsappr">
-      <rect x="684" y="780" width="160" height="70"/>
-      <text class="k" x="700" y="802">hook/human</text>
-      <text class="t" x="700" y="824">specs.approved</text>
+      <text class="m" x="510" y="828">design-doc · ## Approval</text>
     </g>
     <g class="node store" data-k="planfile">
-      <rect x="864" y="780" width="160" height="70"/>
-      <text class="t" x="880" y="808">plan.md</text>
-      <text class="m" x="880" y="828">writing-plans</text>
+      <rect x="684" y="780" width="160" height="70"/>
+      <text class="t" x="700" y="808">plan.md</text>
+      <text class="m" x="700" y="828">writing-plans · ## Approval</text>
     </g>
-    <g class="node store" data-k="planappr">
-      <rect x="1044" y="780" width="150" height="70"/>
-      <text class="k" x="1060" y="802">hook/human</text>
-      <text class="t" x="1060" y="824">plan.approved</text>
+    <g class="node store" data-k="revfile">
+      <rect x="864" y="780" width="160" height="70"/>
+      <text class="t" x="880" y="808">review-verdict.md</text>
+      <text class="m" x="880" y="828">verdict · ## Approval</text>
+    </g>
+    <g class="node store" data-k="taskctx2">
+      <rect x="1044" y="780" width="320" height="70"/>
+      <text class="t" x="1060" y="808">task-context.md (SIMPLE)</text>
+      <text class="m" x="1060" y="828">tier: simple · Approved-by line = gate</text>
     </g>
     <g class="node store" data-k="reviewfiles">
-      <rect x="1214" y="780" width="230" height="70"/>
-      <text class="t" x="1230" y="808">review + teach-back</text>
-      <text class="m" x="1230" y="828">state.json · loops</text>
-    </g>
-    <g class="node store" data-k="revappr">
-      <rect x="44" y="880" width="180" height="70"/>
-      <text class="k" x="60" y="902">hook/human</text>
-      <text class="t" x="60" y="924">review.approved</text>
+      <rect x="1374" y="780" width="170" height="70"/>
+      <text class="t" x="1390" y="808">teach-back + state.json</text>
+      <text class="m" x="1390" y="828">loops · comprehension</text>
     </g>
     <g class="node store" data-k="prart">
       <rect x="244" y="880" width="200" height="70"/>
@@ -524,7 +524,7 @@
     <!-- POLICY -->
     <g class="node stop" data-k="pol1">
       <rect x="1584" y="780" width="252" height="48"/>
-      <text class="m" x="1600" y="808">no agent *.approved writes</text>
+      <text class="m" x="1600" y="808">no self-approve · ## Approval after human</text>
     </g>
     <g class="node stop" data-k="pol2">
       <rect x="1584" y="844" width="252" height="48"/>
@@ -601,38 +601,37 @@ const DETAIL = {
   intake:  { t:"ticket-intake", m:"stage 0 · sub-skill", b:"Produces <code>task-context.md</code>. Full fencing + injection rules live in that skill. On inject/stop → halt pipeline. When ticket has Figma URLs, invokes <code>figma-fetching</code> via <code>mcp-fetcher</code> → optional <code>design-context.md</code>. On design abort → halt." },
   docs:    { t:"Docs review", m:"stage 0.3 · inline", b:"If repo has <code>AGENTS.md</code> / <code>docs/agents/</code>, load once. Else use jtl-init templates and tell user to run <code>jtl-init</code>. Conventions stay in context." },
   verify:  { t:"verify-ticket", m:"stage 0.6 · sub-skill", b:"Runs on <code>task-context.md</code>. <b>STOP</b> on <code>NOT-REPRODUCIBLE</code> or <code>ALREADY-EXISTS</code>. <code>CONFIRMED</code> / <code>PARTIALLY-VALID</code> continue with corrections into Stage 2." },
-  branch:  { t:"Branch", m:"stage 0.9 · inline", b:"<code>git fetch && git switch -c &lt;ticket-id&gt;/&lt;slug&gt; origin/&lt;default&gt;</code>. Never main/master. Resume: re-validate old <code>specs.approved</code> before trust." },
-  clarify: { t:"Clarify", m:"stage 1 · 3-solutions", b:"Draft ≥3 approaches (pros/cons/effort/risk) + exactly one recommendation. Human picks. Escalate to <code>superpowers:brainstorming</code> only if asked or blocked. Append <code>## Clarified scope</code>." },
-  spec:    { t:"Spec", m:"stage 2 · design doc", b:"Write <b>only</b> <code>.claude/workflow/&lt;id&gt;/specs.md</code>. No Speckit. No raw ticket dump. Spec Self-Review checklist before Checkpoint 1." },
-  cp1:     { t:"Checkpoint 1", m:"human gate · specs.approved", b:"Present specs.md; wait for explicit approval. Hook/human writes <code>specs.approved</code>. Agent never creates it. Blocks Stage 3." },
-  plan:    { t:"Plan", m:"stage 3 · writing-plans", b:"Invoke <code>superpowers:writing-plans</code> against approved specs. Land at workflow <code>plan.md</code> only. Tags: <code>[backend]</code> <code>[frontend]</code> <code>[shared]</code> optional <code>[parallel-safe]</code>." },
-  cp2:     { t:"Checkpoint 2", m:"human gate · plan.approved", b:"Hook/human writes <code>plan.approved</code>. Blocks Stage 4 until present." },
-  impl:    { t:"Implement", m:"stage 4 · domain route", b:"<code>[backend]</code> → engine-specialist · <code>[frontend]</code> → ui-ux-stylist · <code>[shared]</code> → hub. Parallel-safe disjoint files may concurrent Agent. Commits with <code>&lt;ticket-id&gt;:</code> prefix." },
-  review:  { t:"Review", m:"stage 5 · two passes", b:"1) code-quality-reviewer on <b>diff only</b> → <code>review-verdict.md</code>. 2) teach-back-verification → <code>teach-back-report.md</code>. Fail → Stage 4; 3rd fail escalate." },
-  cp3:     { t:"Checkpoint 3", m:"human gate · review.approved", b:"Blocks Stage 6 until <code>review.approved</code>. Human/hook only." },
+  branch:  { t:"Branch", m:"stage 0.9 · inline", b:"<code>git fetch && git switch -c &lt;ticket-id&gt;/&lt;slug&gt; origin/&lt;default&gt;</code>. Never main/master. Resume: re-validate old <code>specs.md</code> (and its <code>## Approval</code> block) before trust." },
+  clarify: { t:"Clarify", m:"stage 1 · 3-solutions + tier", b:"Draft ≥3 approaches (pros/cons/effort/risk) + exactly one recommendation. Human picks. Escalate to <code>superpowers:brainstorming</code> only if asked or blocked. Append <code>## Clarified scope</code> with a <code>tier:</code> call: <b>SIMPLE</b> (single-file / add-props / trivial fix, no new architecture) skips Stage 2+3 via the SIMPLE-path gate; <b>FULL</b> (multi-file, new components/hooks/state/data-flow) runs Spec+Plan. When unsure, choose FULL." },
+  spec:    { t:"Spec", m:"stage 2 · FULL only", b:"Write <b>only</b> <code>.claude/workflow/&lt;id&gt;/specs.md</code>. No Speckit. No raw ticket dump. Spec Self-Review checklist before Checkpoint 1. <b>Skipped on SIMPLE tier.</b>" },
+  cp1:     { t:"Checkpoint 1", m:"human gate · ## Approval", b:"Present specs.md; wait for explicit approval. On approval, append a <code>## Approval</code> block to <code>specs.md</code> (<code>Approved-by</code>, <code>Date</code>, <code>Mode</code>). Agent never self-approves. Blocks Stage 3. <b>SIMPLE tier skips CP1+CP2</b> — its gate is the <code>Approved-by</code> line in task-context.md." },
+  plan:    { t:"Plan", m:"stage 3 · FULL only", b:"Invoke <code>superpowers:writing-plans</code> against approved specs. Land at workflow <code>plan.md</code> only. Tags: <code>[backend]</code> <code>[frontend]</code> <code>[shared]</code> optional <code>[parallel-safe]</code>. <b>Skipped on SIMPLE tier.</b>" },
+  cp2:     { t:"Checkpoint 2", m:"human gate · ## Approval", b:"Append <code>## Approval</code> block to <code>plan.md</code> on human approval. Blocks Stage 4 until present. Agent never writes it ahead of the human." },
+  impl:    { t:"Implement", m:"stage 4 · domain route", b:"<b>FULL</b> routes by plan tag; <b>SIMPLE</b> has no plan — route by domain. <code>[backend]</code> → engine-specialist · <code>[frontend]</code> → ui-ux-stylist · <code>[shared]</code> → hub. <b>The dispatched agent owns its slice end-to-end</b>: edits → lint+test+build → commits its own slice (<code>&lt;ticket-id&gt;:</code> prefix) → returns SHA + pass/fail. Orchestrator only coordinates. Git index is single-writer: <code>[parallel-safe]</code> edits may run concurrent, but <b>commits serialize</b> — dispatch committing agents sequentially. No AI-attribution trailers." },
+  review:  { t:"Review", m:"stage 5 · clean-context gate", b:"One reviewer subagent, fresh context, four dimensions in one pass: spec compliance + code quality + technical-debt checklist + full test suite. Review-only. Writes <code>review-verdict.md</code> (spec ✅ + quality ✅ + debt ✅ + tests ✅). <b>Reviewer runs every tier.</b> Then teach-back-verification → <code>teach-back-report.md</code> (<b>FULL tier only</b>; SIMPLE skips — reviewer+debt+tests is its gate). Dispatch <code>quiz-taker</code>, never general-purpose. Fail → Stage 4; 3rd fail escalate." },
+  cp3:     { t:"Checkpoint 3", m:"human gate · ## Approval", b:"FULL: reviewer verdict + teach-back. SIMPLE: reviewer verdict only. On approval, append <code>## Approval</code> block to <code>review-verdict.md</code>. Blocks Stage 6. Agent never self-approves." },
   escalate:{ t:"3rd fail → human", m:"loop cap", b:"After three Stage 5 failures, stop auto-looping. Escalate with verdict history." },
   createpr:{ t:"create-pr", m:"stage 6 · sub-skill", b:"Full test suite first (fail counts as Stage 5). Invoke <code>create-pr</code> skill — do not inline <code>gh pr create</code>. Always draft. No merge." },
   cp4:     { t:"Checkpoint 4", m:"PR approval", b:"Interactive: show title/body/diff, wait. Headless: draft PR is the path; human Ready-for-review is the approval act." },
   reflect: { t:"reflect", m:"stage 7 · sub-skill", b:"Drafts GH/Jira comments + transition. Posts only after human approval. Exact failure reporting — never silent ticket-stale." },
-  engine:  { t:"engine-specialist", m:"subagent · backend", b:"Forked for Stage 4 tasks tagged <code>[backend]</code>." },
-  uiux:    { t:"ui-ux-stylist", m:"subagent · frontend", b:"Forked for Stage 4 tasks tagged <code>[frontend]</code>." },
+  engine:  { t:"engine-specialist", m:"subagent · backend", b:"Forked for Stage 4 tasks tagged <code>[backend]</code>. <b>Owns its slice end-to-end</b>: edits → lint+test+build → commits (<code>&lt;ticket-id&gt;:</code> prefix) → returns SHA + status. Orchestrator does not verify or commit for it." },
+  uiux:    { t:"ui-ux-stylist", m:"subagent · frontend", b:"Forked for Stage 4 tasks tagged <code>[frontend]</code>. Same owns-slice contract as engine-specialist. Commits serialize across parallel agents (git index is single-writer)." },
   cqr:     { t:"code-quality-reviewer", m:"subagent · unbiased", b:"Stage 5 only. Reviews diff vs specs with fresh context." },
   fetcher: { t:"mcp-fetcher / figma", m:"subagent · haiku", b:"Cheap ticket/MCP reads via intake path. Also hosts <code>figma-fetching</code> Figma MCP read tools when ticket carries design URLs → <code>design-context.md</code>." },
   explore: { t:"deep-explore", m:"subagent · on demand", b:"Only when exploration would bloat hub context." },
-  hub:     { t:"Hub agent", m:"one agent per task", b:"Core principle: one continuous session. Fork only for domain impl, unbiased review, deep-explore, or mcp-fetcher. If in doubt, stay." },
+  hub:     { t:"Hub agent", m:"one agent per task", b:"Core principle: one continuous session. Fork only for domain impl, unbiased review, deep-explore, or mcp-fetcher. In Stage 4 the hub only <b>coordinates dispatch + reads back SHAs</b> — the domain agent owns its slice end-to-end (edit → test → commit). If in doubt, stay." },
   taskctx: { t:"task-context.md", m:"artifact · Stage 0", b:"Primary working memory: intake, clarified scope, Spec/Plan path pointers. Under gitignored workflow dir." },
   designctx:{ t:"design-context.md", m:"artifact · Stage 0 (optional)", b:"Produced only when ticket has Figma URLs. <code>figma-fetching</code> (via <code>mcp-fetcher</code> Figma MCP reads) writes a text summary. Fed into spec/clarify. Design abort halts before this." },
   verreport:{ t:"verification-report.md", m:"artifact · Stage 0.6", b:"Repro/claim results. Corrections flow into Stage 2." },
-  specs:   { t:"specs.md", m:"artifact · Stage 2", b:"Superpowers design-doc contract at workflow path only." },
-  specsappr:{ t:"specs.approved", m:"gate flag · CP1", b:"Created by hook/human only. Agent policy forbids writing <code>*.approved</code>." },
-  planfile:{ t:"plan.md", m:"artifact · Stage 3", b:"writing-plans output with Spec pointer and domain tags." },
-  planappr:{ t:"plan.approved", m:"gate flag · CP2", b:"Human/hook only. Required before implement." },
-  reviewfiles:{ t:"Review bundle", m:"artifacts · Stage 5", b:"<code>review-verdict.md</code>, <code>teach-back-report.md</code>, <code>state.json</code> loop counter." },
-  revappr: { t:"review.approved", m:"gate flag · CP3", b:"Required before create-pr." },
+  specs:   { t:"specs.md", m:"artifact · Stage 2 (FULL)", b:"Superpowers design-doc contract at workflow path only. Carries the <code>## Approval</code> block (CP1) appended after human approval — not a separate flag file." },
+  planfile:{ t:"plan.md", m:"artifact · Stage 3 (FULL)", b:"writing-plans output with Spec pointer and domain tags. Carries the <code>## Approval</code> block (CP2)." },
+  revfile: { t:"review-verdict.md", m:"artifact · Stage 5", b:"Reviewer's four-part verdict (spec ✅ + quality ✅ + debt ✅ + tests ✅). Carries the <code>## Approval</code> block (CP3) after human approval." },
+  taskctx2:{ t:"task-context.md (SIMPLE)", m:"artifact · SIMPLE gate", b:"SIMPLE-tier tasks skip Stage 2+3 and CP1+CP2. Their approval is the <code>Approved-by</code> line recorded under <code>## Clarified scope</code> here, with <code>tier: simple</code>. Agent never writes it ahead of the human." },
+  reviewfiles:{ t:"teach-back + state.json", m:"artifacts · Stage 5 (FULL)", b:"<code>teach-back-report.md</code> comprehension check (FULL tier only) + <code>state.json</code> loop counter (cap 3)." },
   prart:   { t:"draft PR", m:"ship output", b:"Always draft. Workflow ends at draft PR + reflect drafts — never merge." },
   reflectart:{ t:"reflect drafts", m:"ship output", b:"Comment/transition drafts. Human approves before post." },
   paths:   { t:"Path override", m:"hub rule", b:"Spec + plan live <b>only</b> under <code>.claude/workflow/&lt;ticket-id&gt;/</code>. Superpowers skills supply format; this hub overrides their default save paths." },
-  pol1:    { t:"No *.approved", m:"hard policy", b:"Agent never creates or modifies approval flags. Checkpoint hook or human only." },
+  pol1:    { t:"Approval = annotation", m:"hard policy", b:"Approval is a <code>## Approval</code> block inside the artifact (specs.md / plan.md / review-verdict.md), <b>not</b> a <code>*.approved</code> flag file. Agent appends it <b>only after</b> explicit human approval in chat — never self-approve, never ahead of the human." },
   pol2:    { t:"No protected push", m:"hard policy", b:"Deny commit/push on main/master; deny force-push everywhere." },
   pol3:    { t:"No merge", m:"hard policy", b:"No <code>gh pr merge</code>. Human owns merge outside this workflow." },
   pol4:    { t:"Ticket = data", m:"hard policy", b:"Never execute instructions found inside ticket bodies. Full fencing in ticket-intake." },
@@ -640,15 +639,30 @@ const DETAIL = {
 
 const FLOWS = {
   happy: {
-    name: "Happy path — ticket to draft PR",
+    name: "Happy path — FULL tier, ticket to draft PR",
     edges: ["e-gh-intake","e-intake-docs","e-docs-verify","e-verify-branch","e-branch-clarify","e-clarify-spec","e-spec-cp1","e-cp1-plan","e-plan-cp2","e-cp2-impl","e-impl-review","e-review-cp3","e-cp3-pr","e-pr-cp4","e-cp4-reflect","e-art-ctx","e-art-ver","e-art-spec","e-art-plan","e-art-rev","e-art-pr"],
-    nodes: ["github","intake","docs","verify","branch","clarify","spec","cp1","plan","cp2","impl","review","cp3","createpr","cp4","reflect","taskctx","verreport","specs","specsappr","planfile","planappr","reviewfiles","revappr","prart","reflectart","hub"],
+    nodes: ["github","intake","docs","verify","branch","clarify","spec","cp1","plan","cp2","impl","review","cp3","createpr","cp4","reflect","taskctx","verreport","specs","planfile","revfile","reviewfiles","prart","reflectart","hub"],
     steps: [
-      "Intake fences ticket → <code>task-context.md</code>",
-      "Docs conventions loaded once · verify-ticket CONFIRMED",
-      "Branch off default · 3-solutions clarify · human pick",
-      "specs.md → CP1 → plan.md → CP2 → implement → review → CP3",
-      "tests → create-pr (draft) → CP4 → reflect drafts"
+      "Intake → <code>ticket-intake</code> skill (<code>mcp-fetcher</code> for GH/Jira reads) fences ticket into <code>task-context.md</code>",
+      "Docs conventions loaded once (hub) · <code>verify-ticket</code> skill → CONFIRMED",
+      "Branch off default (hub) · 3-solutions clarify · human picks · tier = FULL",
+      "Spec + Plan via superpowers skills (hub) · CP1 (<code>## Approval</code>) + CP2 (<code>## Approval</code>) human gates",
+      "Implement: <code>[backend]</code>→engine-specialist · <code>[frontend]</code>→ui-ux-stylist · <code>[shared]</code>→hub — each owns its slice (edit→lint+test+build→commit)",
+      "Review: <code>code-quality-reviewer</code> (fresh context, 4 dims) + <code>quiz-taker</code> (teach-back, FULL only) → CP3 (<code>## Approval</code>)",
+      "Ship: <code>create-pr</code> skill (draft) → CP4 → <code>reflect</code> skill drafts"
+    ]
+  },
+  simple: {
+    name: "SIMPLE tier — skip Spec + Plan + CP1 + CP2",
+    edges: ["e-gh-intake","e-intake-docs","e-docs-verify","e-verify-branch","e-branch-clarify","e-clarify-impl-simple","e-impl-review","e-review-cp3","e-cp3-pr","e-pr-cp4","e-cp4-reflect","e-art-ctx"],
+    nodes: ["github","intake","docs","verify","branch","clarify","impl","review","cp3","createpr","cp4","reflect","taskctx2","hub"],
+    steps: [
+      "Stage 1 classifies the approach as <b>SIMPLE</b> (single-file / add-props / trivial fix, no new architecture)",
+      "SIMPLE-path gate: short change-list + human approval → <code>Approved-by</code> line in task-context.md",
+      "Skips Stage 2 (Spec) + Stage 3 (Plan) + CP1 + CP2 — straight to Stage 4",
+      "Implement: <code>[backend]</code>→engine-specialist · <code>[frontend]</code>→ui-ux-stylist · <code>[shared]</code>→hub (no plan tags)",
+      "Review: <code>code-quality-reviewer</code> only (4 dims) — <b>no teach-back</b> in SIMPLE → CP3 (<code>## Approval</code>)",
+      "Ship: <code>create-pr</code> skill (draft) → CP4 → <code>reflect</code> skill drafts"
     ]
   },
   design: {
@@ -686,23 +700,23 @@ const FLOWS = {
   "review-loop": {
     name: "Review loop — fail → implement ≤3",
     edges: ["e-cp2-impl","e-impl-review","e-review-loop","e-review-cp3","e-review-esc","e-art-rev"],
-    nodes: ["cp2","impl","review","cp3","escalate","reviewfiles","revappr","cqr"],
+    nodes: ["cp2","impl","review","cp3","escalate","reviewfiles","revfile","cqr"],
     steps: [
-      "code-quality-reviewer + teach-back on diff",
+      "code-quality-reviewer (4 dims) + quiz-taker (teach-back, FULL only) on diff — fresh context",
       "Fail → Stage 4; <code>state.json</code> counts loops",
-      "Pass → CP3 <code>review.approved</code>",
+      "Pass → CP3 appends <code>## Approval</code> to <code>review-verdict.md</code>",
       "3rd fail → escalate human"
     ]
   },
   headless: {
-    name: "Headless — async gates",
+    name: "Headless — async annotation gates",
     edges: ["e-spec-cp1","e-cp1-plan","e-plan-cp2","e-cp2-impl","e-review-cp3","e-cp3-pr","e-pr-cp4","e-cp4-reflect"],
-    nodes: ["spec","cp1","plan","cp2","impl","review","cp3","createpr","cp4","reflect","specsappr","planappr","revappr"],
+    nodes: ["spec","cp1","plan","cp2","impl","review","cp3","createpr","cp4","reflect","specs","planfile","revfile"],
     steps: [
-      "Persist specs.md / plan.md / review artifacts",
-      "Wait until hook/human drops <code>*.approved</code> (agent never writes them)",
-      "CP4: create-pr as draft; Ready-for-review = human approval",
-      "reflect still human-gates posts by default"
+      "Persist specs.md / plan.md / review-verdict.md",
+      "Wait until a <code>## Approval</code> block appears in the artifact (human/out-of-band) — agent never writes it",
+      "SIMPLE tier skips CP1+CP2; its gate is the <code>Approved-by</code> line in task-context.md",
+      "CP4: create-pr as draft; Ready-for-review = human approval"
     ]
   },
   agents: {
@@ -712,7 +726,7 @@ const FLOWS = {
     steps: [
       "Default: hub agent stays in one context",
       "[backend] → engine-specialist · [frontend] → ui-ux-stylist",
-      "Stage 5 unbiased pass → code-quality-reviewer",
+      "Stage 5 unbiased pass → code-quality-reviewer (+ quiz-taker for teach-back, FULL tier only)",
       "mcp-fetcher / deep-explore only for cheap fetch or context bloat"
     ]
   }

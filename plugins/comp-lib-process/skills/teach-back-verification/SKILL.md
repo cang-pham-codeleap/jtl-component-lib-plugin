@@ -22,7 +22,7 @@ Tests passing proves the code runs. It does not prove anyone — including you �
 
 1. **Write the understanding report** — copy `report-template.html` from this skill's folder into the session scratchpad (or user-specified path) as `understanding-report.html`. Fill every section: what changed, why, how it behaves (gate-flow diagram if the change has decision shape), key code paths, decisions & deviations, risks. **Never restyle the template** — replace content only.
 2. **Write the quiz** — 5–8 questions at the bottom of the report covering behavior, edge cases, integration points, decisions. Rules: answerable ONLY from a complete report, never from the question's own wording; no trivia (line numbers, variable names). Write the **answer key in a separate file** the quiz-taker never sees; every answer cites the code that proves it.
-3. **Fresh-subagent gate** — spawn a subagent whose prompt contains ONLY the report content and the questions. No code access, no conversation context, explicitly instructed not to read files.
+3. **Fresh-subagent gate** — dispatch `Agent(subagent_type="comp-lib-process:quiz-taker", description="teach-back quiz CP-XXXX", prompt="<report content + questions only>")`. The `quiz-taker` agent has no tools and no session context — it answers from the report alone. Do NOT use `general-purpose` or the skill name as the `subagent_type`; both fail the gate and the deep-explore dispatch hook.
 4. **Grade against code, not memory** — compare its answers to the key, and re-verify each key claim against actual source. Pass = every question correct.
 5. **On fail, diagnose which failure:**
    - Subagent wrong but key correct → **docs gap**. Rewrite the report section, re-run the gate.
@@ -30,6 +30,8 @@ Tests passing proves the code runs. It does not prove anyone — including you �
 6. **User quiz** — only after the gate passes, give the user the report path and have them take the quiz (answers stay behind the `REVEAL ANSWER` toggles). Grade, explain misses. Declare done / invite merge **only after the user passes perfectly**.
 
 ## Example prompt shape (step 3)
+
+The `quiz-taker` agent prompt contains ONLY this — report, then questions:
 
 > "You are taking a comprehension quiz. Below is a report on a code change, followed by questions. Answer each question using ONLY the report. Do not use tools. If the report doesn't contain the answer, say 'NOT IN REPORT'."
 
