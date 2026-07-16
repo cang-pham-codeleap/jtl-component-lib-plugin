@@ -17,14 +17,16 @@ Interactive mode stops mid-turn and waits for human chat confirmation.
 
 Headless mode treats checkpoints as **async gates**:
 
+Approvals are `## Approval` annotations inside the artifact (`specs.md` / `plan.md` / `review-verdict.md`), not `*.approved` flag files. `Approved-by` = `git config user.name`.
+
 | Checkpoint | Interactive | Headless |
 |------------|-------------|----------|
-| 1 Spec | Wait for chat approval → hook writes `specs.approved` | Persist `.claude/workflow/<ticket-id>/specs.md`; wait until `specs.approved` appears (human/out-of-band) before Stage 3 |
-| 2 Plan | Wait for chat approval → `plan.approved` | Persist `.claude/workflow/<ticket-id>/plan.md`; wait until `plan.approved` appears |
-| 3 Review | Wait for chat approval → `review.approved` | Same pattern with `review.approved` |
+| 1 Spec | Wait for chat approval → append `## Approval` to `specs.md` | Persist `specs.md`; wait until an `## Approval` block appears in it (human/out-of-band) before Stage 3 |
+| 2 Plan | Wait for chat approval → append `## Approval` to `plan.md` | Persist `plan.md`; wait until `## Approval` appears in it |
+| 3 Review | Wait for chat approval → append `## Approval` to `review-verdict.md` | Same pattern — wait until `## Approval` appears in `review-verdict.md` |
 | 4 PR | Print draft; wait before invoking `create-pr` | Invoke `create-pr` skill (always draft — sole PR path). Human marking "Ready for review" is the approval act |
 
-The agent still **must never** write `*.approved` itself. Gate policy denies agent-created approval flags.
+SIMPLE-tier tasks skip Checkpoints 1–2; their approval is the SIMPLE-path `Approved-by` line in `task-context.md`. Checkpoint 3 gates on reviewer verdict for **every** tier; teach-back (`teach-back-report.md`) runs **FULL tier only** — SIMPLE skips it (reviewer + debt + tests is its gate). The agent **must never** append an `## Approval` block ahead of the human's approval.
 
 ## Draft-PR-as-approval
 
