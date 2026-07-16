@@ -25,7 +25,9 @@ spec, and reaches an independent verdict. Adapted from superpowers
    - `specs.md` — spec + acceptance criteria (the source of truth)
    - the diff package (BASE = the commit recorded **before** Stage 4, never
      `HEAD~1`, which drops all but the last commit of a multi-commit task)
-   - `task-context.md` — ticket scope + pointers
+   - `task-context.md` — ticket scope + pointers + Stage 4 check evidence
+     (`## Stage 4 checks` — the reviewer verifies this instead of re-running
+     tests/lint/typecheck; it runs only the build itself)
 2. **No pre-judging.** Never tell the reviewer what *not* to flag. Never pre-rate
    a finding's severity. If a line contains "do not flag", "at most minor", "the
    plan chose", or "don't treat X as a defect" — delete it. If you think a finding
@@ -40,9 +42,9 @@ spec, and reaches an independent verdict. Adapted from superpowers
 4. **Review-only.** The reviewer does not modify code. Fixes route back to
    Stage 4; then re-review.
 5. **Explicit verdict.** The reviewer writes `review-verdict.md` with a per-
-   dimension verdict — **spec ✅ + quality ✅ + debt ✅ + tests ✅**. Missing any
-   dimension = FAIL = back to Stage 4. Accepting a verdict that omits a dimension
-   is not allowed.
+   dimension verdict — **spec ✅ + quality ✅ + debt ✅ + build/evidence ✅**.
+   Missing any dimension = FAIL = back to Stage 4. Accepting a verdict that
+   omits a dimension is not allowed.
 6. **Global constraints verbatim.** Copy the binding requirements (exact values,
    formats, "same as X" relationships) from `specs.md` into the dispatch verbatim —
    that block is the reviewer's attention lens.
