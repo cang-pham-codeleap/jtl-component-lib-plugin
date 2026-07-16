@@ -1,6 +1,6 @@
 {
   "name": "jtl-component-lib-plugin",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "AI coding agent skills and configurations for the JTL project",
   "keywords": ["component-library", "shadcn", "react", "jtl"],
   "author": {
