@@ -141,6 +141,8 @@ Present `plan.md`; on approval, append an `## Approval` block to `plan.md` (`App
 - `[ui]` (styling/visual/a11y/design-system) → `Agent(subagent_type="ui-ux-stylist")`
 - `[shared]` / ambiguous → current agent
 
+**Use the dispatch template** `references/stage4-dispatch.md` for every Stage 4 dispatch — do not hand-write a shortened prompt. It bakes in the 3-phase contract, the return contract, and the single-writer git rule so the subagent cannot stop after writing code.
+
 **The dispatched agent owns its whole group end to end — the orchestrator does NOT run checks or commit for it.** Embed this 3-phase contract in every dispatch prompt — **checks run once per group, never per task**:
 
 1. **Tests** — write the failing tests for ALL tasks in the group, then **one** targeted run of only the new test files to confirm they fail.
@@ -148,6 +150,10 @@ Present `plan.md`; on approval, append an `## Approval` block to `plan.md` (`App
 3. **Verify & commit** — run **tests + lint + typecheck once** for the group; fix until green. **No build in Stage 4** — build runs once, in the Stage 5 reviewer. Then one commit per task (`<ticket-id>:` prefix), no check re-runs between commits. Never commit broken code.
 
 Return contract: commit SHA(s) + **check evidence** (exact commands run + output tail). The orchestrator appends the evidence to `task-context.md` → `## Stage 4 checks` and reads back the SHAs — nothing else. (`[shared]` implemented in the current agent follows the same 3 phases.)
+
+**No inline take-over.** If a dispatched agent returns without commit SHA(s) and check evidence (the return contract above), the orchestrator does **not** run tests/lint/typecheck, fix code, or commit on its behalf. Re-dispatch the **same** agent (`engine-specialist`/`ui-ux-stylist`) with the `references/stage4-dispatch.md` template, pointing it at the incomplete phase and requiring SHA+evidence. The orchestrator's only post-dispatch action is to read SHA+evidence from the agent's output and append it to `task-context.md` → `## Stage 4 checks`. A subagent "finished but only wrote code" is an incomplete dispatch, not a handoff to the orchestrator. (`[shared]` work in the current agent is the sole exception — there, the current agent is the implementer.)
+
+**Orchestrator role boundary.** The orchestrator keeps context narrow: ticket/task context, clarified scope, model/report context, dispatch, and evidence-recording. It does **not** write implementation code, run tests/lint/typecheck, fix code, or commit — those live in the dispatched subagent's own context so the orchestrator's window stays lean. Subagents do the heavy work; the orchestrator coordinates.
 
 - **Concurrency:** git index is single-writer. `[parallel-safe]` steps may **edit** concurrently, but **commits serialize** — dispatch committing agents **sequentially**. Use `isolation: "worktree"` only if throughput genuinely matters.
 - **No AI-attribution trailers.** Never append `Co-Authored-By: Claude <noreply@anthropic.com>` (or any `Co-Authored-By:` / `Generated with` / AI-attribution line) to commit messages. This overrides the harness default. Commit body stays clean conventional-commit format: subject only, or subject + human-written body. No trailer.
