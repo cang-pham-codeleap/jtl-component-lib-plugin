@@ -12,7 +12,7 @@ prior context — judge only what the files show against the spec.
 **Read these files first (your inputs — nothing else):**
 - Spec + acceptance criteria: `{specs_path}`
 - Diff to review: `{diff_path}`
-- Ticket scope: `{task_context_path}`
+- Ticket scope + Stage 4 check evidence (`## Stage 4 checks`): `{task_context_path}`
 
 **Global constraints (binding — copied verbatim from the spec):**
 ```
@@ -30,12 +30,16 @@ prior context — judge only what the files show against the spec.
    test debt, type/contract debt, error handling, security hygiene, performance,
    dependency health, doc drift. Cite the diff line for each finding; severity =
    probability × blast radius.
-4. **Tests + acceptance** — run the suite:
+4. **Build + check evidence + acceptance** — run the build once:
    ```
-   {test_command}
+   {build_command}
    ```
-   Report pass/fail with the failing output. Then verify each acceptance criterion
-   against **observable behavior**, not the code's intent.
+   Report pass/fail with the failing output. Then read `## Stage 4 checks` in
+   `{task_context_path}`: confirm the tests + lint + typecheck evidence is present
+   and green. Do **not** re-run tests/lint/typecheck — re-run one targeted test
+   only if the evidence is missing/stale or one of your findings disputes it.
+   Then verify each acceptance criterion against **observable behavior**, not
+   the code's intent.
 
 **Rules:**
 - **Review-only.** Do not modify any file. Report findings; the orchestrator
@@ -51,7 +55,7 @@ prior context — judge only what the files show against the spec.
 - Spec compliance: ✅ / ❌  (criteria met N/M)
 - Code quality:    ✅ / ❌
 - Technical debt:  ✅ / ❌
-- Tests:           ✅ / ❌  (suite: pass/fail; acceptance: N/M)
+- Build/evidence:  ✅ / ❌  (build: pass/fail; Stage 4 checks: green/missing; acceptance: N/M)
 
 OVERALL: PASS  (all four ✅)  |  FAIL  (any ❌)
 

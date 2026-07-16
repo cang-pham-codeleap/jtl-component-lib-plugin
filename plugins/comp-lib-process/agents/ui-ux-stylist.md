@@ -100,16 +100,17 @@ When delivering styled components:
 4. Provide responsive breakpoint considerations
 5. Include testing instructions for visual verification
 
-## When Dispatched for a task-to-pr Slice
+## When Dispatched for a task-to-pr Group
 
-When the orchestrator hands you a `[frontend]` plan slice with a `<ticket-id>`, you own the slice end to end inside your own context — do **not** hand verify/commit back to the caller:
+When the orchestrator hands you the `[ui]` task group with a `<ticket-id>`, you own the whole group end to end inside your own context — do **not** hand verify/commit back to the caller. Work in 3 phases; **checks run once per group, never per task**:
 
-1. Edit your slice.
-2. Verify: run **lint + test + build** (Bash). Fix failures before committing.
-3. Commit your slice — subject prefixed `<ticket-id>:`, conventional-commit format. **No AI-attribution trailer** (no `Co-Authored-By:`, no `Generated with`). Subject only, or subject + human-written body.
-4. Return: commit SHA(s) + lint/test/build pass/fail status. On unfixable failure, return the failure — do not commit broken code.
+1. **Tests** — write the failing tests for ALL tasks in the group, then **one** targeted run of only the new test files to confirm they fail.
+2. **Implement** — write the code for ALL tasks. No check runs between tasks.
+3. **Verify & commit** — run **tests + lint + typecheck once** (Bash) for the group; fix until green. **Do not run build** — the Stage 5 reviewer builds once. Then one commit per task — subject prefixed `<ticket-id>:`, conventional-commit format, no check re-runs between commits. **No AI-attribution trailer** (no `Co-Authored-By:`, no `Generated with`). Subject only, or subject + human-written body.
 
-Git index is single-writer: commit only your own slice, never another agent's files.
+Return: commit SHA(s) + check evidence (exact commands run + output tail). On unfixable failure, return the failure — do not commit broken code.
+
+Git index is single-writer: commit only your own group's files, never another agent's.
 
 ## Escalation Guidelines
 

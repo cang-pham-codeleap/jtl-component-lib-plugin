@@ -126,21 +126,28 @@ Present `.claude/workflow/<ticket-id>/specs.md`; wait for explicit approval. On 
 - Override superpowers default (`docs/superpowers/plans/…`) — after skill output, ensure content lands at workflow `plan.md` only. Do **not** also write under `docs/superpowers/plans/`.
 - Plan body:
   - Plan header + **`Spec:`** `.claude/workflow/<ticket-id>/specs.md`
-  - Domain tags on tasks: `[backend]`, `[frontend]`, `[shared]`, optional `[parallel-safe]`
+  - Domain tags on tasks: `[logic]` (hooks/state/data-flow/API), `[ui]` (styling/visual/a11y), `[shared]`, optional `[parallel-safe]`. Tasks sharing a tag form **one dispatch group**.
+  - **Format override (single-run checks):** per task keep Files, Interfaces, the test code block, and the implementation code block. **Drop** writing-plans' per-task steps "run test to verify it fails", "run test to verify it passes", and "commit" — verification and commits happen per execution phase (Stage 4 contract), never per task.
 - Record under `task-context.md` → `## Plan` (`path: .claude/workflow/<ticket-id>/plan.md`).
 
 🛑 **Checkpoint 2 — Plan approval**  
 Present `plan.md`; on approval, append an `## Approval` block to `plan.md` (`Approved-by: <git config user.name>`, `Date: <YYYY-MM-DD>`, `Mode: interactive|headless`). Block Stage 4 until that block exists in `plan.md`. Write it **only after** the human approves. Headless: `references/automation.md`.
 
-### Stage 4 — Implement
+### Stage 4 — Implement (3-phase group execution)
 
-**FULL tier** routes by plan tag; **SIMPLE tier** has no plan — route the change by domain (frontend/backend), or `[shared]` stays in the current agent.
+**FULL tier** groups plan tasks by tag — **one dispatch per domain group, never per task**; **SIMPLE tier** has no plan — route the single change by domain, or `[shared]` stays in the current agent.
 
-- `[backend]` → `Agent(subagent_type="engine-specialist")`
-- `[frontend]` → `Agent(subagent_type="ui-ux-stylist")`
+- `[logic]` (hooks/state/data-flow/API) → `Agent(subagent_type="engine-specialist")`
+- `[ui]` (styling/visual/a11y/design-system) → `Agent(subagent_type="ui-ux-stylist")`
 - `[shared]` / ambiguous → current agent
 
-**The dispatched domain agent owns its slice end to end — the orchestrator does NOT run verify or commit for it.** Each agent, inside its own context: edits → runs **lint + test + build** → **commits its own slice** (`<ticket-id>:` prefix) → returns commit SHA(s) + pass/fail status. Embed this contract in every dispatch prompt. The orchestrator only coordinates dispatch and reads back the SHAs. (`[shared]` implemented in the current agent: the current agent verifies + commits it the same way.)
+**The dispatched agent owns its whole group end to end — the orchestrator does NOT run checks or commit for it.** Embed this 3-phase contract in every dispatch prompt — **checks run once per group, never per task**:
+
+1. **Tests** — write the failing tests for ALL tasks in the group, then **one** targeted run of only the new test files to confirm they fail.
+2. **Implement** — write the code for ALL tasks. No check runs between tasks.
+3. **Verify & commit** — run **tests + lint + typecheck once** for the group; fix until green. **No build in Stage 4** — build runs once, in the Stage 5 reviewer. Then one commit per task (`<ticket-id>:` prefix), no check re-runs between commits. Never commit broken code.
+
+Return contract: commit SHA(s) + **check evidence** (exact commands run + output tail). The orchestrator appends the evidence to `task-context.md` → `## Stage 4 checks` and reads back the SHAs — nothing else. (`[shared]` implemented in the current agent follows the same 3 phases.)
 
 - **Concurrency:** git index is single-writer. `[parallel-safe]` steps may **edit** concurrently, but **commits serialize** — dispatch committing agents **sequentially**. Use `isolation: "worktree"` only if throughput genuinely matters.
 - **No AI-attribution trailers.** Never append `Co-Authored-By: Claude <noreply@anthropic.com>` (or any `Co-Authored-By:` / `Generated with` / AI-attribution line) to commit messages. This overrides the harness default. Commit body stays clean conventional-commit format: subject only, or subject + human-written body. No trailer.
@@ -151,9 +158,9 @@ Present `plan.md`; on approval, append an `## Approval` block to `plan.md` (`App
 
 1. Generate the diff package (BASE = commit recorded before Stage 4, not `HEAD~1`). Dispatch **`Agent(subagent_type="comp-lib-process:code-quality-reviewer")`** using the template in `references/reviewer-prompt.md`. Hand it **files only** — `specs.md`, the diff package, `task-context.md` — **never this session's history** (see `references/subagent-dispatch.md`). The reviewer:
    - reviews **spec compliance** + **code quality** + runs the **technical-debt** checklist,
-   - **runs the full test suite** (Bash) and verifies each acceptance criterion against observable behavior,
+   - **runs the build once** (the only build in the pipeline) and verifies the Stage 4 check evidence (`task-context.md` → `## Stage 4 checks`) is present and green — it does **not** re-run tests/lint/typecheck; a targeted test re-run is allowed only when evidence is missing/stale or a finding disputes it. Verifies each acceptance criterion against observable behavior.
    - stays **review-only** — does not modify code,
-   - writes `review-verdict.md` with an explicit four-part verdict: **spec ✅ + quality ✅ + debt ✅ + tests ✅**. Missing any = FAIL.
+   - writes `review-verdict.md` with an explicit four-part verdict: **spec ✅ + quality ✅ + debt ✅ + build/evidence ✅**. Missing any = FAIL.
    - **Do not pre-judge** in the dispatch: never tell the reviewer what not to flag or pre-rate a severity.
 2. `teach-back-verification` → `teach-back-report.md`. **FULL tier only** — comprehension check on top of the reviewer gate. SIMPLE tier skips teach-back (reviewer + debt + tests is its gate). Dispatch `Agent(subagent_type="comp-lib-process:quiz-taker", description="teach-back quiz <ticket-id>", prompt="<report + questions only>")` per the skill — never `general-purpose` or the skill name. Comprehension check never replaces the reviewer.
 
@@ -163,7 +170,7 @@ Any FAIL → Stage 4; track loops in `state.json`; on 3rd fail escalate to human
 
 ### Stage 6 — Ship → skill `create-pr`
 
-- Tests already ran in the Stage 5 reviewer; **do not re-run the suite inline here.**
+- Checks already ran once each (Stage 4 evidence + Stage 5 build); **do not re-run any suite or build inline here.**
 - 🛑 **Checkpoint 4 — PR approval**  
   Interactive: show title/body/diff summary; wait.  
   Automation: draft PR via `create-pr` (see `references/automation.md`).
@@ -180,7 +187,7 @@ Any FAIL → Stage 4; track loops in `state.json`; on 3rd fail escalate to human
 
 ```
 .claude/workflow/<ticket-id>/
-├── task-context.md            # Stage 0; ## Clarified scope (tier + SIMPLE-path approval), ## Spec + ## Plan pointers
+├── task-context.md            # Stage 0; ## Clarified scope (tier + SIMPLE-path approval), ## Spec + ## Plan pointers, ## Stage 4 checks (evidence)
 ├── design-context.md          # Stage 0 optional — Figma text summary if URLs found
 ├── verification-report.md     # Stage 0.6
 ├── specs.md                   # Stage 2 (FULL tier only) — design-doc; ## Approval appended at Checkpoint 1
