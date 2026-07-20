@@ -1,0 +1,4 @@
+name: reflect
+version: 1.7.0
+description: Draft post-PR ticket updates and transitions.
+includes: auto

@@ -1,0 +1,4 @@
+name: task-to-pr
+version: 1.7.0
+description: Run the JTL ticket-to-draft-PR workflow.
+includes: auto

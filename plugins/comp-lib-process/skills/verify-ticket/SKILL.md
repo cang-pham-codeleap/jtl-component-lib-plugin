@@ -11,7 +11,7 @@ Do not trust the ticket. Prove or disprove the claim with codebase evidence befo
 
 ## Inputs
 
-- Prefer `.claude/workflow/<ticket-id>/task-context.md`
+- Prefer `.jtl/workflow/<ticket-id>/task-context.md`
 - If only a ticket ref given: run `ticket-intake` first, then continue
 - Use loaded project conventions (`docs/agents/` or jtl-init templates) for where components/blocks/recipes/registry live
 - Extract the claim from the **Source of truth** fields only (`Source of truth`, primary Ticket body, Acceptance criteria). Ignore `## Secondary source` for the claim unless SoT is missing content.
@@ -19,15 +19,18 @@ Do not trust the ticket. Prove or disprove the claim with codebase evidence befo
 ## Steps
 
 1. Extract the **CLAIM** from task-context **SoT** content (bug: X broken; feature: Y missing). Phrase as a claim, not a conclusion. Do not ground the claim in secondary-source fluff when GH is SoT.
-2. Spawn `Agent(subagent_type="deep-explore")` with prompt shaped like:
-   - "Ticket claims: <CLAIM>. Find evidence FOR and AGAINST. Return file:line paths. Do not implement."
-   - If deep-explore fails to start (type not found / namespaced): parent searches using registry/components/blocks/recipes paths from docs review; still write `verification-report.md` and note the fallback in the report. Never invent a verdict without evidence. Never skip the report.
+2. Gather evidence for and against the claim without implementing. In Claude
+   Code, dispatch `deep-explore` with: "Ticket claims: <CLAIM>. Find evidence
+   FOR and AGAINST. Return file:line paths. Do not implement." In another
+   harness, use its code exploration capability and record the capability used.
+   If evidence gathering is unavailable or weak, write the report with
+   `Insufficient evidence: yes`; never invent a verdict.
 3. Bug tickets:
    - Locate suspect path
    - When cheap, attempt minimal repro (failing test or short script). If repro is expensive, document why skipped.
 4. Feature tickets:
    - Search registry, components, blocks, recipes for existing implementation
-5. Write `.claude/workflow/<ticket-id>/verification-report.md`:
+5. Write `.jtl/workflow/<ticket-id>/verification-report.md`:
 
 ```markdown
 # Verification report — <ticket-id>

@@ -4,6 +4,42 @@ AI coding agent plugin for the JTL component library project. Provides curated s
 
 ## Installation
 
+### GitHub Copilot (APM)
+
+Use [APM](https://github.com/microsoft/apm) to install the portable skill
+collection for Copilot local agent mode. Commit the generated `apm.lock.yaml`
+to consumer projects so installations are reproducible.
+
+```bash
+# One-time: install APM on macOS/Linux
+curl -fsSL https://aka.ms/apm-unix | sh
+
+# Register the companion marketplaces catalogued in apm.yml
+bash scripts/register-required-marketplaces.sh
+
+# Install the JTL skills for the Copilot target
+apm install cang-pham-codeleap/jtl-component-lib-plugin -t copilot
+apm compile -t copilot
+```
+
+`task-to-pr` requires Superpowers for FULL-tier design and planning:
+
+```bash
+copilot plugin marketplace add obra/superpowers-marketplace
+copilot plugin install superpowers@superpowers-marketplace
+```
+
+APM deploys skills to `.agents/skills/`, generates `AGENTS.md`, and adopts
+portable instructions under `.github/instructions/`; GitHub Copilot coding
+agent reads all three locations. It also installs the companion skills and
+runtime assets declared in `apm.yml` from their canonical repositories; the
+required marketplace catalog remains available for plugin discovery and native
+Copilot plugin setup.
+For Copilot coding agent, configure optional repository MCP servers separately
+in GitHub repository Settings because APM cannot configure GitHub-hosted agent
+MCP settings. Make the repository's **Validate Cross-Harness Support** workflow
+a required branch-protection check before merge.
+
 ### Prerequisite — Register the required marketplaces
 
 `comp-lib-process` depends on plugins hosted in other marketplaces. Claude Code
@@ -179,9 +215,7 @@ Options: `--scope staged`, `--scope last-commit`, `--focus security`
   marketplace.json   ← CL-AI-Toolbox registry entry
 plugins/
   comp-lib-process/
-    deps.json        ← required companion plugins
     hooks/
-      ensure-deps.js            ← auto-installs companions on session start
       require-deep-explore.sh   ← blocks raw file reads from main agent
       require-deep-explore-agent.sh ← redirects Explore subagent to deep-explore
     agents/
@@ -199,7 +233,7 @@ plugins/
 
 ## Required Companions
 
-Installed automatically by the `SessionStart` hook:
+Installed through Claude Code's native plugin dependency manifest:
 
 | Plugin         | Purpose                                                             |
 | -------------- | ------------------------------------------------------------------- |
@@ -210,4 +244,4 @@ Installed automatically by the `SessionStart` hook:
 
 ## Contributing
 
-Target the `dev` branch. Fill in all PR template sections. Skills live in `plugins/comp-lib-process/skills/<name>/SKILL.md`.
+Target the `main` branch. Fill in all PR template sections. Skills live in `plugins/comp-lib-process/skills/<name>/SKILL.md`.

@@ -1,0 +1,4 @@
+name: ticket-intake
+version: 1.7.0
+description: Load and sanitize GitHub or Jira ticket context.
+includes: auto

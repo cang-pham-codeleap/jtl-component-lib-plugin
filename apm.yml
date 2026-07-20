@@ -1,0 +1,48 @@
+name: jtl-component-lib-plugin
+version: 1.7.0
+description: Portable JTL component-library agent configuration.
+includes: auto
+targets:
+  - copilot
+# APM registers marketplaces in user/CI state, not in its dependency schema.
+# This catalog keeps the required sources versioned with the project; run
+# scripts/register-required-marketplaces.sh to register them before installing.
+requiredMarketplaces:
+  caveman:
+    source: juliusbrussee/caveman
+  ponytail:
+    source: DietrichGebert/ponytail
+  context-mode:
+    source: mksglu/context-mode
+  superpowers-marketplace:
+    source: obra/superpowers-marketplace
+  jtl-component-lib-plugin:
+    source: cang-pham-codeleap/jtl-component-lib-plugin
+dependencies:
+  apm:
+    # Installed from the required marketplaces above. Git references avoid the
+    # APM 0.26 marketplace-lock identity mismatch in frozen CI installs.
+    - juliusbrussee/caveman
+    - DietrichGebert/ponytail
+    - mksglu/context-mode
+    - obra/superpowers
+    - ./plugins/comp-lib-process/skills/create-pr
+    - ./plugins/comp-lib-process/skills/create-ticket
+    - ./plugins/comp-lib-process/skills/debt-review
+    - ./plugins/comp-lib-process/skills/figma-fetching
+    - ./plugins/comp-lib-process/skills/html-diagram
+    - ./plugins/comp-lib-process/skills/improve-codebase-architecture
+    - ./plugins/comp-lib-process/skills/jtl-init
+    - ./plugins/comp-lib-process/skills/reflect
+    - ./plugins/comp-lib-process/skills/resolve-pr-comment
+    - ./plugins/comp-lib-process/skills/shadcn
+    - ./plugins/comp-lib-process/skills/task-to-pr
+    - ./plugins/comp-lib-process/skills/teach-back-verification
+    - ./plugins/comp-lib-process/skills/ticket-intake
+    - ./plugins/comp-lib-process/skills/verify-ticket
+  mcp:
+    - name: codegraph
+      registry: false
+      transport: stdio
+      command: codegraph
+      args: ["serve", "--mcp"]

@@ -11,3 +11,10 @@ triage/
 # development (see CLAUDE.md / README.md). It is not part of the published
 # plugin, so the whole directory is ignored here.
 evals/
+
+
+# APM dependencies
+apm_modules/
+
+# Generated Copilot skills are deployed in consumer repositories by APM.
+.agents/
