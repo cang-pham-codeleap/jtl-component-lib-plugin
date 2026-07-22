@@ -1,10 +1,23 @@
 lockfile_version: '1'
-generated_at: '2026-07-22T03:49:55.828413+00:00'
+generated_at: '2026-07-22T07:22:09.034224+00:00'
 apm_version: 0.26.0
 dependencies:
+- repo_url: _local/create-jira-ticket
+  name: create-jira-ticket
+  version: 1.8.0
+  package_type: hybrid
+  deployed_files:
+  - .agents/skills/create-jira-ticket
+  - .agents/skills/create-jira-ticket/SKILL.md
+  - .agents/skills/create-jira-ticket/apm.yml
+  deployed_file_hashes:
+    .agents/skills/create-jira-ticket/SKILL.md: sha256:1534736b7079013e6117ff3fd850dc4cb3c213bafc4d9f61d2018ed639d0ba4b
+    .agents/skills/create-jira-ticket/apm.yml: sha256:8bc3acc4915d4f31218a55dfdb0dcdb0b98d7d1138e4d1b4581c7e55b4e16a5b
+  source: local
+  local_path: ./plugins/comp-lib-process/skills/create-jira-ticket
 - repo_url: _local/create-pr
   name: create-pr
-  version: 1.7.0
+  version: 1.8.0
   package_type: hybrid
   deployed_files:
   - .agents/skills/create-pr
@@ -12,12 +25,12 @@ dependencies:
   - .agents/skills/create-pr/apm.yml
   deployed_file_hashes:
     .agents/skills/create-pr/SKILL.md: sha256:0b6059a1d80c2d856edc16c6fa2d6d76cfe11b538898e5dfe4de4306a8bcd94b
-    .agents/skills/create-pr/apm.yml: sha256:c4e81cd9eb61f7f27a239c0401929996649bcee06c94f9c99f176c3d5763a2ed
+    .agents/skills/create-pr/apm.yml: sha256:4d402df8b043526d51903932a1d35767a5ec27942f545e065e667b156c575c2e
   source: local
   local_path: ./plugins/comp-lib-process/skills/create-pr
 - repo_url: _local/create-ticket
   name: create-ticket
-  version: 1.7.0
+  version: 1.8.0
   package_type: hybrid
   deployed_files:
   - .agents/skills/create-ticket
@@ -27,12 +40,12 @@ dependencies:
   deployed_file_hashes:
     .agents/skills/create-ticket/SKILL.md: sha256:f2bfd6d5cb4fbc322153a9e62c457431c823298154cabb33bc48f9a6480d70be
     .agents/skills/create-ticket/TICKET_TEMPLATE.md: sha256:27de2f90184432d1ee04cb8580364da8bbc7d421ec7655a8ab434566aa2dd0e7
-    .agents/skills/create-ticket/apm.yml: sha256:0ab610bc735f3b9c708f9236a7ad084f015ec538f96d9878eb437280084bb77a
+    .agents/skills/create-ticket/apm.yml: sha256:657e3b616ad45fcfe95f775d652fa22235480215416f26cfbf44e6e09ec816e2
   source: local
   local_path: ./plugins/comp-lib-process/skills/create-ticket
 - repo_url: _local/debt-review
   name: debt-review
-  version: 1.7.0
+  version: 1.8.0
   package_type: hybrid
   deployed_files:
   - .agents/skills/debt-review
@@ -40,12 +53,12 @@ dependencies:
   - .agents/skills/debt-review/apm.yml
   deployed_file_hashes:
     .agents/skills/debt-review/SKILL.md: sha256:57e3000a6271b5cd7f96036662fe8ea2772f2ec14522ee6dd6b0c17a13551b03
-    .agents/skills/debt-review/apm.yml: sha256:05704c6ad5a3ebd99e22978a486a402435b1c942617f87c1f1069fc0d80795ec
+    .agents/skills/debt-review/apm.yml: sha256:3637cd1aaa9c1c293415151e78e664aa48eeb193a9a2ab025703dc23e678dc15
   source: local
   local_path: ./plugins/comp-lib-process/skills/debt-review
 - repo_url: _local/figma-fetching
   name: figma-fetching
-  version: 1.7.0
+  version: 1.8.0
   package_type: hybrid
   deployed_files:
   - .agents/skills/figma-fetching
@@ -53,12 +66,12 @@ dependencies:
   - .agents/skills/figma-fetching/apm.yml
   deployed_file_hashes:
     .agents/skills/figma-fetching/SKILL.md: sha256:a4638dc43fe920bda04f0ade6c0aba7568d510809a213045db7ba1c714e954f4
-    .agents/skills/figma-fetching/apm.yml: sha256:1d18271fe7d4dffb8d4f10027bccc4e73d70e5228194d6c10882abd7cd450668
+    .agents/skills/figma-fetching/apm.yml: sha256:e3d01e2fd0f556390962da454fd425a7519571b2db7d1e886e8d1985ca790185
   source: local
   local_path: ./plugins/comp-lib-process/skills/figma-fetching
 - repo_url: _local/html-diagram
   name: html-diagram
-  version: 1.7.0
+  version: 1.8.0
   package_type: hybrid
   deployed_files:
   - .agents/skills/html-diagram
@@ -94,7 +107,7 @@ dependencies:
   deployed_file_hashes:
     .agents/skills/html-diagram/SKILL.md: sha256:9e914874fb1a5fb1464c664607a715f7a38115e9f741a92eddbd206490cff646
     .agents/skills/html-diagram/agents/openai.yaml: sha256:c48fb57cec2e623ba6a0ba547b963c6402b95b96517c1c5d84f088fe96543767
-    .agents/skills/html-diagram/apm.yml: sha256:8aadfd4ad2c4d1aecd69711c35432f070691a29f23a03f0d52ef47e8aca2e88c
+    .agents/skills/html-diagram/apm.yml: sha256:5dc4c253603305e074c1d04f591854dab790a454341c7d73423fc69360d35865
     .agents/skills/html-diagram/references/architecture-example.html: sha256:b72dfce07af04a7df124f8f7fe5fba92f035eababd82ca66318960d4e50c33d1
     .agents/skills/html-diagram/references/html-effectiveness/01-exploration-code-approaches.html: sha256:af7d5651f1dedec3ad8bd724e2f0bc92725dbde74518963e774f464996c80af4
     .agents/skills/html-diagram/references/html-effectiveness/02-exploration-visual-designs.html: sha256:5c50ddb8415dbde8248cb97fab1e8cbbfabb35f2ad3718bc3c313b319dee4227
@@ -125,7 +138,7 @@ dependencies:
   local_path: ./plugins/comp-lib-process/skills/html-diagram
 - repo_url: _local/improve-codebase-architecture
   name: improve-codebase-architecture
-  version: 1.7.0
+  version: 1.8.0
   package_type: hybrid
   deployed_files:
   - .agents/skills/improve-codebase-architecture
@@ -141,12 +154,12 @@ dependencies:
     .agents/skills/improve-codebase-architecture/INTERFACE-DESIGN.md: sha256:678c3e34f1339015053212b3316bf0b676c70aa251050a0613667d4e755fb35e
     .agents/skills/improve-codebase-architecture/LANGUAGE.md: sha256:6feca2140439c54a774749e8367f18350899ff69c777144ed2248cd4407949fa
     .agents/skills/improve-codebase-architecture/SKILL.md: sha256:f00de04c7bb83cfd0ed1f97f3401a83838212c30856912ee44ba406649e6c749
-    .agents/skills/improve-codebase-architecture/apm.yml: sha256:ecde1ac4b4e1a0bf01bbf74ecd708d0f2f51b16cca055629ddcbb3c41137c684
+    .agents/skills/improve-codebase-architecture/apm.yml: sha256:be6bc5cfe83ed92125a12e3546987cfb377926fe65655c1cfe61a71fb301328c
   source: local
   local_path: ./plugins/comp-lib-process/skills/improve-codebase-architecture
 - repo_url: _local/jtl-init
   name: jtl-init
-  version: 1.7.0
+  version: 1.8.0
   package_type: hybrid
   deployed_files:
   - .agents/skills/jtl-init
@@ -175,7 +188,7 @@ dependencies:
   - .agents/skills/jtl-init/templates/docs/agents/registry.md
   deployed_file_hashes:
     .agents/skills/jtl-init/SKILL.md: sha256:4143bf54caa07017d2bb60d6811c172aef1327f83776028c0ba66d6552cf1992
-    .agents/skills/jtl-init/apm.yml: sha256:28ba531c8654be7234584abb19dddfedd0a7d9b74adb0a55651d01e2c13256d4
+    .agents/skills/jtl-init/apm.yml: sha256:343548c261208965d7b424720160bb40079f1962cfb5f2260ef7d06970446d6c
     .agents/skills/jtl-init/scaffold-agent-docs.sh: sha256:32f972a0ae8537fdae69f09a4b106e84f2fb8e23518ee00ad310050219ec119d
     .agents/skills/jtl-init/templates/AGENTS.md: sha256:24fa3a63eb4f7a0f2c2192a959eb7811e2a040ef270535fa4a3f9509b4c1e8ed
     .agents/skills/jtl-init/templates/CLAUDE.md: sha256:325c4e7ebfd99c711bd468636e6ee54b6f47803a1f886e80020adcf5bb66aa18
@@ -201,7 +214,7 @@ dependencies:
   local_path: ./plugins/comp-lib-process/skills/jtl-init
 - repo_url: _local/reflect
   name: reflect
-  version: 1.7.0
+  version: 1.8.0
   package_type: hybrid
   deployed_files:
   - .agents/skills/reflect
@@ -209,12 +222,12 @@ dependencies:
   - .agents/skills/reflect/apm.yml
   deployed_file_hashes:
     .agents/skills/reflect/SKILL.md: sha256:e84c8432621222ea6bf2bdaa8b0d1703c0cb620d6e88210a2edd9af2d9f5faa3
-    .agents/skills/reflect/apm.yml: sha256:aa9acdd173190870a13ed279c1c78e976b48bce6b094ca6072da2038e79da96f
+    .agents/skills/reflect/apm.yml: sha256:2ceef9c870427464b74b63d7c69848b9b01cfcbcc45e9423a97c7599b63a7d72
   source: local
   local_path: ./plugins/comp-lib-process/skills/reflect
 - repo_url: _local/resolve-pr-comment
   name: resolve-pr-comment
-  version: 1.7.0
+  version: 1.8.0
   package_type: hybrid
   deployed_files:
   - .agents/skills/resolve-pr-comment
@@ -222,12 +235,12 @@ dependencies:
   - .agents/skills/resolve-pr-comment/apm.yml
   deployed_file_hashes:
     .agents/skills/resolve-pr-comment/SKILL.md: sha256:86dc4170bbc03bd58843b6a74dfcb132f4b1304db03b61c524596f7041eb1326
-    .agents/skills/resolve-pr-comment/apm.yml: sha256:1a4f88faa4a09b037f657cd9861eb12669d2f0092b333a101dbd8adcf56a8a1b
+    .agents/skills/resolve-pr-comment/apm.yml: sha256:3efc56c6581f54f7918aa64e63e0815535c733103515f003722731edcf6f5f50
   source: local
   local_path: ./plugins/comp-lib-process/skills/resolve-pr-comment
 - repo_url: _local/shadcn
   name: shadcn
-  version: 1.7.0
+  version: 1.8.0
   package_type: hybrid
   deployed_files:
   - .agents/skills/shadcn
@@ -249,7 +262,7 @@ dependencies:
   deployed_file_hashes:
     .agents/skills/shadcn/SKILL.md: sha256:75e9d038e282bb900e46fa63f10ff4fe8ed3945ef092a8dddf22de9c2546760c
     .agents/skills/shadcn/agents/openai.yml: sha256:35db91b1eef58b2abe01da9b88577de5a44e233b740cd93d692ddeeadd2afe4d
-    .agents/skills/shadcn/apm.yml: sha256:40b5f7a1f639ff2f77f682da9e93b7b199213b58e3dad10207f63440ac0dd6ba
+    .agents/skills/shadcn/apm.yml: sha256:54fa411e5b5cad8633a3ab5731937a0197fd24ef66ecc43f131304f82379b9c1
     .agents/skills/shadcn/assets/shadcn-small.png: sha256:0ecc62d682727f68fc4937eed19960c706714fa084d44f63028d611ae02bf3d7
     .agents/skills/shadcn/assets/shadcn.png: sha256:7d60ad6fec4d89a0d44ba5a3c9283d2fea0047af5467f9227040e20d927d39b7
     .agents/skills/shadcn/cli.md: sha256:a381e35bf36fe7bb851952c13707e01e82434fd7a4a4e53f6df26c6370838904
@@ -266,7 +279,7 @@ dependencies:
   local_path: ./plugins/comp-lib-process/skills/shadcn
 - repo_url: _local/task-to-pr
   name: task-to-pr
-  version: 1.7.0
+  version: 1.8.0
   package_type: hybrid
   deployed_files:
   - .agents/skills/task-to-pr
@@ -280,7 +293,7 @@ dependencies:
   - .agents/skills/task-to-pr/task-to-pr-architecture.html
   deployed_file_hashes:
     .agents/skills/task-to-pr/SKILL.md: sha256:86d57225f4f56348be494665a9131d66dab236128861fa64f70de1da95dabaf8
-    .agents/skills/task-to-pr/apm.yml: sha256:c9809548e5e0d611c002cb6354fdba455ee59b6d59fcedddbfc3f4f6117cd101
+    .agents/skills/task-to-pr/apm.yml: sha256:22e9011adf39670ac2a33c7b389eebb4fd8696f94f0eb8962f71fa6d6de7ce27
     .agents/skills/task-to-pr/references/automation.md: sha256:737ef9cf48bef7012981a0f8ac102ba3866ba6ad2e23d050fb429dff4f4ad786
     .agents/skills/task-to-pr/references/model-routing.md: sha256:32a0b9a0f50a9760a93835222e2e17b88a5af506deab6566653e42b7864c361b
     .agents/skills/task-to-pr/references/reviewer-prompt.md: sha256:4a9c125368f97414be10f2dc4af7b10ce5139cf70b378b672e6ac53b1e94cd5b
@@ -291,7 +304,7 @@ dependencies:
   local_path: ./plugins/comp-lib-process/skills/task-to-pr
 - repo_url: _local/teach-back-verification
   name: teach-back-verification
-  version: 1.7.0
+  version: 1.8.0
   package_type: hybrid
   deployed_files:
   - .agents/skills/teach-back-verification
@@ -300,13 +313,13 @@ dependencies:
   - .agents/skills/teach-back-verification/report-template.html
   deployed_file_hashes:
     .agents/skills/teach-back-verification/SKILL.md: sha256:8e7f8e14dcc1cd82d0d6097d10bf951d514452030660e4537f2588ff5064ba03
-    .agents/skills/teach-back-verification/apm.yml: sha256:0b794ca2badd3c7e5ac86f514a896d8af628b841d3ccf7426e1882b79ec32c4b
+    .agents/skills/teach-back-verification/apm.yml: sha256:d49a251fb81e1737aaa7771eb3d6bb7b9211ac8ae0cbb8e309bdb4ad4b516210
     .agents/skills/teach-back-verification/report-template.html: sha256:731f61adc553d8a3d796966f4fc1dd80e3b0a3282399e2bb8b64530347bea859
   source: local
   local_path: ./plugins/comp-lib-process/skills/teach-back-verification
 - repo_url: _local/ticket-intake
   name: ticket-intake
-  version: 1.7.0
+  version: 1.8.0
   package_type: hybrid
   deployed_files:
   - .agents/skills/ticket-intake
@@ -314,12 +327,12 @@ dependencies:
   - .agents/skills/ticket-intake/apm.yml
   deployed_file_hashes:
     .agents/skills/ticket-intake/SKILL.md: sha256:6fa0b5e8bf1d099e4ca6813b80e82fe683b20379da3160a5f68776e733fbcd24
-    .agents/skills/ticket-intake/apm.yml: sha256:54de56ea97a94ca0145fc79b01e9f0e465b00fb1c441cc7becd2a5167d92769a
+    .agents/skills/ticket-intake/apm.yml: sha256:da9e82d36fd4bad9f138cc2b01f9ab7188d83d6152bb802dc9f4be82f33bc94c
   source: local
   local_path: ./plugins/comp-lib-process/skills/ticket-intake
 - repo_url: _local/verify-ticket
   name: verify-ticket
-  version: 1.7.0
+  version: 1.8.0
   package_type: hybrid
   deployed_files:
   - .agents/skills/verify-ticket
@@ -327,7 +340,7 @@ dependencies:
   - .agents/skills/verify-ticket/apm.yml
   deployed_file_hashes:
     .agents/skills/verify-ticket/SKILL.md: sha256:326100aff6704c85e2cdbb312a96dc7c8d3c50f6e9c1ae758ca7c1f944fb2630
-    .agents/skills/verify-ticket/apm.yml: sha256:21d9bde3bfe8430f631a1f96c4c5eccf82b9a85a4cf9fa6e9a110e1aef9da933
+    .agents/skills/verify-ticket/apm.yml: sha256:6d8e6cf51b09fdc834d123ed4b3529e26bc69ac12030cfc14d76281967dbff29
   source: local
   local_path: ./plugins/comp-lib-process/skills/verify-ticket
 - repo_url: dietrichgebert/ponytail
@@ -487,7 +500,7 @@ dependencies:
 - repo_url: mksglu/context-mode
   name: context-mode
   host: github.com
-  resolved_commit: 3e530617e7ddee634b943ba99aa3aa08185cf0fd
+  resolved_commit: 51e0f50c57313abec7bdab60c02d20aae6bf78bb
   version: 1.0.169
   package_type: marketplace_plugin
   deployed_files:
@@ -698,7 +711,7 @@ dependencies:
     .github/hooks/scripts/context-mode/hooks/vscode-copilot/precompact.mjs: sha256:f0fd3d554217dad75aefe8065ea8cc96d69e86265a5f870a858db571ad5328b3
     .github/hooks/scripts/context-mode/hooks/vscode-copilot/pretooluse.mjs: sha256:a31fc7e70af84b679eb135820ca060eb1b2f755213811f9a0005c09e3ec83885
     .github/hooks/scripts/context-mode/hooks/vscode-copilot/sessionstart.mjs: sha256:6b5854d407c8aa41495418d675eae0a77adc0c095f41dc0e9e8694a6ca4fcd42
-  content_hash: sha256:c9fa9aad1283745c965d133d9cdf0bf2163c3912970f29e9e1fcf14aa8a9e656
+  content_hash: sha256:933b741d0eefff50682131759112b9e58ada18a6931e0c5567ab2fe169b4dc8d
   declared_license: Elastic-2.0
 - repo_url: obra/superpowers
   name: superpowers
@@ -1225,6 +1238,33 @@ deployments:
   content_hash: sha256:34be33127c296b273e03cf1d8c373c57083e160a1a2ac3876dca010c74689877
 - kind: project-relative
   target: copilot
+  value: .agents/skills/create-jira-ticket
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/create-jira-ticket
+  active_owner: ./plugins/comp-lib-process/skills/create-jira-ticket
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/create-jira-ticket/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/create-jira-ticket
+  active_owner: ./plugins/comp-lib-process/skills/create-jira-ticket
+  content_hash: sha256:1534736b7079013e6117ff3fd850dc4cb3c213bafc4d9f61d2018ed639d0ba4b
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/create-jira-ticket/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/create-jira-ticket
+  active_owner: ./plugins/comp-lib-process/skills/create-jira-ticket
+  content_hash: sha256:8bc3acc4915d4f31218a55dfdb0dcdb0b98d7d1138e4d1b4581c7e55b4e16a5b
+- kind: project-relative
+  target: copilot
   value: .agents/skills/create-pr
   runtime: null
   scope: project
@@ -1249,7 +1289,7 @@ deployments:
   owners:
   - ./plugins/comp-lib-process/skills/create-pr
   active_owner: ./plugins/comp-lib-process/skills/create-pr
-  content_hash: sha256:c4e81cd9eb61f7f27a239c0401929996649bcee06c94f9c99f176c3d5763a2ed
+  content_hash: sha256:4d402df8b043526d51903932a1d35767a5ec27942f545e065e667b156c575c2e
 - kind: project-relative
   target: copilot
   value: .agents/skills/create-ticket
@@ -1285,7 +1325,7 @@ deployments:
   owners:
   - ./plugins/comp-lib-process/skills/create-ticket
   active_owner: ./plugins/comp-lib-process/skills/create-ticket
-  content_hash: sha256:0ab610bc735f3b9c708f9236a7ad084f015ec538f96d9878eb437280084bb77a
+  content_hash: sha256:657e3b616ad45fcfe95f775d652fa22235480215416f26cfbf44e6e09ec816e2
 - kind: project-relative
   target: copilot
   value: .agents/skills/ctx-doctor
@@ -1438,7 +1478,7 @@ deployments:
   owners:
   - ./plugins/comp-lib-process/skills/debt-review
   active_owner: ./plugins/comp-lib-process/skills/debt-review
-  content_hash: sha256:05704c6ad5a3ebd99e22978a486a402435b1c942617f87c1f1069fc0d80795ec
+  content_hash: sha256:3637cd1aaa9c1c293415151e78e664aa48eeb193a9a2ab025703dc23e678dc15
 - kind: project-relative
   target: copilot
   value: .agents/skills/dispatching-parallel-agents
@@ -1501,7 +1541,7 @@ deployments:
   owners:
   - ./plugins/comp-lib-process/skills/figma-fetching
   active_owner: ./plugins/comp-lib-process/skills/figma-fetching
-  content_hash: sha256:1d18271fe7d4dffb8d4f10027bccc4e73d70e5228194d6c10882abd7cd450668
+  content_hash: sha256:e3d01e2fd0f556390962da454fd425a7519571b2db7d1e886e8d1985ca790185
 - kind: project-relative
   target: copilot
   value: .agents/skills/finishing-a-development-branch
@@ -1555,7 +1595,7 @@ deployments:
   owners:
   - ./plugins/comp-lib-process/skills/html-diagram
   active_owner: ./plugins/comp-lib-process/skills/html-diagram
-  content_hash: sha256:8aadfd4ad2c4d1aecd69711c35432f070691a29f23a03f0d52ef47e8aca2e88c
+  content_hash: sha256:5dc4c253603305e074c1d04f591854dab790a454341c7d73423fc69360d35865
 - kind: project-relative
   target: copilot
   value: .agents/skills/html-diagram/references/architecture-example.html
@@ -1852,7 +1892,7 @@ deployments:
   owners:
   - ./plugins/comp-lib-process/skills/improve-codebase-architecture
   active_owner: ./plugins/comp-lib-process/skills/improve-codebase-architecture
-  content_hash: sha256:ecde1ac4b4e1a0bf01bbf74ecd708d0f2f51b16cca055629ddcbb3c41137c684
+  content_hash: sha256:be6bc5cfe83ed92125a12e3546987cfb377926fe65655c1cfe61a71fb301328c
 - kind: project-relative
   target: copilot
   value: .agents/skills/jtl-init
@@ -1879,7 +1919,7 @@ deployments:
   owners:
   - ./plugins/comp-lib-process/skills/jtl-init
   active_owner: ./plugins/comp-lib-process/skills/jtl-init
-  content_hash: sha256:28ba531c8654be7234584abb19dddfedd0a7d9b74adb0a55651d01e2c13256d4
+  content_hash: sha256:343548c261208965d7b424720160bb40079f1962cfb5f2260ef7d06970446d6c
 - kind: project-relative
   target: copilot
   value: .agents/skills/jtl-init/scaffold-agent-docs.sh
@@ -2221,7 +2261,7 @@ deployments:
   owners:
   - ./plugins/comp-lib-process/skills/reflect
   active_owner: ./plugins/comp-lib-process/skills/reflect
-  content_hash: sha256:aa9acdd173190870a13ed279c1c78e976b48bce6b094ca6072da2038e79da96f
+  content_hash: sha256:2ceef9c870427464b74b63d7c69848b9b01cfcbcc45e9423a97c7599b63a7d72
 - kind: project-relative
   target: copilot
   value: .agents/skills/requesting-code-review
@@ -2275,7 +2315,7 @@ deployments:
   owners:
   - ./plugins/comp-lib-process/skills/resolve-pr-comment
   active_owner: ./plugins/comp-lib-process/skills/resolve-pr-comment
-  content_hash: sha256:1a4f88faa4a09b037f657cd9861eb12669d2f0092b333a101dbd8adcf56a8a1b
+  content_hash: sha256:3efc56c6581f54f7918aa64e63e0815535c733103515f003722731edcf6f5f50
 - kind: project-relative
   target: copilot
   value: .agents/skills/shadcn
@@ -2311,7 +2351,7 @@ deployments:
   owners:
   - ./plugins/comp-lib-process/skills/shadcn
   active_owner: ./plugins/comp-lib-process/skills/shadcn
-  content_hash: sha256:40b5f7a1f639ff2f77f682da9e93b7b199213b58e3dad10207f63440ac0dd6ba
+  content_hash: sha256:54fa411e5b5cad8633a3ab5731937a0197fd24ef66ecc43f131304f82379b9c1
 - kind: project-relative
   target: copilot
   value: .agents/skills/shadcn/assets/shadcn-small.png
@@ -2617,7 +2657,7 @@ deployments:
   owners:
   - ./plugins/comp-lib-process/skills/task-to-pr
   active_owner: ./plugins/comp-lib-process/skills/task-to-pr
-  content_hash: sha256:c9809548e5e0d611c002cb6354fdba455ee59b6d59fcedddbfc3f4f6117cd101
+  content_hash: sha256:22e9011adf39670ac2a33c7b389eebb4fd8696f94f0eb8962f71fa6d6de7ce27
 - kind: project-relative
   target: copilot
   value: .agents/skills/task-to-pr/references/automation.md
@@ -2698,7 +2738,7 @@ deployments:
   owners:
   - ./plugins/comp-lib-process/skills/teach-back-verification
   active_owner: ./plugins/comp-lib-process/skills/teach-back-verification
-  content_hash: sha256:0b794ca2badd3c7e5ac86f514a896d8af628b841d3ccf7426e1882b79ec32c4b
+  content_hash: sha256:d49a251fb81e1737aaa7771eb3d6bb7b9211ac8ae0cbb8e309bdb4ad4b516210
 - kind: project-relative
   target: copilot
   value: .agents/skills/teach-back-verification/report-template.html
@@ -2761,7 +2801,7 @@ deployments:
   owners:
   - ./plugins/comp-lib-process/skills/ticket-intake
   active_owner: ./plugins/comp-lib-process/skills/ticket-intake
-  content_hash: sha256:54de56ea97a94ca0145fc79b01e9f0e465b00fb1c441cc7becd2a5167d92769a
+  content_hash: sha256:da9e82d36fd4bad9f138cc2b01f9ab7188d83d6152bb802dc9f4be82f33bc94c
 - kind: project-relative
   target: copilot
   value: .agents/skills/using-git-worktrees
@@ -2869,7 +2909,7 @@ deployments:
   owners:
   - ./plugins/comp-lib-process/skills/verify-ticket
   active_owner: ./plugins/comp-lib-process/skills/verify-ticket
-  content_hash: sha256:21d9bde3bfe8430f631a1f96c4c5eccf82b9a85a4cf9fa6e9a110e1aef9da933
+  content_hash: sha256:6d8e6cf51b09fdc834d123ed4b3529e26bc69ac12030cfc14d76281967dbff29
 - kind: project-relative
   target: copilot
   value: .agents/skills/writing-plans

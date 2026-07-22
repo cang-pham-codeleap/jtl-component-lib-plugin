@@ -1,4 +1,4 @@
 name: debt-review
-version: 1.7.0
+version: 1.8.0
 description: Review technical debt in the current branch.
 includes: auto

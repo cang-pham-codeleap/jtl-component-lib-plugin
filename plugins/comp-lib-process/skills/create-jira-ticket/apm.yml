@@ -1,0 +1,4 @@
+name: create-jira-ticket
+version: 1.8.0
+description: Create a Jira ticket in the JTL Cloud Platform (CP) project from a raw problem description.
+includes: auto

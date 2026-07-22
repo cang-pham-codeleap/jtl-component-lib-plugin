@@ -53,6 +53,7 @@ skills/     Workflow skills (SKILL.md + supporting assets)
 | [`verify-ticket`](skills/verify-ticket/SKILL.md)                                 | Validate a ticket's claim (bug real? feature exists?) before branching/build                                               |
 | [`figma-fetching`](skills/figma-fetching/SKILL.md)                               | A Figma design URL appears in a ticket or message                                                                          |
 | [`create-ticket`](skills/create-ticket/SKILL.md)                                 | Freeform work with no GitHub issue/Jira key yet                                                                            |
+| [`create-jira-ticket`](skills/create-jira-ticket/SKILL.md)                       | Create/file a new Jira ticket in the CP project, or write one in the same format as a reference ticket                     |
 | [`debt-review`](skills/debt-review/SKILL.md)                                     | Check technical debt on the current PR/branch vs `main`                                                                    |
 | [`resolve-pr-comment`](skills/resolve-pr-comment/SKILL.md)                       | Verify and fix open PR review threads before merge                                                                         |
 | [`reflect`](skills/reflect/SKILL.md)                                             | Notify the ticket (GitHub/Jira comment + transition) after a PR exists                                                     |
