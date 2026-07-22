@@ -2,7 +2,14 @@
   "name": "comp-lib-process",
   "version": "1.8.0",
   "description": "AI coding agent skills and configurations for the JTL project",
-  "keywords": ["component-library", "shadcn", "react", "jtl", "codegraph", "jira"],
+  "keywords": [
+    "component-library",
+    "shadcn",
+    "react",
+    "jtl",
+    "codegraph",
+    "jira"
+  ],
   "author": {
     "name": "Cang Pham",
     "email": "cang.pham@codeleap.de"
