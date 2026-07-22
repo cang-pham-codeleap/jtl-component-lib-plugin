@@ -1,0 +1,4 @@
+name: jtl-init
+version: 1.7.0
+description: Initialize JTL component-library agent tooling.
+includes: auto

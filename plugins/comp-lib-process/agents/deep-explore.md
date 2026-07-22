@@ -1,8 +1,10 @@
 ---
 name: deep-explore
 description: "**MUST be invoked before any Read/Grep/Glob/ctx_*/codegraph_* exploration on a new task.** Discovery + context-gathering agent. Routes fastest first: codegraph/code-review-graph → RTK → context-mode → Native Read."
-tools: "Read, Edit, Bash, mcp__plugin_context-mode_context-mode__ctx_batch_execute, mcp__plugin_context-mode_context-mode__ctx_search, mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, mcp__plugin_context-mode_context-mode__ctx_fetch_and_index, mcp__plugin_context-mode_context-mode__ctx_index, mcp__codegraph__codegraph_search, mcp__codegraph__codegraph_context, mcp__codegraph__codegraph_trace, mcp__codegraph__codegraph_callers, mcp__codegraph__codegraph_callees, mcp__codegraph__codegraph_impact, mcp__codegraph__codegraph_node, mcp__codegraph__codegraph_explore, mcp__codegraph__codegraph_files, mcp__codegraph__codegraph_status, mcp__code-review-graph__semantic_search_nodes_tool, mcp__code-review-graph__query_graph_tool, mcp__code-review-graph__traverse_graph_tool, mcp__code-review-graph__get_impact_radius_tool, mcp__code-review-graph__get_affected_flows_tool, mcp__code-review-graph__get_architecture_overview_tool, mcp__code-review-graph__get_review_context_tool, mcp__code-review-graph__detect_changes_tool, mcp__code-review-graph__get_flow_tool, mcp__code-review-graph__list_flows_tool, mcp__code-review-graph__get_minimal_context_tool, mcp__code-review-graph__get_hub_nodes_tool, mcp__code-review-graph__get_bridge_nodes_tool, mcp__code-review-graph__get_knowledge_gaps_tool, mcp__code-review-graph__list_communities_tool, mcp__code-review-graph__get_community_tool"
-model: haiku
+tools: "Read, Edit, Bash, mcp__plugin_context-mode_context-mode__ctx_batch_execute, mcp__plugin_context-mode_context-mode__ctx_search, mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, mcp__plugin_context-mode_context-mode__ctx_fetch_and_index, mcp__plugin_context-mode_context-mode__ctx_index, mcp__codegraph__codegraph_search, mcp__codegraph__codegraph_context, mcp__codegraph__codegraph_trace, mcp__codegraph__codegraph_callers, mcp__codegraph__codegraph_callees, mcp__codegraph__codegraph_impact, mcp__codegraph__codegraph_node, mcp__codegraph__codegraph_explore, mcp__codegraph__codegraph_files, mcp__codegraph__codegraph_status"
+model:
+  - GPT-5.4 mini (copilot)
+  - Claude Haiku 4.5 (copilot)
 color: cyan
 ---
 

@@ -1,0 +1,4134 @@
+lockfile_version: '1'
+generated_at: '2026-07-22T03:49:55.828413+00:00'
+apm_version: 0.26.0
+dependencies:
+- repo_url: _local/create-pr
+  name: create-pr
+  version: 1.7.0
+  package_type: hybrid
+  deployed_files:
+  - .agents/skills/create-pr
+  - .agents/skills/create-pr/SKILL.md
+  - .agents/skills/create-pr/apm.yml
+  deployed_file_hashes:
+    .agents/skills/create-pr/SKILL.md: sha256:0b6059a1d80c2d856edc16c6fa2d6d76cfe11b538898e5dfe4de4306a8bcd94b
+    .agents/skills/create-pr/apm.yml: sha256:c4e81cd9eb61f7f27a239c0401929996649bcee06c94f9c99f176c3d5763a2ed
+  source: local
+  local_path: ./plugins/comp-lib-process/skills/create-pr
+- repo_url: _local/create-ticket
+  name: create-ticket
+  version: 1.7.0
+  package_type: hybrid
+  deployed_files:
+  - .agents/skills/create-ticket
+  - .agents/skills/create-ticket/SKILL.md
+  - .agents/skills/create-ticket/TICKET_TEMPLATE.md
+  - .agents/skills/create-ticket/apm.yml
+  deployed_file_hashes:
+    .agents/skills/create-ticket/SKILL.md: sha256:f2bfd6d5cb4fbc322153a9e62c457431c823298154cabb33bc48f9a6480d70be
+    .agents/skills/create-ticket/TICKET_TEMPLATE.md: sha256:27de2f90184432d1ee04cb8580364da8bbc7d421ec7655a8ab434566aa2dd0e7
+    .agents/skills/create-ticket/apm.yml: sha256:0ab610bc735f3b9c708f9236a7ad084f015ec538f96d9878eb437280084bb77a
+  source: local
+  local_path: ./plugins/comp-lib-process/skills/create-ticket
+- repo_url: _local/debt-review
+  name: debt-review
+  version: 1.7.0
+  package_type: hybrid
+  deployed_files:
+  - .agents/skills/debt-review
+  - .agents/skills/debt-review/SKILL.md
+  - .agents/skills/debt-review/apm.yml
+  deployed_file_hashes:
+    .agents/skills/debt-review/SKILL.md: sha256:57e3000a6271b5cd7f96036662fe8ea2772f2ec14522ee6dd6b0c17a13551b03
+    .agents/skills/debt-review/apm.yml: sha256:05704c6ad5a3ebd99e22978a486a402435b1c942617f87c1f1069fc0d80795ec
+  source: local
+  local_path: ./plugins/comp-lib-process/skills/debt-review
+- repo_url: _local/figma-fetching
+  name: figma-fetching
+  version: 1.7.0
+  package_type: hybrid
+  deployed_files:
+  - .agents/skills/figma-fetching
+  - .agents/skills/figma-fetching/SKILL.md
+  - .agents/skills/figma-fetching/apm.yml
+  deployed_file_hashes:
+    .agents/skills/figma-fetching/SKILL.md: sha256:a4638dc43fe920bda04f0ade6c0aba7568d510809a213045db7ba1c714e954f4
+    .agents/skills/figma-fetching/apm.yml: sha256:1d18271fe7d4dffb8d4f10027bccc4e73d70e5228194d6c10882abd7cd450668
+  source: local
+  local_path: ./plugins/comp-lib-process/skills/figma-fetching
+- repo_url: _local/html-diagram
+  name: html-diagram
+  version: 1.7.0
+  package_type: hybrid
+  deployed_files:
+  - .agents/skills/html-diagram
+  - .agents/skills/html-diagram/SKILL.md
+  - .agents/skills/html-diagram/agents/openai.yaml
+  - .agents/skills/html-diagram/apm.yml
+  - .agents/skills/html-diagram/references/architecture-example.html
+  - .agents/skills/html-diagram/references/html-effectiveness/01-exploration-code-approaches.html
+  - .agents/skills/html-diagram/references/html-effectiveness/02-exploration-visual-designs.html
+  - .agents/skills/html-diagram/references/html-effectiveness/03-code-review-pr.html
+  - .agents/skills/html-diagram/references/html-effectiveness/04-code-understanding.html
+  - .agents/skills/html-diagram/references/html-effectiveness/05-design-system.html
+  - .agents/skills/html-diagram/references/html-effectiveness/06-component-variants.html
+  - .agents/skills/html-diagram/references/html-effectiveness/07-prototype-animation.html
+  - .agents/skills/html-diagram/references/html-effectiveness/08-prototype-interaction.html
+  - .agents/skills/html-diagram/references/html-effectiveness/09-slide-deck.html
+  - .agents/skills/html-diagram/references/html-effectiveness/10-svg-illustrations.html
+  - .agents/skills/html-diagram/references/html-effectiveness/11-status-report.html
+  - .agents/skills/html-diagram/references/html-effectiveness/12-incident-report.html
+  - .agents/skills/html-diagram/references/html-effectiveness/13-flowchart-diagram.html
+  - .agents/skills/html-diagram/references/html-effectiveness/14-research-feature-explainer.html
+  - .agents/skills/html-diagram/references/html-effectiveness/15-research-concept-explainer.html
+  - .agents/skills/html-diagram/references/html-effectiveness/16-implementation-plan.html
+  - .agents/skills/html-diagram/references/html-effectiveness/17-pr-writeup.html
+  - .agents/skills/html-diagram/references/html-effectiveness/18-editor-triage-board.html
+  - .agents/skills/html-diagram/references/html-effectiveness/19-editor-feature-flags.html
+  - .agents/skills/html-diagram/references/html-effectiveness/20-editor-prompt-tuner.html
+  - .agents/skills/html-diagram/references/html-effectiveness/CODE_OF_CONDUCT.md
+  - .agents/skills/html-diagram/references/html-effectiveness/LICENSE
+  - .agents/skills/html-diagram/references/html-effectiveness/README.md
+  - .agents/skills/html-diagram/references/html-effectiveness/SECURITY.md
+  - .agents/skills/html-diagram/references/html-effectiveness/index.html
+  deployed_file_hashes:
+    .agents/skills/html-diagram/SKILL.md: sha256:9e914874fb1a5fb1464c664607a715f7a38115e9f741a92eddbd206490cff646
+    .agents/skills/html-diagram/agents/openai.yaml: sha256:c48fb57cec2e623ba6a0ba547b963c6402b95b96517c1c5d84f088fe96543767
+    .agents/skills/html-diagram/apm.yml: sha256:8aadfd4ad2c4d1aecd69711c35432f070691a29f23a03f0d52ef47e8aca2e88c
+    .agents/skills/html-diagram/references/architecture-example.html: sha256:b72dfce07af04a7df124f8f7fe5fba92f035eababd82ca66318960d4e50c33d1
+    .agents/skills/html-diagram/references/html-effectiveness/01-exploration-code-approaches.html: sha256:af7d5651f1dedec3ad8bd724e2f0bc92725dbde74518963e774f464996c80af4
+    .agents/skills/html-diagram/references/html-effectiveness/02-exploration-visual-designs.html: sha256:5c50ddb8415dbde8248cb97fab1e8cbbfabb35f2ad3718bc3c313b319dee4227
+    .agents/skills/html-diagram/references/html-effectiveness/03-code-review-pr.html: sha256:c14a52aa31b3bd207b52490c7e967bf68ae1c3920199753ad189c1e35af8f23a
+    .agents/skills/html-diagram/references/html-effectiveness/04-code-understanding.html: sha256:b7c9a751c9170e34307a3fe15d0ed0e61a76bcccef3de355a167d910778f4157
+    .agents/skills/html-diagram/references/html-effectiveness/05-design-system.html: sha256:5f497b1667ddad12822a60906c3d57db98439b0540278431b3cc54201bb07903
+    .agents/skills/html-diagram/references/html-effectiveness/06-component-variants.html: sha256:dfc4783665998544c0883be3e12f8bcd45400e177acc0c90f76c998f51df31a7
+    .agents/skills/html-diagram/references/html-effectiveness/07-prototype-animation.html: sha256:07e908d47a14297e0feb8fb589d9102c5d8231792c95c08af3211c029fb904e1
+    .agents/skills/html-diagram/references/html-effectiveness/08-prototype-interaction.html: sha256:5e13db1460f9258a971b60339c2994140ece350c419b73d81d1fe83b591db51f
+    .agents/skills/html-diagram/references/html-effectiveness/09-slide-deck.html: sha256:1fa94d65c9aa8524bf7b562eaa9666900b317661e650fae1c223e3e30441c971
+    .agents/skills/html-diagram/references/html-effectiveness/10-svg-illustrations.html: sha256:33de35f9d5a6d1c4a412fbfafaef88595771aad03bb2f69d90ee4834239dde4a
+    .agents/skills/html-diagram/references/html-effectiveness/11-status-report.html: sha256:66f6eefaa632fbdb8dd9a96b588a5cf864d85ba188eb7dd1ed6edfbb25c20a09
+    .agents/skills/html-diagram/references/html-effectiveness/12-incident-report.html: sha256:f90ef9c3910803a3df2d75cc7fcd83d1f72b6c4494781fd239965c54e7efe2f6
+    .agents/skills/html-diagram/references/html-effectiveness/13-flowchart-diagram.html: sha256:86f9ff01431897849ae6fe12693864fbdf6c43eb271977eca416e071dc324ccf
+    .agents/skills/html-diagram/references/html-effectiveness/14-research-feature-explainer.html: sha256:79a6bfc0d3836898ffc0f39cefa11eab19e9a2e4fade708a81ac1d0f6a5612bb
+    .agents/skills/html-diagram/references/html-effectiveness/15-research-concept-explainer.html: sha256:1563ed1140ce0a04bc506758d378dc809c871c3112690cc654d34c1cc98e6c62
+    .agents/skills/html-diagram/references/html-effectiveness/16-implementation-plan.html: sha256:73e5c5cea0811576288f20765b9ec565c0ec0be7d026f760da4cba3f9462de5d
+    .agents/skills/html-diagram/references/html-effectiveness/17-pr-writeup.html: sha256:96c12f9545160cc1b5e5a38b53c32c443fcc304b49f56ccb26438d5094795b9b
+    .agents/skills/html-diagram/references/html-effectiveness/18-editor-triage-board.html: sha256:99d4f0832580e01a12872bb1abe18048180d1c6f158fc3613634e96306b1a723
+    .agents/skills/html-diagram/references/html-effectiveness/19-editor-feature-flags.html: sha256:9915ba51040854a4a50112016ced9b1f9ace831621d69802b70e07f9f756c180
+    .agents/skills/html-diagram/references/html-effectiveness/20-editor-prompt-tuner.html: sha256:a5663f4d361be2e2cadfd94e8f153d7b7484510a862a654106fb553c714baeae
+    .agents/skills/html-diagram/references/html-effectiveness/CODE_OF_CONDUCT.md: sha256:f44e3a122db6b68a60542fa39d59a4cc3a4d03cae3459bbcaf5cef1e356d9d73
+    .agents/skills/html-diagram/references/html-effectiveness/LICENSE: sha256:30deeaa611125310673e7c14b4892fb102fb56697ecfab3b49b77ca0190de7e1
+    .agents/skills/html-diagram/references/html-effectiveness/README.md: sha256:2875d5eea955b125bd73f0d6120c53458c2797b5a3513de52a21f16930f24cb0
+    .agents/skills/html-diagram/references/html-effectiveness/SECURITY.md: sha256:81b5410504d8e7f7cf71680b20043f8e2b01acbec56207561aa6bbec7ab998f3
+    .agents/skills/html-diagram/references/html-effectiveness/index.html: sha256:0bf803a5ceb2fe96095c78123fda1170e5f461d2c46d38650ad7daf5e6dc6879
+  source: local
+  local_path: ./plugins/comp-lib-process/skills/html-diagram
+- repo_url: _local/improve-codebase-architecture
+  name: improve-codebase-architecture
+  version: 1.7.0
+  package_type: hybrid
+  deployed_files:
+  - .agents/skills/improve-codebase-architecture
+  - .agents/skills/improve-codebase-architecture/DEEPENING.md
+  - .agents/skills/improve-codebase-architecture/HTML-REPORT.md
+  - .agents/skills/improve-codebase-architecture/INTERFACE-DESIGN.md
+  - .agents/skills/improve-codebase-architecture/LANGUAGE.md
+  - .agents/skills/improve-codebase-architecture/SKILL.md
+  - .agents/skills/improve-codebase-architecture/apm.yml
+  deployed_file_hashes:
+    .agents/skills/improve-codebase-architecture/DEEPENING.md: sha256:9577485f4fc32c0267639a9151bb41c8af0f8f6086e4bf8b84d5b236e30604e9
+    .agents/skills/improve-codebase-architecture/HTML-REPORT.md: sha256:8a8bcdbb578066271efe6ff675c831a6a4c4c7fd2081d6b5c9bc2e5fabc741d5
+    .agents/skills/improve-codebase-architecture/INTERFACE-DESIGN.md: sha256:678c3e34f1339015053212b3316bf0b676c70aa251050a0613667d4e755fb35e
+    .agents/skills/improve-codebase-architecture/LANGUAGE.md: sha256:6feca2140439c54a774749e8367f18350899ff69c777144ed2248cd4407949fa
+    .agents/skills/improve-codebase-architecture/SKILL.md: sha256:f00de04c7bb83cfd0ed1f97f3401a83838212c30856912ee44ba406649e6c749
+    .agents/skills/improve-codebase-architecture/apm.yml: sha256:ecde1ac4b4e1a0bf01bbf74ecd708d0f2f51b16cca055629ddcbb3c41137c684
+  source: local
+  local_path: ./plugins/comp-lib-process/skills/improve-codebase-architecture
+- repo_url: _local/jtl-init
+  name: jtl-init
+  version: 1.7.0
+  package_type: hybrid
+  deployed_files:
+  - .agents/skills/jtl-init
+  - .agents/skills/jtl-init/SKILL.md
+  - .agents/skills/jtl-init/apm.yml
+  - .agents/skills/jtl-init/scaffold-agent-docs.sh
+  - .agents/skills/jtl-init/templates/AGENTS.md
+  - .agents/skills/jtl-init/templates/CLAUDE.md
+  - .agents/skills/jtl-init/templates/docs/agents/api-conventions.md
+  - .agents/skills/jtl-init/templates/docs/agents/architecture.md
+  - .agents/skills/jtl-init/templates/docs/agents/authoring/block.md
+  - .agents/skills/jtl-init/templates/docs/agents/authoring/component.md
+  - .agents/skills/jtl-init/templates/docs/agents/authoring/recipe.md
+  - .agents/skills/jtl-init/templates/docs/agents/authoring/tokens.md
+  - .agents/skills/jtl-init/templates/docs/agents/contributing.md
+  - .agents/skills/jtl-init/templates/docs/agents/decision-matrix.md
+  - .agents/skills/jtl-init/templates/docs/agents/decisions/README.md
+  - .agents/skills/jtl-init/templates/docs/agents/decisions/adr-template.md
+  - .agents/skills/jtl-init/templates/docs/agents/examples/block-structure.md
+  - .agents/skills/jtl-init/templates/docs/agents/examples/recipe-combobox.md
+  - .agents/skills/jtl-init/templates/docs/agents/examples/registry-item.md
+  - .agents/skills/jtl-init/templates/docs/agents/hardening.md
+  - .agents/skills/jtl-init/templates/docs/agents/maintenance.md
+  - .agents/skills/jtl-init/templates/docs/agents/mcp.md
+  - .agents/skills/jtl-init/templates/docs/agents/philosophy.md
+  - .agents/skills/jtl-init/templates/docs/agents/registry.md
+  deployed_file_hashes:
+    .agents/skills/jtl-init/SKILL.md: sha256:4143bf54caa07017d2bb60d6811c172aef1327f83776028c0ba66d6552cf1992
+    .agents/skills/jtl-init/apm.yml: sha256:28ba531c8654be7234584abb19dddfedd0a7d9b74adb0a55651d01e2c13256d4
+    .agents/skills/jtl-init/scaffold-agent-docs.sh: sha256:32f972a0ae8537fdae69f09a4b106e84f2fb8e23518ee00ad310050219ec119d
+    .agents/skills/jtl-init/templates/AGENTS.md: sha256:24fa3a63eb4f7a0f2c2192a959eb7811e2a040ef270535fa4a3f9509b4c1e8ed
+    .agents/skills/jtl-init/templates/CLAUDE.md: sha256:325c4e7ebfd99c711bd468636e6ee54b6f47803a1f886e80020adcf5bb66aa18
+    .agents/skills/jtl-init/templates/docs/agents/api-conventions.md: sha256:e99a815215adf1332a1116e5cd953977d544b22c134529d12ea272f563d5d491
+    .agents/skills/jtl-init/templates/docs/agents/architecture.md: sha256:0c1a10398d468ce85d962698a3eea617c4e3ac8208b6820a326c33c288d9ddbe
+    .agents/skills/jtl-init/templates/docs/agents/authoring/block.md: sha256:5e6d9369f153d995f4b0a112a77a5391d4e1b062856a09e1e0e4e8221105b94b
+    .agents/skills/jtl-init/templates/docs/agents/authoring/component.md: sha256:694f72153b8e45ac2f507b444a66927cf02f90a10d034832feec4e25619c4927
+    .agents/skills/jtl-init/templates/docs/agents/authoring/recipe.md: sha256:5fcd4e733f19fb8bbfd5fdfc8c4f291e73d16fb1cb639ea324e8bd4a0ad6a272
+    .agents/skills/jtl-init/templates/docs/agents/authoring/tokens.md: sha256:2510b5fb5b4e33391b900832f8a8ecacc7359c1bff5c2652902122106e58bebe
+    .agents/skills/jtl-init/templates/docs/agents/contributing.md: sha256:c27fc1873c55b0a97898c7fc2da17069ac490d75a7ba8b6f7fd3f91a97caa119
+    .agents/skills/jtl-init/templates/docs/agents/decision-matrix.md: sha256:18b4de23df0896709839735160028e8cd740fb3a546a84a349a441bfd5262138
+    .agents/skills/jtl-init/templates/docs/agents/decisions/README.md: sha256:15507cd39b96706e81940367b4e02332cb619874ae4d640c5621424f27feaaf3
+    .agents/skills/jtl-init/templates/docs/agents/decisions/adr-template.md: sha256:3e35ec9f2c11ab8cae141b5249a11a7118a9b5f6c3a3d5ada82d93ef21ff5b67
+    .agents/skills/jtl-init/templates/docs/agents/examples/block-structure.md: sha256:804b4823b19c967e37158005d7a88f40c750b944306d982494c3c251c0eb00e2
+    .agents/skills/jtl-init/templates/docs/agents/examples/recipe-combobox.md: sha256:c746b0d0681c77c93436581d08a9de0990cd93a99ab2f2b935dc1c1740a7d316
+    .agents/skills/jtl-init/templates/docs/agents/examples/registry-item.md: sha256:55f25dd3ef6813e754e5256ee10764adccbfb52c350198c4c55fba62976b8ad3
+    .agents/skills/jtl-init/templates/docs/agents/hardening.md: sha256:4cfff882771b31ad2a466bd09b44b7f6fc7e1efb493f62bf66e6caa3cc625d63
+    .agents/skills/jtl-init/templates/docs/agents/maintenance.md: sha256:ea70ffcdcc19d6b9f7938f8f3872a79a4e7c1994aadf03842c8afe687bfa2474
+    .agents/skills/jtl-init/templates/docs/agents/mcp.md: sha256:d77f7ee3d123678c0a55ec6140eca1fa188313d4b6e045722426882aa7cd2270
+    .agents/skills/jtl-init/templates/docs/agents/philosophy.md: sha256:431d900f44832d6c98cd25bb3d1e3481135091a4199ccee295411a31aba1a500
+    .agents/skills/jtl-init/templates/docs/agents/registry.md: sha256:9bc5ecefd2fe396a68162bc212f31c01ab7d0f42a60b70fb00b633ccb7901f40
+  source: local
+  local_path: ./plugins/comp-lib-process/skills/jtl-init
+- repo_url: _local/reflect
+  name: reflect
+  version: 1.7.0
+  package_type: hybrid
+  deployed_files:
+  - .agents/skills/reflect
+  - .agents/skills/reflect/SKILL.md
+  - .agents/skills/reflect/apm.yml
+  deployed_file_hashes:
+    .agents/skills/reflect/SKILL.md: sha256:e84c8432621222ea6bf2bdaa8b0d1703c0cb620d6e88210a2edd9af2d9f5faa3
+    .agents/skills/reflect/apm.yml: sha256:aa9acdd173190870a13ed279c1c78e976b48bce6b094ca6072da2038e79da96f
+  source: local
+  local_path: ./plugins/comp-lib-process/skills/reflect
+- repo_url: _local/resolve-pr-comment
+  name: resolve-pr-comment
+  version: 1.7.0
+  package_type: hybrid
+  deployed_files:
+  - .agents/skills/resolve-pr-comment
+  - .agents/skills/resolve-pr-comment/SKILL.md
+  - .agents/skills/resolve-pr-comment/apm.yml
+  deployed_file_hashes:
+    .agents/skills/resolve-pr-comment/SKILL.md: sha256:86dc4170bbc03bd58843b6a74dfcb132f4b1304db03b61c524596f7041eb1326
+    .agents/skills/resolve-pr-comment/apm.yml: sha256:1a4f88faa4a09b037f657cd9861eb12669d2f0092b333a101dbd8adcf56a8a1b
+  source: local
+  local_path: ./plugins/comp-lib-process/skills/resolve-pr-comment
+- repo_url: _local/shadcn
+  name: shadcn
+  version: 1.7.0
+  package_type: hybrid
+  deployed_files:
+  - .agents/skills/shadcn
+  - .agents/skills/shadcn/SKILL.md
+  - .agents/skills/shadcn/agents/openai.yml
+  - .agents/skills/shadcn/apm.yml
+  - .agents/skills/shadcn/assets/shadcn-small.png
+  - .agents/skills/shadcn/assets/shadcn.png
+  - .agents/skills/shadcn/cli.md
+  - .agents/skills/shadcn/customization.md
+  - .agents/skills/shadcn/evals/evals.json
+  - .agents/skills/shadcn/mcp.md
+  - .agents/skills/shadcn/registry.md
+  - .agents/skills/shadcn/rules/base-vs-radix.md
+  - .agents/skills/shadcn/rules/composition.md
+  - .agents/skills/shadcn/rules/forms.md
+  - .agents/skills/shadcn/rules/icons.md
+  - .agents/skills/shadcn/rules/styling.md
+  deployed_file_hashes:
+    .agents/skills/shadcn/SKILL.md: sha256:75e9d038e282bb900e46fa63f10ff4fe8ed3945ef092a8dddf22de9c2546760c
+    .agents/skills/shadcn/agents/openai.yml: sha256:35db91b1eef58b2abe01da9b88577de5a44e233b740cd93d692ddeeadd2afe4d
+    .agents/skills/shadcn/apm.yml: sha256:40b5f7a1f639ff2f77f682da9e93b7b199213b58e3dad10207f63440ac0dd6ba
+    .agents/skills/shadcn/assets/shadcn-small.png: sha256:0ecc62d682727f68fc4937eed19960c706714fa084d44f63028d611ae02bf3d7
+    .agents/skills/shadcn/assets/shadcn.png: sha256:7d60ad6fec4d89a0d44ba5a3c9283d2fea0047af5467f9227040e20d927d39b7
+    .agents/skills/shadcn/cli.md: sha256:a381e35bf36fe7bb851952c13707e01e82434fd7a4a4e53f6df26c6370838904
+    .agents/skills/shadcn/customization.md: sha256:84c1d47168c4b8adb5840e4af30a4e373ae3377c1110478c8974f398dd63f5ba
+    .agents/skills/shadcn/evals/evals.json: sha256:97ebb931d690578ee64e445d84f406be2a8799812d38d3cb1bb216e68291eb2b
+    .agents/skills/shadcn/mcp.md: sha256:8d696b4e45b7d0e337367248513bd9acebe8f3bcfd7b748c775e5a337c8f38c8
+    .agents/skills/shadcn/registry.md: sha256:4f239be36bd2b58e17047db1ca80ab7da00e15a8b73242e5e4d50d113c4caa05
+    .agents/skills/shadcn/rules/base-vs-radix.md: sha256:2b2deb47d004285220c1fc6b38bb2edc2d0ccbcdafd031b0b189d5d8ed0d1ba8
+    .agents/skills/shadcn/rules/composition.md: sha256:de068e5aa5351dd8e4af7bfb7a6333302445c15527eaeee521d8591e95e7d709
+    .agents/skills/shadcn/rules/forms.md: sha256:29593e14381e34626f8e0e9c15c59f3394b92a0623af6a6ec94585400123853c
+    .agents/skills/shadcn/rules/icons.md: sha256:d4a58266648872d9ee07d0c2368843a1cb88b8253b7f528dd7bda9d68b6c2535
+    .agents/skills/shadcn/rules/styling.md: sha256:b538a9a0ecf1ed6c57e3a8c932a3a930d7e05aca8b7e0befdb32a24f831ed2f2
+  source: local
+  local_path: ./plugins/comp-lib-process/skills/shadcn
+- repo_url: _local/task-to-pr
+  name: task-to-pr
+  version: 1.7.0
+  package_type: hybrid
+  deployed_files:
+  - .agents/skills/task-to-pr
+  - .agents/skills/task-to-pr/SKILL.md
+  - .agents/skills/task-to-pr/apm.yml
+  - .agents/skills/task-to-pr/references/automation.md
+  - .agents/skills/task-to-pr/references/model-routing.md
+  - .agents/skills/task-to-pr/references/reviewer-prompt.md
+  - .agents/skills/task-to-pr/references/stage4-dispatch.md
+  - .agents/skills/task-to-pr/references/subagent-dispatch.md
+  - .agents/skills/task-to-pr/task-to-pr-architecture.html
+  deployed_file_hashes:
+    .agents/skills/task-to-pr/SKILL.md: sha256:86d57225f4f56348be494665a9131d66dab236128861fa64f70de1da95dabaf8
+    .agents/skills/task-to-pr/apm.yml: sha256:c9809548e5e0d611c002cb6354fdba455ee59b6d59fcedddbfc3f4f6117cd101
+    .agents/skills/task-to-pr/references/automation.md: sha256:737ef9cf48bef7012981a0f8ac102ba3866ba6ad2e23d050fb429dff4f4ad786
+    .agents/skills/task-to-pr/references/model-routing.md: sha256:32a0b9a0f50a9760a93835222e2e17b88a5af506deab6566653e42b7864c361b
+    .agents/skills/task-to-pr/references/reviewer-prompt.md: sha256:4a9c125368f97414be10f2dc4af7b10ce5139cf70b378b672e6ac53b1e94cd5b
+    .agents/skills/task-to-pr/references/stage4-dispatch.md: sha256:0e1cc8e12db80052f262382bd39294cc61f03041774e105e4bcff095668712ff
+    .agents/skills/task-to-pr/references/subagent-dispatch.md: sha256:64ce8ec2e433e38750b1557d4f0c71a5f480ad731e4b002a2e6b6c16bbc346af
+    .agents/skills/task-to-pr/task-to-pr-architecture.html: sha256:028c51128cbec924ffe33ab7fbe224ded1cee64737c4fc2bdbb13b545e705ca3
+  source: local
+  local_path: ./plugins/comp-lib-process/skills/task-to-pr
+- repo_url: _local/teach-back-verification
+  name: teach-back-verification
+  version: 1.7.0
+  package_type: hybrid
+  deployed_files:
+  - .agents/skills/teach-back-verification
+  - .agents/skills/teach-back-verification/SKILL.md
+  - .agents/skills/teach-back-verification/apm.yml
+  - .agents/skills/teach-back-verification/report-template.html
+  deployed_file_hashes:
+    .agents/skills/teach-back-verification/SKILL.md: sha256:8e7f8e14dcc1cd82d0d6097d10bf951d514452030660e4537f2588ff5064ba03
+    .agents/skills/teach-back-verification/apm.yml: sha256:0b794ca2badd3c7e5ac86f514a896d8af628b841d3ccf7426e1882b79ec32c4b
+    .agents/skills/teach-back-verification/report-template.html: sha256:731f61adc553d8a3d796966f4fc1dd80e3b0a3282399e2bb8b64530347bea859
+  source: local
+  local_path: ./plugins/comp-lib-process/skills/teach-back-verification
+- repo_url: _local/ticket-intake
+  name: ticket-intake
+  version: 1.7.0
+  package_type: hybrid
+  deployed_files:
+  - .agents/skills/ticket-intake
+  - .agents/skills/ticket-intake/SKILL.md
+  - .agents/skills/ticket-intake/apm.yml
+  deployed_file_hashes:
+    .agents/skills/ticket-intake/SKILL.md: sha256:6fa0b5e8bf1d099e4ca6813b80e82fe683b20379da3160a5f68776e733fbcd24
+    .agents/skills/ticket-intake/apm.yml: sha256:54de56ea97a94ca0145fc79b01e9f0e465b00fb1c441cc7becd2a5167d92769a
+  source: local
+  local_path: ./plugins/comp-lib-process/skills/ticket-intake
+- repo_url: _local/verify-ticket
+  name: verify-ticket
+  version: 1.7.0
+  package_type: hybrid
+  deployed_files:
+  - .agents/skills/verify-ticket
+  - .agents/skills/verify-ticket/SKILL.md
+  - .agents/skills/verify-ticket/apm.yml
+  deployed_file_hashes:
+    .agents/skills/verify-ticket/SKILL.md: sha256:326100aff6704c85e2cdbb312a96dc7c8d3c50f6e9c1ae758ca7c1f944fb2630
+    .agents/skills/verify-ticket/apm.yml: sha256:21d9bde3bfe8430f631a1f96c4c5eccf82b9a85a4cf9fa6e9a110e1aef9da933
+  source: local
+  local_path: ./plugins/comp-lib-process/skills/verify-ticket
+- repo_url: dietrichgebert/ponytail
+  name: ponytail
+  host: github.com
+  resolved_commit: 16f29800fd2681bdf24f3eb4ccffe38be3baec6b
+  version: 4.8.4
+  package_type: marketplace_plugin
+  deployed_files:
+  - .agents/skills/ponytail
+  - .agents/skills/ponytail-audit
+  - .agents/skills/ponytail-audit/SKILL.md
+  - .agents/skills/ponytail-debt
+  - .agents/skills/ponytail-debt/SKILL.md
+  - .agents/skills/ponytail-gain
+  - .agents/skills/ponytail-gain/SKILL.md
+  - .agents/skills/ponytail-help
+  - .agents/skills/ponytail-help/SKILL.md
+  - .agents/skills/ponytail-review
+  - .agents/skills/ponytail-review/SKILL.md
+  - .agents/skills/ponytail/SKILL.md
+  - .github/hooks/ponytail-copilot-hooks.json
+  - .github/hooks/scripts/ponytail/hooks/package.json
+  - .github/hooks/scripts/ponytail/hooks/ponytail-activate.js
+  - .github/hooks/scripts/ponytail/hooks/ponytail-config.js
+  - .github/hooks/scripts/ponytail/hooks/ponytail-instructions.js
+  - .github/hooks/scripts/ponytail/hooks/ponytail-mode-tracker.js
+  - .github/hooks/scripts/ponytail/hooks/ponytail-runtime.js
+  - .github/hooks/scripts/ponytail/hooks/ponytail-statusline.ps1
+  - .github/hooks/scripts/ponytail/hooks/ponytail-statusline.sh
+  - .github/hooks/scripts/ponytail/hooks/ponytail-subagent.js
+  deployed_file_hashes:
+    .agents/skills/ponytail-audit/SKILL.md: sha256:5560b8e383dbe2ddfddc873a1e2bf2e586e23e0cd7d995537482b2315331f6d1
+    .agents/skills/ponytail-debt/SKILL.md: sha256:c84fba75f0ca12bfe83f9a78ea02fd125c5dd3f1fbb18124105a489937f284e6
+    .agents/skills/ponytail-gain/SKILL.md: sha256:24e01d1c9715cb136ba1c4f1e52a95940c0193558b876828e537736480d6408b
+    .agents/skills/ponytail-help/SKILL.md: sha256:2264d1615117b02b0fd5a69ec84cd2757006471a78e4d6c22eed6d581c1d37a4
+    .agents/skills/ponytail-review/SKILL.md: sha256:40df33b58fc6ef889b93585733feb9566b76e9586efa7f376785c1e995197ac0
+    .agents/skills/ponytail/SKILL.md: sha256:1316a2f3f95741d2300b116fe0c2d81ce4a9568656ed0a62643f54aaf09957f2
+    .github/hooks/ponytail-copilot-hooks.json: sha256:4ad52e6fd633e8fa1b73172da33e6b23d2b874fea94cd18a7def7a08037188a5
+    .github/hooks/scripts/ponytail/hooks/package.json: sha256:8005a3491db7d92f36ac66369861589f9c47123d3a7c71e643fc2c06168cd45a
+    .github/hooks/scripts/ponytail/hooks/ponytail-activate.js: sha256:1c428c4ee9687c2f4321924109ee92e8f8b06fd6600cb6be9ec5b59633cafab1
+    .github/hooks/scripts/ponytail/hooks/ponytail-config.js: sha256:0a8daf96cf9ac703dc4cb7b5065253567e513c951d60b8eb94a0fe727514aeca
+    .github/hooks/scripts/ponytail/hooks/ponytail-instructions.js: sha256:23c050103f28dbe6bad953ae21d98cd06d720a20f33d4716e9de419f947d495e
+    .github/hooks/scripts/ponytail/hooks/ponytail-mode-tracker.js: sha256:5d1a960ff01b73f651ec0242052a8cf1e064cb88147806bf6e13f92798aca251
+    .github/hooks/scripts/ponytail/hooks/ponytail-runtime.js: sha256:80e4a13db4eca13f8cfca5237a46c34220c7c1f9ec841297191c0a46e49ca33e
+    .github/hooks/scripts/ponytail/hooks/ponytail-statusline.ps1: sha256:6138f15bc7651ee7e5ced2a2a2280f5c810d58cad3e9f3252c628f4c923e48c9
+    .github/hooks/scripts/ponytail/hooks/ponytail-statusline.sh: sha256:f1dbfa5997a5d4b5339619709053eff557ab16d71af75eb3041c3d3e3dca42ec
+    .github/hooks/scripts/ponytail/hooks/ponytail-subagent.js: sha256:7f6bee86702a488d29ef0dcaabf424bbe2aca345a6a642319d43a1fe0276792e
+  content_hash: sha256:44264185d4a65991e96fe785ab209f9c447f5878f675d294fe2e85ca61e711c3
+  declared_license: MIT
+- repo_url: juliusbrussee/caveman
+  name: caveman
+  host: github.com
+  resolved_commit: 0d95a81d35a9f2d123a5e9430d1cfc43d55f1bb0
+  version: 0d95a81
+  package_type: marketplace_plugin
+  deployed_files:
+  - .agents/skills/cavecrew
+  - .agents/skills/cavecrew/README.md
+  - .agents/skills/cavecrew/SKILL.md
+  - .agents/skills/caveman
+  - .agents/skills/caveman-commit
+  - .agents/skills/caveman-commit/README.md
+  - .agents/skills/caveman-commit/SKILL.md
+  - .agents/skills/caveman-compress
+  - .agents/skills/caveman-compress/README.md
+  - .agents/skills/caveman-compress/SECURITY.md
+  - .agents/skills/caveman-compress/SKILL.md
+  - .agents/skills/caveman-compress/scripts/__init__.py
+  - .agents/skills/caveman-compress/scripts/__main__.py
+  - .agents/skills/caveman-compress/scripts/benchmark.py
+  - .agents/skills/caveman-compress/scripts/cli.py
+  - .agents/skills/caveman-compress/scripts/compress.py
+  - .agents/skills/caveman-compress/scripts/detect.py
+  - .agents/skills/caveman-compress/scripts/validate.py
+  - .agents/skills/caveman-help
+  - .agents/skills/caveman-help/README.md
+  - .agents/skills/caveman-help/SKILL.md
+  - .agents/skills/caveman-review
+  - .agents/skills/caveman-review/README.md
+  - .agents/skills/caveman-review/SKILL.md
+  - .agents/skills/caveman-stats
+  - .agents/skills/caveman-stats/README.md
+  - .agents/skills/caveman-stats/SKILL.md
+  - .agents/skills/caveman/README.md
+  - .agents/skills/caveman/SKILL.md
+  - .github/agents/cavecrew-builder.agent.md
+  - .github/agents/cavecrew-investigator.agent.md
+  - .github/agents/cavecrew-reviewer.agent.md
+  - .github/hooks/caveman-hooks.json
+  - .github/hooks/scripts/caveman/src/hooks/README.md
+  - .github/hooks/scripts/caveman/src/hooks/cavecrew-model-overrides.js
+  - .github/hooks/scripts/caveman/src/hooks/caveman-activate.js
+  - .github/hooks/scripts/caveman/src/hooks/caveman-config.js
+  - .github/hooks/scripts/caveman/src/hooks/caveman-mode-tracker.js
+  - .github/hooks/scripts/caveman/src/hooks/caveman-stats.js
+  - .github/hooks/scripts/caveman/src/hooks/caveman-statusline.ps1
+  - .github/hooks/scripts/caveman/src/hooks/caveman-statusline.sh
+  - .github/hooks/scripts/caveman/src/hooks/checksums.sha256
+  - .github/hooks/scripts/caveman/src/hooks/install.ps1
+  - .github/hooks/scripts/caveman/src/hooks/install.sh
+  - .github/hooks/scripts/caveman/src/hooks/package.json
+  - .github/hooks/scripts/caveman/src/hooks/uninstall.ps1
+  - .github/hooks/scripts/caveman/src/hooks/uninstall.sh
+  - .github/prompts/caveman-commit.prompt.md
+  - .github/prompts/caveman-init.prompt.md
+  - .github/prompts/caveman-review.prompt.md
+  - .github/prompts/caveman-stats.prompt.md
+  - .github/prompts/caveman.prompt.md
+  deployed_file_hashes:
+    .agents/skills/cavecrew/README.md: sha256:3e3dd61ec48e7a105b1368cf06bb9b5023a8f712d8ed36403e82537004003276
+    .agents/skills/cavecrew/SKILL.md: sha256:b74f374f6aae6e9a31e78e7d876860406fe5833378e9298536edf176c12f379b
+    .agents/skills/caveman-commit/README.md: sha256:0858476353bae43a82b6f91691990b5a6ae8995b8dfafe9e34b393f45abc2e56
+    .agents/skills/caveman-commit/SKILL.md: sha256:58db7b8efab911a629c26e7132517d9076e4e3645009eb604cb8c25663477841
+    .agents/skills/caveman-compress/README.md: sha256:dd772fc8791ea5bd6041e441f91ff355392d4f30c9f56310be7f4bc6cdaf5126
+    .agents/skills/caveman-compress/SECURITY.md: sha256:ac3432493cfe71368a141f437bf35562eb8f4ce07ae699e5399c0cb665e02da3
+    .agents/skills/caveman-compress/SKILL.md: sha256:8b0d64c622d8a70411bbd86e736ac23cc0465fca1943a37f081e58e9d3afd210
+    .agents/skills/caveman-compress/scripts/__init__.py: sha256:429c3e1c5cc5b9705f28d77f303c728304ae68693913ad3d5ce9b5a44c8ee40f
+    .agents/skills/caveman-compress/scripts/__main__.py: sha256:6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279
+    .agents/skills/caveman-compress/scripts/benchmark.py: sha256:84a5a94bebcce03c9dc4a70333f120f03e11075bce9298e1e74b95594e142d43
+    .agents/skills/caveman-compress/scripts/cli.py: sha256:17edb6b425adc0ea04e35f1e90dfe318ba4232a1b815c5ff7d6cff7d574efea6
+    .agents/skills/caveman-compress/scripts/compress.py: sha256:9537671f5b8bf81bfe99078666948a93b5a5f1ae07d2f7bc3f085fe1a6b408c0
+    .agents/skills/caveman-compress/scripts/detect.py: sha256:46bb2b3092c2896eec023135495923701716c586b370976f244674342dd9a35e
+    .agents/skills/caveman-compress/scripts/validate.py: sha256:8b9e752b70868f6e03b3d7e76de19dd6b4ac92dad50522992738340e9916dc0d
+    .agents/skills/caveman-help/README.md: sha256:03829cb4aade81ad0857a78f6f0cbc28f1e9b9a9e6c305e80f738f58d8f08494
+    .agents/skills/caveman-help/SKILL.md: sha256:590d6c6c17254bda56d18da7cc9d0bf252aeec5d1c78b77dd7ae4cabb8404f89
+    .agents/skills/caveman-review/README.md: sha256:e5dda2897c66e796eea020c8822060cdb6febfd3ff39d3a8a09290a1ae8f0a37
+    .agents/skills/caveman-review/SKILL.md: sha256:9ef09065f26b9781275b5a4775e14870e331fab833efb2a2aa33f3205a2b83c3
+    .agents/skills/caveman-stats/README.md: sha256:eb7ab76f3f7c5e6cddd8dd47345778d8d429879331c40f1d8c2c7f4f848f7a28
+    .agents/skills/caveman-stats/SKILL.md: sha256:b9e49e46ede956e0c1633eae82a695c996f728bc48f3903f001d301068a2b0ea
+    .agents/skills/caveman/README.md: sha256:7a351619485f90738a988ee6e06513b840b2a95b1a67c7d5451e85918d3949eb
+    .agents/skills/caveman/SKILL.md: sha256:5e30bb56afbd0b01bd736f2da84180e76f18db4a64de8e124525d5c8dc2e8605
+    .github/agents/cavecrew-builder.agent.md: sha256:135af639b287ed7534b66d01390c4dc48d98683af52232728a0e87db9c558b3e
+    .github/agents/cavecrew-investigator.agent.md: sha256:f1ce01150aeeec7de98d487f41693d27eba1bc9d4cc67f4c774675bb21c24fc2
+    .github/agents/cavecrew-reviewer.agent.md: sha256:ae45346edae2cdb97018a38ebdcb79b162c59875cac2921d976a7d7540e4df70
+    .github/hooks/caveman-hooks.json: sha256:eb8f0543058db22e3337d8dfde4538e2366fa064bb1f8e68b87dcb4a880fedb8
+    .github/hooks/scripts/caveman/src/hooks/README.md: sha256:2ed93bffa47ef4109e437a3aa612903f5e53e4392de7195d37f24a1dbd5e42fd
+    .github/hooks/scripts/caveman/src/hooks/cavecrew-model-overrides.js: sha256:9f2601e8551653609f0b9d700c9bd75bffa43747d2db18ffe83fb73de5dc3607
+    .github/hooks/scripts/caveman/src/hooks/caveman-activate.js: sha256:bc0af3ba327657630e5f6c60be619e6b5394bf03edc29b1384a15f09a1b348bf
+    .github/hooks/scripts/caveman/src/hooks/caveman-config.js: sha256:f47fe2e6440578eeb20408bc3131b63fb8e1ae4f6ea26dbdcca33e7901e5ee8c
+    .github/hooks/scripts/caveman/src/hooks/caveman-mode-tracker.js: sha256:3e34f004d4a9e65609f8c95b47dfe5f0e3a6f2d16b88c7f8af730187ee2fb246
+    .github/hooks/scripts/caveman/src/hooks/caveman-stats.js: sha256:433a345a279c2d54be51864ef77c0a7b19d0f8604b9a441ce0a1eded31f113e8
+    .github/hooks/scripts/caveman/src/hooks/caveman-statusline.ps1: sha256:1690c639f05940cbff39e0383a27053898b30c224aa651043db29b2842cb524a
+    .github/hooks/scripts/caveman/src/hooks/caveman-statusline.sh: sha256:d2deff457d0a5d8e1848193e6af6a68a0ebdba4fbdf250889400d5ea231e088f
+    .github/hooks/scripts/caveman/src/hooks/checksums.sha256: sha256:05b087d6db80dc58cb81ecd83374a008fd14f9de159e4cfe7771bc738ca6afe3
+    .github/hooks/scripts/caveman/src/hooks/install.ps1: sha256:cc439e2f05564de875f24b917a7fe129e3a664be9e2a9f990ac0622d653b31fa
+    .github/hooks/scripts/caveman/src/hooks/install.sh: sha256:495faef6caf9d63cfb30226f3fef6a252a2c47d16c0264af0126e92b18408a94
+    .github/hooks/scripts/caveman/src/hooks/package.json: sha256:8005a3491db7d92f36ac66369861589f9c47123d3a7c71e643fc2c06168cd45a
+    .github/hooks/scripts/caveman/src/hooks/uninstall.ps1: sha256:1db7be0695faaefefbcd6a6cdb1689efdd4da0a813b41e57bc6948c8cde0c2b7
+    .github/hooks/scripts/caveman/src/hooks/uninstall.sh: sha256:ba47365cfb88ed35a481ad75534410548a4c79c0d47dd146ea424e6e1dea4879
+    .github/prompts/caveman-commit.prompt.md: sha256:6dfa36fd6fda22c98fba37894c86e9d679ec224285aca19ba94efa28ecad93e5
+    .github/prompts/caveman-init.prompt.md: sha256:ebdbcd45dc7dff00e4d1de30714c279ccde98468f77a6dc7681ee6975d35a806
+    .github/prompts/caveman-review.prompt.md: sha256:965a23a5521e64e0892d9b8da72aba1b33e541e9b6cabb85ad19e865daab60fc
+    .github/prompts/caveman-stats.prompt.md: sha256:572d9ddcecdb80c405b16cb46749331c9b5b2b22c6b413e8d2bb1f3078a3ba68
+    .github/prompts/caveman.prompt.md: sha256:c27ca36f189e329a891e7350360bcaff3aeaa8e6fe6cd64cbdda42cfb598893f
+  content_hash: sha256:f97f0c9c78157bf4176f7ff69b93ea3631c21103e803eeb71fe0f786efb50996
+- repo_url: mksglu/context-mode
+  name: context-mode
+  host: github.com
+  resolved_commit: 3e530617e7ddee634b943ba99aa3aa08185cf0fd
+  version: 1.0.169
+  package_type: marketplace_plugin
+  deployed_files:
+  - .agents/skills/context-mode
+  - .agents/skills/context-mode/SKILL.md
+  - .agents/skills/context-mode/references/anti-patterns.md
+  - .agents/skills/context-mode/references/patterns-javascript.md
+  - .agents/skills/context-mode/references/patterns-python.md
+  - .agents/skills/context-mode/references/patterns-shell.md
+  - .agents/skills/ctx-doctor
+  - .agents/skills/ctx-doctor/SKILL.md
+  - .agents/skills/ctx-index
+  - .agents/skills/ctx-index/SKILL.md
+  - .agents/skills/ctx-insight
+  - .agents/skills/ctx-insight/SKILL.md
+  - .agents/skills/ctx-purge
+  - .agents/skills/ctx-purge/SKILL.md
+  - .agents/skills/ctx-search
+  - .agents/skills/ctx-search/SKILL.md
+  - .agents/skills/ctx-stats
+  - .agents/skills/ctx-stats/SKILL.md
+  - .agents/skills/ctx-upgrade
+  - .agents/skills/ctx-upgrade/SKILL.md
+  - .github/hooks/context-mode-hooks.json
+  - .github/hooks/scripts/context-mode/hooks/antigravity-cli/payload.mjs
+  - .github/hooks/scripts/context-mode/hooks/antigravity-cli/posttooluse.mjs
+  - .github/hooks/scripts/context-mode/hooks/antigravity-cli/pretooluse.mjs
+  - .github/hooks/scripts/context-mode/hooks/antigravity-cli/stop.mjs
+  - .github/hooks/scripts/context-mode/hooks/auto-injection.mjs
+  - .github/hooks/scripts/context-mode/hooks/cache-heal-utils.mjs
+  - .github/hooks/scripts/context-mode/hooks/codex/platform.mjs
+  - .github/hooks/scripts/context-mode/hooks/codex/posttooluse.mjs
+  - .github/hooks/scripts/context-mode/hooks/codex/precompact.mjs
+  - .github/hooks/scripts/context-mode/hooks/codex/pretooluse.mjs
+  - .github/hooks/scripts/context-mode/hooks/codex/sessionstart.mjs
+  - .github/hooks/scripts/context-mode/hooks/codex/stop.mjs
+  - .github/hooks/scripts/context-mode/hooks/codex/userpromptsubmit.mjs
+  - .github/hooks/scripts/context-mode/hooks/copilot-cli/posttooluse.mjs
+  - .github/hooks/scripts/context-mode/hooks/copilot-cli/precompact.mjs
+  - .github/hooks/scripts/context-mode/hooks/copilot-cli/pretooluse.mjs
+  - .github/hooks/scripts/context-mode/hooks/copilot-cli/sessionstart.mjs
+  - .github/hooks/scripts/context-mode/hooks/copilot-cli/stop.mjs
+  - .github/hooks/scripts/context-mode/hooks/copilot-cli/userpromptsubmit.mjs
+  - .github/hooks/scripts/context-mode/hooks/core/codex-caps.mjs
+  - .github/hooks/scripts/context-mode/hooks/core/formatters.mjs
+  - .github/hooks/scripts/context-mode/hooks/core/mcp-ready.mjs
+  - .github/hooks/scripts/context-mode/hooks/core/platform-detect.mjs
+  - .github/hooks/scripts/context-mode/hooks/core/routing.mjs
+  - .github/hooks/scripts/context-mode/hooks/core/stdin.mjs
+  - .github/hooks/scripts/context-mode/hooks/core/tool-naming.mjs
+  - .github/hooks/scripts/context-mode/hooks/cursor/afteragentresponse.mjs
+  - .github/hooks/scripts/context-mode/hooks/cursor/hooks.json
+  - .github/hooks/scripts/context-mode/hooks/cursor/posttooluse.mjs
+  - .github/hooks/scripts/context-mode/hooks/cursor/pretooluse.mjs
+  - .github/hooks/scripts/context-mode/hooks/cursor/sessionstart.mjs
+  - .github/hooks/scripts/context-mode/hooks/cursor/stop.mjs
+  - .github/hooks/scripts/context-mode/hooks/ensure-deps.mjs
+  - .github/hooks/scripts/context-mode/hooks/formatters/claude-code.mjs
+  - .github/hooks/scripts/context-mode/hooks/formatters/cursor.mjs
+  - .github/hooks/scripts/context-mode/hooks/formatters/gemini-cli.mjs
+  - .github/hooks/scripts/context-mode/hooks/formatters/vscode-copilot.mjs
+  - .github/hooks/scripts/context-mode/hooks/gemini-cli/aftermodel.mjs
+  - .github/hooks/scripts/context-mode/hooks/gemini-cli/aftertool.mjs
+  - .github/hooks/scripts/context-mode/hooks/gemini-cli/beforeagent.mjs
+  - .github/hooks/scripts/context-mode/hooks/gemini-cli/beforetool.mjs
+  - .github/hooks/scripts/context-mode/hooks/gemini-cli/precompress.mjs
+  - .github/hooks/scripts/context-mode/hooks/gemini-cli/sessionstart.mjs
+  - .github/hooks/scripts/context-mode/hooks/heal-partial-install.mjs
+  - .github/hooks/scripts/context-mode/hooks/jetbrains-copilot/posttooluse.mjs
+  - .github/hooks/scripts/context-mode/hooks/jetbrains-copilot/precompact.mjs
+  - .github/hooks/scripts/context-mode/hooks/jetbrains-copilot/pretooluse.mjs
+  - .github/hooks/scripts/context-mode/hooks/jetbrains-copilot/sessionstart.mjs
+  - .github/hooks/scripts/context-mode/hooks/kimi/platform.mjs
+  - .github/hooks/scripts/context-mode/hooks/kimi/posttooluse.mjs
+  - .github/hooks/scripts/context-mode/hooks/kimi/precompact.mjs
+  - .github/hooks/scripts/context-mode/hooks/kimi/pretooluse.mjs
+  - .github/hooks/scripts/context-mode/hooks/kimi/sessionend.mjs
+  - .github/hooks/scripts/context-mode/hooks/kimi/sessionstart.mjs
+  - .github/hooks/scripts/context-mode/hooks/kimi/stop.mjs
+  - .github/hooks/scripts/context-mode/hooks/kimi/userpromptsubmit.mjs
+  - .github/hooks/scripts/context-mode/hooks/kiro/agentspawn.mjs
+  - .github/hooks/scripts/context-mode/hooks/kiro/posttooluse.mjs
+  - .github/hooks/scripts/context-mode/hooks/kiro/pretooluse.mjs
+  - .github/hooks/scripts/context-mode/hooks/kiro/userpromptsubmit.mjs
+  - .github/hooks/scripts/context-mode/hooks/normalize-hooks.mjs
+  - .github/hooks/scripts/context-mode/hooks/package.json
+  - .github/hooks/scripts/context-mode/hooks/platform-bridge.mjs
+  - .github/hooks/scripts/context-mode/hooks/posttooluse.mjs
+  - .github/hooks/scripts/context-mode/hooks/precompact.mjs
+  - .github/hooks/scripts/context-mode/hooks/pretooluse.mjs
+  - .github/hooks/scripts/context-mode/hooks/qwen-code/platform.mjs
+  - .github/hooks/scripts/context-mode/hooks/qwen-code/stop.mjs
+  - .github/hooks/scripts/context-mode/hooks/routing-block.mjs
+  - .github/hooks/scripts/context-mode/hooks/run-hook.mjs
+  - .github/hooks/scripts/context-mode/hooks/security.bundle.mjs
+  - .github/hooks/scripts/context-mode/hooks/session-attribution.bundle.mjs
+  - .github/hooks/scripts/context-mode/hooks/session-db.bundle.mjs
+  - .github/hooks/scripts/context-mode/hooks/session-directive.mjs
+  - .github/hooks/scripts/context-mode/hooks/session-extract.bundle.mjs
+  - .github/hooks/scripts/context-mode/hooks/session-helpers.mjs
+  - .github/hooks/scripts/context-mode/hooks/session-loaders.mjs
+  - .github/hooks/scripts/context-mode/hooks/session-snapshot.bundle.mjs
+  - .github/hooks/scripts/context-mode/hooks/sessionstart.mjs
+  - .github/hooks/scripts/context-mode/hooks/stop.mjs
+  - .github/hooks/scripts/context-mode/hooks/suppress-stderr.mjs
+  - .github/hooks/scripts/context-mode/hooks/userpromptsubmit.mjs
+  - .github/hooks/scripts/context-mode/hooks/vscode-copilot/posttooluse.mjs
+  - .github/hooks/scripts/context-mode/hooks/vscode-copilot/precompact.mjs
+  - .github/hooks/scripts/context-mode/hooks/vscode-copilot/pretooluse.mjs
+  - .github/hooks/scripts/context-mode/hooks/vscode-copilot/sessionstart.mjs
+  deployed_file_hashes:
+    .agents/skills/context-mode/SKILL.md: sha256:ce26cb01de7a116eab256f916620935f029e850771f3fb6cb7d40a3ce8d1f7ff
+    .agents/skills/context-mode/references/anti-patterns.md: sha256:fd6112a5d73375ff2bb3029479766b9927cab48db982fa2a3019682c1c8a3a7d
+    .agents/skills/context-mode/references/patterns-javascript.md: sha256:e0e6e6d17d2df8d93cff0922fb42b21382328d3d14a9bc32f62f0b3f127fc723
+    .agents/skills/context-mode/references/patterns-python.md: sha256:8d76144c9e812a54c884b815f526fea85179839fcc70b205bfde1e757ae95fec
+    .agents/skills/context-mode/references/patterns-shell.md: sha256:34be33127c296b273e03cf1d8c373c57083e160a1a2ac3876dca010c74689877
+    .agents/skills/ctx-doctor/SKILL.md: sha256:874de5d079a4df1e88b87715678f28296332645e600b464d5592725829d82e2c
+    .agents/skills/ctx-index/SKILL.md: sha256:5e49548597a6496e8cdb9a901b66c11a7b1db0ebcd341d3ad3d10cd05f1cd385
+    .agents/skills/ctx-insight/SKILL.md: sha256:20e8ff66d05f9456ae2247f1ce393cc2a678606265927981baf6ab3e116aa841
+    .agents/skills/ctx-purge/SKILL.md: sha256:1961df70dcdd82f556c1c5219a40359632f807a0c6720a150d96a30e86c6bddc
+    .agents/skills/ctx-search/SKILL.md: sha256:01fa13ff339912159f50aa5bc6d6d8f3c7291e8510616b01a4934ca78bb02c0c
+    .agents/skills/ctx-stats/SKILL.md: sha256:3babe498983749f769a39f3635be8685efb56a36c0fa2f520c53dbb81dda1da6
+    .agents/skills/ctx-upgrade/SKILL.md: sha256:e9c0d55a31172ad943135c450bc26386b3d9ac0341d108cf20e79a040e9f8903
+    .github/hooks/context-mode-hooks.json: sha256:6c49c6151eb1193a905609b58ff1bbd396b6ba82d9b0d2312fcf62ac28242ec6
+    .github/hooks/scripts/context-mode/hooks/antigravity-cli/payload.mjs: sha256:238f34a210d2ec718c56dc499a9ef041842a0e4b5cf6c9267c9bd53083470eac
+    .github/hooks/scripts/context-mode/hooks/antigravity-cli/posttooluse.mjs: sha256:91d3a249de6bd6f00437b0e10d46a5cb0fde9d572c134fe652a461824bf0135b
+    .github/hooks/scripts/context-mode/hooks/antigravity-cli/pretooluse.mjs: sha256:e4eb46205b4c374911c6bd1f0f73900663cc1b010dc59932bc6358f35142ba9d
+    .github/hooks/scripts/context-mode/hooks/antigravity-cli/stop.mjs: sha256:a1c26a6ed43f3ba96e5e1c5e11c3edb77b9e582182d50063a16195c1735c7ad9
+    .github/hooks/scripts/context-mode/hooks/auto-injection.mjs: sha256:4e1c155d126e1e6fbd51dba274074a187fb2ebbed364f66baa38bb5113607ea5
+    .github/hooks/scripts/context-mode/hooks/cache-heal-utils.mjs: sha256:1d8b8181bdfa209f2d64736eb424b2b494849a103ec2efc58882f14174799506
+    .github/hooks/scripts/context-mode/hooks/codex/platform.mjs: sha256:9a5c4bb02797b388f900236aed83ab64838bc67acef34177213cb702028fb84c
+    .github/hooks/scripts/context-mode/hooks/codex/posttooluse.mjs: sha256:5ba9654b8cbdab606ad9010db0c780d7af4449f52c41cac2f3e5b4bdaa07ab6b
+    .github/hooks/scripts/context-mode/hooks/codex/precompact.mjs: sha256:6bd6a340c666883753081b6eb35db2ed975bc23e7d65b6e315617f04c7a2abbd
+    .github/hooks/scripts/context-mode/hooks/codex/pretooluse.mjs: sha256:3d31580ad41412399ffd4824b2b6d80072e413e13ad027ef381caf0f52cdd2ed
+    .github/hooks/scripts/context-mode/hooks/codex/sessionstart.mjs: sha256:d76a4dc50691ccd187a6c5484ea3935d27cd507f923e83a81602b07cc411fbfd
+    .github/hooks/scripts/context-mode/hooks/codex/stop.mjs: sha256:a98e2f6e734db6f0b8719aae80f2935ca30dad284512e5ee089959c2f09494ef
+    .github/hooks/scripts/context-mode/hooks/codex/userpromptsubmit.mjs: sha256:18538f702fc6a9e97eab8a56fa2d5b7c7e36547dc86c831fb8149594314586cc
+    .github/hooks/scripts/context-mode/hooks/copilot-cli/posttooluse.mjs: sha256:6be02b662f5e96231ca72dc33f15074e61eceaabd6158ba2463505bb394e4582
+    .github/hooks/scripts/context-mode/hooks/copilot-cli/precompact.mjs: sha256:3e2520ac08e9b23e7440fdb16bf64e7fb314c9cd8b3e0ec8e4dd2ccf527bce27
+    .github/hooks/scripts/context-mode/hooks/copilot-cli/pretooluse.mjs: sha256:3730d9cb668544aa8815ea7cfda625fbada496de323bb70556bfe1eda3e9d95b
+    .github/hooks/scripts/context-mode/hooks/copilot-cli/sessionstart.mjs: sha256:cc4b939ea1535aca84e7fffe6b01374ca4a3f23ad7a72b948f4f2f2ce30fb40a
+    .github/hooks/scripts/context-mode/hooks/copilot-cli/stop.mjs: sha256:9611967426d2fd8c27f4b33edc8bc2604057d9ccab6045cdf81c1a6856a13a45
+    .github/hooks/scripts/context-mode/hooks/copilot-cli/userpromptsubmit.mjs: sha256:966199a31c6e469796e380434f58a382153385dcf99ba70f2831bb0363ab3a6d
+    .github/hooks/scripts/context-mode/hooks/core/codex-caps.mjs: sha256:cb6fa33e3a591460dfce7bc8776fed87952e7ae9c4a283548670aafb33063490
+    .github/hooks/scripts/context-mode/hooks/core/formatters.mjs: sha256:dfe1c57fea9bcab2d04f93ad499e2020285f1b1a8fe580f52bfb466ac1abd722
+    .github/hooks/scripts/context-mode/hooks/core/mcp-ready.mjs: sha256:78a2fe30b55f3e1f34d1106dca6f43deea5b13ed5850c3d9c8cdee93acdc186f
+    .github/hooks/scripts/context-mode/hooks/core/platform-detect.mjs: sha256:30b2f78c1563ca777ffcf8f11ee554ac9212d88916b020e59d52c6c66b23960a
+    .github/hooks/scripts/context-mode/hooks/core/routing.mjs: sha256:7447ee2e444743d6581c53aa1cfec9ffe0d904bc5a478d6fe2ac3e09ef0b3462
+    .github/hooks/scripts/context-mode/hooks/core/stdin.mjs: sha256:206a10b2b98b05ca7c9ceee1a9d49ba48733e8adfc8fb306c17b0d9d0a9340f2
+    .github/hooks/scripts/context-mode/hooks/core/tool-naming.mjs: sha256:e959566c14b6e1d86a826203dcc928ef732cc9c7e4b79fc9444c4db25a0fff05
+    .github/hooks/scripts/context-mode/hooks/cursor/afteragentresponse.mjs: sha256:fd1d0b14d3b11d5c30f2af01b4d2507dee04a80758ff190388c3c11eca3fd37b
+    .github/hooks/scripts/context-mode/hooks/cursor/hooks.json: sha256:4787ea43852b31ff0308f6f056e58d15782fd7c5ecb70040be4b2127c5b307bd
+    .github/hooks/scripts/context-mode/hooks/cursor/posttooluse.mjs: sha256:9616b6b06cfbf0ed18691ef5ea6d0c5bc57cc437030029f30dc53ad231db60d9
+    .github/hooks/scripts/context-mode/hooks/cursor/pretooluse.mjs: sha256:fbfa56124f7695b780b8d762befb29085a9ff643d1737ee763881cdfcf833602
+    .github/hooks/scripts/context-mode/hooks/cursor/sessionstart.mjs: sha256:6e3cea0635316a6d031efec0d43d2e83703145f640689e46e1ccfdabe3a42d3f
+    .github/hooks/scripts/context-mode/hooks/cursor/stop.mjs: sha256:2c9f58b85edbb23734badca39a02327e54053a7bf87c75f8bfdf9e7660581cb3
+    .github/hooks/scripts/context-mode/hooks/ensure-deps.mjs: sha256:c42cc4f719065b84240390b1bfe99a9969be4267aa0fb88ddebcc5ce1f9ee6cc
+    .github/hooks/scripts/context-mode/hooks/formatters/claude-code.mjs: sha256:1fae47d58b0725f7e95a1552c16cc5601b62a10cd6184331ed2903c2bb112e31
+    .github/hooks/scripts/context-mode/hooks/formatters/cursor.mjs: sha256:260d92c573ee14fbe1891ad6db5cccc90e3155a85faacb51715ff3560f7e3f69
+    .github/hooks/scripts/context-mode/hooks/formatters/gemini-cli.mjs: sha256:c1f7c7f607a9320f7f81cdac799e1a63202dff057fb894dd233cda95fdd1f710
+    .github/hooks/scripts/context-mode/hooks/formatters/vscode-copilot.mjs: sha256:8a385ed4517c2172f18dc41fb1e34f6d029da189e6de2264fa43f6b00eba59b0
+    .github/hooks/scripts/context-mode/hooks/gemini-cli/aftermodel.mjs: sha256:3d177bf0e480d4160f3f6a28294a3cd238507ad8a690c55095603a66fd2c8d8c
+    .github/hooks/scripts/context-mode/hooks/gemini-cli/aftertool.mjs: sha256:8c033d650f74bb68cdf74988a69b6ae5a89a4532b9b540d4f37e63aa06fe2591
+    .github/hooks/scripts/context-mode/hooks/gemini-cli/beforeagent.mjs: sha256:c4cda3bedc59e652ed2ee7e299f8cdaf52728fee29491bcb0f629936cff1b821
+    .github/hooks/scripts/context-mode/hooks/gemini-cli/beforetool.mjs: sha256:610d10d1958bd534c1f54d41a9146f750f152b3b52a129cdb13d5022ac3069ec
+    .github/hooks/scripts/context-mode/hooks/gemini-cli/precompress.mjs: sha256:d7e4dcd36a4409dcadb703643c1c149130558748fcb52652c3eeb01a2bcc639f
+    .github/hooks/scripts/context-mode/hooks/gemini-cli/sessionstart.mjs: sha256:1489cae658f7c0bc25dc68dbd8029213afadbe1bd933f02dc5beef24fe8ee9f9
+    .github/hooks/scripts/context-mode/hooks/heal-partial-install.mjs: sha256:6b798ae7ed70a2f5d3166bf2d13902f15498020a5d69e98659f53a58da2fc5ff
+    .github/hooks/scripts/context-mode/hooks/jetbrains-copilot/posttooluse.mjs: sha256:f79d7a7da4747bb245e26b3081e551b99bb902b61978f75ac85b42081648793b
+    .github/hooks/scripts/context-mode/hooks/jetbrains-copilot/precompact.mjs: sha256:b0fddcfcbc67cd4ba1591f81495319d1b28f909a334286246e3146b9e4f9cc44
+    .github/hooks/scripts/context-mode/hooks/jetbrains-copilot/pretooluse.mjs: sha256:50096addc537940e113117d798ce4a60cefaa26b78cac5968c455058844b48e0
+    .github/hooks/scripts/context-mode/hooks/jetbrains-copilot/sessionstart.mjs: sha256:b7d932b877e02b8c3c30a6856a4fb735c557b6bc6552c1fdf3cdc86525cc931c
+    .github/hooks/scripts/context-mode/hooks/kimi/platform.mjs: sha256:e02670359cbd3fd05065965973abfd5ccb62af1ddadb812803baee233c6d39a8
+    .github/hooks/scripts/context-mode/hooks/kimi/posttooluse.mjs: sha256:dab5e14de1cbac62116252a76767bc0eef5506027dac724c6f04561e8ab6d9f7
+    .github/hooks/scripts/context-mode/hooks/kimi/precompact.mjs: sha256:0f12fb72b54b3abdf1132f299627845bc174e1a4c5088ad9ace28fa85ab47029
+    .github/hooks/scripts/context-mode/hooks/kimi/pretooluse.mjs: sha256:b5c5d01d93c666af610f00d384ac046b8d50102f887059df3e355f98692c51dc
+    .github/hooks/scripts/context-mode/hooks/kimi/sessionend.mjs: sha256:242e94deef8a7c16bd48ea98b0212fd1508c4f2c3bb2b01074a55cff8c949705
+    .github/hooks/scripts/context-mode/hooks/kimi/sessionstart.mjs: sha256:7eb950c090ad5648f74683c9cddc0f3a322db58bbc5d3e2ff6463cd1a4d22b9e
+    .github/hooks/scripts/context-mode/hooks/kimi/stop.mjs: sha256:d81f5e42fa154aaa283eaf10332b861f9c093a2d77bf01f9d77aa79cd8b519eb
+    .github/hooks/scripts/context-mode/hooks/kimi/userpromptsubmit.mjs: sha256:3f0abc9da9b3f2d2c90535655e10d0eb48e3ba7dc8491896578b708d29859fd3
+    .github/hooks/scripts/context-mode/hooks/kiro/agentspawn.mjs: sha256:98d06392c71b937e4bd6a10765ae9bbf4fb56e2a1cad45ddeac4bbe1066aff06
+    .github/hooks/scripts/context-mode/hooks/kiro/posttooluse.mjs: sha256:72cf880c218aa651edded5ce7898608c6737274e49d3c5c26d1f4911c551a776
+    .github/hooks/scripts/context-mode/hooks/kiro/pretooluse.mjs: sha256:3b776cd1f336eb343331d3e36e1f065bc595d12190b5a0542a863aa6fcc1d38a
+    .github/hooks/scripts/context-mode/hooks/kiro/userpromptsubmit.mjs: sha256:f302c75d94fd4d9c1bd6aad390eb409922f3dc3085d3717119f1833f9c8152ff
+    .github/hooks/scripts/context-mode/hooks/normalize-hooks.mjs: sha256:9cc58c4176a5eaa7a74427d3444844b00c5e6ae354a43a73043d89253de114e8
+    .github/hooks/scripts/context-mode/hooks/package.json: sha256:3ca9d4afd21425087cf31893b8f9f63c81b0b8408db5e343ca76e5f8aa26ab9a
+    .github/hooks/scripts/context-mode/hooks/platform-bridge.mjs: sha256:74d18338a4fbcc46c406f8791a819a213fd78551bbfbc99eba1f914692699294
+    .github/hooks/scripts/context-mode/hooks/posttooluse.mjs: sha256:02ead3ad9d5bf8e8367ccc63811a84b4d88bda0ddb3f43de58f51a2f678a63e3
+    .github/hooks/scripts/context-mode/hooks/precompact.mjs: sha256:4b8b1599057fba8aa9466f6184cec2fe48548a7cafa7c5faf50dae7cef8b2cc1
+    .github/hooks/scripts/context-mode/hooks/pretooluse.mjs: sha256:ecac9efe98689e57f50642d1657e212f10445e12c033a4b356738c4ca1c9e3d5
+    .github/hooks/scripts/context-mode/hooks/qwen-code/platform.mjs: sha256:88068bcba18b1b619e91442498cd6d7d2c289ba8f6045418e5543dda117a866a
+    .github/hooks/scripts/context-mode/hooks/qwen-code/stop.mjs: sha256:4cfeb312497dcc7714be6d0d656aede1b9054092d61bb04b8938a87c93089b5c
+    .github/hooks/scripts/context-mode/hooks/routing-block.mjs: sha256:93c69245325ded031994ba25ddf8f048e4ef5ef9bc98ce63607506d7306c07be
+    .github/hooks/scripts/context-mode/hooks/run-hook.mjs: sha256:663d4e39eff9fa31de2e6dffc7ac431412dc746354bba13f5fe4f794e69dc1a0
+    .github/hooks/scripts/context-mode/hooks/security.bundle.mjs: sha256:8d9231182dee7dd4e159101450695b9b5efc14e7812c710a8f4ebfbf4b482c06
+    .github/hooks/scripts/context-mode/hooks/session-attribution.bundle.mjs: sha256:3c041cd0c2aa8eb6f78cf5c1425c7197d48bc14ae08af18cc53145b3ae261743
+    .github/hooks/scripts/context-mode/hooks/session-db.bundle.mjs: sha256:6469fa50c5333fa3b380259cd86950cc50095f4b9d3725c224f1e682cc22105a
+    .github/hooks/scripts/context-mode/hooks/session-directive.mjs: sha256:f0b3dd89f710b20987ca79c767d613c881736d6738b0c0bfd0b1ca96d9cd1a05
+    .github/hooks/scripts/context-mode/hooks/session-extract.bundle.mjs: sha256:ef5513aac4c53d321b2f676da211e67302d16fc310330239f2956d47799caa5f
+    .github/hooks/scripts/context-mode/hooks/session-helpers.mjs: sha256:43855af74c4902c12d91e7162805e4b358a8ee60b09906c286d7e301b7de4dc0
+    .github/hooks/scripts/context-mode/hooks/session-loaders.mjs: sha256:2f2a5e62a8388864b99b595aa6e10c72a05e4d792c96a06e57e6d5952d92bb5d
+    .github/hooks/scripts/context-mode/hooks/session-snapshot.bundle.mjs: sha256:724c8444c8a8d1e23d1c6cd00968cc0803aa27619c370ed1a38c6c4a1eb613ec
+    .github/hooks/scripts/context-mode/hooks/sessionstart.mjs: sha256:41952548f197dc40bac50afff2126802c83fc9cbbe8ecc86743cacaeb0ced001
+    .github/hooks/scripts/context-mode/hooks/stop.mjs: sha256:b740f288239fa5b05b3db36e9ab39ea2495e454df88ac5895f2a58e7a7762e06
+    .github/hooks/scripts/context-mode/hooks/suppress-stderr.mjs: sha256:767faa2ceda55b7857f8d36f5ce6c3b123e7a8442005b875c7052cee486d324b
+    .github/hooks/scripts/context-mode/hooks/userpromptsubmit.mjs: sha256:d777abc6bfa2350526facc34f1f4502bc351dc01e67ad5a21244bc58cfbb3e9b
+    .github/hooks/scripts/context-mode/hooks/vscode-copilot/posttooluse.mjs: sha256:0d3d9f05474dc8d983fc75dac322e667447b05257dd26d82881672e9a75713ef
+    .github/hooks/scripts/context-mode/hooks/vscode-copilot/precompact.mjs: sha256:f0fd3d554217dad75aefe8065ea8cc96d69e86265a5f870a858db571ad5328b3
+    .github/hooks/scripts/context-mode/hooks/vscode-copilot/pretooluse.mjs: sha256:a31fc7e70af84b679eb135820ca060eb1b2f755213811f9a0005c09e3ec83885
+    .github/hooks/scripts/context-mode/hooks/vscode-copilot/sessionstart.mjs: sha256:6b5854d407c8aa41495418d675eae0a77adc0c095f41dc0e9e8694a6ca4fcd42
+  content_hash: sha256:c9fa9aad1283745c965d133d9cdf0bf2163c3912970f29e9e1fcf14aa8a9e656
+  declared_license: Elastic-2.0
+- repo_url: obra/superpowers
+  name: superpowers
+  host: github.com
+  resolved_commit: d884ae04edebef577e82ff7c4e143debd0bbec99
+  version: 6.1.1
+  package_type: marketplace_plugin
+  deployed_files:
+  - .agents/skills/brainstorming
+  - .agents/skills/brainstorming/SKILL.md
+  - .agents/skills/brainstorming/scripts/frame-template.html
+  - .agents/skills/brainstorming/scripts/helper.js
+  - .agents/skills/brainstorming/scripts/server.cjs
+  - .agents/skills/brainstorming/scripts/start-server.sh
+  - .agents/skills/brainstorming/scripts/stop-server.sh
+  - .agents/skills/brainstorming/spec-document-reviewer-prompt.md
+  - .agents/skills/brainstorming/visual-companion.md
+  - .agents/skills/dispatching-parallel-agents
+  - .agents/skills/dispatching-parallel-agents/SKILL.md
+  - .agents/skills/executing-plans
+  - .agents/skills/executing-plans/SKILL.md
+  - .agents/skills/finishing-a-development-branch
+  - .agents/skills/finishing-a-development-branch/SKILL.md
+  - .agents/skills/receiving-code-review
+  - .agents/skills/receiving-code-review/SKILL.md
+  - .agents/skills/requesting-code-review
+  - .agents/skills/requesting-code-review/SKILL.md
+  - .agents/skills/requesting-code-review/code-reviewer.md
+  - .agents/skills/subagent-driven-development
+  - .agents/skills/subagent-driven-development/SKILL.md
+  - .agents/skills/subagent-driven-development/implementer-prompt.md
+  - .agents/skills/subagent-driven-development/scripts/review-package
+  - .agents/skills/subagent-driven-development/scripts/sdd-workspace
+  - .agents/skills/subagent-driven-development/scripts/task-brief
+  - .agents/skills/subagent-driven-development/task-reviewer-prompt.md
+  - .agents/skills/systematic-debugging
+  - .agents/skills/systematic-debugging/CREATION-LOG.md
+  - .agents/skills/systematic-debugging/SKILL.md
+  - .agents/skills/systematic-debugging/condition-based-waiting-example.ts
+  - .agents/skills/systematic-debugging/condition-based-waiting.md
+  - .agents/skills/systematic-debugging/defense-in-depth.md
+  - .agents/skills/systematic-debugging/find-polluter.sh
+  - .agents/skills/systematic-debugging/root-cause-tracing.md
+  - .agents/skills/systematic-debugging/test-academic.md
+  - .agents/skills/systematic-debugging/test-pressure-1.md
+  - .agents/skills/systematic-debugging/test-pressure-2.md
+  - .agents/skills/systematic-debugging/test-pressure-3.md
+  - .agents/skills/test-driven-development
+  - .agents/skills/test-driven-development/SKILL.md
+  - .agents/skills/test-driven-development/testing-anti-patterns.md
+  - .agents/skills/using-git-worktrees
+  - .agents/skills/using-git-worktrees/SKILL.md
+  - .agents/skills/using-superpowers
+  - .agents/skills/using-superpowers/SKILL.md
+  - .agents/skills/using-superpowers/references/antigravity-tools.md
+  - .agents/skills/using-superpowers/references/codex-tools.md
+  - .agents/skills/using-superpowers/references/pi-tools.md
+  - .agents/skills/verification-before-completion
+  - .agents/skills/verification-before-completion/SKILL.md
+  - .agents/skills/writing-plans
+  - .agents/skills/writing-plans/SKILL.md
+  - .agents/skills/writing-plans/plan-document-reviewer-prompt.md
+  - .agents/skills/writing-skills
+  - .agents/skills/writing-skills/SKILL.md
+  - .agents/skills/writing-skills/anthropic-best-practices.md
+  - .agents/skills/writing-skills/examples/CLAUDE_MD_TESTING.md
+  - .agents/skills/writing-skills/graphviz-conventions.dot
+  - .agents/skills/writing-skills/persuasion-principles.md
+  - .agents/skills/writing-skills/render-graphs.js
+  - .agents/skills/writing-skills/testing-skills-with-subagents.md
+  - .github/hooks/scripts/superpowers/hooks/run-hook.cmd
+  - .github/hooks/scripts/superpowers/hooks/session-start
+  - .github/hooks/superpowers-hooks.json
+  deployed_file_hashes:
+    .agents/skills/brainstorming/SKILL.md: sha256:e14914605f640e0841758e45d0ab2a53243b59b921f929e47921c99668f2e61d
+    .agents/skills/brainstorming/scripts/frame-template.html: sha256:6a8a4e58bd6a44b904e2e3c57de774481d909204597e1498de53f1b2fecc4c4e
+    .agents/skills/brainstorming/scripts/helper.js: sha256:43c6d69954a46ec34a2a262bcc62a9a7e83e839c739f199cb72646d397c686e3
+    .agents/skills/brainstorming/scripts/server.cjs: sha256:2d2961ea8d11f56c5f4c3a1a68d22709efa5d7601a2246d8c880774e7e9e8412
+    .agents/skills/brainstorming/scripts/start-server.sh: sha256:a4e5ae84275bcaacd2f84345afeabe59cf7b00ba080e123da7cc1fb226f12847
+    .agents/skills/brainstorming/scripts/stop-server.sh: sha256:0b5ccbbd57f62d3ed88993f7940b5ee0e5c0fc9b21c550c623da4f6292e47daf
+    .agents/skills/brainstorming/spec-document-reviewer-prompt.md: sha256:95a0a195de9d984be2fffa95bab16fc8c563bc296a9cfc5e9c29cb3ece0d7457
+    .agents/skills/brainstorming/visual-companion.md: sha256:3321a044c777d03d7177df41c77bb83155ff2a6d0c16b8a3d752426d29f14ea8
+    .agents/skills/dispatching-parallel-agents/SKILL.md: sha256:f0df13f584049059cc5619f90061405b89dcc6e28ab3f2a8517d27d99c7a46a6
+    .agents/skills/executing-plans/SKILL.md: sha256:bbd8d28bb655a52817cc129ce49f9e46fa7c6303f72ed5de95bfe914ef8e0ce8
+    .agents/skills/finishing-a-development-branch/SKILL.md: sha256:e6d4a812de900d33c6eacfb40747f99427f25c304a7b7099120f9373b115a47f
+    .agents/skills/receiving-code-review/SKILL.md: sha256:647036bbdab7bf2317e14e079595e984c9030f64295e2b4c0fb57dbeb48f25dd
+    .agents/skills/requesting-code-review/SKILL.md: sha256:1017ccdd5bc61fab67c654cf118cbdb520464b313073a0a6b9a6b9aa647a3ad6
+    .agents/skills/requesting-code-review/code-reviewer.md: sha256:b2f2ec7596925fe52dac158fdfbca19b3a7d779d619c481e6706a6c0001662d3
+    .agents/skills/subagent-driven-development/SKILL.md: sha256:5e9e846ae67d153ddf7c5f4fd5102af78454c8f3cdaa0720331cec063fc8861a
+    .agents/skills/subagent-driven-development/implementer-prompt.md: sha256:49018b28dc11bc9f3d13a28959bb10ae1a96eabc5d8f19f4079d901f9ff2bf64
+    .agents/skills/subagent-driven-development/scripts/review-package: sha256:0c0629f6e2c46fc8bf68dcfb8a247ab24eb548b7004fe494035e6fcba9b5cdfb
+    .agents/skills/subagent-driven-development/scripts/sdd-workspace: sha256:9430befaff459ed862415b700c1a9efe45fd34838a684802a1d8320de0c3a007
+    .agents/skills/subagent-driven-development/scripts/task-brief: sha256:5380283f00bffa99ab82ae78482b7d248abe10655129c72ca7050bdc0b6a85e1
+    .agents/skills/subagent-driven-development/task-reviewer-prompt.md: sha256:2eb9d54373420de25bc0bd00635d3a3123a6c0eb30c881168e6f3348e2387331
+    .agents/skills/systematic-debugging/CREATION-LOG.md: sha256:c24733a5b1821bd6bed1fc950261f0b9f4e90097e0bbb96459d8179713730789
+    .agents/skills/systematic-debugging/SKILL.md: sha256:3b20719eca4f0461cb51a195221320d775dcf03b6859271066a03a5132a6ce7a
+    .agents/skills/systematic-debugging/condition-based-waiting-example.ts: sha256:40ae5ebe497fdf310200e43fe986552546d0a22837c0d39e855db1cfd33eb88e
+    .agents/skills/systematic-debugging/condition-based-waiting.md: sha256:e89fec8400d6cd50f43407cec9fab50976ba4d55d0ec2eb51c0bd68036b54c26
+    .agents/skills/systematic-debugging/defense-in-depth.md: sha256:1e175fb86fc357e58c6aebf5441e481e1b7868b4380c0456b63a17eefbd18ba7
+    .agents/skills/systematic-debugging/find-polluter.sh: sha256:6462747eae9b175ac145b78bcfaeab755654a75e32637f08eb633f065a9e1d7c
+    .agents/skills/systematic-debugging/root-cause-tracing.md: sha256:6b0622269e098ca1399e123e553fd385f0b6412d88ef0e9c4f5a8ea9cf1cec7b
+    .agents/skills/systematic-debugging/test-academic.md: sha256:fe2ba480d78ac0d686dc025f41c2a32a43d642bf533f91b0c6053a04d35d6486
+    .agents/skills/systematic-debugging/test-pressure-1.md: sha256:0b6a915db0054577819834c79be9eb614e97bddba10d73768e1fbe91cfed048a
+    .agents/skills/systematic-debugging/test-pressure-2.md: sha256:b2030aeffba07050e8ad573ddf87486457c4a016a786bb326235bebd856f2016
+    .agents/skills/systematic-debugging/test-pressure-3.md: sha256:96b50a52e2c7989c9cf20fb752c47c1e9a3a70dc362f8f7989f8f5b64dac7708
+    .agents/skills/test-driven-development/SKILL.md: sha256:b5b4717b8b761cce15a6cfe9022e33fd959e0894c0c39d72c9cb49c23486c10e
+    .agents/skills/test-driven-development/testing-anti-patterns.md: sha256:bde453bc258f06543987477c837939afaa774ea2acbd9f308d702fc452bc4283
+    .agents/skills/using-git-worktrees/SKILL.md: sha256:e2c3ec142e52868a51af246c620cd76ab648dcf27d6900d47e6ffd07159a9794
+    .agents/skills/using-superpowers/SKILL.md: sha256:55379fe7c1c473a02c61961c822996bff30e1320d6921d9062509bc508482c05
+    .agents/skills/using-superpowers/references/antigravity-tools.md: sha256:d0bcfa94dd0fa399fb9606a0f7c9562b43040cad02be167a2b999c3913a1d5e9
+    .agents/skills/using-superpowers/references/codex-tools.md: sha256:9310bb2315eed2c1cebea02cd1c9e8fe121cb788fc6b41e8b8f8b5ff46f85f37
+    .agents/skills/using-superpowers/references/pi-tools.md: sha256:703dbc83d23ecab9c6f388460c38abc482e9dee2fe6772a8c7a255152ad3a4d5
+    .agents/skills/verification-before-completion/SKILL.md: sha256:ea52d15aabaf72bc6b558efe2c126f161b53961090ddcd712000273bfe8c7b6c
+    .agents/skills/writing-plans/SKILL.md: sha256:272e1af349f5062c28dc282b3e21b220d58d683a7314a10c455b7432ec91d845
+    .agents/skills/writing-plans/plan-document-reviewer-prompt.md: sha256:aa728b96aad603c8be28875a4305637f6c984aa81ffcadcb13e743202fa2a0c7
+    .agents/skills/writing-skills/SKILL.md: sha256:6b8d08fe863318be8480ae8428e169640309fa9208df84bb0510012764454146
+    .agents/skills/writing-skills/anthropic-best-practices.md: sha256:217629b356c09c9bd11017c9788e8fc654ca1b32c92d4a51cd490e16dd65e59a
+    .agents/skills/writing-skills/examples/CLAUDE_MD_TESTING.md: sha256:0b379a3415e185d3c434b3ad283d8aa132f3022c2a4f210f168865b5986bcef0
+    .agents/skills/writing-skills/graphviz-conventions.dot: sha256:e2890a593c91370e384b42f2f67b1a6232c9e69dddea7891a0c1c46d7b20b694
+    .agents/skills/writing-skills/persuasion-principles.md: sha256:a51bc9bf75189ea73a27b3fb504a2fdfdb966fb1f7f1cdf03203230a216ccc03
+    .agents/skills/writing-skills/render-graphs.js: sha256:ccda971a87bb185f8febf81c56b556a20d026fa980c17b35fa3e8824fbb37852
+    .agents/skills/writing-skills/testing-skills-with-subagents.md: sha256:c711346852c911b24a84aa161e0cff06a4cd7f4e2fa9e9c0a266cead5afcbade
+    .github/hooks/scripts/superpowers/hooks/run-hook.cmd: sha256:d3d9c6199678dab2858e60509dde5e7414f13c2a2b5e48a38b1d368b6e1d6abb
+    .github/hooks/scripts/superpowers/hooks/session-start: sha256:88a060272ca8047e0d1cd73a016e1cebba8396807a44be1e296d7c02dcbb9934
+    .github/hooks/superpowers-hooks.json: sha256:c83c50206f0cbb62ce37e0fa7df57e2d77c102cc92d3dca5d5ab0655485ac636
+  content_hash: sha256:fcec2b6832dc4a4ce8fd0b7883fc72531fb402dd76537b62e495ab5c09742cf4
+  declared_license: MIT
+deployments:
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/brainstorming
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/brainstorming/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:e14914605f640e0841758e45d0ab2a53243b59b921f929e47921c99668f2e61d
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/brainstorming/scripts/frame-template.html
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:6a8a4e58bd6a44b904e2e3c57de774481d909204597e1498de53f1b2fecc4c4e
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/brainstorming/scripts/helper.js
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:43c6d69954a46ec34a2a262bcc62a9a7e83e839c739f199cb72646d397c686e3
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/brainstorming/scripts/server.cjs
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:2d2961ea8d11f56c5f4c3a1a68d22709efa5d7601a2246d8c880774e7e9e8412
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/brainstorming/scripts/start-server.sh
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:a4e5ae84275bcaacd2f84345afeabe59cf7b00ba080e123da7cc1fb226f12847
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/brainstorming/scripts/stop-server.sh
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:0b5ccbbd57f62d3ed88993f7940b5ee0e5c0fc9b21c550c623da4f6292e47daf
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/brainstorming/spec-document-reviewer-prompt.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:95a0a195de9d984be2fffa95bab16fc8c563bc296a9cfc5e9c29cb3ece0d7457
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/brainstorming/visual-companion.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:3321a044c777d03d7177df41c77bb83155ff2a6d0c16b8a3d752426d29f14ea8
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/cavecrew
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/cavecrew/README.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:3e3dd61ec48e7a105b1368cf06bb9b5023a8f712d8ed36403e82537004003276
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/cavecrew/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:b74f374f6aae6e9a31e78e7d876860406fe5833378e9298536edf176c12f379b
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman-commit
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman-commit/README.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:0858476353bae43a82b6f91691990b5a6ae8995b8dfafe9e34b393f45abc2e56
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman-commit/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:58db7b8efab911a629c26e7132517d9076e4e3645009eb604cb8c25663477841
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman-compress
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman-compress/README.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:dd772fc8791ea5bd6041e441f91ff355392d4f30c9f56310be7f4bc6cdaf5126
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman-compress/SECURITY.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:ac3432493cfe71368a141f437bf35562eb8f4ce07ae699e5399c0cb665e02da3
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman-compress/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:8b0d64c622d8a70411bbd86e736ac23cc0465fca1943a37f081e58e9d3afd210
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman-compress/scripts/__init__.py
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:429c3e1c5cc5b9705f28d77f303c728304ae68693913ad3d5ce9b5a44c8ee40f
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman-compress/scripts/__main__.py
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman-compress/scripts/benchmark.py
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:84a5a94bebcce03c9dc4a70333f120f03e11075bce9298e1e74b95594e142d43
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman-compress/scripts/cli.py
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:17edb6b425adc0ea04e35f1e90dfe318ba4232a1b815c5ff7d6cff7d574efea6
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman-compress/scripts/compress.py
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:9537671f5b8bf81bfe99078666948a93b5a5f1ae07d2f7bc3f085fe1a6b408c0
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman-compress/scripts/detect.py
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:46bb2b3092c2896eec023135495923701716c586b370976f244674342dd9a35e
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman-compress/scripts/validate.py
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:8b9e752b70868f6e03b3d7e76de19dd6b4ac92dad50522992738340e9916dc0d
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman-help
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman-help/README.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:03829cb4aade81ad0857a78f6f0cbc28f1e9b9a9e6c305e80f738f58d8f08494
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman-help/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:590d6c6c17254bda56d18da7cc9d0bf252aeec5d1c78b77dd7ae4cabb8404f89
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman-review
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman-review/README.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:e5dda2897c66e796eea020c8822060cdb6febfd3ff39d3a8a09290a1ae8f0a37
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman-review/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:9ef09065f26b9781275b5a4775e14870e331fab833efb2a2aa33f3205a2b83c3
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman-stats
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman-stats/README.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:eb7ab76f3f7c5e6cddd8dd47345778d8d429879331c40f1d8c2c7f4f848f7a28
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman-stats/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:b9e49e46ede956e0c1633eae82a695c996f728bc48f3903f001d301068a2b0ea
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman/README.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:7a351619485f90738a988ee6e06513b840b2a95b1a67c7d5451e85918d3949eb
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/caveman/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:5e30bb56afbd0b01bd736f2da84180e76f18db4a64de8e124525d5c8dc2e8605
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/context-mode
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/context-mode/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:ce26cb01de7a116eab256f916620935f029e850771f3fb6cb7d40a3ce8d1f7ff
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/context-mode/references/anti-patterns.md
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:fd6112a5d73375ff2bb3029479766b9927cab48db982fa2a3019682c1c8a3a7d
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/context-mode/references/patterns-javascript.md
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:e0e6e6d17d2df8d93cff0922fb42b21382328d3d14a9bc32f62f0b3f127fc723
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/context-mode/references/patterns-python.md
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:8d76144c9e812a54c884b815f526fea85179839fcc70b205bfde1e757ae95fec
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/context-mode/references/patterns-shell.md
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:34be33127c296b273e03cf1d8c373c57083e160a1a2ac3876dca010c74689877
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/create-pr
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/create-pr
+  active_owner: ./plugins/comp-lib-process/skills/create-pr
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/create-pr/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/create-pr
+  active_owner: ./plugins/comp-lib-process/skills/create-pr
+  content_hash: sha256:0b6059a1d80c2d856edc16c6fa2d6d76cfe11b538898e5dfe4de4306a8bcd94b
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/create-pr/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/create-pr
+  active_owner: ./plugins/comp-lib-process/skills/create-pr
+  content_hash: sha256:c4e81cd9eb61f7f27a239c0401929996649bcee06c94f9c99f176c3d5763a2ed
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/create-ticket
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/create-ticket
+  active_owner: ./plugins/comp-lib-process/skills/create-ticket
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/create-ticket/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/create-ticket
+  active_owner: ./plugins/comp-lib-process/skills/create-ticket
+  content_hash: sha256:f2bfd6d5cb4fbc322153a9e62c457431c823298154cabb33bc48f9a6480d70be
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/create-ticket/TICKET_TEMPLATE.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/create-ticket
+  active_owner: ./plugins/comp-lib-process/skills/create-ticket
+  content_hash: sha256:27de2f90184432d1ee04cb8580364da8bbc7d421ec7655a8ab434566aa2dd0e7
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/create-ticket/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/create-ticket
+  active_owner: ./plugins/comp-lib-process/skills/create-ticket
+  content_hash: sha256:0ab610bc735f3b9c708f9236a7ad084f015ec538f96d9878eb437280084bb77a
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ctx-doctor
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ctx-doctor/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:874de5d079a4df1e88b87715678f28296332645e600b464d5592725829d82e2c
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ctx-index
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ctx-index/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:5e49548597a6496e8cdb9a901b66c11a7b1db0ebcd341d3ad3d10cd05f1cd385
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ctx-insight
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ctx-insight/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:20e8ff66d05f9456ae2247f1ce393cc2a678606265927981baf6ab3e116aa841
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ctx-purge
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ctx-purge/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:1961df70dcdd82f556c1c5219a40359632f807a0c6720a150d96a30e86c6bddc
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ctx-search
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ctx-search/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:01fa13ff339912159f50aa5bc6d6d8f3c7291e8510616b01a4934ca78bb02c0c
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ctx-stats
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ctx-stats/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:3babe498983749f769a39f3635be8685efb56a36c0fa2f520c53dbb81dda1da6
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ctx-upgrade
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ctx-upgrade/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:e9c0d55a31172ad943135c450bc26386b3d9ac0341d108cf20e79a040e9f8903
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/debt-review
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/debt-review
+  active_owner: ./plugins/comp-lib-process/skills/debt-review
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/debt-review/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/debt-review
+  active_owner: ./plugins/comp-lib-process/skills/debt-review
+  content_hash: sha256:57e3000a6271b5cd7f96036662fe8ea2772f2ec14522ee6dd6b0c17a13551b03
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/debt-review/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/debt-review
+  active_owner: ./plugins/comp-lib-process/skills/debt-review
+  content_hash: sha256:05704c6ad5a3ebd99e22978a486a402435b1c942617f87c1f1069fc0d80795ec
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/dispatching-parallel-agents
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/dispatching-parallel-agents/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:f0df13f584049059cc5619f90061405b89dcc6e28ab3f2a8517d27d99c7a46a6
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/executing-plans
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/executing-plans/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:bbd8d28bb655a52817cc129ce49f9e46fa7c6303f72ed5de95bfe914ef8e0ce8
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/figma-fetching
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/figma-fetching
+  active_owner: ./plugins/comp-lib-process/skills/figma-fetching
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/figma-fetching/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/figma-fetching
+  active_owner: ./plugins/comp-lib-process/skills/figma-fetching
+  content_hash: sha256:a4638dc43fe920bda04f0ade6c0aba7568d510809a213045db7ba1c714e954f4
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/figma-fetching/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/figma-fetching
+  active_owner: ./plugins/comp-lib-process/skills/figma-fetching
+  content_hash: sha256:1d18271fe7d4dffb8d4f10027bccc4e73d70e5228194d6c10882abd7cd450668
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/finishing-a-development-branch
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/finishing-a-development-branch/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:e6d4a812de900d33c6eacfb40747f99427f25c304a7b7099120f9373b115a47f
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:9e914874fb1a5fb1464c664607a715f7a38115e9f741a92eddbd206490cff646
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/agents/openai.yaml
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:c48fb57cec2e623ba6a0ba547b963c6402b95b96517c1c5d84f088fe96543767
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:8aadfd4ad2c4d1aecd69711c35432f070691a29f23a03f0d52ef47e8aca2e88c
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/architecture-example.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:b72dfce07af04a7df124f8f7fe5fba92f035eababd82ca66318960d4e50c33d1
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/01-exploration-code-approaches.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:af7d5651f1dedec3ad8bd724e2f0bc92725dbde74518963e774f464996c80af4
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/02-exploration-visual-designs.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:5c50ddb8415dbde8248cb97fab1e8cbbfabb35f2ad3718bc3c313b319dee4227
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/03-code-review-pr.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:c14a52aa31b3bd207b52490c7e967bf68ae1c3920199753ad189c1e35af8f23a
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/04-code-understanding.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:b7c9a751c9170e34307a3fe15d0ed0e61a76bcccef3de355a167d910778f4157
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/05-design-system.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:5f497b1667ddad12822a60906c3d57db98439b0540278431b3cc54201bb07903
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/06-component-variants.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:dfc4783665998544c0883be3e12f8bcd45400e177acc0c90f76c998f51df31a7
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/07-prototype-animation.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:07e908d47a14297e0feb8fb589d9102c5d8231792c95c08af3211c029fb904e1
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/08-prototype-interaction.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:5e13db1460f9258a971b60339c2994140ece350c419b73d81d1fe83b591db51f
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/09-slide-deck.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:1fa94d65c9aa8524bf7b562eaa9666900b317661e650fae1c223e3e30441c971
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/10-svg-illustrations.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:33de35f9d5a6d1c4a412fbfafaef88595771aad03bb2f69d90ee4834239dde4a
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/11-status-report.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:66f6eefaa632fbdb8dd9a96b588a5cf864d85ba188eb7dd1ed6edfbb25c20a09
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/12-incident-report.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:f90ef9c3910803a3df2d75cc7fcd83d1f72b6c4494781fd239965c54e7efe2f6
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/13-flowchart-diagram.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:86f9ff01431897849ae6fe12693864fbdf6c43eb271977eca416e071dc324ccf
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/14-research-feature-explainer.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:79a6bfc0d3836898ffc0f39cefa11eab19e9a2e4fade708a81ac1d0f6a5612bb
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/15-research-concept-explainer.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:1563ed1140ce0a04bc506758d378dc809c871c3112690cc654d34c1cc98e6c62
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/16-implementation-plan.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:73e5c5cea0811576288f20765b9ec565c0ec0be7d026f760da4cba3f9462de5d
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/17-pr-writeup.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:96c12f9545160cc1b5e5a38b53c32c443fcc304b49f56ccb26438d5094795b9b
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/18-editor-triage-board.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:99d4f0832580e01a12872bb1abe18048180d1c6f158fc3613634e96306b1a723
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/19-editor-feature-flags.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:9915ba51040854a4a50112016ced9b1f9ace831621d69802b70e07f9f756c180
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/20-editor-prompt-tuner.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:a5663f4d361be2e2cadfd94e8f153d7b7484510a862a654106fb553c714baeae
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/CODE_OF_CONDUCT.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:f44e3a122db6b68a60542fa39d59a4cc3a4d03cae3459bbcaf5cef1e356d9d73
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/LICENSE
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:30deeaa611125310673e7c14b4892fb102fb56697ecfab3b49b77ca0190de7e1
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/README.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:2875d5eea955b125bd73f0d6120c53458c2797b5a3513de52a21f16930f24cb0
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/SECURITY.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:81b5410504d8e7f7cf71680b20043f8e2b01acbec56207561aa6bbec7ab998f3
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/html-diagram/references/html-effectiveness/index.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/html-diagram
+  active_owner: ./plugins/comp-lib-process/skills/html-diagram
+  content_hash: sha256:0bf803a5ceb2fe96095c78123fda1170e5f461d2c46d38650ad7daf5e6dc6879
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/improve-codebase-architecture
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/improve-codebase-architecture
+  active_owner: ./plugins/comp-lib-process/skills/improve-codebase-architecture
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/improve-codebase-architecture/DEEPENING.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/improve-codebase-architecture
+  active_owner: ./plugins/comp-lib-process/skills/improve-codebase-architecture
+  content_hash: sha256:9577485f4fc32c0267639a9151bb41c8af0f8f6086e4bf8b84d5b236e30604e9
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/improve-codebase-architecture/HTML-REPORT.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/improve-codebase-architecture
+  active_owner: ./plugins/comp-lib-process/skills/improve-codebase-architecture
+  content_hash: sha256:8a8bcdbb578066271efe6ff675c831a6a4c4c7fd2081d6b5c9bc2e5fabc741d5
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/improve-codebase-architecture/INTERFACE-DESIGN.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/improve-codebase-architecture
+  active_owner: ./plugins/comp-lib-process/skills/improve-codebase-architecture
+  content_hash: sha256:678c3e34f1339015053212b3316bf0b676c70aa251050a0613667d4e755fb35e
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/improve-codebase-architecture/LANGUAGE.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/improve-codebase-architecture
+  active_owner: ./plugins/comp-lib-process/skills/improve-codebase-architecture
+  content_hash: sha256:6feca2140439c54a774749e8367f18350899ff69c777144ed2248cd4407949fa
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/improve-codebase-architecture/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/improve-codebase-architecture
+  active_owner: ./plugins/comp-lib-process/skills/improve-codebase-architecture
+  content_hash: sha256:f00de04c7bb83cfd0ed1f97f3401a83838212c30856912ee44ba406649e6c749
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/improve-codebase-architecture/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/improve-codebase-architecture
+  active_owner: ./plugins/comp-lib-process/skills/improve-codebase-architecture
+  content_hash: sha256:ecde1ac4b4e1a0bf01bbf74ecd708d0f2f51b16cca055629ddcbb3c41137c684
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: sha256:4143bf54caa07017d2bb60d6811c172aef1327f83776028c0ba66d6552cf1992
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: sha256:28ba531c8654be7234584abb19dddfedd0a7d9b74adb0a55651d01e2c13256d4
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init/scaffold-agent-docs.sh
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: sha256:32f972a0ae8537fdae69f09a4b106e84f2fb8e23518ee00ad310050219ec119d
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init/templates/AGENTS.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: sha256:24fa3a63eb4f7a0f2c2192a959eb7811e2a040ef270535fa4a3f9509b4c1e8ed
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init/templates/CLAUDE.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: sha256:325c4e7ebfd99c711bd468636e6ee54b6f47803a1f886e80020adcf5bb66aa18
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init/templates/docs/agents/api-conventions.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: sha256:e99a815215adf1332a1116e5cd953977d544b22c134529d12ea272f563d5d491
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init/templates/docs/agents/architecture.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: sha256:0c1a10398d468ce85d962698a3eea617c4e3ac8208b6820a326c33c288d9ddbe
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init/templates/docs/agents/authoring/block.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: sha256:5e6d9369f153d995f4b0a112a77a5391d4e1b062856a09e1e0e4e8221105b94b
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init/templates/docs/agents/authoring/component.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: sha256:694f72153b8e45ac2f507b444a66927cf02f90a10d034832feec4e25619c4927
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init/templates/docs/agents/authoring/recipe.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: sha256:5fcd4e733f19fb8bbfd5fdfc8c4f291e73d16fb1cb639ea324e8bd4a0ad6a272
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init/templates/docs/agents/authoring/tokens.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: sha256:2510b5fb5b4e33391b900832f8a8ecacc7359c1bff5c2652902122106e58bebe
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init/templates/docs/agents/contributing.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: sha256:c27fc1873c55b0a97898c7fc2da17069ac490d75a7ba8b6f7fd3f91a97caa119
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init/templates/docs/agents/decision-matrix.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: sha256:18b4de23df0896709839735160028e8cd740fb3a546a84a349a441bfd5262138
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init/templates/docs/agents/decisions/README.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: sha256:15507cd39b96706e81940367b4e02332cb619874ae4d640c5621424f27feaaf3
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init/templates/docs/agents/decisions/adr-template.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: sha256:3e35ec9f2c11ab8cae141b5249a11a7118a9b5f6c3a3d5ada82d93ef21ff5b67
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init/templates/docs/agents/examples/block-structure.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: sha256:804b4823b19c967e37158005d7a88f40c750b944306d982494c3c251c0eb00e2
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init/templates/docs/agents/examples/recipe-combobox.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: sha256:c746b0d0681c77c93436581d08a9de0990cd93a99ab2f2b935dc1c1740a7d316
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init/templates/docs/agents/examples/registry-item.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: sha256:55f25dd3ef6813e754e5256ee10764adccbfb52c350198c4c55fba62976b8ad3
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init/templates/docs/agents/hardening.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: sha256:4cfff882771b31ad2a466bd09b44b7f6fc7e1efb493f62bf66e6caa3cc625d63
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init/templates/docs/agents/maintenance.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: sha256:ea70ffcdcc19d6b9f7938f8f3872a79a4e7c1994aadf03842c8afe687bfa2474
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init/templates/docs/agents/mcp.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: sha256:d77f7ee3d123678c0a55ec6140eca1fa188313d4b6e045722426882aa7cd2270
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init/templates/docs/agents/philosophy.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: sha256:431d900f44832d6c98cd25bb3d1e3481135091a4199ccee295411a31aba1a500
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/jtl-init/templates/docs/agents/registry.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/jtl-init
+  active_owner: ./plugins/comp-lib-process/skills/jtl-init
+  content_hash: sha256:9bc5ecefd2fe396a68162bc212f31c01ab7d0f42a60b70fb00b633ccb7901f40
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ponytail
+  runtime: null
+  scope: project
+  owners:
+  - dietrichgebert/ponytail
+  active_owner: dietrichgebert/ponytail
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ponytail-audit
+  runtime: null
+  scope: project
+  owners:
+  - dietrichgebert/ponytail
+  active_owner: dietrichgebert/ponytail
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ponytail-audit/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - dietrichgebert/ponytail
+  active_owner: dietrichgebert/ponytail
+  content_hash: sha256:5560b8e383dbe2ddfddc873a1e2bf2e586e23e0cd7d995537482b2315331f6d1
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ponytail-debt
+  runtime: null
+  scope: project
+  owners:
+  - dietrichgebert/ponytail
+  active_owner: dietrichgebert/ponytail
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ponytail-debt/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - dietrichgebert/ponytail
+  active_owner: dietrichgebert/ponytail
+  content_hash: sha256:c84fba75f0ca12bfe83f9a78ea02fd125c5dd3f1fbb18124105a489937f284e6
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ponytail-gain
+  runtime: null
+  scope: project
+  owners:
+  - dietrichgebert/ponytail
+  active_owner: dietrichgebert/ponytail
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ponytail-gain/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - dietrichgebert/ponytail
+  active_owner: dietrichgebert/ponytail
+  content_hash: sha256:24e01d1c9715cb136ba1c4f1e52a95940c0193558b876828e537736480d6408b
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ponytail-help
+  runtime: null
+  scope: project
+  owners:
+  - dietrichgebert/ponytail
+  active_owner: dietrichgebert/ponytail
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ponytail-help/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - dietrichgebert/ponytail
+  active_owner: dietrichgebert/ponytail
+  content_hash: sha256:2264d1615117b02b0fd5a69ec84cd2757006471a78e4d6c22eed6d581c1d37a4
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ponytail-review
+  runtime: null
+  scope: project
+  owners:
+  - dietrichgebert/ponytail
+  active_owner: dietrichgebert/ponytail
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ponytail-review/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - dietrichgebert/ponytail
+  active_owner: dietrichgebert/ponytail
+  content_hash: sha256:40df33b58fc6ef889b93585733feb9566b76e9586efa7f376785c1e995197ac0
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ponytail/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - dietrichgebert/ponytail
+  active_owner: dietrichgebert/ponytail
+  content_hash: sha256:1316a2f3f95741d2300b116fe0c2d81ce4a9568656ed0a62643f54aaf09957f2
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/receiving-code-review
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/receiving-code-review/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:647036bbdab7bf2317e14e079595e984c9030f64295e2b4c0fb57dbeb48f25dd
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/reflect
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/reflect
+  active_owner: ./plugins/comp-lib-process/skills/reflect
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/reflect/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/reflect
+  active_owner: ./plugins/comp-lib-process/skills/reflect
+  content_hash: sha256:e84c8432621222ea6bf2bdaa8b0d1703c0cb620d6e88210a2edd9af2d9f5faa3
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/reflect/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/reflect
+  active_owner: ./plugins/comp-lib-process/skills/reflect
+  content_hash: sha256:aa9acdd173190870a13ed279c1c78e976b48bce6b094ca6072da2038e79da96f
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/requesting-code-review
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/requesting-code-review/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:1017ccdd5bc61fab67c654cf118cbdb520464b313073a0a6b9a6b9aa647a3ad6
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/requesting-code-review/code-reviewer.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:b2f2ec7596925fe52dac158fdfbca19b3a7d779d619c481e6706a6c0001662d3
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/resolve-pr-comment
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/resolve-pr-comment
+  active_owner: ./plugins/comp-lib-process/skills/resolve-pr-comment
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/resolve-pr-comment/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/resolve-pr-comment
+  active_owner: ./plugins/comp-lib-process/skills/resolve-pr-comment
+  content_hash: sha256:86dc4170bbc03bd58843b6a74dfcb132f4b1304db03b61c524596f7041eb1326
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/resolve-pr-comment/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/resolve-pr-comment
+  active_owner: ./plugins/comp-lib-process/skills/resolve-pr-comment
+  content_hash: sha256:1a4f88faa4a09b037f657cd9861eb12669d2f0092b333a101dbd8adcf56a8a1b
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/shadcn
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/shadcn
+  active_owner: ./plugins/comp-lib-process/skills/shadcn
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/shadcn/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/shadcn
+  active_owner: ./plugins/comp-lib-process/skills/shadcn
+  content_hash: sha256:75e9d038e282bb900e46fa63f10ff4fe8ed3945ef092a8dddf22de9c2546760c
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/shadcn/agents/openai.yml
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/shadcn
+  active_owner: ./plugins/comp-lib-process/skills/shadcn
+  content_hash: sha256:35db91b1eef58b2abe01da9b88577de5a44e233b740cd93d692ddeeadd2afe4d
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/shadcn/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/shadcn
+  active_owner: ./plugins/comp-lib-process/skills/shadcn
+  content_hash: sha256:40b5f7a1f639ff2f77f682da9e93b7b199213b58e3dad10207f63440ac0dd6ba
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/shadcn/assets/shadcn-small.png
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/shadcn
+  active_owner: ./plugins/comp-lib-process/skills/shadcn
+  content_hash: sha256:0ecc62d682727f68fc4937eed19960c706714fa084d44f63028d611ae02bf3d7
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/shadcn/assets/shadcn.png
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/shadcn
+  active_owner: ./plugins/comp-lib-process/skills/shadcn
+  content_hash: sha256:7d60ad6fec4d89a0d44ba5a3c9283d2fea0047af5467f9227040e20d927d39b7
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/shadcn/cli.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/shadcn
+  active_owner: ./plugins/comp-lib-process/skills/shadcn
+  content_hash: sha256:a381e35bf36fe7bb851952c13707e01e82434fd7a4a4e53f6df26c6370838904
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/shadcn/customization.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/shadcn
+  active_owner: ./plugins/comp-lib-process/skills/shadcn
+  content_hash: sha256:84c1d47168c4b8adb5840e4af30a4e373ae3377c1110478c8974f398dd63f5ba
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/shadcn/evals/evals.json
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/shadcn
+  active_owner: ./plugins/comp-lib-process/skills/shadcn
+  content_hash: sha256:97ebb931d690578ee64e445d84f406be2a8799812d38d3cb1bb216e68291eb2b
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/shadcn/mcp.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/shadcn
+  active_owner: ./plugins/comp-lib-process/skills/shadcn
+  content_hash: sha256:8d696b4e45b7d0e337367248513bd9acebe8f3bcfd7b748c775e5a337c8f38c8
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/shadcn/registry.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/shadcn
+  active_owner: ./plugins/comp-lib-process/skills/shadcn
+  content_hash: sha256:4f239be36bd2b58e17047db1ca80ab7da00e15a8b73242e5e4d50d113c4caa05
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/shadcn/rules/base-vs-radix.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/shadcn
+  active_owner: ./plugins/comp-lib-process/skills/shadcn
+  content_hash: sha256:2b2deb47d004285220c1fc6b38bb2edc2d0ccbcdafd031b0b189d5d8ed0d1ba8
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/shadcn/rules/composition.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/shadcn
+  active_owner: ./plugins/comp-lib-process/skills/shadcn
+  content_hash: sha256:de068e5aa5351dd8e4af7bfb7a6333302445c15527eaeee521d8591e95e7d709
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/shadcn/rules/forms.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/shadcn
+  active_owner: ./plugins/comp-lib-process/skills/shadcn
+  content_hash: sha256:29593e14381e34626f8e0e9c15c59f3394b92a0623af6a6ec94585400123853c
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/shadcn/rules/icons.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/shadcn
+  active_owner: ./plugins/comp-lib-process/skills/shadcn
+  content_hash: sha256:d4a58266648872d9ee07d0c2368843a1cb88b8253b7f528dd7bda9d68b6c2535
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/shadcn/rules/styling.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/shadcn
+  active_owner: ./plugins/comp-lib-process/skills/shadcn
+  content_hash: sha256:b538a9a0ecf1ed6c57e3a8c932a3a930d7e05aca8b7e0befdb32a24f831ed2f2
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/subagent-driven-development
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/subagent-driven-development/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:5e9e846ae67d153ddf7c5f4fd5102af78454c8f3cdaa0720331cec063fc8861a
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/subagent-driven-development/implementer-prompt.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:49018b28dc11bc9f3d13a28959bb10ae1a96eabc5d8f19f4079d901f9ff2bf64
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/subagent-driven-development/scripts/review-package
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:0c0629f6e2c46fc8bf68dcfb8a247ab24eb548b7004fe494035e6fcba9b5cdfb
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/subagent-driven-development/scripts/sdd-workspace
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:9430befaff459ed862415b700c1a9efe45fd34838a684802a1d8320de0c3a007
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/subagent-driven-development/scripts/task-brief
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:5380283f00bffa99ab82ae78482b7d248abe10655129c72ca7050bdc0b6a85e1
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/subagent-driven-development/task-reviewer-prompt.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:2eb9d54373420de25bc0bd00635d3a3123a6c0eb30c881168e6f3348e2387331
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/systematic-debugging
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/systematic-debugging/CREATION-LOG.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:c24733a5b1821bd6bed1fc950261f0b9f4e90097e0bbb96459d8179713730789
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/systematic-debugging/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:3b20719eca4f0461cb51a195221320d775dcf03b6859271066a03a5132a6ce7a
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/systematic-debugging/condition-based-waiting-example.ts
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:40ae5ebe497fdf310200e43fe986552546d0a22837c0d39e855db1cfd33eb88e
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/systematic-debugging/condition-based-waiting.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:e89fec8400d6cd50f43407cec9fab50976ba4d55d0ec2eb51c0bd68036b54c26
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/systematic-debugging/defense-in-depth.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:1e175fb86fc357e58c6aebf5441e481e1b7868b4380c0456b63a17eefbd18ba7
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/systematic-debugging/find-polluter.sh
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:6462747eae9b175ac145b78bcfaeab755654a75e32637f08eb633f065a9e1d7c
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/systematic-debugging/root-cause-tracing.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:6b0622269e098ca1399e123e553fd385f0b6412d88ef0e9c4f5a8ea9cf1cec7b
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/systematic-debugging/test-academic.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:fe2ba480d78ac0d686dc025f41c2a32a43d642bf533f91b0c6053a04d35d6486
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/systematic-debugging/test-pressure-1.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:0b6a915db0054577819834c79be9eb614e97bddba10d73768e1fbe91cfed048a
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/systematic-debugging/test-pressure-2.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:b2030aeffba07050e8ad573ddf87486457c4a016a786bb326235bebd856f2016
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/systematic-debugging/test-pressure-3.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:96b50a52e2c7989c9cf20fb752c47c1e9a3a70dc362f8f7989f8f5b64dac7708
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/task-to-pr
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/task-to-pr
+  active_owner: ./plugins/comp-lib-process/skills/task-to-pr
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/task-to-pr/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/task-to-pr
+  active_owner: ./plugins/comp-lib-process/skills/task-to-pr
+  content_hash: sha256:86d57225f4f56348be494665a9131d66dab236128861fa64f70de1da95dabaf8
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/task-to-pr/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/task-to-pr
+  active_owner: ./plugins/comp-lib-process/skills/task-to-pr
+  content_hash: sha256:c9809548e5e0d611c002cb6354fdba455ee59b6d59fcedddbfc3f4f6117cd101
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/task-to-pr/references/automation.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/task-to-pr
+  active_owner: ./plugins/comp-lib-process/skills/task-to-pr
+  content_hash: sha256:737ef9cf48bef7012981a0f8ac102ba3866ba6ad2e23d050fb429dff4f4ad786
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/task-to-pr/references/model-routing.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/task-to-pr
+  active_owner: ./plugins/comp-lib-process/skills/task-to-pr
+  content_hash: sha256:32a0b9a0f50a9760a93835222e2e17b88a5af506deab6566653e42b7864c361b
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/task-to-pr/references/reviewer-prompt.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/task-to-pr
+  active_owner: ./plugins/comp-lib-process/skills/task-to-pr
+  content_hash: sha256:4a9c125368f97414be10f2dc4af7b10ce5139cf70b378b672e6ac53b1e94cd5b
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/task-to-pr/references/stage4-dispatch.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/task-to-pr
+  active_owner: ./plugins/comp-lib-process/skills/task-to-pr
+  content_hash: sha256:0e1cc8e12db80052f262382bd39294cc61f03041774e105e4bcff095668712ff
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/task-to-pr/references/subagent-dispatch.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/task-to-pr
+  active_owner: ./plugins/comp-lib-process/skills/task-to-pr
+  content_hash: sha256:64ce8ec2e433e38750b1557d4f0c71a5f480ad731e4b002a2e6b6c16bbc346af
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/task-to-pr/task-to-pr-architecture.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/task-to-pr
+  active_owner: ./plugins/comp-lib-process/skills/task-to-pr
+  content_hash: sha256:028c51128cbec924ffe33ab7fbe224ded1cee64737c4fc2bdbb13b545e705ca3
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/teach-back-verification
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/teach-back-verification
+  active_owner: ./plugins/comp-lib-process/skills/teach-back-verification
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/teach-back-verification/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/teach-back-verification
+  active_owner: ./plugins/comp-lib-process/skills/teach-back-verification
+  content_hash: sha256:8e7f8e14dcc1cd82d0d6097d10bf951d514452030660e4537f2588ff5064ba03
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/teach-back-verification/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/teach-back-verification
+  active_owner: ./plugins/comp-lib-process/skills/teach-back-verification
+  content_hash: sha256:0b794ca2badd3c7e5ac86f514a896d8af628b841d3ccf7426e1882b79ec32c4b
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/teach-back-verification/report-template.html
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/teach-back-verification
+  active_owner: ./plugins/comp-lib-process/skills/teach-back-verification
+  content_hash: sha256:731f61adc553d8a3d796966f4fc1dd80e3b0a3282399e2bb8b64530347bea859
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/test-driven-development
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/test-driven-development/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:b5b4717b8b761cce15a6cfe9022e33fd959e0894c0c39d72c9cb49c23486c10e
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/test-driven-development/testing-anti-patterns.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:bde453bc258f06543987477c837939afaa774ea2acbd9f308d702fc452bc4283
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ticket-intake
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/ticket-intake
+  active_owner: ./plugins/comp-lib-process/skills/ticket-intake
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ticket-intake/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/ticket-intake
+  active_owner: ./plugins/comp-lib-process/skills/ticket-intake
+  content_hash: sha256:6fa0b5e8bf1d099e4ca6813b80e82fe683b20379da3160a5f68776e733fbcd24
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/ticket-intake/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/ticket-intake
+  active_owner: ./plugins/comp-lib-process/skills/ticket-intake
+  content_hash: sha256:54de56ea97a94ca0145fc79b01e9f0e465b00fb1c441cc7becd2a5167d92769a
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/using-git-worktrees
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/using-git-worktrees/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:e2c3ec142e52868a51af246c620cd76ab648dcf27d6900d47e6ffd07159a9794
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/using-superpowers
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/using-superpowers/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:55379fe7c1c473a02c61961c822996bff30e1320d6921d9062509bc508482c05
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/using-superpowers/references/antigravity-tools.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:d0bcfa94dd0fa399fb9606a0f7c9562b43040cad02be167a2b999c3913a1d5e9
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/using-superpowers/references/codex-tools.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:9310bb2315eed2c1cebea02cd1c9e8fe121cb788fc6b41e8b8f8b5ff46f85f37
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/using-superpowers/references/pi-tools.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:703dbc83d23ecab9c6f388460c38abc482e9dee2fe6772a8c7a255152ad3a4d5
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/verification-before-completion
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/verification-before-completion/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:ea52d15aabaf72bc6b558efe2c126f161b53961090ddcd712000273bfe8c7b6c
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/verify-ticket
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/verify-ticket
+  active_owner: ./plugins/comp-lib-process/skills/verify-ticket
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/verify-ticket/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/verify-ticket
+  active_owner: ./plugins/comp-lib-process/skills/verify-ticket
+  content_hash: sha256:326100aff6704c85e2cdbb312a96dc7c8d3c50f6e9c1ae758ca7c1f944fb2630
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/verify-ticket/apm.yml
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/verify-ticket
+  active_owner: ./plugins/comp-lib-process/skills/verify-ticket
+  content_hash: sha256:21d9bde3bfe8430f631a1f96c4c5eccf82b9a85a4cf9fa6e9a110e1aef9da933
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/writing-plans
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/writing-plans/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:272e1af349f5062c28dc282b3e21b220d58d683a7314a10c455b7432ec91d845
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/writing-plans/plan-document-reviewer-prompt.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:aa728b96aad603c8be28875a4305637f6c984aa81ffcadcb13e743202fa2a0c7
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/writing-skills
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: null
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/writing-skills/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:6b8d08fe863318be8480ae8428e169640309fa9208df84bb0510012764454146
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/writing-skills/anthropic-best-practices.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:217629b356c09c9bd11017c9788e8fc654ca1b32c92d4a51cd490e16dd65e59a
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/writing-skills/examples/CLAUDE_MD_TESTING.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:0b379a3415e185d3c434b3ad283d8aa132f3022c2a4f210f168865b5986bcef0
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/writing-skills/graphviz-conventions.dot
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:e2890a593c91370e384b42f2f67b1a6232c9e69dddea7891a0c1c46d7b20b694
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/writing-skills/persuasion-principles.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:a51bc9bf75189ea73a27b3fb504a2fdfdb966fb1f7f1cdf03203230a216ccc03
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/writing-skills/render-graphs.js
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:ccda971a87bb185f8febf81c56b556a20d026fa980c17b35fa3e8824fbb37852
+- kind: project-relative
+  target: copilot
+  value: .agents/skills/writing-skills/testing-skills-with-subagents.md
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:c711346852c911b24a84aa161e0cff06a4cd7f4e2fa9e9c0a266cead5afcbade
+- kind: project-relative
+  target: copilot
+  value: .github/agents/cavecrew-builder.agent.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:135af639b287ed7534b66d01390c4dc48d98683af52232728a0e87db9c558b3e
+- kind: project-relative
+  target: copilot
+  value: .github/agents/cavecrew-investigator.agent.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:f1ce01150aeeec7de98d487f41693d27eba1bc9d4cc67f4c774675bb21c24fc2
+- kind: project-relative
+  target: copilot
+  value: .github/agents/cavecrew-reviewer.agent.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:ae45346edae2cdb97018a38ebdcb79b162c59875cac2921d976a7d7540e4df70
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/caveman-hooks.json
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:eb8f0543058db22e3337d8dfde4538e2366fa064bb1f8e68b87dcb4a880fedb8
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/context-mode-hooks.json
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:6c49c6151eb1193a905609b58ff1bbd396b6ba82d9b0d2312fcf62ac28242ec6
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/ponytail-copilot-hooks.json
+  runtime: null
+  scope: project
+  owners:
+  - dietrichgebert/ponytail
+  active_owner: dietrichgebert/ponytail
+  content_hash: sha256:4ad52e6fd633e8fa1b73172da33e6b23d2b874fea94cd18a7def7a08037188a5
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/caveman/src/hooks/README.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:2ed93bffa47ef4109e437a3aa612903f5e53e4392de7195d37f24a1dbd5e42fd
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/caveman/src/hooks/cavecrew-model-overrides.js
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:9f2601e8551653609f0b9d700c9bd75bffa43747d2db18ffe83fb73de5dc3607
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/caveman/src/hooks/caveman-activate.js
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:bc0af3ba327657630e5f6c60be619e6b5394bf03edc29b1384a15f09a1b348bf
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/caveman/src/hooks/caveman-config.js
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:f47fe2e6440578eeb20408bc3131b63fb8e1ae4f6ea26dbdcca33e7901e5ee8c
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/caveman/src/hooks/caveman-mode-tracker.js
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:3e34f004d4a9e65609f8c95b47dfe5f0e3a6f2d16b88c7f8af730187ee2fb246
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/caveman/src/hooks/caveman-stats.js
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:433a345a279c2d54be51864ef77c0a7b19d0f8604b9a441ce0a1eded31f113e8
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/caveman/src/hooks/caveman-statusline.ps1
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:1690c639f05940cbff39e0383a27053898b30c224aa651043db29b2842cb524a
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/caveman/src/hooks/caveman-statusline.sh
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:d2deff457d0a5d8e1848193e6af6a68a0ebdba4fbdf250889400d5ea231e088f
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/caveman/src/hooks/checksums.sha256
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:05b087d6db80dc58cb81ecd83374a008fd14f9de159e4cfe7771bc738ca6afe3
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/caveman/src/hooks/install.ps1
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:cc439e2f05564de875f24b917a7fe129e3a664be9e2a9f990ac0622d653b31fa
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/caveman/src/hooks/install.sh
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:495faef6caf9d63cfb30226f3fef6a252a2c47d16c0264af0126e92b18408a94
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/caveman/src/hooks/package.json
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:8005a3491db7d92f36ac66369861589f9c47123d3a7c71e643fc2c06168cd45a
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/caveman/src/hooks/uninstall.ps1
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:1db7be0695faaefefbcd6a6cdb1689efdd4da0a813b41e57bc6948c8cde0c2b7
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/caveman/src/hooks/uninstall.sh
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:ba47365cfb88ed35a481ad75534410548a4c79c0d47dd146ea424e6e1dea4879
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/antigravity-cli/payload.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:238f34a210d2ec718c56dc499a9ef041842a0e4b5cf6c9267c9bd53083470eac
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/antigravity-cli/posttooluse.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:91d3a249de6bd6f00437b0e10d46a5cb0fde9d572c134fe652a461824bf0135b
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/antigravity-cli/pretooluse.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:e4eb46205b4c374911c6bd1f0f73900663cc1b010dc59932bc6358f35142ba9d
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/antigravity-cli/stop.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:a1c26a6ed43f3ba96e5e1c5e11c3edb77b9e582182d50063a16195c1735c7ad9
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/auto-injection.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:4e1c155d126e1e6fbd51dba274074a187fb2ebbed364f66baa38bb5113607ea5
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/cache-heal-utils.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:1d8b8181bdfa209f2d64736eb424b2b494849a103ec2efc58882f14174799506
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/codex/platform.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:9a5c4bb02797b388f900236aed83ab64838bc67acef34177213cb702028fb84c
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/codex/posttooluse.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:5ba9654b8cbdab606ad9010db0c780d7af4449f52c41cac2f3e5b4bdaa07ab6b
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/codex/precompact.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:6bd6a340c666883753081b6eb35db2ed975bc23e7d65b6e315617f04c7a2abbd
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/codex/pretooluse.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:3d31580ad41412399ffd4824b2b6d80072e413e13ad027ef381caf0f52cdd2ed
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/codex/sessionstart.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:d76a4dc50691ccd187a6c5484ea3935d27cd507f923e83a81602b07cc411fbfd
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/codex/stop.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:a98e2f6e734db6f0b8719aae80f2935ca30dad284512e5ee089959c2f09494ef
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/codex/userpromptsubmit.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:18538f702fc6a9e97eab8a56fa2d5b7c7e36547dc86c831fb8149594314586cc
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/copilot-cli/posttooluse.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:6be02b662f5e96231ca72dc33f15074e61eceaabd6158ba2463505bb394e4582
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/copilot-cli/precompact.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:3e2520ac08e9b23e7440fdb16bf64e7fb314c9cd8b3e0ec8e4dd2ccf527bce27
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/copilot-cli/pretooluse.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:3730d9cb668544aa8815ea7cfda625fbada496de323bb70556bfe1eda3e9d95b
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/copilot-cli/sessionstart.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:cc4b939ea1535aca84e7fffe6b01374ca4a3f23ad7a72b948f4f2f2ce30fb40a
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/copilot-cli/stop.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:9611967426d2fd8c27f4b33edc8bc2604057d9ccab6045cdf81c1a6856a13a45
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/copilot-cli/userpromptsubmit.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:966199a31c6e469796e380434f58a382153385dcf99ba70f2831bb0363ab3a6d
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/core/codex-caps.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:cb6fa33e3a591460dfce7bc8776fed87952e7ae9c4a283548670aafb33063490
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/core/formatters.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:dfe1c57fea9bcab2d04f93ad499e2020285f1b1a8fe580f52bfb466ac1abd722
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/core/mcp-ready.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:78a2fe30b55f3e1f34d1106dca6f43deea5b13ed5850c3d9c8cdee93acdc186f
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/core/platform-detect.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:30b2f78c1563ca777ffcf8f11ee554ac9212d88916b020e59d52c6c66b23960a
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/core/routing.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:7447ee2e444743d6581c53aa1cfec9ffe0d904bc5a478d6fe2ac3e09ef0b3462
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/core/stdin.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:206a10b2b98b05ca7c9ceee1a9d49ba48733e8adfc8fb306c17b0d9d0a9340f2
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/core/tool-naming.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:e959566c14b6e1d86a826203dcc928ef732cc9c7e4b79fc9444c4db25a0fff05
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/cursor/afteragentresponse.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:fd1d0b14d3b11d5c30f2af01b4d2507dee04a80758ff190388c3c11eca3fd37b
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/cursor/hooks.json
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:4787ea43852b31ff0308f6f056e58d15782fd7c5ecb70040be4b2127c5b307bd
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/cursor/posttooluse.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:9616b6b06cfbf0ed18691ef5ea6d0c5bc57cc437030029f30dc53ad231db60d9
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/cursor/pretooluse.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:fbfa56124f7695b780b8d762befb29085a9ff643d1737ee763881cdfcf833602
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/cursor/sessionstart.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:6e3cea0635316a6d031efec0d43d2e83703145f640689e46e1ccfdabe3a42d3f
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/cursor/stop.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:2c9f58b85edbb23734badca39a02327e54053a7bf87c75f8bfdf9e7660581cb3
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/ensure-deps.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:c42cc4f719065b84240390b1bfe99a9969be4267aa0fb88ddebcc5ce1f9ee6cc
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/formatters/claude-code.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:1fae47d58b0725f7e95a1552c16cc5601b62a10cd6184331ed2903c2bb112e31
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/formatters/cursor.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:260d92c573ee14fbe1891ad6db5cccc90e3155a85faacb51715ff3560f7e3f69
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/formatters/gemini-cli.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:c1f7c7f607a9320f7f81cdac799e1a63202dff057fb894dd233cda95fdd1f710
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/formatters/vscode-copilot.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:8a385ed4517c2172f18dc41fb1e34f6d029da189e6de2264fa43f6b00eba59b0
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/gemini-cli/aftermodel.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:3d177bf0e480d4160f3f6a28294a3cd238507ad8a690c55095603a66fd2c8d8c
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/gemini-cli/aftertool.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:8c033d650f74bb68cdf74988a69b6ae5a89a4532b9b540d4f37e63aa06fe2591
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/gemini-cli/beforeagent.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:c4cda3bedc59e652ed2ee7e299f8cdaf52728fee29491bcb0f629936cff1b821
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/gemini-cli/beforetool.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:610d10d1958bd534c1f54d41a9146f750f152b3b52a129cdb13d5022ac3069ec
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/gemini-cli/precompress.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:d7e4dcd36a4409dcadb703643c1c149130558748fcb52652c3eeb01a2bcc639f
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/gemini-cli/sessionstart.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:1489cae658f7c0bc25dc68dbd8029213afadbe1bd933f02dc5beef24fe8ee9f9
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/heal-partial-install.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:6b798ae7ed70a2f5d3166bf2d13902f15498020a5d69e98659f53a58da2fc5ff
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/jetbrains-copilot/posttooluse.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:f79d7a7da4747bb245e26b3081e551b99bb902b61978f75ac85b42081648793b
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/jetbrains-copilot/precompact.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:b0fddcfcbc67cd4ba1591f81495319d1b28f909a334286246e3146b9e4f9cc44
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/jetbrains-copilot/pretooluse.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:50096addc537940e113117d798ce4a60cefaa26b78cac5968c455058844b48e0
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/jetbrains-copilot/sessionstart.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:b7d932b877e02b8c3c30a6856a4fb735c557b6bc6552c1fdf3cdc86525cc931c
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/kimi/platform.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:e02670359cbd3fd05065965973abfd5ccb62af1ddadb812803baee233c6d39a8
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/kimi/posttooluse.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:dab5e14de1cbac62116252a76767bc0eef5506027dac724c6f04561e8ab6d9f7
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/kimi/precompact.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:0f12fb72b54b3abdf1132f299627845bc174e1a4c5088ad9ace28fa85ab47029
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/kimi/pretooluse.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:b5c5d01d93c666af610f00d384ac046b8d50102f887059df3e355f98692c51dc
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/kimi/sessionend.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:242e94deef8a7c16bd48ea98b0212fd1508c4f2c3bb2b01074a55cff8c949705
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/kimi/sessionstart.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:7eb950c090ad5648f74683c9cddc0f3a322db58bbc5d3e2ff6463cd1a4d22b9e
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/kimi/stop.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:d81f5e42fa154aaa283eaf10332b861f9c093a2d77bf01f9d77aa79cd8b519eb
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/kimi/userpromptsubmit.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:3f0abc9da9b3f2d2c90535655e10d0eb48e3ba7dc8491896578b708d29859fd3
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/kiro/agentspawn.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:98d06392c71b937e4bd6a10765ae9bbf4fb56e2a1cad45ddeac4bbe1066aff06
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/kiro/posttooluse.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:72cf880c218aa651edded5ce7898608c6737274e49d3c5c26d1f4911c551a776
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/kiro/pretooluse.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:3b776cd1f336eb343331d3e36e1f065bc595d12190b5a0542a863aa6fcc1d38a
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/kiro/userpromptsubmit.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:f302c75d94fd4d9c1bd6aad390eb409922f3dc3085d3717119f1833f9c8152ff
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/normalize-hooks.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:9cc58c4176a5eaa7a74427d3444844b00c5e6ae354a43a73043d89253de114e8
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/package.json
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:3ca9d4afd21425087cf31893b8f9f63c81b0b8408db5e343ca76e5f8aa26ab9a
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/platform-bridge.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:74d18338a4fbcc46c406f8791a819a213fd78551bbfbc99eba1f914692699294
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/posttooluse.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:02ead3ad9d5bf8e8367ccc63811a84b4d88bda0ddb3f43de58f51a2f678a63e3
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/precompact.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:4b8b1599057fba8aa9466f6184cec2fe48548a7cafa7c5faf50dae7cef8b2cc1
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/pretooluse.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:ecac9efe98689e57f50642d1657e212f10445e12c033a4b356738c4ca1c9e3d5
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/qwen-code/platform.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:88068bcba18b1b619e91442498cd6d7d2c289ba8f6045418e5543dda117a866a
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/qwen-code/stop.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:4cfeb312497dcc7714be6d0d656aede1b9054092d61bb04b8938a87c93089b5c
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/routing-block.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:93c69245325ded031994ba25ddf8f048e4ef5ef9bc98ce63607506d7306c07be
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/run-hook.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:663d4e39eff9fa31de2e6dffc7ac431412dc746354bba13f5fe4f794e69dc1a0
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/security.bundle.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:8d9231182dee7dd4e159101450695b9b5efc14e7812c710a8f4ebfbf4b482c06
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/session-attribution.bundle.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:3c041cd0c2aa8eb6f78cf5c1425c7197d48bc14ae08af18cc53145b3ae261743
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/session-db.bundle.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:6469fa50c5333fa3b380259cd86950cc50095f4b9d3725c224f1e682cc22105a
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/session-directive.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:f0b3dd89f710b20987ca79c767d613c881736d6738b0c0bfd0b1ca96d9cd1a05
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/session-extract.bundle.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:ef5513aac4c53d321b2f676da211e67302d16fc310330239f2956d47799caa5f
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/session-helpers.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:43855af74c4902c12d91e7162805e4b358a8ee60b09906c286d7e301b7de4dc0
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/session-loaders.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:2f2a5e62a8388864b99b595aa6e10c72a05e4d792c96a06e57e6d5952d92bb5d
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/session-snapshot.bundle.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:724c8444c8a8d1e23d1c6cd00968cc0803aa27619c370ed1a38c6c4a1eb613ec
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/sessionstart.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:41952548f197dc40bac50afff2126802c83fc9cbbe8ecc86743cacaeb0ced001
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/stop.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:b740f288239fa5b05b3db36e9ab39ea2495e454df88ac5895f2a58e7a7762e06
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/suppress-stderr.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:767faa2ceda55b7857f8d36f5ce6c3b123e7a8442005b875c7052cee486d324b
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/userpromptsubmit.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:d777abc6bfa2350526facc34f1f4502bc351dc01e67ad5a21244bc58cfbb3e9b
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/vscode-copilot/posttooluse.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:0d3d9f05474dc8d983fc75dac322e667447b05257dd26d82881672e9a75713ef
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/vscode-copilot/precompact.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:f0fd3d554217dad75aefe8065ea8cc96d69e86265a5f870a858db571ad5328b3
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/vscode-copilot/pretooluse.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:a31fc7e70af84b679eb135820ca060eb1b2f755213811f9a0005c09e3ec83885
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/context-mode/hooks/vscode-copilot/sessionstart.mjs
+  runtime: null
+  scope: project
+  owners:
+  - mksglu/context-mode
+  active_owner: mksglu/context-mode
+  content_hash: sha256:6b5854d407c8aa41495418d675eae0a77adc0c095f41dc0e9e8694a6ca4fcd42
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/ponytail/hooks/package.json
+  runtime: null
+  scope: project
+  owners:
+  - dietrichgebert/ponytail
+  active_owner: dietrichgebert/ponytail
+  content_hash: sha256:8005a3491db7d92f36ac66369861589f9c47123d3a7c71e643fc2c06168cd45a
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/ponytail/hooks/ponytail-activate.js
+  runtime: null
+  scope: project
+  owners:
+  - dietrichgebert/ponytail
+  active_owner: dietrichgebert/ponytail
+  content_hash: sha256:1c428c4ee9687c2f4321924109ee92e8f8b06fd6600cb6be9ec5b59633cafab1
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/ponytail/hooks/ponytail-config.js
+  runtime: null
+  scope: project
+  owners:
+  - dietrichgebert/ponytail
+  active_owner: dietrichgebert/ponytail
+  content_hash: sha256:0a8daf96cf9ac703dc4cb7b5065253567e513c951d60b8eb94a0fe727514aeca
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/ponytail/hooks/ponytail-instructions.js
+  runtime: null
+  scope: project
+  owners:
+  - dietrichgebert/ponytail
+  active_owner: dietrichgebert/ponytail
+  content_hash: sha256:23c050103f28dbe6bad953ae21d98cd06d720a20f33d4716e9de419f947d495e
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/ponytail/hooks/ponytail-mode-tracker.js
+  runtime: null
+  scope: project
+  owners:
+  - dietrichgebert/ponytail
+  active_owner: dietrichgebert/ponytail
+  content_hash: sha256:5d1a960ff01b73f651ec0242052a8cf1e064cb88147806bf6e13f92798aca251
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/ponytail/hooks/ponytail-runtime.js
+  runtime: null
+  scope: project
+  owners:
+  - dietrichgebert/ponytail
+  active_owner: dietrichgebert/ponytail
+  content_hash: sha256:80e4a13db4eca13f8cfca5237a46c34220c7c1f9ec841297191c0a46e49ca33e
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/ponytail/hooks/ponytail-statusline.ps1
+  runtime: null
+  scope: project
+  owners:
+  - dietrichgebert/ponytail
+  active_owner: dietrichgebert/ponytail
+  content_hash: sha256:6138f15bc7651ee7e5ced2a2a2280f5c810d58cad3e9f3252c628f4c923e48c9
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/ponytail/hooks/ponytail-statusline.sh
+  runtime: null
+  scope: project
+  owners:
+  - dietrichgebert/ponytail
+  active_owner: dietrichgebert/ponytail
+  content_hash: sha256:f1dbfa5997a5d4b5339619709053eff557ab16d71af75eb3041c3d3e3dca42ec
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/ponytail/hooks/ponytail-subagent.js
+  runtime: null
+  scope: project
+  owners:
+  - dietrichgebert/ponytail
+  active_owner: dietrichgebert/ponytail
+  content_hash: sha256:7f6bee86702a488d29ef0dcaabf424bbe2aca345a6a642319d43a1fe0276792e
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/superpowers/hooks/run-hook.cmd
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:d3d9c6199678dab2858e60509dde5e7414f13c2a2b5e48a38b1d368b6e1d6abb
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/scripts/superpowers/hooks/session-start
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:88a060272ca8047e0d1cd73a016e1cebba8396807a44be1e296d7c02dcbb9934
+- kind: project-relative
+  target: copilot
+  value: .github/hooks/superpowers-hooks.json
+  runtime: null
+  scope: project
+  owners:
+  - obra/superpowers
+  active_owner: obra/superpowers
+  content_hash: sha256:c83c50206f0cbb62ce37e0fa7df57e2d77c102cc92d3dca5d5ab0655485ac636
+- kind: project-relative
+  target: copilot
+  value: .github/instructions/comp-lib-process.instructions.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:0a8e7afdadaec4343da6b60a2c7bdb851e92e0926536b3aa7f5db56641a44d98
+- kind: project-relative
+  target: copilot
+  value: .github/prompts/caveman-commit.prompt.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:6dfa36fd6fda22c98fba37894c86e9d679ec224285aca19ba94efa28ecad93e5
+- kind: project-relative
+  target: copilot
+  value: .github/prompts/caveman-init.prompt.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:ebdbcd45dc7dff00e4d1de30714c279ccde98468f77a6dc7681ee6975d35a806
+- kind: project-relative
+  target: copilot
+  value: .github/prompts/caveman-review.prompt.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:965a23a5521e64e0892d9b8da72aba1b33e541e9b6cabb85ad19e865daab60fc
+- kind: project-relative
+  target: copilot
+  value: .github/prompts/caveman-stats.prompt.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:572d9ddcecdb80c405b16cb46749331c9b5b2b22c6b413e8d2bb1f3078a3ba68
+- kind: project-relative
+  target: copilot
+  value: .github/prompts/caveman.prompt.md
+  runtime: null
+  scope: project
+  owners:
+  - juliusbrussee/caveman
+  active_owner: juliusbrussee/caveman
+  content_hash: sha256:c27ca36f189e329a891e7350360bcaff3aeaa8e6fe6cd64cbdda42cfb598893f
+- kind: uri
+  target: mcp
+  value: codegraph
+  runtime: copilot
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: uri
+  target: mcp
+  value: context-mode
+  runtime: copilot
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+mcp_servers:
+- codegraph
+- context-mode
+mcp_configs:
+  codegraph:
+    name: codegraph
+    transport: stdio
+    args:
+    - serve
+    - --mcp
+    registry: false
+    command: codegraph
+  context-mode:
+    name: context-mode
+    transport: stdio
+    args:
+    - /Users/canqpham/Documents/sources/jtl-component-lib-plugin/apm_modules/mksglu/context-mode/start.mjs
+    registry: false
+    command: node
+mcp_target_servers:
+  copilot:
+  - codegraph
+  - context-mode
+mcp_config_provenance:
+  context-mode: context-mode
+local_deployed_files:
+- .github/instructions/comp-lib-process.instructions.md
+local_deployed_file_hashes:
+  .github/instructions/comp-lib-process.instructions.md: sha256:0a8e7afdadaec4343da6b60a2c7bdb851e92e0926536b3aa7f5db56641a44d98

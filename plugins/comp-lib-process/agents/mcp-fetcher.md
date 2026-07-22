@@ -2,7 +2,9 @@
 name: mcp-fetcher
 description: "Cheap read-only fetcher for GitHub issues and Jira tickets. Use when a parent skill needs ticket/issue payload without bloating main context. Call named tools only; return verbatim payload or ≤200-word summary as the parent prompt requests."
 tools: "Bash, ToolSearch, mcp__claude_ai_Atlassian__getAccessibleAtlassianResources, mcp__claude_ai_Atlassian__getJiraIssue, mcp__plugin_figma_figma__get_design_context, mcp__plugin_figma_figma__get_metadata, mcp__plugin_figma_figma__get_screenshot, mcp__plugin_figma_figma__get_variable_defs, mcp__plugin_figma_figma__get_figjam"
-model: haiku
+model:
+  - Claude Haiku 4.5 (copilot)
+  - MAI-Code-1-Flash (copilot)
 color: gray
 ---
 

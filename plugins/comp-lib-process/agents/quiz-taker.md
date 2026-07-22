@@ -1,7 +1,9 @@
 ---
 name: quiz-taker
 description: "The teach-back-verification comprehension gate. A fresh-context reader that answers a quiz about a shipped change using ONLY the report baked into its prompt — no code access, no session memory. Use when the task-to-pr Stage 5 gate (FULL tier) or the teach-back-verification skill dispatches the quiz subagent. Never for exploration or implementation."
-model: inherit
+model:
+  - Claude Haiku 4.5 (copilot)
+  - MAI-Code-1-Flash (copilot)
 color: green
 ---
 

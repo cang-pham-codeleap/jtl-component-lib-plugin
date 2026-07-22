@@ -1,0 +1,34 @@
+name: Validate Cross-Harness Support
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate workflow evidence fixtures
+        run: bash scripts/test-validate-cross-harness.sh
+
+      - name: Validate repository manifests and workflow evidence
+        run: bash scripts/validate-cross-harness.sh
+
+      - name: Install APM
+        run: curl -fsSL https://aka.ms/apm-unix | sh
+
+      - name: Register required APM marketplaces
+        run: bash scripts/register-required-marketplaces.sh
+
+      - name: Validate APM Copilot configuration
+        run: |
+          apm install --frozen -t copilot
+          apm compile -t copilot --force-instructions
+          git diff --exit-code -- AGENTS.md .github

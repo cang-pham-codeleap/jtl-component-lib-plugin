@@ -244,8 +244,8 @@
     </g>
     <g class="zone">
       <rect x="24" y="700" width="1520" height="380"/>
-      <text class="ztitle" x="44" y="728">Artifacts · .claude/workflow/&lt;ticket-id&gt;/</text>
-      <text class="zsub" x="44" y="746">## Approval blocks live inside artifacts · gitignore this tree</text>
+      <text class="ztitle" x="44" y="728">Artifacts · .jtl/workflow/&lt;ticket-id&gt;/</text>
+      <text class="zsub" x="44" y="746">sanitized + committed · ## Approval blocks live inside artifacts</text>
     </g>
     <g class="zone">
       <rect x="1564" y="700" width="292" height="380"/>
@@ -607,7 +607,7 @@ const DETAIL = {
   verify:  { t:"verify-ticket", m:"stage 0.6 · sub-skill", b:"Runs on <code>task-context.md</code>. <b>STOP</b> on <code>NOT-REPRODUCIBLE</code> or <code>ALREADY-EXISTS</code>. <code>CONFIRMED</code> / <code>PARTIALLY-VALID</code> continue with corrections into Stage 2." },
   branch:  { t:"Branch", m:"stage 0.9 · inline", b:"<code>git fetch && git switch -c &lt;ticket-id&gt;/&lt;slug&gt; origin/&lt;default&gt;</code>. Never main/master. Resume: re-validate old <code>specs.md</code> (and its <code>## Approval</code> block) before trust." },
   clarify: { t:"Clarify", m:"stage 1 · 3-solutions + tier", b:"Draft ≥3 approaches (pros/cons/effort/risk) + exactly one recommendation. Human picks. Escalate to <code>superpowers:brainstorming</code> only if asked or blocked. Append <code>## Clarified scope</code> with a <code>tier:</code> call: <b>SIMPLE</b> (single-file / add-props / trivial fix, no new architecture) skips Stage 2+3 via the SIMPLE-path gate; <b>FULL</b> (multi-file, new components/hooks/state/data-flow) runs Spec+Plan. When unsure, choose FULL." },
-  spec:    { t:"Spec", m:"stage 2 · FULL only", b:"Write <b>only</b> <code>.claude/workflow/&lt;id&gt;/specs.md</code>. No Speckit. No raw ticket dump. Spec Self-Review checklist before Checkpoint 1. <b>Skipped on SIMPLE tier.</b>" },
+  spec:    { t:"Spec", m:"stage 2 · FULL only", b:"Write <b>only</b> <code>.jtl/workflow/&lt;id&gt;/specs.md</code>. Requires Superpowers. No Speckit. No raw ticket dump. Spec Self-Review checklist before Checkpoint 1. <b>Skipped on SIMPLE tier.</b>" },
   cp1:     { t:"Checkpoint 1", m:"human gate · ## Approval", b:"Present specs.md; wait for explicit approval. On approval, append a <code>## Approval</code> block to <code>specs.md</code> (<code>Approved-by</code>, <code>Date</code>, <code>Mode</code>). Agent never self-approves. Blocks Stage 3. <b>SIMPLE tier skips CP1+CP2</b> — its gate is the <code>Approved-by</code> line in task-context.md." },
   plan:    { t:"Plan", m:"stage 3 · FULL only", b:"Invoke <code>superpowers:writing-plans</code> against approved specs. Land at workflow <code>plan.md</code> only. Tags: <code>[logic]</code> <code>[ui]</code> <code>[shared]</code> optional <code>[parallel-safe]</code> — tasks sharing a tag form one dispatch group. Per-task run/commit steps dropped: each task keeps Files, Interfaces, test code, implementation code; checks run per Stage 4 phase, never per task. <b>Skipped on SIMPLE tier.</b>" },
   cp2:     { t:"Checkpoint 2", m:"human gate · ## Approval", b:"Append <code>## Approval</code> block to <code>plan.md</code> on human approval. Blocks Stage 4 until present. Agent never writes it ahead of the human." },
@@ -624,7 +624,7 @@ const DETAIL = {
   fetcher: { t:"mcp-fetcher / figma", m:"subagent · haiku", b:"Cheap ticket/MCP reads via intake path. Also hosts <code>figma-fetching</code> Figma MCP read tools when ticket carries design URLs → <code>design-context.md</code>." },
   explore: { t:"deep-explore", m:"subagent · on demand", b:"Only when exploration would bloat hub context." },
   hub:     { t:"Hub agent", m:"one agent per task", b:"Core principle: one continuous session. Fork only for domain impl, unbiased review, deep-explore, or mcp-fetcher. In Stage 4 the hub only <b>coordinates dispatch + reads back SHAs + check evidence</b> — the domain agent owns its group end-to-end (tests-all → implement-all → verify once → commit per task). If in doubt, stay." },
-  taskctx: { t:"task-context.md", m:"artifact · Stage 0", b:"Primary working memory: intake, clarified scope, Spec/Plan path pointers. Under gitignored workflow dir." },
+  taskctx: { t:"task-context.md", m:"artifact · Stage 0", b:"Primary working memory: intake, clarified scope, Spec/Plan path pointers. Sanitized and committed with the task PR." },
   designctx:{ t:"design-context.md", m:"artifact · Stage 0 (optional)", b:"Produced only when ticket has Figma URLs. <code>figma-fetching</code> (via <code>mcp-fetcher</code> Figma MCP reads) writes a text summary. Fed into spec/clarify. Design abort halts before this." },
   verreport:{ t:"verification-report.md", m:"artifact · Stage 0.6", b:"Repro/claim results. Corrections flow into Stage 2." },
   specs:   { t:"specs.md", m:"artifact · Stage 2 (FULL)", b:"Superpowers design-doc contract at workflow path only. Carries the <code>## Approval</code> block (CP1) appended after human approval — not a separate flag file." },
@@ -634,7 +634,7 @@ const DETAIL = {
   reviewfiles:{ t:"teach-back + state.json", m:"artifacts · Stage 5 (FULL)", b:"<code>teach-back-report.md</code> comprehension check (FULL tier only) + <code>state.json</code> loop counter (cap 3)." },
   prart:   { t:"draft PR", m:"ship output", b:"Always draft. Workflow ends at draft PR + reflect drafts — never merge." },
   reflectart:{ t:"reflect drafts", m:"ship output", b:"Comment/transition drafts. Human approves before post." },
-  paths:   { t:"Path override", m:"hub rule", b:"Spec + plan live <b>only</b> under <code>.claude/workflow/&lt;ticket-id&gt;/</code>. Superpowers skills supply format; this hub overrides their default save paths." },
+  paths:   { t:"Path override", m:"hub rule", b:"Spec + plan live <b>only</b> under <code>.jtl/workflow/&lt;ticket-id&gt;/</code>. Superpowers skills supply format; this hub overrides their default save paths." },
   pol1:    { t:"Approval = annotation", m:"hard policy", b:"Approval is a <code>## Approval</code> block inside the artifact (specs.md / plan.md / review-verdict.md), <b>not</b> a <code>*.approved</code> flag file. Agent appends it <b>only after</b> explicit human approval in chat — never self-approve, never ahead of the human." },
   pol2:    { t:"No protected push", m:"hard policy", b:"Deny commit/push on main/master; deny force-push everywhere." },
   pol3:    { t:"No merge", m:"hard policy", b:"No <code>gh pr merge</code>. Human owns merge outside this workflow." },

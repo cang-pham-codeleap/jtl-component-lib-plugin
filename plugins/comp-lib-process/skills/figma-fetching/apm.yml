@@ -1,0 +1,4 @@
+name: figma-fetching
+version: 1.7.0
+description: Fetch and summarize Figma design context.
+includes: auto

@@ -1,0 +1,4 @@
+name: shadcn
+version: 1.7.0
+description: Manage shadcn component projects and registries.
+includes: auto

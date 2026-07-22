@@ -12,7 +12,7 @@ Close the loop with reporters: PR URL + short implementation summary. Draft firs
 ## Inputs
 
 - PR URL (required)
-- GitHub issue number and/or Jira key — from args or `.claude/workflow/<ticket-id>/task-context.md`
+- GitHub issue number and/or Jira key — from args or `.jtl/workflow/<ticket-id>/task-context.md`
 - One-paragraph summary of what shipped (from specs/teach-back if available)
 
 ## Steps

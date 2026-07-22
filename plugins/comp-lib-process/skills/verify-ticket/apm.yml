@@ -1,0 +1,4 @@
+name: verify-ticket
+version: 1.7.0
+description: Verify a ticket claim against repository evidence.
+includes: auto

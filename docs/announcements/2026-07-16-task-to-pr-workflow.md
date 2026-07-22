@@ -25,7 +25,7 @@ Every stage is a skill in the `comp-lib-process` plugin. The hub is `task-to-pr`
 | 0.6 Verify | `verify-ticket` | Confirms the bug is real / feature doesn't exist. Stops the pipeline on `NOT-REPRODUCIBLE` or `ALREADY-EXISTS`. |
 | 0.9 Branch | inline | Branches off the default branch (never main). |
 | 1 Clarify | inline | Presents ≥3 solution approaches; human picks. Classifies **SIMPLE** vs **FULL** tier. |
-| 2 Spec | `superpowers:writing-plans` | Design doc → `specs.md` (FULL tier only). **Saved as evidence** under `.claude/workflow/<ticket-id>/`. |
+| 2 Spec | `superpowers:brainstorming` | Design doc → `specs.md` (FULL tier only). **Saved as evidence** under `.jtl/workflow/<ticket-id>/`. |
 | 3 Plan | `superpowers:writing-plans` | Implementation plan → `plan.md` (FULL tier only). |
 | 4 Implement | `engine-specialist` / `ui-ux-stylist` | One agent per domain group, 3 phases: tests for all tasks → implement all → one tests+lint+typecheck run → commit per task. |
 | 5 Review | `code-quality-reviewer` + `quiz-taker` | Clean-context gate: spec compliance + code quality + technical debt + build (once) + Stage 4 check evidence. FULL tier adds a teach-back comprehension quiz. |
@@ -34,7 +34,7 @@ Every stage is a skill in the `comp-lib-process` plugin. The hub is `task-to-pr`
 
 ## Why it matters
 
-- **Spec + plan + verdict are saved as evidence.** Every task leaves a paper trail in `.claude/workflow/<ticket-id>/` — `specs.md`, `plan.md`, `verification-report.md`, `review-verdict.md`. You can audit what was decided and why, not just what shipped.
+- **Spec + plan + verdict are saved as evidence.** Every task leaves a sanitized, committed paper trail in `.jtl/workflow/<ticket-id>/` — `specs.md`, `plan.md`, `verification-report.md`, `review-verdict.md`. You can audit what was decided and why, not just what shipped.
 - **One agent per task, fresh-context gates.** The agent that wrote the code never judges it — `code-quality-reviewer` and `quiz-taker` run with no session memory, so acceptance isn't self-acceptance.
 - **Ticket reflection is automatic, not forgotten.** After the PR opens, `reflect` drafts the "implemented in PR #N" comment for both GitHub and Jira and the status transition — you approve, it posts.
 - **Tiered, not one-size-fits-all.** Trivial fixes take the SIMPLE path (skip spec/plan, reviewer + debt + tests only). Substantial work takes FULL (adds teach-back comprehension gate). The agent proposes the tier; you confirm.

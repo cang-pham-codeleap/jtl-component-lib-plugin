@@ -15,9 +15,11 @@ last commit) and dispatch it to a fresh, context-isolated agent.
    - `gh pr view --json number,url,title,baseRefName 2>/dev/null` — open PR for this branch, if any (ok if empty: no PR yet, review the local branch)
    - `git diff main...HEAD --name-only` — committed files that differ from `main`
    - `git status --short` — uncommitted changes to include too
-2. Dispatch the review agent (single call, fresh context — do NOT do the review yourself):
-   - Prefer `Agent(subagent_type: "comp-lib-process:tech-debt-reviewer")` if that agent type is available.
-   - If not available/registered, fall back to `Agent(subagent_type: "general-purpose")` and paste the 9-dimension checklist + output-format contract from the `tech-debt-reviewer` agent definition into the prompt so the fallback agent follows the same structure.
+2. Run the review role in one fresh context when the harness supports it; do
+   **not** do the review yourself in that case. Claude Code prefers
+   `comp-lib-process:tech-debt-reviewer`. Another harness uses its available
+   isolated reviewer and the same 9-dimension checklist. If no fresh context is
+   available, disclose that limitation before performing a self-review.
    - The dispatch prompt MUST override the agent's own default scope (`git diff HEAD`, which only sees uncommitted changes) — tell it explicitly to run `git diff main...HEAD` (plus `git status --short` for anything uncommitted) as the diff to review, and to state the branch name / PR number in its report header.
 3. Relay the agent's structured report back to the user as-is (severity-ranked findings + verdict). Do not re-summarize away the per-item evidence/fix fields.
 

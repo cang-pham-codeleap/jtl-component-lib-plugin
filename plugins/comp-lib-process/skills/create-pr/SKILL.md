@@ -106,7 +106,7 @@ Scan commit subjects for pattern `[A-Z]+-[0-9]+` (e.g., `CP-4216`).
 
 Resolve GH issue in this order (first hit wins per source; merge unique numbers):
 
-1. **task-context** (if present): `.claude/workflow/*/task-context.md` — parse `Sources` / `ticket-id: gh-<n>` / GH issue URLs
+1. **task-context** (if present): `.jtl/workflow/*/task-context.md` — parse `Sources` / `ticket-id: gh-<n>` / GH issue URLs
 2. **Branch name:** `gh-<n>`, or trailing/leading bare number when clearly issue-shaped
 3. **Commits:** `#<n>`, or `fixes|closes|resolves #<n>` (case-insensitive)
 
@@ -122,7 +122,7 @@ Use Jira key for changelog/title ticket segment when present; otherwise `gh-<n>`
 
 ### Source priority
 
-1. **Spec file:** search `docs/superpowers/specs/` for a `.md` file whose name contains the ticket ID or current branch name. If found, use:
+1. **Spec file:** search `.jtl/workflow/*/specs.md` for the matching ticket ID or current branch name. If found, use:
    - Its first `#` heading as the changelog title
    - Its first section body as the source for bullets
 2. **Fallback:** read `git log` commit messages and `git diff <LAST_TAG>..HEAD --stat`, then read the most-changed source files to produce a consumer-facing summary
