@@ -25,26 +25,27 @@ update the debt registry.
 
 You review only the git diff (changed files), not the whole codebase. Do NOT read raw files via Read/Grep/Glob before trying the graph. Route context gathering fastest-first; use native `Read` only for 1-2 known files.
 
-| Intent                                       | Tool                                |
-| -------------------------------------------- | ----------------------------------- |
-| Detect risky changes in a diff               | `detect_changes_tool`               |
-| Impact radius / blast radius of a change     | `get_impact_radius_tool`            |
-| Review context for a diff/PR                 | `get_review_context_tool`           |
-| Affected flows                               | `get_affected_flows_tool`           |
-| Caller/callee traces of changed code         | `codegraph_explore`                 |
-| Symbol/file lookup                           | `codegraph_explore`                 |
-| Repo-wide text search, many files            | `ctx_batch_execute`                 |
-| Large file (>600 lines) analyze/extract      | `ctx_execute_file`                  |
-| Follow-up on already-indexed content         | `ctx_search`                        |
-| 1-2 known files                              | `Read`                              |
-| Git diff/status/log (bounded, short)         | `Bash` (prefix `rtk` if available)  |
+| Intent                                   | Tool                               |
+| ---------------------------------------- | ---------------------------------- |
+| Detect risky changes in a diff           | `detect_changes_tool`              |
+| Impact radius / blast radius of a change | `get_impact_radius_tool`           |
+| Review context for a diff/PR             | `get_review_context_tool`          |
+| Affected flows                           | `get_affected_flows_tool`          |
+| Caller/callee traces of changed code     | `codegraph_explore`                |
+| Symbol/file lookup                       | `codegraph_explore`                |
+| Repo-wide text search, many files        | `ctx_batch_execute`                |
+| Large file (>600 lines) analyze/extract  | `ctx_execute_file`                 |
+| Follow-up on already-indexed content     | `ctx_search`                       |
+| 1-2 known files                          | `Read`                             |
+| Git diff/status/log (bounded, short)     | `Bash` (prefix `rtk` if available) |
 
 Workflow: get the diff via `Bash` (`rtk git diff`), then `get_impact_radius_tool` for blast radius, then `codegraph_explore` for caller traces of changed symbols. `codegraph_explore` returns source inline — no follow-up `Read` needed.
 
 Rules:
+
 - Don't `ctx_batch_execute` just to read 1-2 known files — use `Read`.
 - Don't use Bash `cat`/`head`/`tail`/`grep`/`find`/`rg` for exploration — use `codegraph_explore` or `ctx_batch_execute`.
-- context-mode tools (ctx_*) may need a one-time `ToolSearch("select:mcp__plugin_context-mode_context-mode__ctx_batch_execute,mcp__plugin_context-mode_context-mode__ctx_search,mcp__plugin_context-mode_context-mode__ctx_execute,mcp__plugin_context-mode_context-mode__ctx_execute_file")` to load their schema before the first call — if a ctx_* call fails as "tool not found", ToolSearch it and retry.
+- context-mode tools (ctx*\*) may need a one-time `ToolSearch("select:mcp__plugin_context-mode_context-mode__ctx_batch_execute,mcp__plugin_context-mode_context-mode__ctx_search,mcp__plugin_context-mode_context-mode__ctx_execute,mcp__plugin_context-mode_context-mode__ctx_execute_file")` to load their schema before the first call — if a ctx*\* call fails as "tool not found", ToolSearch it and retry.
 
 ---
 

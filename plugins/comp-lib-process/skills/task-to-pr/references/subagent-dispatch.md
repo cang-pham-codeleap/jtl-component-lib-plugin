@@ -28,7 +28,7 @@ spec, and reaches an independent verdict. Adapted from superpowers
    - `task-context.md` — ticket scope + pointers + Stage 4 check evidence
      (`## Stage 4 checks` — the reviewer verifies this instead of re-running
      tests/lint/typecheck; it runs only the build itself)
-2. **No pre-judging.** Never tell the reviewer what *not* to flag. Never pre-rate
+2. **No pre-judging.** Never tell the reviewer what _not_ to flag. Never pre-rate
    a finding's severity. If a line contains "do not flag", "at most minor", "the
    plan chose", or "don't treat X as a defect" — delete it. If you think a finding
    would be a false positive, let the reviewer raise it and adjudicate it in the

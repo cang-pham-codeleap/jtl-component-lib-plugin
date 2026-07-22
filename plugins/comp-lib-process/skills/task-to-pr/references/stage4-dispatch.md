@@ -18,6 +18,7 @@ own context. The orchestrator does **not** run checks or commit for you —
 phase 3 (verify + commit) is your responsibility, not a handoff.
 
 **Read these first (your inputs — nothing else from the session):**
+
 - Plan tasks for this group: `{plan_path}` (the `{tag}`-tagged tasks only)
 - Ticket scope + clarified scope: `{task_context_path}`
 - Spec (if FULL tier): `{specs_path}`
@@ -41,8 +42,10 @@ Git index is single-writer: commit only your own group's files, never another
 agent's.
 
 **Return contract (mandatory):**
+
 - On success: commit SHA(s) + **check evidence** (exact commands run + output
   tail). Example:
+
   ```
   ## Stage 4 checks — [{tag}] group ({ticket_id})
 
@@ -51,6 +54,7 @@ agent's.
   - `./node_modules/.bin/vitest run <targeted>` → N/N passed
   - `./node_modules/.bin/eslint <paths>` → clean
   ```
+
 - On unfixable failure: return the failure — do not commit broken code. State
   which phase failed, the command, and the error.
 - **Never return partial work without a SHA.** If phase 3 is not done, return

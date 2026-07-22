@@ -105,6 +105,7 @@ Classify the chosen approach and record `tier:` in `## Clarified scope`:
 Agent proposes the tier with a one-line reason; human confirms (an explicit skip phrase confirms SIMPLE). When unsure between tiers, choose FULL.
 
 🛑 **SIMPLE-path gate** (replaces Checkpoints 1 + 2 for simple work)
+
 - Present a short **change-list**: files to touch + what changes ("edit `Select.tsx`, add `renderItem` prop, no new deps").
 - Wait for explicit human approval.
 - Record approval into `task-context.md` → `## Clarified scope`:
@@ -116,7 +117,6 @@ Agent proposes the tier with a one-line reason; human confirms (an explicit skip
 ### Stage 2 — Spec → superpowers design doc (FULL tier only)
 
 > Simple tasks skip this stage — implement from `task-context.md` after the SIMPLE-path gate.
-
 
 - Inputs: clarified scope + chosen approach, verification corrections, Stage 0.3 conventions.
 - **Do not** invoke Speckit/`specify`/Bash `speckit`. **Do not** re-run full interactive brainstorming (Stage 1 already chose the approach; escalate path only).
