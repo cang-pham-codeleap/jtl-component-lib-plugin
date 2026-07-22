@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-07-20T12:13:50.543433+00:00'
+generated_at: '2026-07-22T03:49:55.828413+00:00'
 apm_version: 0.26.0
 dependencies:
 - repo_url: _local/create-pr
@@ -273,17 +273,19 @@ dependencies:
   - .agents/skills/task-to-pr/SKILL.md
   - .agents/skills/task-to-pr/apm.yml
   - .agents/skills/task-to-pr/references/automation.md
+  - .agents/skills/task-to-pr/references/model-routing.md
   - .agents/skills/task-to-pr/references/reviewer-prompt.md
   - .agents/skills/task-to-pr/references/stage4-dispatch.md
   - .agents/skills/task-to-pr/references/subagent-dispatch.md
   - .agents/skills/task-to-pr/task-to-pr-architecture.html
   deployed_file_hashes:
-    .agents/skills/task-to-pr/SKILL.md: sha256:b0fe66b4861b1a890f0bf2f842857cd1e11afa10ca3ce2997770dec9bc7fd2ab
+    .agents/skills/task-to-pr/SKILL.md: sha256:86d57225f4f56348be494665a9131d66dab236128861fa64f70de1da95dabaf8
     .agents/skills/task-to-pr/apm.yml: sha256:c9809548e5e0d611c002cb6354fdba455ee59b6d59fcedddbfc3f4f6117cd101
     .agents/skills/task-to-pr/references/automation.md: sha256:737ef9cf48bef7012981a0f8ac102ba3866ba6ad2e23d050fb429dff4f4ad786
-    .agents/skills/task-to-pr/references/reviewer-prompt.md: sha256:f70eba785c88e8c79aec3dd5ae83259b074aac51cfc831ddddcffcf75f16b97c
-    .agents/skills/task-to-pr/references/stage4-dispatch.md: sha256:70ba1d3afae4082eb56df774d96cbab242f21a6f6944080bf19435dfd354fd11
-    .agents/skills/task-to-pr/references/subagent-dispatch.md: sha256:9eacf3b2fbd0bb4fc8058aee5d2c1aeddc4b22f87ed19c9910adf6127adefc5e
+    .agents/skills/task-to-pr/references/model-routing.md: sha256:32a0b9a0f50a9760a93835222e2e17b88a5af506deab6566653e42b7864c361b
+    .agents/skills/task-to-pr/references/reviewer-prompt.md: sha256:4a9c125368f97414be10f2dc4af7b10ce5139cf70b378b672e6ac53b1e94cd5b
+    .agents/skills/task-to-pr/references/stage4-dispatch.md: sha256:0e1cc8e12db80052f262382bd39294cc61f03041774e105e4bcff095668712ff
+    .agents/skills/task-to-pr/references/subagent-dispatch.md: sha256:64ce8ec2e433e38750b1557d4f0c71a5f480ad731e4b002a2e6b6c16bbc346af
     .agents/skills/task-to-pr/task-to-pr-architecture.html: sha256:028c51128cbec924ffe33ab7fbe224ded1cee64737c4fc2bdbb13b545e705ca3
   source: local
   local_path: ./plugins/comp-lib-process/skills/task-to-pr
@@ -485,7 +487,7 @@ dependencies:
 - repo_url: mksglu/context-mode
   name: context-mode
   host: github.com
-  resolved_commit: 1618d9764921c66f3c9cdab8a45d2d8f7f0b0648
+  resolved_commit: 3e530617e7ddee634b943ba99aa3aa08185cf0fd
   version: 1.0.169
   package_type: marketplace_plugin
   deployed_files:
@@ -696,7 +698,7 @@ dependencies:
     .github/hooks/scripts/context-mode/hooks/vscode-copilot/precompact.mjs: sha256:f0fd3d554217dad75aefe8065ea8cc96d69e86265a5f870a858db571ad5328b3
     .github/hooks/scripts/context-mode/hooks/vscode-copilot/pretooluse.mjs: sha256:a31fc7e70af84b679eb135820ca060eb1b2f755213811f9a0005c09e3ec83885
     .github/hooks/scripts/context-mode/hooks/vscode-copilot/sessionstart.mjs: sha256:6b5854d407c8aa41495418d675eae0a77adc0c095f41dc0e9e8694a6ca4fcd42
-  content_hash: sha256:30615a2b1756bbb1cdd91c7ffbd4435ee3b15d9e715ca10b849f8b578e3d3a69
+  content_hash: sha256:c9fa9aad1283745c965d133d9cdf0bf2163c3912970f29e9e1fcf14aa8a9e656
   declared_license: Elastic-2.0
 - repo_url: obra/superpowers
   name: superpowers
@@ -2606,7 +2608,7 @@ deployments:
   owners:
   - ./plugins/comp-lib-process/skills/task-to-pr
   active_owner: ./plugins/comp-lib-process/skills/task-to-pr
-  content_hash: sha256:b0fe66b4861b1a890f0bf2f842857cd1e11afa10ca3ce2997770dec9bc7fd2ab
+  content_hash: sha256:86d57225f4f56348be494665a9131d66dab236128861fa64f70de1da95dabaf8
 - kind: project-relative
   target: copilot
   value: .agents/skills/task-to-pr/apm.yml
@@ -2627,13 +2629,22 @@ deployments:
   content_hash: sha256:737ef9cf48bef7012981a0f8ac102ba3866ba6ad2e23d050fb429dff4f4ad786
 - kind: project-relative
   target: copilot
+  value: .agents/skills/task-to-pr/references/model-routing.md
+  runtime: null
+  scope: project
+  owners:
+  - ./plugins/comp-lib-process/skills/task-to-pr
+  active_owner: ./plugins/comp-lib-process/skills/task-to-pr
+  content_hash: sha256:32a0b9a0f50a9760a93835222e2e17b88a5af506deab6566653e42b7864c361b
+- kind: project-relative
+  target: copilot
   value: .agents/skills/task-to-pr/references/reviewer-prompt.md
   runtime: null
   scope: project
   owners:
   - ./plugins/comp-lib-process/skills/task-to-pr
   active_owner: ./plugins/comp-lib-process/skills/task-to-pr
-  content_hash: sha256:f70eba785c88e8c79aec3dd5ae83259b074aac51cfc831ddddcffcf75f16b97c
+  content_hash: sha256:4a9c125368f97414be10f2dc4af7b10ce5139cf70b378b672e6ac53b1e94cd5b
 - kind: project-relative
   target: copilot
   value: .agents/skills/task-to-pr/references/stage4-dispatch.md
@@ -2642,7 +2653,7 @@ deployments:
   owners:
   - ./plugins/comp-lib-process/skills/task-to-pr
   active_owner: ./plugins/comp-lib-process/skills/task-to-pr
-  content_hash: sha256:70ba1d3afae4082eb56df774d96cbab242f21a6f6944080bf19435dfd354fd11
+  content_hash: sha256:0e1cc8e12db80052f262382bd39294cc61f03041774e105e4bcff095668712ff
 - kind: project-relative
   target: copilot
   value: .agents/skills/task-to-pr/references/subagent-dispatch.md
@@ -2651,7 +2662,7 @@ deployments:
   owners:
   - ./plugins/comp-lib-process/skills/task-to-pr
   active_owner: ./plugins/comp-lib-process/skills/task-to-pr
-  content_hash: sha256:9eacf3b2fbd0bb4fc8058aee5d2c1aeddc4b22f87ed19c9910adf6127adefc5e
+  content_hash: sha256:64ce8ec2e433e38750b1557d4f0c71a5f480ad731e4b002a2e6b6c16bbc346af
 - kind: project-relative
   target: copilot
   value: .agents/skills/task-to-pr/task-to-pr-architecture.html
