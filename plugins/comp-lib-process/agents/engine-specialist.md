@@ -2,7 +2,9 @@
 name: engine-specialist
 description: "Use this agent when you need to implement or refactor application logic, state management, custom hooks, API integrations, or data flow patterns. This includes creating custom hooks, setting up Context/Redux/Zustand stores, handling async operations, optimizing React hooks (useState, useEffect, useMemo, useCallback), and separating business logic from UI components."
 tools: Glob, Grep, Read, Edit, Write, NotebookEdit, Bash, WebFetch, WebSearch, ListMcpResourcesTool, ReadMcpResourceTool, mcp__codegraph__codegraph_search, mcp__codegraph__codegraph_explore, mcp__codegraph__codegraph_context, mcp__codegraph__codegraph_trace, mcp__codegraph__codegraph_callers, mcp__codegraph__codegraph_callees, mcp__codegraph__codegraph_impact, mcp__codegraph__codegraph_node, mcp__codegraph__codegraph_files, mcp__codegraph__codegraph_status, mcp__plugin_context-mode_context-mode__ctx_batch_execute, mcp__plugin_context-mode_context-mode__ctx_search, mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, mcp__plugin_context-mode_context-mode__ctx_fetch_and_index, mcp__plugin_context-mode_context-mode__ctx_index
-model: inherit
+model:
+  - GPT-5.3-Codex (copilot)
+  - Claude Sonnet 4.6 (copilot)
 color: red
 ---
 

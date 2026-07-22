@@ -14,9 +14,6 @@ to consumer projects so installations are reproducible.
 # One-time: install APM on macOS/Linux
 curl -fsSL https://aka.ms/apm-unix | sh
 
-# Register the companion marketplaces catalogued in apm.yml
-bash scripts/register-required-marketplaces.sh
-
 # Install the JTL skills for the Copilot target
 apm install cang-pham-codeleap/jtl-component-lib-plugin -t copilot
 apm compile -t copilot
@@ -31,10 +28,7 @@ copilot plugin install superpowers@superpowers-marketplace
 
 APM deploys skills to `.agents/skills/`, generates `AGENTS.md`, and adopts
 portable instructions under `.github/instructions/`; GitHub Copilot coding
-agent reads all three locations. It also installs the companion skills and
-runtime assets declared in `apm.yml` from their canonical repositories; the
-required marketplace catalog remains available for plugin discovery and native
-Copilot plugin setup.
+agent reads all three locations.
 For Copilot coding agent, configure optional repository MCP servers separately
 in GitHub repository Settings because APM cannot configure GitHub-hosted agent
 MCP settings. Make the repository's **Validate Cross-Harness Support** workflow
@@ -64,8 +58,8 @@ dependencies:
     "context-mode": {
       "source": { "source": "github", "repo": "mksglu/context-mode" },
     },
-    "claude-plugins-official": {
-      "source": { "source": "github", "repo": "anthropics/claude-code" },
+    "superpowers-marketplace": {
+      "source": { "source": "github", "repo": "obra/superpowers-marketplace" },
     },
     "jtl-component-lib-plugin": {
       "source": {

@@ -38,7 +38,9 @@ spec, and reaches an independent verdict. Adapted from superpowers
    teach-back comprehension gate is the same — dispatch
    `comp-lib-process:quiz-taker` (a role agent with no tools), never
    `general-purpose` and never the skill name `teach-back-verification` (that
-   is a skill, not an agent; the deep-explore dispatch hook blocks it).
+   is a skill, not an agent; the deep-explore dispatch hook blocks it). Both
+   agents' own frontmatter already declares the intended model (primary +
+   fallback) \u2014 see `references/model-routing.md`; do not override it per-dispatch.
 4. **Review-only.** The reviewer does not modify code. Fixes route back to
    Stage 4; then re-review.
 5. **Explicit verdict.** The reviewer writes `review-verdict.md` with a per-

@@ -2,7 +2,9 @@
 name: ui-ux-stylist
 description: "Use this agent when implementing visual designs, styling components, ensuring responsive layouts, building design system components, or addressing accessibility concerns."
 tools: Glob, Grep, Read, Edit, Write, NotebookEdit, Bash, WebFetch, WebSearch, ListMcpResourcesTool, ReadMcpResourceTool, mcp__codegraph__codegraph_search, mcp__codegraph__codegraph_explore, mcp__codegraph__codegraph_context, mcp__codegraph__codegraph_trace, mcp__codegraph__codegraph_callers, mcp__codegraph__codegraph_callees, mcp__codegraph__codegraph_impact, mcp__codegraph__codegraph_node, mcp__codegraph__codegraph_files, mcp__codegraph__codegraph_status, mcp__plugin_context-mode_context-mode__ctx_batch_execute, mcp__plugin_context-mode_context-mode__ctx_search, mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, mcp__plugin_context-mode_context-mode__ctx_fetch_and_index, mcp__plugin_context-mode_context-mode__ctx_index
-model: inherit
+model:
+  - Claude Sonnet 4.6 (copilot)
+  - GPT-5.3-Codex (copilot)
 color: green
 ---
 

@@ -7,6 +7,10 @@ This template bakes in the 3-phase contract and the return contract so the
 subagent cannot stop after writing code — the orchestrator must use it verbatim,
 not a hand-written shortened prompt.
 
+Model: use the target agent's own frontmatter (primary + fallback array) —
+see `references/model-routing.md`. Do not pass a different model unless
+escalating per that file's Escalation section.
+
 ---
 
 You own the `{tag}` task group for ticket `{ticket_id}` end to end, inside your

@@ -7,7 +7,9 @@ description: >-
   _tech-debt.md registry. Invoke explicitly with: Run tech-debt-reviewer on the
   changes I just made or Review the last task for technical debt.
 tools: Read, Glob, Grep, Bash, mcp__codegraph__codegraph_search, mcp__codegraph__codegraph_explore, mcp__codegraph__codegraph_context, mcp__codegraph__codegraph_trace, mcp__codegraph__codegraph_callers, mcp__codegraph__codegraph_callees, mcp__codegraph__codegraph_impact, mcp__codegraph__codegraph_node, mcp__codegraph__codegraph_files, mcp__codegraph__codegraph_status, mcp__code-review-graph__get_review_context_tool, mcp__code-review-graph__detect_changes_tool, mcp__code-review-graph__get_impact_radius_tool, mcp__code-review-graph__get_affected_flows_tool, mcp__code-review-graph__query_graph_tool, mcp__code-review-graph__semantic_search_nodes_tool, mcp__code-review-graph__get_architecture_overview_tool, mcp__code-review-graph__get_minimal_context_tool, mcp__plugin_context-mode_context-mode__ctx_batch_execute, mcp__plugin_context-mode_context-mode__ctx_search, mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, mcp__plugin_context-mode_context-mode__ctx_fetch_and_index, mcp__plugin_context-mode_context-mode__ctx_index
-model: sonnet
+model:
+  - Claude Sonnet 4.6 (copilot)
+  - GPT-5.4 (copilot)
 ---
 
 # Role

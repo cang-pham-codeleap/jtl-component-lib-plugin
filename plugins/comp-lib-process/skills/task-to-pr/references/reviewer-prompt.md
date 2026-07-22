@@ -4,6 +4,9 @@ Fill the `{placeholders}` and dispatch as
 `Agent(subagent_type="comp-lib-process:code-quality-reviewer")`.
 Read `subagent-dispatch.md` first — no session history, no pre-judging.
 
+Model: use the agent's own frontmatter (primary + fallback array) — see
+`references/model-routing.md`. Escalate only per that file's Escalation section.
+
 ---
 
 You are the acceptance gate for this change. You did not write it and have no
