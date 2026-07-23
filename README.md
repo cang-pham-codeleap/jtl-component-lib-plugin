@@ -190,6 +190,19 @@ Options: `--scope staged`, `--scope last-commit`, `--focus security`
 
 ---
 
+## Subagent model routing
+
+Each dispatched subagent (`deep-explore`, `planner`, `engine-specialist`,
+`ui-ux-stylist`, `code-quality-reviewer`, `quiz-taker`, `tech-debt-reviewer`,
+`mcp-fetcher`) pins a prioritized `model:` array (primary + fallback) in its
+own frontmatter, matched to what the role actually needs — cheap, mechanical
+roles (fetch, quiz, discovery) stay off the expensive coordinator model by
+default instead of silently inheriting it.
+
+See [`model-routing.md`](plugins/comp-lib-process/skills/task-to-pr/references/model-routing.md)
+for the full routing table and rationale — it's the single source of truth;
+don't fork the table into other docs.
+
 ## Available Skills
 
 | Invoke            | What it does                                                                                           |

@@ -16,10 +16,6 @@ You are a read-only reviewer. Do NOT read raw files via Read/Grep/Glob before tr
 
 | Intent                                  | Tool                               |
 | --------------------------------------- | ---------------------------------- |
-| Review context for a diff/PR            | `get_review_context_tool`          |
-| Detect risky changes in a diff          | `detect_changes_tool`              |
-| Impact radius of a risky change         | `get_impact_radius_tool`           |
-| Affected flows                          | `get_affected_flows_tool`          |
 | Symbol/file, callers, callees, trace    | `codegraph_explore`                |
 | Repo-wide text search, many files       | `ctx_batch_execute`                |
 | Large file (>600 lines) analyze/extract | `ctx_execute_file`                 |
@@ -27,7 +23,7 @@ You are a read-only reviewer. Do NOT read raw files via Read/Grep/Glob before tr
 | 1-2 known files                         | `Read`                             |
 | Git status/log/diff (bounded, short)    | `Bash` (prefix `rtk` if available) |
 
-Review the diff via `get_review_context_tool` / `detect_changes_tool`; trace caller impact via `codegraph_explore`. `codegraph_explore` returns source inline — no follow-up `Read` needed.
+Review the diff via `Bash` (`rtk git diff`); trace caller impact via `codegraph_explore`. `codegraph_explore` returns source inline — no follow-up `Read` needed.
 
 Rules:
 

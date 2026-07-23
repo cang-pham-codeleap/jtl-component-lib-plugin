@@ -77,6 +77,15 @@ skills/     Workflow skills (SKILL.md + supporting assets)
 | [`quiz-taker`](agents/quiz-taker.md)                       | Fresh-context comprehension gate for `teach-back-verification`                                                    |
 | [`mcp-fetcher`](agents/mcp-fetcher.md)                     | Cheap read-only fetcher for GitHub issues / Jira tickets                                                          |
 
+## Subagent model routing
+
+Each agent above pins a prioritized `model:` array (primary + fallback) in its
+own frontmatter, rather than a bare Claude Code alias, so a fresh install
+resolves to the intended model out of the box across harnesses. See
+[`model-routing.md`](skills/task-to-pr/references/model-routing.md) for the
+full table and rationale — it's the single source of truth; don't fork it
+into other docs.
+
 ## Commands
 
 | Command                                                 | Skill/agent invoked                                                                                                                     |
