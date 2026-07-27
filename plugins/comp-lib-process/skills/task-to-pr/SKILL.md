@@ -205,6 +205,24 @@ Return contract: commit SHA(s) + **check evidence** (exact commands run + output
 
 Any FAIL → Stage 4; track loops in `state.json`; on 3rd fail escalate to human.
 
+### Stage 5.5 — Local audit (report-only)
+
+After every Stage 5 PASS (reviewer verdict, and teach-back when FULL), the
+**coordinator** runs the repository's local audit entry point once, before
+Checkpoint 3. In this plugin-maintainer repository that command is:
+
+```bash
+bash scripts/audit-task.sh
+```
+
+The runner writes a local `.telemetry/task-audit.json` with current Git audit
+data and, when an OTel JSONL trace is available, a sanitized telemetry aggregate
+and optional baseline verdict. It does not block the ticket workflow: missing
+OTel data is recorded as `telemetry.status: unavailable`. Do not use a `Stop`
+hook for this trigger; stopping can mean an approval wait rather than a completed
+task. Consumer repositories must provide an equivalent local runner before this
+step is enabled for their installed plugin.
+
 🛑 **Checkpoint 3 — Review approval** → gates on reviewer verdict (every tier) **+ teach-back (FULL tier only; SIMPLE skips teach-back)**. On approval, append an `## Approval` block to `review-verdict.md` (`Approved-by: <git config user.name>`, `Date: <YYYY-MM-DD>`, `Mode: interactive|headless`). Block Stage 6 until that block exists. Write it **only after** the human approves.
 
 ### Stage 6 — Ship → skill `create-pr`
@@ -260,6 +278,27 @@ approval.
 ## Cache note
 
 Keep Atlassian MCP config and model choice constant across stages in a session.
+
+## Benchmark telemetry (outside ticket evidence)
+
+Telemetry optimizes this workflow only when comparing a benchmark **before and
+after** a workflow change. It is not part of a ticket's deliverable and does
+not gate Stage 6.
+
+- Keep raw VS Code OTel JSONL, session IDs, prompts, responses, tool arguments,
+  code, and ticket content outside the repository (for example `.telemetry/` or
+  a CI artifact). Enable VS Code OTel content capture only when an approved,
+  trusted diagnostic environment requires it; it is off by default.
+- Do **not** add a telemetry summary or `metrics.json` to
+  `.jtl/workflow/<ticket-id>/`. That directory is committed ticket evidence, not
+  a benchmark store.
+- Commit only a sanitized benchmark baseline: aggregate counts, durations,
+  model names, and token/cache totals. Never commit raw traces or per-session
+  identifiers.
+- Plugin maintainers run their repository benchmark tooling to create sanitized
+  aggregates and compare reviewed baselines. A mismatch is a benchmark
+  regression to investigate, not an automatic claim that a ticket
+  implementation is wrong.
 
 ## Automation
 

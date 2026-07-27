@@ -38,6 +38,32 @@ plugins/comp-lib-process/skills/task-to-pr/references/automation.md
 - **Plan execution:** `superpowers:subagent-driven-development`
 - **Plugins:** `comp-lib-process`, `superpowers`, `context-mode`
 
+## Benchmark telemetry
+
+Telemetry is used only to compare workflow revisions; it is not ticket evidence.
+
+After Stage 5 passes, the task-to-pr coordinator runs the local audit entry
+point once, before Checkpoint 3:
+
+```bash
+bash scripts/audit-task.sh
+```
+
+The runner creates `.telemetry/task-audit.json` with Git audit data. It also
+finds the newest `.jsonl` trace in `.telemetry/` (or uses
+`TASK_AUDIT_OTEL_JSONL`), creates a sanitized aggregate, and compares it when
+`TASK_AUDIT_BASELINE_PATH` names a reviewed baseline. Missing trace data yields
+`telemetry.status: unavailable`; it is report-only and does not block the task.
+
+Enable VS Code OpenTelemetry with content capture disabled and export its JSONL
+trace into `.telemetry/` before running the audit when token/cache/tool metrics
+are required.
+
+Raw JSONL, prompts, responses, source code, ticket data, session IDs, and
+per-ticket summaries must not be committed. Only the sanitized baseline schema
+belongs in Git. A mismatch identifies a workflow regression for investigation;
+it does not block a ticket implementation by itself.
+
 ## PR notes (target: `main`)
 
 - Skills superseded/conflicts: personal `verify-gh-issue` unchanged; v1 monolithic ship/Jira steps moved to `reflect` + `create-pr`

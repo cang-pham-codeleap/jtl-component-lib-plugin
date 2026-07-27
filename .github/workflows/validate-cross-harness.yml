@@ -18,6 +18,12 @@ jobs:
       - name: Validate workflow evidence fixtures
         run: bash scripts/test-validate-cross-harness.sh
 
+      - name: Validate offline telemetry evaluation scripts
+        run: |
+          test -x scripts/summarize-otel-jsonl.sh
+          test -x scripts/check-telemetry-baseline.sh
+          test -x scripts/audit-task.sh
+
       - name: Validate repository manifests and workflow evidence
         run: bash scripts/validate-cross-harness.sh
 

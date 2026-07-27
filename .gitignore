@@ -12,6 +12,10 @@ triage/
 # plugin, so the whole directory is ignored here.
 evals/
 
+# Raw VS Code OpenTelemetry exports and local benchmark reports are diagnostic
+# artifacts. Keep only sanitized baseline definitions in version control.
+.telemetry/
+
 
 # APM dependencies
 apm_modules/
