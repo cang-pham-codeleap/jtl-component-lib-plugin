@@ -18,3 +18,5 @@ apm_modules/
 
 # Generated Copilot skills are deployed in consumer repositories by APM.
 .agents/
+
+.telemetry/
