@@ -7,12 +7,18 @@
 ## Tool call
 
 ```
-local-mcp: send_teams_message
-  recipient: <channel or user — configure per project>
-  message: <envelope below>
+local-mcp: teams_send_message
+  chat_id: <Teams chat id from teams_list_chats>
+  text: <envelope below>
+  confirm: true
 ```
 
-If `local-mcp` or `send_teams_message` is unavailable, **skip silently** — log
+Tool behavior is two-step by default:
+
+1. First call without `confirm` returns a preview.
+2. Second call with `confirm: true` sends the message.
+
+If `local-mcp` or `teams_send_message` is unavailable, **skip silently** — log
 `[teams-notify] unavailable, skipping` and continue the pipeline. Never block on delivery.
 
 ## Message envelope
@@ -32,19 +38,28 @@ For Stage 7 (✅ already shipped) replace 🛑 with ✅ and omit the Action line
 
 ## Artifact content per checkpoint
 
-| Checkpoint | Source | What to send |
-|---|---|---|
-| SIMPLE-path gate | `task-context.md § Clarified scope` | Full change-list block (files + what changes) |
-| Checkpoint 1 — Spec | `.jtl/workflow/<ticket-id>/specs.md` | Full file body |
-| Checkpoint 2 — Plan | `.jtl/workflow/<ticket-id>/plan.md` | Full file body |
-| Checkpoint 3 — Review | `.jtl/workflow/<ticket-id>/review-verdict.md` | Full file body |
-| Checkpoint 4 — PR | PR title + description + diff stat | `gh pr view --json title,body` + `git diff --stat HEAD~1` |
-| Stage 7 — Reflect | PR URL + drafted GH/Jira comment bodies | From reflect skill output |
+| Checkpoint            | Source                                        | What to send                                              |
+| --------------------- | --------------------------------------------- | --------------------------------------------------------- |
+| SIMPLE-path gate      | `task-context.md § Clarified scope`           | Full change-list block (files + what changes)             |
+| Checkpoint 1 — Spec   | `.jtl/workflow/<ticket-id>/specs.md`          | Full file body                                            |
+| Checkpoint 2 — Plan   | `.jtl/workflow/<ticket-id>/plan.md`           | Full file body                                            |
+| Checkpoint 3 — Review | `.jtl/workflow/<ticket-id>/review-verdict.md` | Full file body                                            |
+| Checkpoint 4 — PR     | PR title + description + diff stat            | `gh pr view --json title,body` + `git diff --stat HEAD~1` |
+| Stage 7 — Reflect     | PR URL + drafted GH/Jira comment bodies       | From reflect skill output                                 |
 
 ## Channel target
 
-Set `TEAMS_NOTIFY_TARGET` in your shell env, or hardcode a default in this file:
+Resolve and store a stable chat target before first send:
+
+1. List available chats via `teams_list_chats`.
+2. Pick one `chat_id` for notifications (for example, "Just me" or a team chat).
+3. Save it to `TEAMS_NOTIFY_CHAT_ID` in your shell env.
+
+Example:
 
 ```
-default: "me"   # sends as self-chat; change to channel name e.g. "Engineering > dev-workflow"
+TEAMS_NOTIFY_CHAT_ID="19:...@thread.tacv2"
 ```
+
+For channel posts (team/channel ids) use `teams_send_channel_message` instead of
+`teams_send_message`.
