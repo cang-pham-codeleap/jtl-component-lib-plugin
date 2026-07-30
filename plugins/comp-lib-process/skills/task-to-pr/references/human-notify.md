@@ -2,7 +2,19 @@
 
 ## Transport
 
-Slack Incoming Webhook. The workflow reads the webhook URL from `SLACK_WEBHOOK_URL`.
+Slack Incoming Webhook.
+
+Resolve `SLACK_WEBHOOK_URL` from the **active coding repository** (where the task is being implemented), not from this plugin repository.
+
+Lookup order:
+
+1. `<active-repo>/.env.local`
+2. `<active-repo>/.env`
+3. Current process environment (`$SLACK_WEBHOOK_URL`)
+
+Example:
+
+`/Users/canqpham/Documents/sources/jtl-platform-ui-react/.env.local`
 
 ## Send call
 
@@ -46,10 +58,15 @@ For Stage 7 (✅ already shipped) replace 🛑 with ✅ and omit the Action line
 
 ## Configuration
 
-Set webhook URL in shell environment (or CI secret store):
+Set webhook URL in the active repo env file (recommended) or process environment:
 
 ```
 SLACK_WEBHOOK_URL="https://hooks.slack.com/services/..."
 ```
+
+Recommended local setup for per-repo isolation:
+
+- Put it in `<active-repo>/.env.local` (gitignored).
+- Keep CI value in secret store.
 
 Never commit webhook URLs into tracked files.

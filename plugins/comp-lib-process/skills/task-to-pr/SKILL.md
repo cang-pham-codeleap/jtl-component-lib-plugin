@@ -35,7 +35,17 @@ same group contracts with their available agent capabilities.
 
 ## Slack notifications (human checkpoints)
 
-At each human checkpoint, send the **full artifact content** to Slack via Incoming Webhook before waiting for approval, so the reviewer can act directly from Slack. Message format and payload rules: `references/human-notify.md`. **Required:** use `SLACK_WEBHOOK_URL` from environment. If `SLACK_WEBHOOK_URL` is missing or the POST fails, stop and ask the human to fix webhook configuration before continuing.
+At each human checkpoint, send the **full artifact content** to Slack via Incoming Webhook before waiting for approval, so the reviewer can act directly from Slack. Message format and payload rules: `references/human-notify.md`.
+
+Webhook resolution must use the **active coding repository** (the repo where implementation happens), not the plugin repository. Resolve in this order:
+
+1. `<active-repo>/.env.local` → `SLACK_WEBHOOK_URL`
+2. `<active-repo>/.env` → `SLACK_WEBHOOK_URL`
+3. Current process environment (`$SLACK_WEBHOOK_URL`)
+
+Example active repo path: `/Users/canqpham/Documents/sources/jtl-platform-ui-react/.env.local`.
+
+**Required:** if no webhook is found after this lookup, or the POST fails, stop and ask the human to fix configuration before continuing.
 
 ## Pipeline
 
