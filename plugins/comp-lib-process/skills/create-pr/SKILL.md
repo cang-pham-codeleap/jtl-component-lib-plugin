@@ -47,12 +47,12 @@ fi
 
 Scan all commit subjects collected in Step 2. The **highest-priority match across all commits** wins.
 
-| Priority | Rule | Tentative bump |
-|----------|------|----------------|
-| 1 | Any commit subject contains `!` (e.g., `feat!:`, `fix!:`) | **major** |
-| 2 | Any commit subject starts with `feat` | **minor** |
-| 3 | Any commit subject starts with `fix` | **patch** |
-| — | Only `chore`, `docs`, `refactor`, `test`, etc. | **none — stop** |
+| Priority | Rule                                                      | Tentative bump  |
+| -------- | --------------------------------------------------------- | --------------- |
+| 1        | Any commit subject contains `!` (e.g., `feat!:`, `fix!:`) | **major**       |
+| 2        | Any commit subject starts with `feat`                     | **minor**       |
+| 3        | Any commit subject starts with `fix`                      | **patch**       |
+| —        | Only `chore`, `docs`, `refactor`, `test`, etc.            | **none — stop** |
 
 **If tentative bump is none:** tell the user no version-bumpable commits were found and stop. Do not proceed to Step 4.
 
@@ -65,18 +65,19 @@ git diff <LAST_TAG>..HEAD -- <paths to exported components/props/types, registry
 ```
 
 Inspect for breaking changes such as:
+
 - Removed or renamed exported components, props, types, or registry item names
 - New required props / required peer dependencies without defaults
 - Behavior changes that break documented public API contracts
 
 **Reconcile tentative bump vs diff:**
 
-| Commit signal | Diff finding | Action |
-|---------------|--------------|--------|
-| no `!` | breaking change present | Set bump to **major**; tell user which commit(s) understated it |
-| `!` present | no breaking change found | Flag mismatch; **ask user** to confirm major vs downgrade |
-| both agree | — | Proceed with that bump |
-| minor/patch | non-breaking only | Proceed |
+| Commit signal | Diff finding             | Action                                                          |
+| ------------- | ------------------------ | --------------------------------------------------------------- |
+| no `!`        | breaking change present  | Set bump to **major**; tell user which commit(s) understated it |
+| `!` present   | no breaking change found | Flag mismatch; **ask user** to confirm major vs downgrade       |
+| both agree    | —                        | Proceed with that bump                                          |
+| minor/patch   | non-breaking only        | Proceed                                                         |
 
 Commit subjects are **inputs**, never the sole source of truth for major.
 
@@ -130,11 +131,13 @@ Use Jira key for changelog/title ticket segment when present; otherwise `gh-<n>`
 ### Output: title + bullets
 
 **Title format:**
+
 ```
 <Feature description> - <TICKET-ID> - [#PR_PLACEHOLDER]()
 ```
 
 **Bullets (2–4 items):**
+
 - Format: `- **Bold label:** one sentence explaining the change`
 - Focus on what changes for consumers of the library, not internal implementation details
 - If bump is **major** (after Step 3 reconciliation), first bullet must be written from the **verified public-surface diff** (not only `!` commit text):
@@ -143,6 +146,7 @@ Use Jira key for changelog/title ticket segment when present; otherwise `gh-<n>`
   ```
 
 **Example output:**
+
 ```markdown
 ### Refactor Stepper Layout Component - CP-4216 - [#PR_PLACEHOLDER]()
 
@@ -181,7 +185,6 @@ Read CHANGELOG.md
 <bullets from Step 5>
 
 ---
-
 ```
 
 - Use today's date for `YYYY/MM/DD`
@@ -193,17 +196,17 @@ Read CHANGELOG.md
 
 Read `.github/PULL_REQUEST_TEMPLATE.md` from the repo root. Fill in every section:
 
-| Section | Value |
-|---------|-------|
-| `## PR Type` | `feat`/`feat!` → check "New component" or "Modify component — BREAKING CHANGE"; `fix` → check "Modify component — non-breaking" |
-| `## What changed` | Paste bullets from Step 5, without the bold labels |
-| `## Breaking changes — What breaks` | From **verified public-surface diff**: name removed/changed API with file refs. Commit bodies may inform wording but are never the sole source. If none → `None.` |
-| `## Breaking changes — Who is affected` | Derive from real usage surface (exported API consumers, registry names). If none → `None.` |
-| `## Breaking changes — Migration path` | Written against the **new** API shown in the diff. If none → `None.` |
-| `## Breaking changes — Semver bump required` | Delete the inapplicable option; keep `major`, `minor`, or `N/A — not breaking` |
-| `## Linked references — Closes` (Ticket) | **GH issue present (Step 4b):** always include `Closes #<n>` so GitHub auto-links/closes the issue. **Jira key present (Step 4a):** include the key (e.g. `CP-4216`) on the same line or as a second bullet. **Both:** `Closes #<n>` + Jira key. **Neither:** remove the line |
-| `## Linked references — Figma` | `N/A` unless a Figma link is found in commit messages or spec |
-| All checklist items | Leave **unchecked** — the human completes these before marking ready for review |
+| Section                                      | Value                                                                                                                                                                                                                                                                         |
+| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `## PR Type`                                 | `feat`/`feat!` → check "New component" or "Modify component — BREAKING CHANGE"; `fix` → check "Modify component — non-breaking"                                                                                                                                               |
+| `## What changed`                            | Paste bullets from Step 5, without the bold labels                                                                                                                                                                                                                            |
+| `## Breaking changes — What breaks`          | From **verified public-surface diff**: name removed/changed API with file refs. Commit bodies may inform wording but are never the sole source. If none → `None.`                                                                                                             |
+| `## Breaking changes — Who is affected`      | Derive from real usage surface (exported API consumers, registry names). If none → `None.`                                                                                                                                                                                    |
+| `## Breaking changes — Migration path`       | Written against the **new** API shown in the diff. If none → `None.`                                                                                                                                                                                                          |
+| `## Breaking changes — Semver bump required` | Delete the inapplicable option; keep `major`, `minor`, or `N/A — not breaking`                                                                                                                                                                                                |
+| `## Linked references — Closes` (Ticket)     | **GH issue present (Step 4b):** always include `Closes #<n>` so GitHub auto-links/closes the issue. **Jira key present (Step 4a):** include the key (e.g. `CP-4216`) on the same line or as a second bullet. **Both:** `Closes #<n>` + Jira key. **Neither:** remove the line |
+| `## Linked references — Figma`               | `N/A` unless a Figma link is found in commit messages or spec                                                                                                                                                                                                                 |
+| All checklist items                          | Leave **unchecked** — the human completes these before marking ready for review                                                                                                                                                                                               |
 
 ---
 
@@ -219,6 +222,7 @@ gh pr create \
 ```
 
 Capture the PR number from the returned URL:
+
 ```
 https://github.com/jtl-software/jtl-platform-ui-react/pull/616  →  616
 ```
@@ -234,6 +238,7 @@ Replace `[#PR_PLACEHOLDER]()` in all three locations with the real link:
 ```
 
 Files to update:
+
 - `CHANGELOG.md`
 - `docs/introduction/3-changelog.mdx`
 
