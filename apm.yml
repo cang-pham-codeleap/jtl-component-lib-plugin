@@ -47,3 +47,8 @@ dependencies:
       transport: stdio
       command: codegraph
       args: ["serve", "--mcp"]
+    - name: local-mcp
+      registry: false
+      transport: stdio
+      command: npx
+      args: ["-y", "local-mcp"]
