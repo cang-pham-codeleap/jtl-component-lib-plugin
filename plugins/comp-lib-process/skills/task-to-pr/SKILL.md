@@ -33,9 +33,9 @@ same group contracts with their available agent capabilities.
 - **Approval is an annotation, not a flag file.** The agent writes an `## Approval` block into the artifact itself (`specs.md` / `plan.md` / `review-verdict.md`) **only after** explicit human approval in chat — never to self-approve, never ahead of the human.
 - **No force-push, no push to protected branches, no `gh pr merge`.** Workflow ends at draft PR + reflect drafts.
 
-## Teams notifications (human checkpoints)
+## Slack notifications (human checkpoints)
 
-At each human checkpoint, call the `local-mcp` Teams send-message tool with the **full artifact content** before waiting for approval, so the reviewer can act directly from Teams. Message format and channel target: `references/teams-notify.md`. **Non-blocking:** if `local-mcp` is unavailable or the call fails, log and continue — never stall the pipeline.
+At each human checkpoint, send the **full artifact content** to Slack via Incoming Webhook before waiting for approval, so the reviewer can act directly from Slack. Message format and payload rules: `references/human-notify.md`. **Required:** use `SLACK_WEBHOOK_URL` from environment. If `SLACK_WEBHOOK_URL` is missing or the POST fails, stop and ask the human to fix webhook configuration before continuing.
 
 ## Pipeline
 
@@ -111,7 +111,7 @@ Agent proposes the tier with a one-line reason; human confirms (an explicit skip
 🛑 **SIMPLE-path gate** (replaces Checkpoints 1 + 2 for simple work)
 
 - Present a short **change-list**: files to touch + what changes ("edit `Select.tsx`, add `renderItem` prop, no new deps").
-- **Teams notify:** Send the full change-list body to Teams via `local-mcp` (`references/teams-notify.md`). Non-blocking.
+- **Slack notify:** Post the full change-list body to Slack webhook (`references/human-notify.md`). Required.
 - Wait for explicit human approval.
 - Record approval into `task-context.md` → `## Clarified scope`:
   `Approved-by: <git config user.name> @ <YYYY-MM-DD>`, `tier: simple`.
@@ -140,7 +140,7 @@ Agent proposes the tier with a one-line reason; human confirms (an explicit skip
 - If Stage 1 escalated to `superpowers:brainstorming` and a design was written under `docs/superpowers/specs/`: move/copy body into workflow `specs.md`, then use workflow path only; when brainstorming would invoke writing-plans, **stop** — Checkpoint 1 first.
 
 🛑 **Checkpoint 1 — Spec approval**  
-Present `.jtl/workflow/<ticket-id>/specs.md`. **Teams notify:** Send full `specs.md` content to Teams via `local-mcp` (`references/teams-notify.md`). Non-blocking. Wait for explicit approval. On approval, append an `## Approval` block to `specs.md` (`Approved-by: <git config user.name>`, `Date: <YYYY-MM-DD>`, `Mode: interactive|headless`). Block Stage 3 until that block exists in `specs.md`. Write it **only after** the human approves. Headless: `references/automation.md`.
+Present `.jtl/workflow/<ticket-id>/specs.md`. **Slack notify:** Post full `specs.md` content to Slack webhook (`references/human-notify.md`). Required. Wait for explicit approval. On approval, append an `## Approval` block to `specs.md` (`Approved-by: <git config user.name>`, `Date: <YYYY-MM-DD>`, `Mode: interactive|headless`). Block Stage 3 until that block exists in `specs.md`. Write it **only after** the human approves. Headless: `references/automation.md`.
 
 ### Stage 3 — Plan → `superpowers:writing-plans` (FULL tier only)
 
@@ -157,7 +157,7 @@ Present `.jtl/workflow/<ticket-id>/specs.md`. **Teams notify:** Send full `specs
 - Record under `task-context.md` → `## Plan` (`path: .jtl/workflow/<ticket-id>/plan.md`).
 
 🛑 **Checkpoint 2 — Plan approval**  
-Present `plan.md`. **Teams notify:** Send full `plan.md` content to Teams via `local-mcp` (`references/teams-notify.md`). Non-blocking. On approval, append an `## Approval` block to `plan.md` (`Approved-by: <git config user.name>`, `Date: <YYYY-MM-DD>`, `Mode: interactive|headless`). Block Stage 4 until that block exists in `plan.md`. Write it **only after** the human approves. Headless: `references/automation.md`.
+Present `plan.md`. **Slack notify:** Post full `plan.md` content to Slack webhook (`references/human-notify.md`). Required. On approval, append an `## Approval` block to `plan.md` (`Approved-by: <git config user.name>`, `Date: <YYYY-MM-DD>`, `Mode: interactive|headless`). Block Stage 4 until that block exists in `plan.md`. Write it **only after** the human approves. Headless: `references/automation.md`.
 
 ### Stage 4 — Implement (3-phase group execution)
 
@@ -210,13 +210,13 @@ Return contract: commit SHA(s) + **check evidence** (exact commands run + output
 
 Any FAIL → Stage 4; track loops in `state.json`; on 3rd fail escalate to human.
 
-🛑 **Checkpoint 3 — Review approval** → gates on reviewer verdict (every tier) **+ teach-back (FULL tier only; SIMPLE skips teach-back)**. **Teams notify:** Send full `review-verdict.md` content to Teams via `local-mcp` (`references/teams-notify.md`). Non-blocking. On approval, append an `## Approval` block to `review-verdict.md` (`Approved-by: <git config user.name>`, `Date: <YYYY-MM-DD>`, `Mode: interactive|headless`). Block Stage 6 until that block exists. Write it **only after** the human approves.
+🛑 **Checkpoint 3 — Review approval** → gates on reviewer verdict (every tier) **+ teach-back (FULL tier only; SIMPLE skips teach-back)**. **Slack notify:** Post full `review-verdict.md` content to Slack webhook (`references/human-notify.md`). Required. On approval, append an `## Approval` block to `review-verdict.md` (`Approved-by: <git config user.name>`, `Date: <YYYY-MM-DD>`, `Mode: interactive|headless`). Block Stage 6 until that block exists. Write it **only after** the human approves.
 
 ### Stage 6 — Ship → skill `create-pr`
 
 - Checks already ran once each (Stage 4 evidence + Stage 5 build); **do not re-run any suite or build inline here.**
 - 🛑 **Checkpoint 4 — PR approval**  
-  Interactive: show title/body/diff summary. **Teams notify:** Send PR title + full description + diff stat to Teams via `local-mcp` (`references/teams-notify.md`). Non-blocking. Wait.  
+  Interactive: show title/body/diff summary. **Slack notify:** Post PR title + full description + diff stat to Slack webhook (`references/human-notify.md`). Required. Wait.  
   Automation: draft PR via `create-pr` (see `references/automation.md`).
 - Invoke **`create-pr` skill** (do not inline `gh pr create` logic here).
 
@@ -224,7 +224,7 @@ Any FAIL → Stage 4; track loops in `state.json`; on 3rd fail escalate to human
 
 - Invoke `reflect` with PR URL + ticket/issue refs from `task-context.md`.
 - Drafts GH/Jira comments + transition; posts only after human approval.
-- **Teams notify:** Send PR URL + drafted comment bodies to Teams via `local-mcp` (`references/teams-notify.md`). Non-blocking.
+- **Slack notify:** Post PR URL + drafted comment bodies to Slack webhook (`references/human-notify.md`). Required.
 - Replaces v1 inline `transitionJiraIssue` + `addCommentToJiraIssue` in ship stage.
 - Failure reporting: exact failed call + successes (never silent ticket-stale).
 

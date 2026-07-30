@@ -1,25 +1,22 @@
-# Teams Notification Reference
+# Slack Notification Reference
 
-## MCP Server
+## Transport
 
-`local-mcp` — macOS-native Teams integration. Config in `.vscode/mcp.json`.
+Slack Incoming Webhook. The workflow reads the webhook URL from `SLACK_WEBHOOK_URL`.
 
-## Tool call
+## Send call
 
+Use a single HTTP POST (for example via `curl`) to `SLACK_WEBHOOK_URL`:
+
+```bash
+curl -X POST "$SLACK_WEBHOOK_URL" \
+  -H "Content-type: application/json" \
+  --data '{"text":"<envelope below>"}'
 ```
-local-mcp: teams_send_message
-  chat_id: <Teams chat id from teams_list_chats>
-  text: <envelope below>
-  confirm: true
-```
 
-Tool behavior is two-step by default:
-
-1. First call without `confirm` returns a preview.
-2. Second call with `confirm: true` sends the message.
-
-If `local-mcp` or `teams_send_message` is unavailable, **skip silently** — log
-`[teams-notify] unavailable, skipping` and continue the pipeline. Never block on delivery.
+Delivery is **required** at every checkpoint. If `SLACK_WEBHOOK_URL` is missing,
+or the webhook call fails, stop and ask the human to fix configuration before
+continuing.
 
 ## Message envelope
 
@@ -47,19 +44,12 @@ For Stage 7 (✅ already shipped) replace 🛑 with ✅ and omit the Action line
 | Checkpoint 4 — PR     | PR title + description + diff stat            | `gh pr view --json title,body` + `git diff --stat HEAD~1` |
 | Stage 7 — Reflect     | PR URL + drafted GH/Jira comment bodies       | From reflect skill output                                 |
 
-## Channel target
+## Configuration
 
-Resolve and store a stable chat target before first send:
-
-1. List available chats via `teams_list_chats`.
-2. Pick one `chat_id` for notifications (for example, "Just me" or a team chat).
-3. Save it to `TEAMS_NOTIFY_CHAT_ID` in your shell env.
-
-Example:
+Set webhook URL in shell environment (or CI secret store):
 
 ```
-TEAMS_NOTIFY_CHAT_ID="19:...@thread.tacv2"
+SLACK_WEBHOOK_URL="https://hooks.slack.com/services/..."
 ```
 
-For channel posts (team/channel ids) use `teams_send_channel_message` instead of
-`teams_send_message`.
+Never commit webhook URLs into tracked files.
