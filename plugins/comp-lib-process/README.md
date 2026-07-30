@@ -32,6 +32,30 @@ auto-installed from their marketplaces when this plugin is installed:
 local SQLite knowledge graph of the target codebase's symbols and call
 edges — used by `deep-explore` and other agents in place of grep/Read loops.
 
+## Slack checkpoint notifications
+
+`task-to-pr` sends checkpoint notifications via Slack Incoming Webhook.
+
+Setup:
+
+1. Create a Slack Incoming Webhook for your channel.
+2. Put `SLACK_WEBHOOK_URL` in the **active coding repo** (recommended):
+
+- `<active-repo>/.env.local`
+- or `<active-repo>/.env`
+
+3. Keep `.env.local` gitignored and never commit webhook URLs.
+
+Resolution order used by the workflow:
+
+1. `<active-repo>/.env.local`
+2. `<active-repo>/.env`
+3. current process environment (`$SLACK_WEBHOOK_URL`)
+
+Reference:
+
+- [`skills/task-to-pr/references/human-notify.md`](skills/task-to-pr/references/human-notify.md)
+
 ## Directory layout
 
 ```

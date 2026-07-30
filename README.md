@@ -214,6 +214,22 @@ don't fork the table into other docs.
 
 > `shadcn` is context-aware and triggers automatically when working with shadcn projects. `create-pr` and `debt-review` are user-invocable.
 
+## Slack Notifications For `task-to-pr`
+
+`task-to-pr` checkpoint notifications use Slack Incoming Webhook.
+
+To receive notifications, define `SLACK_WEBHOOK_URL` in the repository where
+you run implementation work (not this plugin repo), preferably in:
+
+1. `<active-repo>/.env.local`
+2. `<active-repo>/.env`
+
+If neither file has the variable, the workflow falls back to the current shell
+environment variable.
+
+See details in
+[`plugins/comp-lib-process/skills/task-to-pr/references/human-notify.md`](plugins/comp-lib-process/skills/task-to-pr/references/human-notify.md).
+
 ## Structure
 
 ```
