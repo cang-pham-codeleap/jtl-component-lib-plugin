@@ -212,7 +212,7 @@ Read `.github/PULL_REQUEST_TEMPLATE.md` from the repo root. Fill in every sectio
 ```bash
 gh pr create \
   --draft \
-  --base dev \
+  --base main \
   --title "<title from Step 5, without the PR_PLACEHOLDER part>" \
   --body "<PR description from Step 7>" \
   --repo jtl-software/jtl-platform-ui-react
@@ -265,7 +265,7 @@ gh pr edit 616 \
 
 ## Hard Rules
 
-- Always target `dev`, never `main`
+- Always target `main`, never `dev`
 - Never push commits — only create/edit the PR and edit changelog files
 - Never mark the PR ready for review — leave it as draft
 - If `gh` is not authenticated, stop and tell the user to run `gh auth login`
