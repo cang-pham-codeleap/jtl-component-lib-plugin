@@ -28,16 +28,16 @@ before relying on the array there.
 
 ## Balanced routing table
 
-| Agent                   | Primary                     | Fallback                    | Why                                                            |
-| ----------------------- | --------------------------- | --------------------------- | -------------------------------------------------------------- |
-| `mcp-fetcher`           | Claude Haiku 4.5 (copilot)  | MAI-Code-1-Flash (copilot)  | Mechanical read-only fetch/summarize                           |
-| `deep-explore`          | GPT-5.4 mini (copilot)      | Claude Haiku 4.5 (copilot)  | Optimized for codebase exploration / grep-style tools          |
-| `planner`               | Claude Opus 4.8 (copilot)   | GPT-5.6 Sol (copilot)       | Deep reasoning for architecture/decomposition                  |
-| `engine-specialist`     | GPT-5.3-Codex (copilot)     | Claude Sonnet 4.6 (copilot) | Agentic implementation, edit/test loops                        |
-| `ui-ux-stylist`         | Claude Sonnet 4.6 (copilot) | GPT-5.3-Codex (copilot)     | Frontend reasoning, accessibility, implementation quality      |
-| `code-quality-reviewer` | Claude Sonnet 4.6 (copilot) | GPT-5.4 (copilot)           | Independent multi-file reasoning without Opus-tier cost        |
-| `quiz-taker`            | Claude Haiku 4.5 (copilot)  | MAI-Code-1-Flash (copilot)  | Constrained comprehension check, no reasoning needed           |
-| `tech-debt-reviewer`    | Claude Sonnet 4.6 (copilot) | GPT-5.4 (copilot)           | Standalone debt review only — not dispatched from `task-to-pr` |
+| Agent                   | Primary                   | Fallback                   | Why                                                            |
+| ----------------------- | ------------------------- | -------------------------- | -------------------------------------------------------------- |
+| `mcp-fetcher`           | GPT-5.6 Luna (copilot)    | MAI-Code-1-Flash (copilot) | Mechanical read-only fetch/summarize                           |
+| `deep-explore`          | GPT-5.6 Luna (copilot)    | Claude Haiku 4.5 (copilot) | Optimized for codebase exploration / grep-style tools          |
+| `planner`               | Claude Opus 5 (copilot)   | GPT-5.6 Sol (copilot)      | Deep reasoning for architecture/decomposition                  |
+| `engine-specialist`     | GPT-5.3-Codex (copilot)   | Claude Sonnet 5 (copilot)  | Agentic implementation, edit/test loops                        |
+| `ui-ux-stylist`         | Claude Sonnet 5 (copilot) | GPT-5.3-Codex (copilot)    | Frontend reasoning, accessibility, implementation quality      |
+| `code-quality-reviewer` | Claude Sonnet 5 (copilot) | GPT-5.6 Terra (copilot)    | Independent multi-file reasoning without Opus-tier cost        |
+| `quiz-taker`            | GPT-5.6 Luna (copilot)    | MAI-Code-1-Flash (copilot) | Constrained comprehension check, no reasoning needed           |
+| `tech-debt-reviewer`    | Claude Sonnet 5 (copilot) | GPT-5.6 Terra (copilot)    | Standalone debt review only — not dispatched from `task-to-pr` |
 
 ## Escalation only
 

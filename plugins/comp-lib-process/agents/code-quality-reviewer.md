@@ -3,7 +3,7 @@ name: code-quality-reviewer
 description: "Use this agent when you have recently written or modified a significant piece of code and need it reviewed for quality, performance, security, technical debt, and adherence to best practices. Acts as the acceptance gate for task-to-pr Stage 5 — reviews spec compliance, code quality, technical debt, and runs the test suite. Call proactively after completing logical chunks of work, such as implementing a new feature, refactoring a component, or fixing a bug."
 model:
   - Claude Sonnet 4.6 (copilot)
-  - GPT-5.4 (copilot)
+  - GPT-5.6 Terra (copilot)
 color: yellow
 tools: Read, Glob, Grep, Bash, mcp__codegraph__codegraph_search, mcp__codegraph__codegraph_explore, mcp__codegraph__codegraph_context, mcp__codegraph__codegraph_trace, mcp__codegraph__codegraph_callers, mcp__codegraph__codegraph_callees, mcp__codegraph__codegraph_impact, mcp__codegraph__codegraph_node, mcp__codegraph__codegraph_files, mcp__codegraph__codegraph_status, mcp__plugin_context-mode_context-mode__ctx_batch_execute, mcp__plugin_context-mode_context-mode__ctx_search, mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, mcp__plugin_context-mode_context-mode__ctx_fetch_and_index, mcp__plugin_context-mode_context-mode__ctx_index
 ---

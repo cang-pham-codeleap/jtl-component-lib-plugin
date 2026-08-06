@@ -3,6 +3,7 @@ name: deep-explore
 description: "**MUST be invoked before any Read/Grep/Glob/ctx_*/codegraph_* exploration on a new task.** Discovery + context-gathering agent. Routes fastest first: codegraph → RTK → context-mode → Native Read."
 tools: "Read, Edit, Bash, mcp__plugin_context-mode_context-mode__ctx_batch_execute, mcp__plugin_context-mode_context-mode__ctx_search, mcp__plugin_context-mode_context-mode__ctx_execute, mcp__plugin_context-mode_context-mode__ctx_execute_file, mcp__plugin_context-mode_context-mode__ctx_fetch_and_index, mcp__plugin_context-mode_context-mode__ctx_index, mcp__codegraph__codegraph_search, mcp__codegraph__codegraph_context, mcp__codegraph__codegraph_trace, mcp__codegraph__codegraph_callers, mcp__codegraph__codegraph_callees, mcp__codegraph__codegraph_impact, mcp__codegraph__codegraph_node, mcp__codegraph__codegraph_explore, mcp__codegraph__codegraph_files, mcp__codegraph__codegraph_status"
 model:
+  - GPT-5.6 Luna (copilot)
   - Claude Haiku 4.5 (copilot)
 color: cyan
 ---
