@@ -24,7 +24,7 @@ Decide per-question, not per-session. The test: **would the user understand this
 - **Technical decisions** — API design, data modeling, architectural approach selection
 - **Clarifying questions** — anything where the answer is words, not a visual preference
 
-A question *about* a UI topic is not automatically a visual question. "What kind of wizard do you want?" is conceptual — use the terminal. "Which of these wizard layouts feels right?" is visual — use the browser.
+A question _about_ a UI topic is not automatically a visual question. "What kind of wizard do you want?" is conceptual — use the terminal. "Which of these wizard layouts feels right?" is visual — use the browser.
 
 ## Project Conventions (this repo)
 
@@ -55,20 +55,24 @@ Save `screen_dir` and `state_dir` from the response. Tell user to open the URL.
 **Launching the server by platform:**
 
 **Claude Code / Copilot CLI (macOS, this repo's default):**
+
 ```bash
 # Default mode works — the script backgrounds the server itself
 "$SKILL_DIR/scripts/start-server.sh" --project-dir "$PWD"
 ```
 
 **Claude Code (Windows):**
+
 ```bash
 # Windows auto-detects and uses foreground mode, which blocks the tool call.
 # Run it with the tool's background flag so the server survives across turns.
 "$SKILL_DIR/scripts/start-server.sh" --project-dir "$PWD"
 ```
+
 Then read `$STATE_DIR/server-info` on the next turn to get the URL and port.
 
 **Codex:**
+
 ```bash
 # Codex reaps background processes. The script auto-detects CODEX_CI and
 # switches to foreground mode. Run it normally — no extra flags needed.
@@ -76,6 +80,7 @@ Then read `$STATE_DIR/server-info` on the next turn to get the URL and port.
 ```
 
 **Gemini CLI:**
+
 ```bash
 # Use --foreground and set is_background: true on your shell tool call
 "$SKILL_DIR/scripts/start-server.sh" --project-dir "$PWD" --foreground
@@ -119,7 +124,9 @@ Use `--url-host` to control what hostname is printed in the returned URL JSON.
 
    ```html
    <!-- filename: waiting.html (or waiting-2.html, etc.) -->
-   <div style="display:flex;align-items:center;justify-content:center;min-height:60vh">
+   <div
+     style="display:flex;align-items:center;justify-content:center;min-height:60vh"
+   >
      <p class="subtitle">Continuing in terminal...</p>
    </div>
    ```
@@ -220,8 +227,18 @@ The frame template provides these CSS classes for your content:
 
 ```html
 <div class="pros-cons">
-  <div class="pros"><h4>Pros</h4><ul><li>Benefit</li></ul></div>
-  <div class="cons"><h4>Cons</h4><ul><li>Drawback</li></ul></div>
+  <div class="pros">
+    <h4>Pros</h4>
+    <ul>
+      <li>Benefit</li>
+    </ul>
+  </div>
+  <div class="cons">
+    <h4>Cons</h4>
+    <ul>
+      <li>Drawback</li>
+    </ul>
+  </div>
 </div>
 ```
 
@@ -234,7 +251,7 @@ The frame template provides these CSS classes for your content:
   <div class="mock-content">Main content area</div>
 </div>
 <button class="mock-button">Action Button</button>
-<input class="mock-input" placeholder="Input field">
+<input class="mock-input" placeholder="Input field" />
 <div class="placeholder">Placeholder area</div>
 ```
 

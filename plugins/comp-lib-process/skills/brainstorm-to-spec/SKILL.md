@@ -19,6 +19,7 @@ Do NOT write code, scaffold files, invoke an implementation skill, or invoke ANY
 If the feature touches any component, block, recipe, screen, layout, navigation, token, chart, or any question whose answer is a visual preference — you MUST send the Visual Companion offer (see below) BEFORE asking your second clarifying question. The offer is its own message with nothing else in it.
 
 You may NOT proceed past the second clarifying question until either:
+
 - the user accepted and you have started the server and shown at least one mockup, or
 - the user explicitly declined.
 
@@ -159,12 +160,12 @@ Write it in whatever language the session is being conducted in. Do not combine 
 
 **Per-question decision — the test:** would the user understand this better by seeing it than reading it?
 
-| Use the browser | Use the terminal |
-| --- | --- |
+| Use the browser                         | Use the terminal                 |
+| --------------------------------------- | -------------------------------- |
 | Mockups, wireframes, layout comparisons | Requirements and scope questions |
-| Architecture / data-flow diagrams | Conceptual A/B/C choices |
-| Side-by-side visual designs | Trade-off lists |
-| Spacing, density, visual hierarchy | API shape, data modelling |
+| Architecture / data-flow diagrams       | Conceptual A/B/C choices         |
+| Side-by-side visual designs             | Trade-off lists                  |
+| Spacing, density, visual hierarchy      | API shape, data modelling        |
 
 A question about a UI topic is not automatically a visual question. "What does 'risk badge' mean here?" is conceptual — terminal. "Which of these two risk-badge placements reads better?" is visual — browser.
 
@@ -184,24 +185,31 @@ Once the design is approved, compose this brief and pass it as the argument to `
 
 ```markdown
 ## Goal
+
 <one sentence — what the user gets>
 
 ## Scope — in
+
 - <bullet>
 
 ## Scope — out
+
 - <bullet, with the reason it was cut>
 
 ## Chosen approach
+
 <the option the user picked, and why it beat the alternatives>
 
 ## Visual decisions
+
 - <question> → <chosen option> (`.jtl/brainstorm/<session>/content/<file>.html`)
 
 ## Constraints found in the codebase
+
 - <existing pattern, module, or table that this must fit into>
 
 ## Acceptance criteria
+
 - <observable, testable statement>
 ```
 
@@ -213,14 +221,14 @@ Every line the user decided during brainstorming must appear here. Anything left
 
 Run each command yourself. Do not ask the user to type `/speckit....`. If a step fails or the prerequisite script errors, stop and report — do not skip ahead.
 
-| # | Step | Input | Gate after |
-| --- | --- | --- | --- |
-| 1 | `/speckit.specify` | the handoff brief | **GATE 1** |
-| 2 | `/speckit.clarify` | — | none |
-| 3 | `/speckit.plan` | — | **GATE 2** |
-| 4 | `/speckit.tasks` | — | none |
-| 5 | `/speckit.analyze` | — | **GATE 3** |
-| 6 | `/speckit.implement` | — | terminal |
+| #   | Step                 | Input             | Gate after |
+| --- | -------------------- | ----------------- | ---------- |
+| 1   | `/speckit.specify`   | the handoff brief | **GATE 1** |
+| 2   | `/speckit.clarify`   | —                 | none       |
+| 3   | `/speckit.plan`      | —                 | **GATE 2** |
+| 4   | `/speckit.tasks`     | —                 | none       |
+| 5   | `/speckit.analyze`   | —                 | **GATE 3** |
+| 6   | `/speckit.implement` | —                 | terminal   |
 
 **GATE 1 — after `/speckit.specify`:**
 

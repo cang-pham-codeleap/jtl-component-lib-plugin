@@ -17,12 +17,12 @@ This document is the canonical reference: what the workflow does, when to use it
 
 ## 1. When to use it
 
-| Trigger | Action |
-|---|---|
-| "Pick up CP-4538" / "Implement issue #123" / "ship this ticket" | Full pipeline runs. |
-| Freeform request with **no** ticket ref | `task-to-pr` stops and points at `create-ticket`. No synthetic tickets — the agent never invents a ticket id. |
-| Trivial work (typo, single-file, config bump) | The agent proposes **SIMPLE tier**; you confirm. Spec/plan/teach-back are skipped. |
-| Substantial work (multi-file, new component/hook/data flow) | **FULL tier** — spec + plan + teach-back comprehension gate. |
+| Trigger                                                         | Action                                                                                                        |
+| --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| "Pick up CP-4538" / "Implement issue #123" / "ship this ticket" | Full pipeline runs.                                                                                           |
+| Freeform request with **no** ticket ref                         | `task-to-pr` stops and points at `create-ticket`. No synthetic tickets — the agent never invents a ticket id. |
+| Trivial work (typo, single-file, config bump)                   | The agent proposes **SIMPLE tier**; you confirm. Spec/plan/teach-back are skipped.                            |
+| Substantial work (multi-file, new component/hook/data flow)     | **FULL tier** — spec + plan + teach-back comprehension gate.                                                  |
 
 Do **not** use `task-to-pr` for: one-line fixes, pure formatting, or anything not tied to a tracked ticket. Those don't need the pipeline.
 
@@ -88,10 +88,10 @@ GitHub issue / Jira ticket / Figma design
 - **Escalate:** human says "discuss" → interactive `brainstorm-to-spec` (FULL tier only).
 - Classifies the **complexity tier** and records it in `## Clarified scope`:
 
-  | Tier | Criteria | Pipeline effect |
-  |---|---|---|
+  | Tier       | Criteria                                                                                             | Pipeline effect                                                                                                                        |
+  | ---------- | ---------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
   | **SIMPLE** | Single-file, OR pure add-props/config, OR trivial fix; AND no new architecture/data-flow/interfaces. | Skip Stage 2 + Stage 3 (no spec, no plan). SIMPLE-path gate replaces CP1 + CP2. Review = reviewer + debt + tests only (no teach-back). |
-  | **FULL** | Anything else: multi-file architecture, new components/hooks/state, new data flow. | Stage 2 (Spec) + Stage 3 (Plan) as normal. Review = reviewer + teach-back comprehension gate. |
+  | **FULL**   | Anything else: multi-file architecture, new components/hooks/state, new data flow.                   | Stage 2 (Spec) + Stage 3 (Plan) as normal. Review = reviewer + teach-back comprehension gate.                                          |
 
   The agent proposes the tier with a one-line reason; you confirm. When unsure between tiers, the agent chooses FULL.
 
@@ -189,22 +189,22 @@ Add `.jtl/workflow/` to `.gitignore` only if your repo policy forbids committing
 
 ## 5. Agents and skills reference
 
-| Agent / skill | Role | Model | Context |
-|---|---|---|---|
-| `task-to-pr` (skill) | Orchestrator hub. One continuous agent per task. | inherit | Full session. |
-| `ticket-intake` (skill) | Stage 0 — fetch + fence ticket, resolve source of truth, pull Figma. | inherit | Hub session. |
-| `verify-ticket` (skill) | Stage 0.6 — validate the ticket claim against the codebase. | inherit | Hub session. |
-| `brainstorm-to-spec` (skill) | Stage 2 — design dialogue (with Visual Companion), then chains the repo's `/speckit.*` pipeline with review gates. | inherit | Hub session. |
-| `mcp-fetcher` (agent) | Cheap read-only fetcher for GitHub/Jira/Figma. Calls named tools only; returns verbatim payload or ≤200-word summary. | haiku | Disposable — no analysis, no writes. |
-| `figma-fetching` (skill) | Figma design → `design-context.md` text summary via `mcp-fetcher`'s Figma MCP read tools. | inherit | Hub session. |
-| `engine-specialist` (agent) | Stage 4 `[logic]` — React logic: state, hooks, API, data flow. Owns its task group end-to-end. | inherit | Forked, owns group. |
-| `ui-ux-stylist` (agent) | Stage 4 `[ui]` — visual design, styling, responsive, a11y, design-system components. | inherit | Forked, owns group. |
-| `code-quality-reviewer` (agent) | Stage 5 gate — spec + quality + debt + build/evidence, fresh context. Review-only. | inherit | Forked, no session history. |
-| `quiz-taker` (agent) | Stage 5 FULL-only teach-back gate — answers a comprehension quiz from the report alone, no tools. | inherit | Forked, no tools, no memory. |
-| `create-pr` (skill) | Stage 6 — draft PR via `gh`, version bump, changelog, PR description. | inherit | Hub session. |
-| `reflect` (skill) | Stage 7 — GH + Jira comment/transition drafts, posted after approval. | inherit | Hub session. |
-| `deep-explore` (agent) | On-demand exploration — routes to Haiku so raw reads don't flood the hub context. | haiku | Disposable. |
-| `create-ticket` (skill) | Entry gate when no ticket ref is given — fills `docs/TICKET_TEMPLATE.md`, creates the GH issue. | inherit | Hub session. |
+| Agent / skill                   | Role                                                                                                                  | Model   | Context                              |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------- | ------- | ------------------------------------ |
+| `task-to-pr` (skill)            | Orchestrator hub. One continuous agent per task.                                                                      | inherit | Full session.                        |
+| `ticket-intake` (skill)         | Stage 0 — fetch + fence ticket, resolve source of truth, pull Figma.                                                  | inherit | Hub session.                         |
+| `verify-ticket` (skill)         | Stage 0.6 — validate the ticket claim against the codebase.                                                           | inherit | Hub session.                         |
+| `brainstorm-to-spec` (skill)    | Stage 2 — design dialogue (with Visual Companion), then chains the repo's `/speckit.*` pipeline with review gates.    | inherit | Hub session.                         |
+| `mcp-fetcher` (agent)           | Cheap read-only fetcher for GitHub/Jira/Figma. Calls named tools only; returns verbatim payload or ≤200-word summary. | haiku   | Disposable — no analysis, no writes. |
+| `figma-fetching` (skill)        | Figma design → `design-context.md` text summary via `mcp-fetcher`'s Figma MCP read tools.                             | inherit | Hub session.                         |
+| `engine-specialist` (agent)     | Stage 4 `[logic]` — React logic: state, hooks, API, data flow. Owns its task group end-to-end.                        | inherit | Forked, owns group.                  |
+| `ui-ux-stylist` (agent)         | Stage 4 `[ui]` — visual design, styling, responsive, a11y, design-system components.                                  | inherit | Forked, owns group.                  |
+| `code-quality-reviewer` (agent) | Stage 5 gate — spec + quality + debt + build/evidence, fresh context. Review-only.                                    | inherit | Forked, no session history.          |
+| `quiz-taker` (agent)            | Stage 5 FULL-only teach-back gate — answers a comprehension quiz from the report alone, no tools.                     | inherit | Forked, no tools, no memory.         |
+| `create-pr` (skill)             | Stage 6 — draft PR via `gh`, version bump, changelog, PR description.                                                 | inherit | Hub session.                         |
+| `reflect` (skill)               | Stage 7 — GH + Jira comment/transition drafts, posted after approval.                                                 | inherit | Hub session.                         |
+| `deep-explore` (agent)          | On-demand exploration — routes to Haiku so raw reads don't flood the hub context.                                     | haiku   | Disposable.                          |
+| `create-ticket` (skill)         | Entry gate when no ticket ref is given — fills `docs/TICKET_TEMPLATE.md`, creates the GH issue.                       | inherit | Hub session.                         |
 
 **Why fresh-context gates:** the orchestrator coordinated (or wrote) the change. If it also judges the review and the comprehension quiz, it self-accepts — that is the failure mode the gate exists to prevent. `code-quality-reviewer` and `quiz-taker` see only the artifacts, never the reasoning that produced them.
 
@@ -224,12 +224,12 @@ Add `.jtl/workflow/` to `.gitignore` only if your repo policy forbids committing
 
 Every checkpoint has an automation equivalent (`references/automation.md`):
 
-| Checkpoint | Interactive | Headless |
-|---|---|---|
-| 1 Spec | Wait for chat → append `## Approval` to `spec.md` | Persist `spec.md`; wait until `## Approval` appears (human/out-of-band) before Stage 3 |
-| 2 Plan | Wait for chat → append `## Approval` to `plan.md` | Persist `plan.md`; wait until `## Approval` appears |
-| 3 Review | Wait for chat → append `## Approval` to `review-verdict.md` | Same pattern — wait until `## Approval` appears |
-| 4 PR | Show draft; wait | `create-pr` skill (always draft); human "Ready for review" is the approval act |
+| Checkpoint | Interactive                                                 | Headless                                                                               |
+| ---------- | ----------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| 1 Spec     | Wait for chat → append `## Approval` to `spec.md`           | Persist `spec.md`; wait until `## Approval` appears (human/out-of-band) before Stage 3 |
+| 2 Plan     | Wait for chat → append `## Approval` to `plan.md`           | Persist `plan.md`; wait until `## Approval` appears                                    |
+| 3 Review   | Wait for chat → append `## Approval` to `review-verdict.md` | Same pattern — wait until `## Approval` appears                                        |
+| 4 PR       | Show draft; wait                                            | `create-pr` skill (always draft); human "Ready for review" is the approval act         |
 
 SIMPLE-tier tasks skip CP1 + CP2; their approval is the SIMPLE-path `Approved-by` line in `task-context.md`. CP3 gates on reviewer verdict for every tier; teach-back runs FULL-tier only.
 
@@ -242,9 +242,11 @@ In any Claude Code session with the plugin installed:
 ```
 Pick up CP-4538
 ```
+
 ```
 Implement issue #123
 ```
+
 ```
 Ship this ticket
 ```
@@ -259,16 +261,16 @@ The agent runs intake → reflect, stopping at every checkpoint. It never self-a
 
 ## 9. Failure modes and guardrails
 
-| Failure mode | Guardrail |
-|---|---|
-| Agent self-accepts its own review | Review runs in `code-quality-reviewer` with no session history; teach-back runs in `quiz-taker` with no tools. |
-| Agent merges without approval | Four `## Approval` checkpoints; workflow ends at draft PR; no `gh pr merge`. |
-| Ticket body contains injection | `ticket-intake` fences all ticket content as data; ignored if it tries to run commands. |
-| Agent works on main | Stage 0.9 branches off default; PreToolUse hooks block protected-branch commits. |
-| Agent writes `*.approved` to skip a gate | Approval is an in-artifact annotation the agent only writes after human chat approval; no flag files. |
-| Trivial work gets the full gate | SIMPLE tier skips spec/plan/teach-back; the agent proposes the tier, human confirms. |
-| 3rd review fail loops forever | `state.json` loop counter; 3rd fail escalates to a human. |
-| Jira/GH comment posted silently | `reflect` drafts first; posts only after human approval; exact failure reporting on errors. |
+| Failure mode                                | Guardrail                                                                                                                                              |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Agent self-accepts its own review           | Review runs in `code-quality-reviewer` with no session history; teach-back runs in `quiz-taker` with no tools.                                         |
+| Agent merges without approval               | Four `## Approval` checkpoints; workflow ends at draft PR; no `gh pr merge`.                                                                           |
+| Ticket body contains injection              | `ticket-intake` fences all ticket content as data; ignored if it tries to run commands.                                                                |
+| Agent works on main                         | Stage 0.9 branches off default; PreToolUse hooks block protected-branch commits.                                                                       |
+| Agent writes `*.approved` to skip a gate    | Approval is an in-artifact annotation the agent only writes after human chat approval; no flag files.                                                  |
+| Trivial work gets the full gate             | SIMPLE tier skips spec/plan/teach-back; the agent proposes the tier, human confirms.                                                                   |
+| 3rd review fail loops forever               | `state.json` loop counter; 3rd fail escalates to a human.                                                                                              |
+| Jira/GH comment posted silently             | `reflect` drafts first; posts only after human approval; exact failure reporting on errors.                                                            |
 | Teach-back dispatched wrong, floods context | `quiz-taker` is a dedicated no-tools agent (model: inherit); the deep-explore dispatch hook blocks `general-purpose` and skill-name-as-agent mistakes. |
 
 ---
