@@ -9,13 +9,15 @@ Use installed skills from `.agents/skills/` when their descriptions match the
 task. For ticket-driven work, use `task-to-pr` and store committed, sanitized
 evidence only in `.jtl/workflow/<ticket-id>/`.
 
-`superpowers:brainstorming` and `superpowers:writing-plans` are required for
-FULL-tier task-to-PR design and planning. If Superpowers is unavailable, stop
-before those stages and install it for the active harness:
+`brainstorm-to-spec` drives FULL-tier task-to-PR design and planning. It chains
+the repository's Spec Kit commands (`/speckit.specify`, `/speckit.plan`,
+`/speckit.tasks`, ...), which are **not** shipped by this plugin. Spec Kit is
+installed into the coding repository by `jtl-init`. If `.specify/` is missing,
+stop before those stages and run `jtl-init` first:
 
 ```bash
-copilot plugin marketplace add obra/superpowers-marketplace
-copilot plugin install superpowers@superpowers-marketplace
+uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+specify init --here --integration copilot
 ```
 
 Never commit raw ticket bodies, comments, Figma payloads, secrets, or personal

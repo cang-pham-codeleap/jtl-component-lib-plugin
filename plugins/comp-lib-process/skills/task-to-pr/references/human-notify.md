@@ -50,8 +50,8 @@ For Stage 7 (✅ already shipped) replace 🛑 with ✅ and omit the Action line
 | Checkpoint            | Source                                        | What to send                                              |
 | --------------------- | --------------------------------------------- | --------------------------------------------------------- |
 | SIMPLE-path gate      | `task-context.md § Clarified scope`           | Full change-list block (files + what changes)             |
-| Checkpoint 1 — Spec   | `.jtl/workflow/<ticket-id>/specs.md`          | Full file body                                            |
-| Checkpoint 2 — Plan   | `.jtl/workflow/<ticket-id>/plan.md`           | Full file body                                            |
+| Checkpoint 1 — Spec   | `specs/<NNN>-<ticket-id>-<slug>/spec.md`      | Full file body                                            |
+| Checkpoint 2 — Plan   | `specs/<NNN>-<ticket-id>-<slug>/plan.md`      | Full file body + the `tasks.md` task list                 |
 | Checkpoint 3 — Review | `.jtl/workflow/<ticket-id>/review-verdict.md` | Full file body                                            |
 | Checkpoint 4 — PR     | PR title + description + diff stat            | `gh pr view --json title,body` + `git diff --stat HEAD~1` |
 | Stage 7 — Reflect     | PR URL + drafted GH/Jira comment bodies       | From reflect skill output                                 |

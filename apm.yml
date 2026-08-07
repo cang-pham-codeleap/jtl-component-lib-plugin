@@ -1,5 +1,5 @@
 name: jtl-component-lib-plugin
-version: 1.8.0
+version: 1.9.0
 description: Portable JTL component-library agent configuration.
 includes: auto
 targets:
@@ -14,8 +14,6 @@ requiredMarketplaces:
     source: DietrichGebert/ponytail
   context-mode:
     source: mksglu/context-mode
-  superpowers-marketplace:
-    source: obra/superpowers-marketplace
   jtl-component-lib-plugin:
     source: cang-pham-codeleap/jtl-component-lib-plugin
 dependencies:
@@ -25,7 +23,7 @@ dependencies:
     - juliusbrussee/caveman
     - DietrichGebert/ponytail
     - mksglu/context-mode
-    - obra/superpowers
+    - ./plugins/comp-lib-process/skills/brainstorm-to-spec
     - ./plugins/comp-lib-process/skills/create-jira-ticket
     - ./plugins/comp-lib-process/skills/create-pr
     - ./plugins/comp-lib-process/skills/create-ticket

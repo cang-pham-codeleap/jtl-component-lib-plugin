@@ -9,7 +9,7 @@ description: Use when the user says "resolve PR comments", "check PR feedback", 
 
 Turn PR review feedback into verified fixes. **Never implement from a comment until the comment is checked against the real code and the human has approved a plan.**
 
-**REQUIRED BACKGROUND:** Treat feedback like `superpowers:receiving-code-review` — technical claims need evidence; wrong feedback is rejected, not performed.
+**REQUIRED BACKGROUND:** Treat feedback as claims to verify, not orders to execute — technical claims need evidence; wrong feedback is rejected, not performed.
 
 ## When to use
 
@@ -44,11 +44,11 @@ If no PR for branch: stop; say so.
 
 Load **all** of:
 
-| Source | How |
-|--------|-----|
-| Issue comments | `gh api repos/<owner>/<repo>/issues/<n>/comments` |
-| Inline review comments | `gh api repos/<owner>/<repo>/pulls/<n>/comments` |
-| Reviews (body/state) | `gh api repos/<owner>/<repo>/pulls/<n>/reviews` |
+| Source                 | How                                               |
+| ---------------------- | ------------------------------------------------- |
+| Issue comments         | `gh api repos/<owner>/<repo>/issues/<n>/comments` |
+| Inline review comments | `gh api repos/<owner>/<repo>/pulls/<n>/comments`  |
+| Reviews (body/state)   | `gh api repos/<owner>/<repo>/pulls/<n>/reviews`   |
 
 Dedupe by id. Skip empty review bodies. Note author + URL per item.
 
@@ -59,13 +59,13 @@ For **each** discrete concern (split multi-bullet comments):
 1. Find related code/skill/docs on **this branch**.
 2. Classify:
 
-| Status | Meaning |
-|--------|---------|
-| `OK` | Already handled correctly — no change |
-| `partial` | Some handling; gap remains |
-| `gap` | Valid concern; not handled |
-| `invalid` | Factually wrong / out of scope / conflicts with locked decision |
-| `needs-product` | Technical check done; needs human product choice |
+| Status          | Meaning                                                         |
+| --------------- | --------------------------------------------------------------- |
+| `OK`            | Already handled correctly — no change                           |
+| `partial`       | Some handling; gap remains                                      |
+| `gap`           | Valid concern; not handled                                      |
+| `invalid`       | Factually wrong / out of scope / conflicts with locked decision |
+| `needs-product` | Technical check done; needs human product choice                |
 
 3. Record **evidence** (path + behavior), not vibes.
 
@@ -75,8 +75,8 @@ For **each** discrete concern (split multi-bullet comments):
 
 Present table:
 
-| # | Author | Concern (short) | Status | Evidence | Proposed action |
-|---|--------|-----------------|--------|----------|-----------------|
+| #   | Author | Concern (short) | Status | Evidence | Proposed action |
+| --- | ------ | --------------- | ------ | -------- | --------------- |
 
 Then: what is already fine vs what needs work.
 
@@ -125,22 +125,22 @@ After implement (no extra approve for reply):
 
 ## Comment type handling
 
-| Type | Notes |
-|------|--------|
-| Issue (conversation) comment | Primary for multi-bullet design questions |
-| Inline `pulls/.../comments` | Anchor to `path` + `line`; verify that hunk still exists |
-| Review body | Treat as one or more concerns; same verify table |
-| Bot noise (empty approve) | Skip with one-line note |
+| Type                         | Notes                                                    |
+| ---------------------------- | -------------------------------------------------------- |
+| Issue (conversation) comment | Primary for multi-bullet design questions                |
+| Inline `pulls/.../comments`  | Anchor to `path` + `line`; verify that hunk still exists |
+| Review body                  | Treat as one or more concerns; same verify table         |
+| Bot noise (empty approve)    | Skip with one-line note                                  |
 
 ## Rationalizations (do not)
 
-| Excuse | Reality |
-|--------|---------|
-| "Reviewer said so — just do it" | Verify first. Wrong feedback stays wrong. |
-| "Faster to code then ask" | Violates plan checkpoint; rework risk. |
-| "Mostly right, I'll fill gaps" | Product gaps need human; don't invent policy. |
-| "Reply later / skip reply" | Reply is part of resolve; post after implement. |
-| "Only issue comments matter" | Inline + review bodies count too. |
+| Excuse                          | Reality                                         |
+| ------------------------------- | ----------------------------------------------- |
+| "Reviewer said so — just do it" | Verify first. Wrong feedback stays wrong.       |
+| "Faster to code then ask"       | Violates plan checkpoint; rework risk.          |
+| "Mostly right, I'll fill gaps"  | Product gaps need human; don't invent policy.   |
+| "Reply later / skip reply"      | Reply is part of resolve; post after implement. |
+| "Only issue comments matter"    | Inline + review bodies count too.               |
 
 ## Red flags — STOP
 
@@ -159,7 +159,7 @@ After implement (no extra approve for reply):
 
 ## Standalone output shape
 
-1. PR link + comment count  
-2. Verify table  
-3. Questions (if any) **or** plan waiting approve  
-4. After approve: files changed + PR reply URL  
+1. PR link + comment count
+2. Verify table
+3. Questions (if any) **or** plan waiting approve
+4. After approve: files changed + PR reply URL

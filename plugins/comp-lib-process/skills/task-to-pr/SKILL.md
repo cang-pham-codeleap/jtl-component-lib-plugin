@@ -30,7 +30,7 @@ same group contracts with their available agent capabilities.
 - **Never work on main/master.** Stage 0.9 creates the branch. GitHub branch
   protection and required CI are the cross-harness enforcement; Claude hooks
   are an additional local guardrail where installed.
-- **Approval is an annotation, not a flag file.** The agent writes an `## Approval` block into the artifact itself (`specs.md` / `plan.md` / `review-verdict.md`) **only after** explicit human approval in chat — never to self-approve, never ahead of the human.
+- **Approval is an annotation, not a flag file.** The agent writes an `## Approval` block into the artifact itself (`spec.md` / `plan.md` / `review-verdict.md`) **only after** explicit human approval in chat — never to self-approve, never ahead of the human.
 - **No force-push, no push to protected branches, no `gh pr merge`.** Workflow ends at draft PR + reflect drafts.
 
 ## Slack notifications (human checkpoints)
@@ -63,11 +63,12 @@ Example active repo path: `/Users/canqpham/Documents/sources/jtl-platform-ui-rea
 - On design **abort** from intake/`figma-fetching`: halt pipeline.
 - On **vague** stop from intake: halt until human answers; then continue (re-check gate).
 
-### Stage 0.3 — Docs review (inline)
+### Stage 0.3 — Docs review + workspace gate (inline)
 
 - If repo has `AGENTS.md` and/or `docs/agents/` (from `jtl-init`): read those conventions (decision-matrix, architecture, authoring paths, registry).
 - Else: read plugin bundled templates at `skills/jtl-init/templates/docs/` (and `templates/AGENTS.md`) **and** tell the user to run `jtl-init`.
 - Load **once**; keep conventions in context for verify, clarify, spec, implement.
+- **FULL-tier prerequisite:** the active repo must also contain `.specify/` (the Spec Kit runtime installed by `jtl-init` Part D) and expose the `/speckit.*` commands. If it is missing, **stop before Stage 2** and tell the user to run `jtl-init` — do not fail later inside `/speckit.specify`. SIMPLE tier does not need `.specify/`.
 
 ### Stage 0.6 — Verify → skill `verify-ticket`
 
@@ -80,7 +81,7 @@ Example active repo path: `/Users/canqpham/Documents/sources/jtl-platform-ui-rea
 ### Stage 0.9 — Branch
 
 - `git fetch origin && git switch -c <ticket-id>/<short-slug> origin/<default-branch>`
-- Resume: if branch exists, switch to it; note resume in `task-context.md`; re-validate old `specs.md` (and its `## Approval` block) against **current design path + ticket/diff** before trusting it.
+- Resume: if branch exists, switch to it; note resume in `task-context.md`; re-validate the existing feature dir (`Feature dir:` → `spec.md` / `plan.md` / `tasks.md` and their `## Approval` blocks) against **current design path + ticket/diff** before trusting it.
 
 ### Stage 1 — Clarify (3-solutions-first)
 
@@ -104,7 +105,7 @@ Then:
 
 **Escalate:**
 
-- Human says "discuss" (or equivalent) → invoke interactive `superpowers:brainstorming`, then Stage 2.
+- Human says "discuss" (or equivalent) → invoke interactive `brainstorm-to-spec` (**FULL tier only**), then Stage 2. Its output feeds Stage 2 directly — do not re-run design exploration there.
 - Blocking ambiguity while drafting (contradictory requirements, unknowable constraint) → ask human **before** presenting menu or fast-path. Never invent requirements.
 
 Append outcome to `task-context.md` as `## Clarified scope`.
@@ -129,49 +130,54 @@ Agent proposes the tier with a one-line reason; human confirms (an explicit skip
 
 **IMPORTANT:** You have to be confident about your understanding. If not, ask human until you are 95% confident you can complete this task perfectly.
 
-### Stage 2 — Spec → superpowers design doc (FULL tier only)
+### Stage 2 — Spec → `brainstorm-to-spec` → `/speckit.specify` (FULL tier only)
 
 > Simple tasks skip this stage — implement from `task-context.md` after the SIMPLE-path gate.
 
+**Where the `/speckit.*` commands come from.** They are **not** plugin skills. Spec Kit installs them into the active repository (`jtl-init` Part D runs the upstream `specify` CLI from <https://github.com/github/spec-kit>). This hub only routes to them. Harnesses in skills mode expose the same commands as `$speckit-*` — use whichever form the active harness registered.
+
 - Inputs: clarified scope + chosen approach, verification corrections, Stage 0.3 conventions.
-- **Do not** invoke Speckit/`specify`/Bash `speckit`. **Do not** re-run full interactive brainstorming (Stage 1 already chose the approach; escalate path only).
-- **Prerequisite:** Superpowers must be available. If it is not, stop before
-  this stage. Copilot users install it with:
-  ```bash
-  copilot plugin marketplace add obra/superpowers-marketplace
-  copilot plugin install superpowers@superpowers-marketplace
-  ```
-- Write design via `superpowers:brainstorming` design-doc contract to **one**
-  path only: `.jtl/workflow/<ticket-id>/specs.md`
-- Override superpowers default (`docs/superpowers/specs/…`) — ticket workflow owns the artifact. Do **not** also write under `docs/superpowers/`.
+- **Prerequisite:** `.specify/` present in the active repo (Stage 0.3 gate). Missing → stop and tell the user to run `jtl-init`.
+- **Do not** re-run open-ended design exploration — Stage 1 already picked the approach. Feed that approach into `brainstorm-to-spec` as its starting point; the skill's job here is to harden it into a spec, not to reopen the option menu.
+- Run `brainstorm-to-spec`, then hand its design output to `/speckit.specify`.
+  - `brainstorm-to-spec`'s **Visual Companion gate stays mandatory** for any UI-touching work — mockups must follow the JTL design system from `docs/agents/`.
+  - Run `/speckit.clarify` when the spec still carries `[NEEDS CLARIFICATION]` markers. Resolve them with the human — never invent requirements.
+- **Feature directory naming.** Spec Kit numbers features `NNN` globally while tickets are numbered per Jira/GH, so the slug must embed the ticket id:
+  `specs/<NNN>-<ticket-id>-<short-slug>/` — e.g. `specs/003-cp-4538-select-render-item/`.
+  Pass the ticket id into `/speckit.specify` branch/slug naming so the two numbering systems stay traceable.
+- Spec lands at `specs/<NNN>-<ticket-id>-<slug>/spec.md` — **one** path only.
 - Cover (scale to ticket size): goal, chosen approach, architecture/components, data flow/interfaces, error handling, testing/acceptance, out of scope/constraints, source links to `task-context.md` + `verification-report.md`. **No raw untrusted ticket dump.**
-- Run brainstorming **Spec Self-Review** checklist inline: no placeholders/TBD; internal consistency; single-plan scope; resolve ambiguities. Fix before Checkpoint 1.
-- Record under `task-context.md` → `## Spec` (`path: .jtl/workflow/<ticket-id>/specs.md`, `status: pending approval`).
-- If Stage 1 escalated to `superpowers:brainstorming` and a design was written under `docs/superpowers/specs/`: move/copy body into workflow `specs.md`, then use workflow path only; when brainstorming would invoke writing-plans, **stop** — Checkpoint 1 first.
+- Run the spec self-review inline: no placeholders/TBD; internal consistency; single-plan scope. Fix before Checkpoint 1.
+- Record under `task-context.md`:
+  - `## Spec` → `path: specs/<NNN>-<ticket-id>-<slug>/spec.md`, `status: pending approval`
+  - `Feature dir: specs/<NNN>-<ticket-id>-<slug>/` — Stages 3–7 resolve the spec-kit directory from this line.
+- **Manual fallback.** If `brainstorm-to-spec` or the `/speckit.*` commands are unavailable, write `spec.md` by hand from `.specify/templates/spec-template.md` into the same feature directory. The checkpoint below still applies — never skip a gate because a command is missing.
+
+**Gate mapping (no duplicate stops).** `brainstorm-to-spec` GATE 1 == Checkpoint 1, GATE 2 == Checkpoint 2, GATE 3 folds into Checkpoint 2. Do not stop the human twice for the same artifact.
 
 🛑 **Checkpoint 1 — Spec approval**  
-Present `.jtl/workflow/<ticket-id>/specs.md`. **Slack notify:** Post full `specs.md` content to Slack webhook (`references/human-notify.md`). Required. Wait for explicit approval. On approval, append an `## Approval` block to `specs.md` (`Approved-by: <git config user.name>`, `Date: <YYYY-MM-DD>`, `Mode: interactive|headless`). Block Stage 3 until that block exists in `specs.md`. Write it **only after** the human approves. Headless: `references/automation.md`.
+Present `specs/<NNN>-<ticket-id>-<slug>/spec.md`. **Slack notify:** Post full `spec.md` content to Slack webhook (`references/human-notify.md`). Required. Wait for explicit approval. On approval, append an `## Approval` block to `spec.md` (`Approved-by: <git config user.name>`, `Date: <YYYY-MM-DD>`, `Mode: interactive|headless`). Block Stage 3 until that block exists in `spec.md`. Write it **only after** the human approves. Headless: `references/automation.md`.
 
-### Stage 3 — Plan → `superpowers:writing-plans` (FULL tier only)
+### Stage 3 — Plan → `/speckit.plan` + `/speckit.tasks` + `/speckit.analyze` (FULL tier only)
 
-- **Prerequisite:** Superpowers must be available; otherwise stop and show the
-  harness-specific installation guidance from Stage 2.
-- Invoke `superpowers:writing-plans` with approved design at `.jtl/workflow/<ticket-id>/specs.md`.
-- Write plan to **one** path only:
-  `.jtl/workflow/<ticket-id>/plan.md`
-- Override superpowers default (`docs/superpowers/plans/…`) — after skill output, ensure content lands at workflow `plan.md` only. Do **not** also write under `docs/superpowers/plans/`.
-- Plan body:
-  - Plan header + **`Spec:`** `.jtl/workflow/<ticket-id>/specs.md`
-  - Domain tags on tasks: `[logic]` (hooks/state/data-flow/API), `[ui]` (styling/visual/a11y), `[shared]`, optional `[parallel-safe]`. Tasks sharing a tag form **one dispatch group**.
-  - **Format override (single-run checks):** per task keep Files, Interfaces, the test code block, and the implementation code block. **Drop** writing-plans' per-task steps "run test to verify it fails", "run test to verify it passes", and "commit" — verification and commits happen per execution phase (Stage 4 contract), never per task.
-- Record under `task-context.md` → `## Plan` (`path: .jtl/workflow/<ticket-id>/plan.md`).
+- **Prerequisite:** approved `spec.md` (Checkpoint 1 `## Approval` block present) and `.specify/` in the active repo.
+- Run `/speckit.plan` against the approved spec → `specs/<NNN>-<ticket-id>-<slug>/plan.md`. Instruct it to record the domain-tag legend used below.
+- Run `/speckit.tasks` → `specs/<NNN>-<ticket-id>-<slug>/tasks.md`. **Instruct it to tag every task** with `[logic]` (hooks/state/data-flow/API), `[ui]` (styling/visual/a11y/design-system), or `[shared]` — plus optional `[parallel-safe]` — alongside its `[P]` / `[US#]` labels. Tasks sharing a tag **inside one phase** form **one dispatch group** in Stage 4. An untagged task is a defect: re-run the command with the tagging requirement restated, or add the tag yourself before Checkpoint 2.
+- Run `/speckit.analyze` for the cross-artifact consistency pass (spec ↔ plan ↔ tasks). Resolve every CRITICAL finding before Checkpoint 2.
+- **Format override (single-run checks):** drop Spec Kit's per-task "run tests" and "commit" steps. Verification and commits happen **once per dispatch group** (Stage 4 contract), never per task.
+- Record under `task-context.md` → `## Plan` (`path: specs/<NNN>-<ticket-id>-<slug>/plan.md`, `tasks: specs/<NNN>-<ticket-id>-<slug>/tasks.md`).
+- **Manual fallback.** If the `/speckit.*` commands are unavailable, write `plan.md` / `tasks.md` by hand from `.specify/templates/plan-template.md` and `tasks-template.md`, keeping the domain tags. The checkpoint still applies.
 
 🛑 **Checkpoint 2 — Plan approval**  
-Present `plan.md`. **Slack notify:** Post full `plan.md` content to Slack webhook (`references/human-notify.md`). Required. On approval, append an `## Approval` block to `plan.md` (`Approved-by: <git config user.name>`, `Date: <YYYY-MM-DD>`, `Mode: interactive|headless`). Block Stage 4 until that block exists in `plan.md`. Write it **only after** the human approves. Headless: `references/automation.md`.
+Present `plan.md` + `tasks.md`. **Slack notify:** Post full `plan.md` content (plus the task list) to Slack webhook (`references/human-notify.md`). Required. On approval, append an `## Approval` block to `plan.md` (`Approved-by: <git config user.name>`, `Date: <YYYY-MM-DD>`, `Mode: interactive|headless`). Block Stage 4 until that block exists in `plan.md`. Write it **only after** the human approves. Headless: `references/automation.md`.
 
 ### Stage 4 — Implement (3-phase group execution)
 
-**FULL tier** groups plan tasks by tag — **one dispatch per domain group, never per task**; **SIMPLE tier** has no plan — route the single change by domain, or `[shared]` stays in the current agent.
+**FULL tier** executes `tasks.md` via `/speckit.implement`, **run under the JTL contract below — it orchestrates, it never implements inline.** Walking `tasks.md` phase by phase (Setup → Tests → Core → Integration → Polish), it groups the tasks **within each phase** by domain tag and dispatches **one subagent per domain group**, respecting `[P]` ordering and file-based coordination. Marking tasks `[X]` and honoring the checklist gate stay as Spec Kit defines them.
+
+**SIMPLE tier** has no `tasks.md` — route the single change by domain, or `[shared]` stays in the current agent.
+
+Groups map to roles the same way in both tiers:
 
 - `[logic]` (hooks/state/data-flow/API) → logic implementation role
 - `[ui]` (styling/visual/a11y/design-system) → UI implementation role
@@ -182,6 +188,8 @@ dispatch. Claude Code uses its named role agents. Other harnesses apply the
 same test, implementation, verification, and serialized-commit contract using
 their available agent/session model.
 
+**JTL contract overrides `/speckit.implement` where they conflict.** State these overrides explicitly when invoking the command: its per-task progress/validation steps are replaced by the once-per-group rule below, and its project-setup/ignore-file verification step is skipped entirely — never create or rewrite `.gitignore` / `.dockerignore` / `.eslintignore` in a JTL repo.
+
 **The dispatched agent owns its whole group end to end — the orchestrator does NOT run checks or commit for it.** Embed this 3-phase contract in every dispatch prompt — **checks run once per group, never per task**:
 
 1. **Tests** — write the failing tests for ALL tasks in the group, then **one** targeted run of only the new test files to confirm they fail.
@@ -190,7 +198,7 @@ their available agent/session model.
 
 Return contract: commit SHA(s) + **check evidence** (exact commands run + output tail). The orchestrator appends the evidence to `task-context.md` → `## Stage 4 checks` and reads back the SHAs — nothing else. (`[shared]` implemented in the current agent follows the same 3 phases.)
 
-**No inline take-over.** If a dispatched agent returns without commit SHA(s) and check evidence (the return contract above), the orchestrator does **not** run tests/lint/typecheck, fix code, or commit on its behalf. Re-dispatch the **same** agent (`engine-specialist`/`ui-ux-stylist`) with the `references/stage4-dispatch.md` template, pointing it at the incomplete phase and requiring SHA+evidence. The orchestrator's only post-dispatch action is to read SHA+evidence from the agent's output and append it to `task-context.md` → `## Stage 4 checks`. A subagent "finished but only wrote code" is an incomplete dispatch, not a handoff to the orchestrator. (`[shared]` work in the current agent is the sole exception — there, the current agent is the implementer.)
+**No inline take-over.** This applies to `/speckit.implement` too — it coordinates and records, it does not write implementation code. If a dispatched agent returns without commit SHA(s) and check evidence (the return contract above), the orchestrator does **not** run tests/lint/typecheck, fix code, or commit on its behalf. Re-dispatch the **same** agent (`engine-specialist`/`ui-ux-stylist`) with the `references/stage4-dispatch.md` template, pointing it at the incomplete phase and requiring SHA+evidence. The orchestrator's only post-dispatch action is to read SHA+evidence from the agent's output and append it to `task-context.md` → `## Stage 4 checks`. A subagent "finished but only wrote code" is an incomplete dispatch, not a handoff to the orchestrator. (`[shared]` work in the current agent is the sole exception — there, the current agent is the implementer.)
 
 **Orchestrator role boundary.** The orchestrator keeps context narrow: ticket/task context, clarified scope, model/report context, dispatch, and evidence-recording. It does **not** write implementation code, run tests/lint/typecheck, fix code, or commit — those live in the dispatched subagent's own context so the orchestrator's window stays lean. Subagents do the heavy work; the orchestrator coordinates.
 
@@ -207,7 +215,7 @@ Return contract: commit SHA(s) + **check evidence** (exact commands run + output
    no session history. Another harness uses a fresh context when available; if
    it cannot, record `Fresh-context review: unavailable` in `review-verdict.md`
    and complete the same self-review before CI and human approval. The reviewer:
-   - reviews **spec compliance** + **code quality** + runs the **technical-debt** checklist,
+   - reviews **spec compliance** (against `specs/<NNN>-<ticket-id>-<slug>/spec.md` and `tasks.md`, resolved via `Feature dir:` in `task-context.md`) + **code quality** + runs the **technical-debt** checklist,
    - **runs the build once** (the only build in the pipeline) and verifies the Stage 4 check evidence (`task-context.md` → `## Stage 4 checks`) is present and green — it does **not** re-run tests/lint/typecheck; a targeted test re-run is allowed only when evidence is missing/stale or a finding disputes it. Verifies each acceptance criterion against observable behavior.
    - stays **review-only** — does not modify code,
    - writes `review-verdict.md` with an explicit four-part verdict: **spec ✅ + quality ✅ + debt ✅ + build/evidence ✅**. Missing any = FAIL.
@@ -242,22 +250,25 @@ Any FAIL → Stage 4; track loops in `state.json`; on 3rd fail escalate to human
 
 ```
 .jtl/workflow/<ticket-id>/
-├── task-context.md            # Stage 0; ## Clarified scope (tier + SIMPLE-path approval), ## Spec + ## Plan pointers, ## Stage 4 checks (evidence)
+├── task-context.md            # Stage 0; ## Clarified scope (tier + SIMPLE-path approval), Feature dir + ## Spec/## Plan pointers, ## Stage 4 checks (evidence)
 ├── design-context.md          # Stage 0 optional — Figma text summary if URLs found
 ├── verification-report.md     # Stage 0.6
-├── specs.md                   # Stage 2 (FULL tier only) — design-doc; ## Approval appended at Checkpoint 1
-├── plan.md                    # Stage 3 (FULL tier only) — writing-plans; ## Approval appended at Checkpoint 2
 ├── state.json                 # Stage 5 loop counter, etc.
 ├── review-verdict.md          # Stage 5 — clean-context reviewer verdict; ## Approval appended at Checkpoint 3
 └── teach-back-report.md       # Stage 5
+
+specs/<NNN>-<ticket-id>-<slug>/   # FULL tier only — spec-kit feature directory
+├── spec.md                    # Stage 2 — ## Approval appended at Checkpoint 1
+├── plan.md                    # Stage 3 — ## Approval appended at Checkpoint 2
+└── tasks.md                   # Stage 3 — domain-tagged tasks driving Stage 4 dispatch
 ```
 
-Approvals are `## Approval` blocks appended **inside** the artifact (`specs.md` / `plan.md` / `review-verdict.md`; SIMPLE-path approval in `task-context.md`) — no `*.approved` flag files. `Approved-by` = `git config user.name`, written only after explicit human approval. Commit sanitized artifacts with the task PR; never commit raw ticket/Figma payloads, comments, secrets, or personal data.
+Approvals are `## Approval` blocks appended **inside** the artifact (`spec.md` / `plan.md` / `review-verdict.md`; SIMPLE-path approval in `task-context.md`) — no `*.approved` flag files. `Approved-by` = `git config user.name`, written only after explicit human approval. Commit sanitized artifacts with the task PR; never commit raw ticket/Figma payloads, comments, secrets, or personal data.
 
-Spec + plan live **only** under `.jtl/workflow/<ticket-id>/` (not `docs/superpowers/`). Superpowers skills supply the **format/process**; this hub overrides their default save paths.
+Spec, plan, and tasks live **only** under `specs/<NNN>-<ticket-id>-<slug>/`. `.jtl/workflow/<ticket-id>/` keeps intake, verification, review, and teach-back evidence plus the `Feature dir:` pointer — the two never duplicate each other's content.
 
-Do not add `.jtl/workflow/` to `.gitignore`: CI validates these committed,
-sanitized artifacts.
+Do not add `.jtl/workflow/` or `specs/` to `.gitignore`: CI validates these
+committed, sanitized artifacts.
 
 ## Gate policy (agent must obey)
 
@@ -266,7 +277,7 @@ and required CI enforce the portable hard gate; plugin hooks only add Claude
 local behavior. Never write an `## Approval` block ahead of a human's explicit
 approval.
 
-1. **FULL tier:** block Stage 3 until the `## Approval` block exists in `specs.md`; block Stage 4 until it exists in `plan.md`. **SIMPLE tier:** block Stage 4 until the SIMPLE-path `Approved-by` line exists in `task-context.md`.
+1. **FULL tier:** block Stage 3 until the `## Approval` block exists in `specs/<NNN>-<ticket-id>-<slug>/spec.md`; block Stage 4 until it exists in the sibling `plan.md`. **SIMPLE tier:** block Stage 4 until the SIMPLE-path `Approved-by` line exists in `task-context.md`.
 2. Block Stage 6 until the `## Approval` block exists in `review-verdict.md`.
 3. Write any approval annotation **only after** the human approves in chat — never self-approve.
 4. Deny commit/push on main/master; deny force-push and `gh pr merge` everywhere.

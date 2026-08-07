@@ -1,0 +1,4 @@
+name: brainstorm-to-spec
+version: 1.9.0
+description: Interactive design discussion that converges on an approved spec.
+includes: auto

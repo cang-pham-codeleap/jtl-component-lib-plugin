@@ -19,12 +19,16 @@ session with raw file reads).
 Declared in [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) and
 auto-installed from their marketplaces when this plugin is installed:
 
-| Plugin         | Marketplace               | Purpose                                                                            |
-| -------------- | ------------------------- | ---------------------------------------------------------------------------------- |
-| `caveman`      | `caveman`                 | Compressed subagent communication mode                                             |
-| `ponytail`     | `ponytail`                | Anti-over-engineering review/authoring discipline                                  |
-| `context-mode` | `context-mode`            | Sandboxed processing so raw tool output doesn't bloat context                      |
-| `superpowers`  | `claude-plugins-official` | Required for FULL-tier `task-to-pr` design/planning (brainstorming, writing-plans) |
+| Plugin         | Marketplace    | Purpose                                                       |
+| -------------- | -------------- | ------------------------------------------------------------- |
+| `caveman`      | `caveman`      | Compressed subagent communication mode                        |
+| `ponytail`     | `ponytail`     | Anti-over-engineering review/authoring discipline             |
+| `context-mode` | `context-mode` | Sandboxed processing so raw tool output doesn't bloat context |
+
+FULL-tier `task-to-pr` design/planning is handled by the in-plugin
+`brainstorm-to-spec` skill, which drives [Spec Kit](https://github.com/github/spec-kit)
+`/speckit.*` commands. Spec Kit is a **project-level** prerequisite installed
+into the coding repository by `jtl-init` — it is not a plugin dependency.
 
 ## MCP servers
 
@@ -73,6 +77,7 @@ skills/     Workflow skills (SKILL.md + supporting assets)
 | Skill                                                                            | Use when                                                                                                                   |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | [`task-to-pr`](skills/task-to-pr/SKILL.md)                                       | User references a GitHub issue/Jira key or says "pick up/implement/ship this ticket" — orchestrates intake → PR end to end |
+| [`brainstorm-to-spec`](skills/brainstorm-to-spec/SKILL.md)                       | Any new feature/screen/behavior change — design dialogue, then chains the repo's `/speckit.*` pipeline with review gates   |
 | [`ticket-intake`](skills/ticket-intake/SKILL.md)                                 | Pull GitHub/Jira ticket content into `task-context.md`; resolve dual GH+Jira sources                                       |
 | [`verify-ticket`](skills/verify-ticket/SKILL.md)                                 | Validate a ticket's claim (bug real? feature exists?) before branching/build                                               |
 | [`figma-fetching`](skills/figma-fetching/SKILL.md)                               | A Figma design URL appears in a ticket or message                                                                          |
@@ -86,7 +91,7 @@ skills/     Workflow skills (SKILL.md + supporting assets)
 | [`shadcn`](skills/shadcn/SKILL.md)                                               | Adding, searching, fixing, or styling shadcn/ui components                                                                 |
 | [`html-diagram`](skills/html-diagram/SKILL.md)                                   | Produce a self-contained HTML/SVG architecture diagram                                                                     |
 | [`improve-codebase-architecture`](skills/improve-codebase-architecture/SKILL.md) | Find refactoring/deepening opportunities informed by `CONTEXT.md` and `docs/adr/`                                          |
-| [`jtl-init`](skills/jtl-init/SKILL.md)                                           | First-time setup: CodeGraph index, OpenWolf hooks, `AGENTS.md`/`CLAUDE.md` scaffolding                                     |
+| [`jtl-init`](skills/jtl-init/SKILL.md)                                           | First-time setup: CodeGraph index, OpenWolf hooks, `AGENTS.md`/`CLAUDE.md` scaffolding, Spec Kit install                   |
 
 ## Agents
 

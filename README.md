@@ -19,11 +19,15 @@ apm install cang-pham-codeleap/jtl-component-lib-plugin -t copilot
 apm compile -t copilot
 ```
 
-`task-to-pr` requires Superpowers for FULL-tier design and planning:
+`task-to-pr` FULL tier drives design and planning through `brainstorm-to-spec`,
+which chains [Spec Kit](https://github.com/github/spec-kit) commands
+(`/speckit.specify`, `/speckit.plan`, `/speckit.tasks`, ...). Spec Kit is **not**
+bundled with this plugin — it is installed into the repository you are coding in.
+Run the `jtl-init` skill and it does this for you:
 
 ```bash
-copilot plugin marketplace add obra/superpowers-marketplace
-copilot plugin install superpowers@superpowers-marketplace
+uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+specify init --here --integration copilot
 ```
 
 APM deploys skills to `.agents/skills/`, generates `AGENTS.md`, and adopts
@@ -57,9 +61,6 @@ dependencies:
     },
     "context-mode": {
       "source": { "source": "github", "repo": "mksglu/context-mode" },
-    },
-    "superpowers-marketplace": {
-      "source": { "source": "github", "repo": "obra/superpowers-marketplace" },
     },
     "jtl-component-lib-plugin": {
       "source": {
@@ -96,7 +97,7 @@ claude plugin marketplace add mksglu/context-mode
 
 Once the required marketplaces above are registered, Claude Code automatically
 installs the companion plugins declared as dependencies: `caveman`, `ponytail`,
-`context-mode`, and `superpowers`.
+and `context-mode`.
 
 ## First-time Setup — Run `jtl-init`
 
@@ -263,7 +264,10 @@ Installed through Claude Code's native plugin dependency manifest:
 | `caveman`      | Token-efficient communication mode                                  |
 | `ponytail`     | Enforces a "lazy senior dev" philosophy—cuts over-engineering/bloat |
 | `context-mode` | Context management                                                  |
-| `superpowers`  | Skill discovery and invocation                                      |
+
+FULL-tier design/planning uses the in-plugin `brainstorm-to-spec` skill plus
+[Spec Kit](https://github.com/github/spec-kit), which `jtl-init` installs into
+the coding repository (not into this plugin).
 
 ## Contributing
 

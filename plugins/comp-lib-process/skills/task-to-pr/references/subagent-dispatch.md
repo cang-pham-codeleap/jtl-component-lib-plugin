@@ -11,8 +11,7 @@ the debt, and the tests, it judges its own work — and self-accepts. That is th
 
 A fresh `code-quality-reviewer` has **no stake** in the implementation and **no
 memory** of the reasoning that produced it. It sees only the artifacts and the
-spec, and reaches an independent verdict. Adapted from superpowers
-`subagent-driven-development` and `requesting-code-review`:
+spec, and reaches an independent verdict:
 
 > "The reviewer gets precisely crafted context for evaluation — never your
 > session's history. This keeps the reviewer focused on the work product, not
@@ -22,7 +21,9 @@ spec, and reaches an independent verdict. Adapted from superpowers
 
 1. **No session history.** Hand the reviewer **files**, never a paste of the
    conversation or your rationale:
-   - `specs.md` — spec + acceptance criteria (the source of truth)
+   - `spec.md` (+ `tasks.md`) from the feature directory recorded as
+     `Feature dir:` in `task-context.md` — spec + acceptance criteria (the
+     source of truth)
    - the diff package (BASE = the commit recorded **before** Stage 4, never
      `HEAD~1`, which drops all but the last commit of a multi-commit task)
    - `task-context.md` — ticket scope + pointers + Stage 4 check evidence
@@ -48,7 +49,7 @@ spec, and reaches an independent verdict. Adapted from superpowers
    Missing any dimension = FAIL = back to Stage 4. Accepting a verdict that
    omits a dimension is not allowed.
 6. **Global constraints verbatim.** Copy the binding requirements (exact values,
-   formats, "same as X" relationships) from `specs.md` into the dispatch verbatim —
+   formats, "same as X" relationships) from `spec.md` into the dispatch verbatim —
    that block is the reviewer's attention lens.
 
 ## Flow-back
