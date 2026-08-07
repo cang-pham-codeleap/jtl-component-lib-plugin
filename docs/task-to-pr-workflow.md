@@ -39,8 +39,8 @@ GitHub issue / Jira ticket / Figma design
 0.6 Verify        verify-ticket       → verification-report.md (CONFIRMED / NOT-REPRODUCIBLE / ALREADY-EXISTS)
 0.9 Branch        inline              → git branch off default
 1   Clarify       inline              → ≥3 solutions, human picks, tier classified (SIMPLE/FULL)
-2   Spec          superpowers         → specs.md (FULL only) ── CP1 human gate
-3   Plan          superpowers         → plan.md  (FULL only) ── CP2 human gate
+2   Spec          brainstorm-to-spec  → /speckit.specify  → spec.md  (FULL only) ── CP1 human gate
+3   Plan          /speckit.plan + /speckit.tasks → plan.md + tasks.md (FULL only) ── CP2 human gate
 4   Implement     engine-specialist / ui-ux-stylist → commits per slice
 5   Review        code-quality-reviewer (+ quiz-taker FULL only) → review-verdict.md ── CP3 human gate
 6   Ship          create-pr           → draft PR ── CP4 human gate
@@ -79,13 +79,13 @@ GitHub issue / Jira ticket / Figma design
 ### Stage 0.9 — Branch
 
 - `git fetch origin && git switch -c <ticket-id>/<short-slug> origin/<default-branch>`.
-- Never on main/master. Resume: if the branch exists, switches to it and re-validates old `specs.md` against the current design path + diff before trusting it.
+- Never on main/master. Resume: if the branch exists, switches to it and re-validates the existing `spec.md` against the current design path + diff before trusting it.
 
 ### Stage 1 — Clarify (3-solutions-first)
 
 - **Default path:** drafts ≥3 solution approaches (pros, cons, effort, risk), gives exactly one recommendation, human picks.
 - **Fast path:** trivial ticket or human says "just do it" → one recommended approach, short pros/risk, confirm.
-- **Escalate:** human says "discuss" → interactive `superpowers:brainstorming`.
+- **Escalate:** human says "discuss" → interactive `brainstorm-to-spec` (FULL tier only).
 - Classifies the **complexity tier** and records it in `## Clarified scope`:
 
   | Tier | Criteria | Pipeline effect |
@@ -95,19 +95,20 @@ GitHub issue / Jira ticket / Figma design
 
   The agent proposes the tier with a one-line reason; you confirm. When unsure between tiers, the agent chooses FULL.
 
-### Stage 2 — Spec (FULL tier only, `superpowers:writing-plans`)
+### Stage 2 — Spec (FULL tier only, `brainstorm-to-spec` → `/speckit.specify`)
 
-- Design doc written to **one** path: `.jtl/workflow/<ticket-id>/specs.md`.
+- `brainstorm-to-spec` runs the design dialogue, then hands its approved brief to `/speckit.specify` (optionally `/speckit.clarify`).
+- Spec Kit writes the feature directory `specs/<NNN>-<ticket-id>-<short-slug>/spec.md`. `task-context.md` records a `Feature dir:` pointer.
 - Covers (scaled to ticket size): goal, chosen approach, architecture/components, data flow/interfaces, error handling, testing/acceptance, out of scope/constraints, source links to `task-context.md` + `verification-report.md`.
 - No raw untrusted ticket dump — ticket content is summarized, never pasted verbatim into the spec.
-- 🛑 **Checkpoint 1 — Spec approval:** you review `specs.md`; on approval the agent appends an `## Approval` block (`Approved-by`, `Date`, `Mode`). Stage 3 is blocked until that block exists.
+- 🛑 **Checkpoint 1 — Spec approval:** you review `spec.md`; on approval the agent appends an `## Approval` block (`Approved-by`, `Date`, `Mode`). Stage 3 is blocked until that block exists. CP1 is the same gate `brainstorm-to-spec` calls GATE 1.
 
-### Stage 3 — Plan (FULL tier only, `superpowers:writing-plans`)
+### Stage 3 — Plan (FULL tier only, `/speckit.plan` + `/speckit.tasks`)
 
-- Implementation plan to `.jtl/workflow/<ticket-id>/plan.md`.
-- Plan header carries a `Spec:` pointer; tasks carry domain tags: `[logic]` (hooks/state/data-flow/API), `[ui]` (styling/visual/a11y), `[shared]`, optional `[parallel-safe]`. Tasks sharing a tag form one dispatch group.
-- Format override (single-run checks): per task keep Files, Interfaces, test code, implementation code — writing-plans' per-task "run to verify fail/pass" and "commit" steps are dropped; verification and commits happen per execution phase (Stage 4), never per task.
-- 🛑 **Checkpoint 2 — Plan approval:** same `## Approval` pattern. Stage 4 blocked until it exists.
+- `/speckit.plan` writes `plan.md`, `/speckit.tasks` writes `tasks.md`, `/speckit.analyze` cross-checks them — all inside the same feature directory.
+- Tasks must carry domain tags: `[logic]` (hooks/state/data-flow/API), `[ui]` (styling/visual/a11y), `[shared]`, optional `[parallel-safe]`. Tasks sharing a tag form one dispatch group. Untagged tasks are a defect — re-run `/speckit.tasks` with the tagging instruction.
+- Format override (single-run checks): per task keep Files, Interfaces, test code, implementation code; per-task "run to verify fail/pass" and "commit" steps are dropped — verification and commits happen per execution phase (Stage 4), never per task.
+- 🛑 **Checkpoint 2 — Plan approval:** same `## Approval` pattern. Stage 4 blocked until it exists. CP2 covers `brainstorm-to-spec`'s GATE 2 and GATE 3.
 
 ### Stage 4 — Implement (3-phase group execution)
 
@@ -134,7 +135,7 @@ One fresh-context reviewer subagent does all four dimensions in one pass — it 
   4. build run once (the only build in the pipeline) + Stage 4 check evidence verified green (`task-context.md` → `## Stage 4 checks`) + each acceptance criterion verified against observable behavior — no test/lint/typecheck re-run; targeted re-run only if evidence is missing/stale or a finding disputes it
   - Review-only — does not modify code.
   - Writes `review-verdict.md` with an explicit four-part verdict: **spec ✅ + quality ✅ + debt ✅ + build/evidence ✅**. Missing any dimension = FAIL.
-  - Dispatch is hand-fed **files only** (`specs.md`, the diff package, `task-context.md`) — never the session's history or rationale. No pre-judging ("don't flag X") in the dispatch.
+  - Dispatch is hand-fed **files only** (`spec.md`, the diff package, `task-context.md`) — never the session's history or rationale. No pre-judging ("don't flag X") in the dispatch.
 - **`quiz-taker`** — FULL tier only:
   - The teach-back comprehension gate. A fresh subagent with no tools and no session context answers 5–8 quiz questions about the change using **only** the `understanding-report.html` baked into its prompt. `NOT IN REPORT` is a valid answer (a docs gap to fix).
   - Tests passing proves the code runs; teach-back proves anyone — including the author — actually understands what shipped.
@@ -163,19 +164,26 @@ Every task leaves a committed, sanitized paper trail under `.jtl/workflow/<ticke
 
 ```
 .jtl/workflow/<ticket-id>/
-├── task-context.md         # Stage 0; ## Clarified scope (tier + SIMPLE-path approval), ## Spec + ## Plan pointers
+├── task-context.md         # Stage 0; ## Clarified scope (tier + SIMPLE-path approval), Feature dir pointer
 ├── design-context.md       # Stage 0 optional — Figma text summary
 ├── verification-report.md  # Stage 0.6 — CONFIRMED / NOT-REPRODUCIBLE / ALREADY-EXISTS
-├── specs.md                # Stage 2 (FULL only) — design-doc; ## Approval appended at CP1
-├── plan.md                 # Stage 3 (FULL only) — writing-plans; ## Approval appended at CP2
 ├── state.json              # Stage 5 loop counter
 ├── review-verdict.md       # Stage 5 — four-part verdict; ## Approval appended at CP3
 └── teach-back-report.md    # Stage 5 (FULL only) — comprehension quiz + report
 ```
 
+FULL-tier design artifacts live in the Spec Kit feature directory instead:
+
+```
+specs/<NNN>-<ticket-id>-<short-slug>/
+├── spec.md                 # Stage 2 — /speckit.specify; ## Approval appended at CP1
+├── plan.md                 # Stage 3 — /speckit.plan;    ## Approval appended at CP2
+└── tasks.md                # Stage 3 — /speckit.tasks; domain-tagged
+```
+
 Approvals are `## Approval` blocks appended **inside** the artifact — never separate `*.approved` flag files. `Approved-by` = `git config user.name`, written only after explicit human approval in chat.
 
-Spec + plan live **only** under `.jtl/workflow/<ticket-id>/` (not `docs/superpowers/`). Superpowers skills supply the format/process; this hub overrides their default save paths. FULL-tier work stops before design/planning if Superpowers is unavailable.
+Add `.jtl/workflow/` to `.gitignore` only if your repo policy forbids committing evidence; `specs/` is Spec Kit's own convention and is normally committed. Spec Kit itself is a **project-level** prerequisite — `jtl-init` installs it into the coding repo. FULL-tier work stops before Stage 2 if `.specify/` is missing.
 
 ---
 
@@ -186,6 +194,7 @@ Spec + plan live **only** under `.jtl/workflow/<ticket-id>/` (not `docs/superpow
 | `task-to-pr` (skill) | Orchestrator hub. One continuous agent per task. | inherit | Full session. |
 | `ticket-intake` (skill) | Stage 0 — fetch + fence ticket, resolve source of truth, pull Figma. | inherit | Hub session. |
 | `verify-ticket` (skill) | Stage 0.6 — validate the ticket claim against the codebase. | inherit | Hub session. |
+| `brainstorm-to-spec` (skill) | Stage 2 — design dialogue (with Visual Companion), then chains the repo's `/speckit.*` pipeline with review gates. | inherit | Hub session. |
 | `mcp-fetcher` (agent) | Cheap read-only fetcher for GitHub/Jira/Figma. Calls named tools only; returns verbatim payload or ≤200-word summary. | haiku | Disposable — no analysis, no writes. |
 | `figma-fetching` (skill) | Figma design → `design-context.md` text summary via `mcp-fetcher`'s Figma MCP read tools. | inherit | Hub session. |
 | `engine-specialist` (agent) | Stage 4 `[logic]` — React logic: state, hooks, API, data flow. Owns its task group end-to-end. | inherit | Forked, owns group. |
@@ -217,7 +226,7 @@ Every checkpoint has an automation equivalent (`references/automation.md`):
 
 | Checkpoint | Interactive | Headless |
 |---|---|---|
-| 1 Spec | Wait for chat → append `## Approval` to `specs.md` | Persist `specs.md`; wait until `## Approval` appears (human/out-of-band) before Stage 3 |
+| 1 Spec | Wait for chat → append `## Approval` to `spec.md` | Persist `spec.md`; wait until `## Approval` appears (human/out-of-band) before Stage 3 |
 | 2 Plan | Wait for chat → append `## Approval` to `plan.md` | Persist `plan.md`; wait until `## Approval` appears |
 | 3 Review | Wait for chat → append `## Approval` to `review-verdict.md` | Same pattern — wait until `## Approval` appears |
 | 4 PR | Show draft; wait | `create-pr` skill (always draft); human "Ready for review" is the approval act |

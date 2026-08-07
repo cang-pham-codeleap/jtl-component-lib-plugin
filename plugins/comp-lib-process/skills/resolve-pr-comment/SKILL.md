@@ -9,7 +9,7 @@ description: Use when the user says "resolve PR comments", "check PR feedback", 
 
 Turn PR review feedback into verified fixes. **Never implement from a comment until the comment is checked against the real code and the human has approved a plan.**
 
-**REQUIRED BACKGROUND:** Treat feedback like `superpowers:receiving-code-review` — technical claims need evidence; wrong feedback is rejected, not performed.
+**REQUIRED BACKGROUND:** Treat feedback as claims to verify, not orders to execute — technical claims need evidence; wrong feedback is rejected, not performed.
 
 ## When to use
 

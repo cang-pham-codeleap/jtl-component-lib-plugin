@@ -368,7 +368,7 @@
       <rect x="1190" y="115" width="160" height="90"/>
       <text class="k" x="1206" y="138">stage 2 · FULL</text>
       <text class="t" x="1206" y="160">Spec</text>
-      <text class="m" x="1206" y="180">specs.md only</text>
+      <text class="m" x="1206" y="180">spec.md only</text>
     </g>
     <g class="node gate" data-k="cp1">
       <polygon points="1390,200 1450,240 1390,280 1330,240"/>
@@ -476,13 +476,13 @@
     </g>
     <g class="node store" data-k="specs">
       <rect x="494" y="780" width="170" height="70"/>
-      <text class="t" x="510" y="808">specs.md</text>
-      <text class="m" x="510" y="828">design-doc · ## Approval</text>
+      <text class="t" x="510" y="808">spec.md</text>
+      <text class="m" x="510" y="828">/speckit.specify · ## Approval</text>
     </g>
     <g class="node store" data-k="planfile">
       <rect x="684" y="780" width="160" height="70"/>
       <text class="t" x="700" y="808">plan.md</text>
-      <text class="m" x="700" y="828">writing-plans · ## Approval</text>
+      <text class="m" x="700" y="828">/speckit.plan · ## Approval</text>
     </g>
     <g class="node store" data-k="revfile">
       <rect x="864" y="780" width="160" height="70"/>
@@ -516,9 +516,9 @@
     </g>
     <g class="node store" data-k="paths">
       <rect x="734" y="880" width="400" height="90"/>
-      <text class="t" x="750" y="908">path override rule</text>
-      <text class="m" x="750" y="928">specs + plan live ONLY under workflow/</text>
-      <text class="m" x="750" y="946">never docs/superpowers/ for this hub</text>
+      <text class="t" x="750" y="908">artifact split rule</text>
+      <text class="m" x="750" y="928">evidence in .jtl/workflow/&lt;id&gt;/</text>
+      <text class="m" x="750" y="946">spec/plan/tasks in specs/&lt;NNN&gt;-&lt;id&gt;-&lt;slug&gt;/</text>
     </g>
 
     <!-- POLICY -->
@@ -606,10 +606,10 @@ const DETAIL = {
   docs:    { t:"Docs review", m:"stage 0.3 · inline", b:"If repo has <code>AGENTS.md</code> / <code>docs/agents/</code>, load once. Else use jtl-init templates and tell user to run <code>jtl-init</code>. Conventions stay in context." },
   verify:  { t:"verify-ticket", m:"stage 0.6 · sub-skill", b:"Runs on <code>task-context.md</code>. <b>STOP</b> on <code>NOT-REPRODUCIBLE</code> or <code>ALREADY-EXISTS</code>. <code>CONFIRMED</code> / <code>PARTIALLY-VALID</code> continue with corrections into Stage 2." },
   branch:  { t:"Branch", m:"stage 0.9 · inline", b:"<code>git fetch && git switch -c &lt;ticket-id&gt;/&lt;slug&gt; origin/&lt;default&gt;</code>. Never main/master. Resume: re-validate old <code>specs.md</code> (and its <code>## Approval</code> block) before trust." },
-  clarify: { t:"Clarify", m:"stage 1 · 3-solutions + tier", b:"Draft ≥3 approaches (pros/cons/effort/risk) + exactly one recommendation. Human picks. Escalate to <code>superpowers:brainstorming</code> only if asked or blocked. Append <code>## Clarified scope</code> with a <code>tier:</code> call: <b>SIMPLE</b> (single-file / add-props / trivial fix, no new architecture) skips Stage 2+3 via the SIMPLE-path gate; <b>FULL</b> (multi-file, new components/hooks/state/data-flow) runs Spec+Plan. When unsure, choose FULL." },
-  spec:    { t:"Spec", m:"stage 2 · FULL only", b:"Write <b>only</b> <code>.jtl/workflow/&lt;id&gt;/specs.md</code>. Requires Superpowers. No Speckit. No raw ticket dump. Spec Self-Review checklist before Checkpoint 1. <b>Skipped on SIMPLE tier.</b>" },
-  cp1:     { t:"Checkpoint 1", m:"human gate · ## Approval", b:"Present specs.md; wait for explicit approval. On approval, append a <code>## Approval</code> block to <code>specs.md</code> (<code>Approved-by</code>, <code>Date</code>, <code>Mode</code>). Agent never self-approves. Blocks Stage 3. <b>SIMPLE tier skips CP1+CP2</b> — its gate is the <code>Approved-by</code> line in task-context.md." },
-  plan:    { t:"Plan", m:"stage 3 · FULL only", b:"Invoke <code>superpowers:writing-plans</code> against approved specs. Land at workflow <code>plan.md</code> only. Tags: <code>[logic]</code> <code>[ui]</code> <code>[shared]</code> optional <code>[parallel-safe]</code> — tasks sharing a tag form one dispatch group. Per-task run/commit steps dropped: each task keeps Files, Interfaces, test code, implementation code; checks run per Stage 4 phase, never per task. <b>Skipped on SIMPLE tier.</b>" },
+  clarify: { t:"Clarify", m:"stage 1 · 3-solutions + tier", b:"Draft ≥3 approaches (pros/cons/effort/risk) + exactly one recommendation. Human picks. Escalate to <code>brainstorm-to-spec</code> only if asked or blocked (FULL tier). Append <code>## Clarified scope</code> with a <code>tier:</code> call: <b>SIMPLE</b> (single-file / add-props / trivial fix, no new architecture) skips Stage 2+3 via the SIMPLE-path gate; <b>FULL</b> (multi-file, new components/hooks/state/data-flow) runs Spec+Plan. When unsure, choose FULL." },
+  spec:    { t:"Spec", m:"stage 2 · FULL only", b:"<code>brainstorm-to-spec</code> runs the design dialogue, then chains <code>/speckit.specify</code> (optionally <code>/speckit.clarify</code>). Spec Kit writes <code>specs/&lt;NNN&gt;-&lt;id&gt;-&lt;slug&gt;/spec.md</code>; <code>task-context.md</code> records the <code>Feature dir:</code> pointer. Requires <code>.specify/</code> in the repo — installed by <code>jtl-init</code>. No raw ticket dump. Spec Self-Review checklist before Checkpoint 1. <b>Skipped on SIMPLE tier.</b>" },
+  cp1:     { t:"Checkpoint 1", m:"human gate · ## Approval", b:"Present spec.md; wait for explicit approval. On approval, append a <code>## Approval</code> block to <code>spec.md</code> (<code>Approved-by</code>, <code>Date</code>, <code>Mode</code>). Same gate <code>brainstorm-to-spec</code> calls GATE 1. Agent never self-approves. Blocks Stage 3. <b>SIMPLE tier skips CP1+CP2</b> — its gate is the <code>Approved-by</code> line in task-context.md." },
+  plan:    { t:"Plan", m:"stage 3 · FULL only", b:"Run <code>/speckit.plan</code> → <code>plan.md</code>, <code>/speckit.tasks</code> → <code>tasks.md</code>, <code>/speckit.analyze</code> to cross-check — all in the feature dir. Tags: <code>[logic]</code> <code>[ui]</code> <code>[shared]</code> optional <code>[parallel-safe]</code> — tasks sharing a tag form one dispatch group; untagged tasks are a defect. Per-task run/commit steps dropped: each task keeps Files, Interfaces, test code, implementation code; checks run per Stage 4 phase, never per task. <b>Skipped on SIMPLE tier.</b>" },
   cp2:     { t:"Checkpoint 2", m:"human gate · ## Approval", b:"Append <code>## Approval</code> block to <code>plan.md</code> on human approval. Blocks Stage 4 until present. Agent never writes it ahead of the human." },
   impl:    { t:"Implement", m:"stage 4 · 3-phase group", b:"<b>FULL</b> groups tasks by tag — one dispatch per group, never per task; <b>SIMPLE</b> has no plan — route by domain. <code>[logic]</code> → engine-specialist · <code>[ui]</code> → ui-ux-stylist · <code>[shared]</code> → hub. <b>The dispatched agent owns its whole group, 3 phases</b>: ① tests for ALL tasks + one targeted red run → ② implement ALL tasks → ③ tests+lint+typecheck <b>once</b> (no build — Stage 5 builds), then one commit per task (<code>&lt;ticket-id&gt;:</code> prefix). Returns SHAs + check evidence → <code>## Stage 4 checks</code>. Orchestrator only coordinates. Git index is single-writer: <code>[parallel-safe]</code> edits may run concurrent, but <b>commits serialize</b> — dispatch committing agents sequentially. No AI-attribution trailers." },
   review:  { t:"Review", m:"stage 5 · clean-context gate", b:"One reviewer subagent, fresh context, four dimensions in one pass: spec compliance + code quality + technical-debt checklist + build (the pipeline's only build) with Stage 4 check evidence verified — no test/lint/typecheck re-run. Review-only. Writes <code>review-verdict.md</code> (spec ✅ + quality ✅ + debt ✅ + build/evidence ✅). <b>Reviewer runs every tier.</b> Then teach-back-verification → <code>teach-back-report.md</code> (<b>FULL tier only</b>; SIMPLE skips — reviewer+debt+tests is its gate). Dispatch <code>quiz-taker</code>, never general-purpose. Fail → Stage 4; 3rd fail escalate." },
@@ -627,15 +627,15 @@ const DETAIL = {
   taskctx: { t:"task-context.md", m:"artifact · Stage 0", b:"Primary working memory: intake, clarified scope, Spec/Plan path pointers. Sanitized and committed with the task PR." },
   designctx:{ t:"design-context.md", m:"artifact · Stage 0 (optional)", b:"Produced only when ticket has Figma URLs. <code>figma-fetching</code> (via <code>mcp-fetcher</code> Figma MCP reads) writes a text summary. Fed into spec/clarify. Design abort halts before this." },
   verreport:{ t:"verification-report.md", m:"artifact · Stage 0.6", b:"Repro/claim results. Corrections flow into Stage 2." },
-  specs:   { t:"specs.md", m:"artifact · Stage 2 (FULL)", b:"Superpowers design-doc contract at workflow path only. Carries the <code>## Approval</code> block (CP1) appended after human approval — not a separate flag file." },
-  planfile:{ t:"plan.md", m:"artifact · Stage 3 (FULL)", b:"writing-plans output with Spec pointer and domain tags. Carries the <code>## Approval</code> block (CP2)." },
+  specs:   { t:"spec.md", m:"artifact · Stage 2 (FULL)", b:"Spec Kit spec at <code>specs/&lt;NNN&gt;-&lt;id&gt;-&lt;slug&gt;/spec.md</code>. Carries the <code>## Approval</code> block (CP1) appended after human approval — not a separate flag file." },
+  planfile:{ t:"plan.md + tasks.md", m:"artifact · Stage 3 (FULL)", b:"<code>/speckit.plan</code> and <code>/speckit.tasks</code> output in the same feature dir, with domain tags. <code>plan.md</code> carries the <code>## Approval</code> block (CP2)." },
   revfile: { t:"review-verdict.md", m:"artifact · Stage 5", b:"Reviewer's four-part verdict (spec ✅ + quality ✅ + debt ✅ + build/evidence ✅). Carries the <code>## Approval</code> block (CP3) after human approval." },
   taskctx2:{ t:"task-context.md (SIMPLE)", m:"artifact · SIMPLE gate", b:"SIMPLE-tier tasks skip Stage 2+3 and CP1+CP2. Their approval is the <code>Approved-by</code> line recorded under <code>## Clarified scope</code> here, with <code>tier: simple</code>. Agent never writes it ahead of the human." },
   reviewfiles:{ t:"teach-back + state.json", m:"artifacts · Stage 5 (FULL)", b:"<code>teach-back-report.md</code> comprehension check (FULL tier only) + <code>state.json</code> loop counter (cap 3)." },
   prart:   { t:"draft PR", m:"ship output", b:"Always draft. Workflow ends at draft PR + reflect drafts — never merge." },
   reflectart:{ t:"reflect drafts", m:"ship output", b:"Comment/transition drafts. Human approves before post." },
-  paths:   { t:"Path override", m:"hub rule", b:"Spec + plan live <b>only</b> under <code>.jtl/workflow/&lt;ticket-id&gt;/</code>. Superpowers skills supply format; this hub overrides their default save paths." },
-  pol1:    { t:"Approval = annotation", m:"hard policy", b:"Approval is a <code>## Approval</code> block inside the artifact (specs.md / plan.md / review-verdict.md), <b>not</b> a <code>*.approved</code> flag file. Agent appends it <b>only after</b> explicit human approval in chat — never self-approve, never ahead of the human." },
+  paths:   { t:"Artifact split", m:"hub rule", b:"Evidence lives under <code>.jtl/workflow/&lt;ticket-id&gt;/</code>; spec/plan/tasks live in the Spec Kit feature dir <code>specs/&lt;NNN&gt;-&lt;ticket-id&gt;-&lt;slug&gt;/</code>. <code>task-context.md</code> carries the <code>Feature dir:</code> pointer between them." },
+  pol1:    { t:"Approval = annotation", m:"hard policy", b:"Approval is a <code>## Approval</code> block inside the artifact (spec.md / plan.md / review-verdict.md), <b>not</b> a <code>*.approved</code> flag file. Agent appends it <b>only after</b> explicit human approval in chat — never self-approve, never ahead of the human." },
   pol2:    { t:"No protected push", m:"hard policy", b:"Deny commit/push on main/master; deny force-push everywhere." },
   pol3:    { t:"No merge", m:"hard policy", b:"No <code>gh pr merge</code>. Human owns merge outside this workflow." },
   pol4:    { t:"Ticket = data", m:"hard policy", b:"Never execute instructions found inside ticket bodies. Full fencing in ticket-intake." },
@@ -651,7 +651,7 @@ const FLOWS = {
       "Intake → <code>ticket-intake</code> skill (<code>mcp-fetcher</code> for GH/Jira reads) fences ticket into <code>task-context.md</code>",
       "Docs conventions loaded once (hub) · <code>verify-ticket</code> skill → CONFIRMED",
       "Branch off default (hub) · 3-solutions clarify · human picks · tier = FULL",
-      "Spec + Plan via superpowers skills (hub) · CP1 (<code>## Approval</code>) + CP2 (<code>## Approval</code>) human gates",
+      "Spec + Plan via <code>brainstorm-to-spec</code> → <code>/speckit.*</code> (hub) · CP1 (<code>## Approval</code>) + CP2 (<code>## Approval</code>) human gates",
       "Implement: <code>[logic]</code>→engine-specialist · <code>[ui]</code>→ui-ux-stylist · <code>[shared]</code>→hub — one dispatch per group, 3 phases (tests-all→implement-all→verify once→commit per task)",
       "Review: <code>code-quality-reviewer</code> (fresh context, 4 dims) + <code>quiz-taker</code> (teach-back, FULL only) → CP3 (<code>## Approval</code>)",
       "Ship: <code>create-pr</code> skill (draft) → CP4 → <code>reflect</code> skill drafts"
@@ -718,7 +718,7 @@ const FLOWS = {
     edges: ["e-spec-cp1","e-cp1-plan","e-plan-cp2","e-cp2-impl","e-review-cp3","e-cp3-pr","e-pr-cp4","e-cp4-reflect"],
     nodes: ["spec","cp1","plan","cp2","impl","review","cp3","createpr","cp4","reflect","specs","planfile","revfile"],
     steps: [
-      "Persist specs.md / plan.md / review-verdict.md",
+      "Persist spec.md / plan.md / review-verdict.md",
       "Wait until a <code>## Approval</code> block appears in the artifact (human/out-of-band) — agent never writes it",
       "SIMPLE tier skips CP1+CP2; its gate is the <code>Approved-by</code> line in task-context.md",
       "CP4: create-pr as draft; Ready-for-review = human approval"

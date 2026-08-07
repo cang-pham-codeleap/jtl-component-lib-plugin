@@ -17,11 +17,11 @@ Interactive mode stops mid-turn and waits for human chat confirmation.
 
 Headless mode treats checkpoints as **async gates**:
 
-Approvals are `## Approval` annotations inside the artifact (`specs.md` / `plan.md` / `review-verdict.md`), not `*.approved` flag files. `Approved-by` = `git config user.name`.
+Approvals are `## Approval` annotations inside the artifact (`spec.md` / `plan.md` / `review-verdict.md`), not `*.approved` flag files. `Approved-by` = `git config user.name`. FULL-tier `spec.md` / `plan.md` live in the spec-kit feature directory recorded as `Feature dir:` in `task-context.md`.
 
 | Checkpoint | Interactive | Headless |
 |------------|-------------|----------|
-| 1 Spec | Wait for chat approval → append `## Approval` to `specs.md` | Persist `specs.md`; wait until an `## Approval` block appears in it (human/out-of-band) before Stage 3 |
+| 1 Spec | Wait for chat approval → append `## Approval` to `spec.md` | Persist `spec.md`; wait until an `## Approval` block appears in it (human/out-of-band) before Stage 3 |
 | 2 Plan | Wait for chat approval → append `## Approval` to `plan.md` | Persist `plan.md`; wait until `## Approval` appears in it |
 | 3 Review | Wait for chat approval → append `## Approval` to `review-verdict.md` | Same pattern — wait until `## Approval` appears in `review-verdict.md` |
 | 4 PR | Print draft; wait before invoking `create-pr` | Invoke `create-pr` skill (always draft — sole PR path). Human marking "Ready for review" is the approval act |
